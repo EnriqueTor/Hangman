@@ -40,11 +40,11 @@ class GameViewController: UIViewController {
             print(currentData)
             print("YEAH")
             
-            self.secretWord = currentData
+            self.secretWord = currentData.uppercased()
             
             for _ in self.secretWord.characters {
                 
-                self.hiddenWord.append("_ ")
+                self.hiddenWord.append("_")
                 
             }
             
@@ -60,12 +60,33 @@ class GameViewController: UIViewController {
         
     }
     
+   
     
     @IBAction func letterPressed(_ sender: UIButton) {
         
-        print(sender.titleLabel?.text)
         
-    }
+        var buttonTitle = sender.titleLabel?.text
+        
+        print(secretWord)
+        print(buttonTitle!)
+        
+        if secretWord.range(of: buttonTitle!) != nil {
+            
+            print("YES I EXIST IN THIS WORD")
+            sender.setTitleColor(.green, for: .normal)
+            
+        }
+        else {
+            sender.setTitleColor(.red, for: .normal)
+            lives = lives - 1
+            livesLabel.text = "\(lives)"
+            print("GOOD LUCK NEXT TIME!")
+            print(lives)
+            
+        }
+        
+        
+        }
     
     
     
