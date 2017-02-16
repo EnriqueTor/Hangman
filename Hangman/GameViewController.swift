@@ -30,6 +30,11 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        for button in keyboardButtons {
+            
+            button.isEnabled = false
+            
+        }
         
         nameLabel.text = userName
         livesLabel.text = "\(lives)"
@@ -54,6 +59,12 @@ class GameViewController: UIViewController {
             DispatchQueue.main.async {
                 
                 self.secretWordLabel.text = self.hiddenWord
+                
+                for button in self.keyboardButtons {
+                    
+                    button.isEnabled = true
+                    
+                }
             }
         }
         
