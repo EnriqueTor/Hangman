@@ -16,9 +16,18 @@
 		BBB9133D1E555AD800E779AA /* BiteChalkBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB75723D1E55591F0018FFD1 /* BiteChalkBold.ttf */; };
 		BBB9133E1E555AD800E779AA /* BiteChalkNormal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB75723E1E55591F0018FFD1 /* BiteChalkNormal.ttf */; };
 		BBB9133F1E555AD800E779AA /* BiteChalkSlim.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB75723F1E55591F0018FFD1 /* BiteChalkSlim.ttf */; };
+		BBB913411E555F3F00E779AA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB913401E555F3F00E779AA /* LoginViewController.swift */; };
+		BBB913431E555F4A00E779AA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB913421E555F4A00E779AA /* RegisterViewController.swift */; };
+		BBB913451E555F5200E779AA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB913441E555F5200E779AA /* MainViewController.swift */; };
+		BBB913471E55601300E779AA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB913461E55601300E779AA /* SettingsViewController.swift */; };
+		BBB913491E55601A00E779AA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB913481E55601A00E779AA /* GameViewController.swift */; };
+		BBB9134B1E5563CE00E779AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBB9134A1E5563CE00E779AA /* GoogleService-Info.plist */; };
+		BF7EBD834073AEFC7A23D4FD /* Pods_Hangman.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5AA33B22C41146A2108DEA2 /* Pods_Hangman.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5335D00A5461AE17F5E13335 /* Pods-Hangman.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hangman.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hangman/Pods-Hangman.release.xcconfig"; sourceTree = "<group>"; };
+		6450A2F37BDEE478CB2A888D /* Pods-Hangman.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hangman.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hangman/Pods-Hangman.debug.xcconfig"; sourceTree = "<group>"; };
 		BB7572271E5523B50018FFD1 /* Hangman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hangman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB75722A1E5523B50018FFD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB75722C1E5523B50018FFD1 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -30,6 +39,13 @@
 		BB75723D1E55591F0018FFD1 /* BiteChalkBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BiteChalkBold.ttf; sourceTree = "<group>"; };
 		BB75723E1E55591F0018FFD1 /* BiteChalkNormal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BiteChalkNormal.ttf; sourceTree = "<group>"; };
 		BB75723F1E55591F0018FFD1 /* BiteChalkSlim.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BiteChalkSlim.ttf; sourceTree = "<group>"; };
+		BBB913401E555F3F00E779AA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BBB913421E555F4A00E779AA /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		BBB913441E555F5200E779AA /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		BBB913461E55601300E779AA /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		BBB913481E55601A00E779AA /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		BBB9134A1E5563CE00E779AA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F5AA33B22C41146A2108DEA2 /* Pods_Hangman.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hangman.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,17 +53,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF7EBD834073AEFC7A23D4FD /* Pods_Hangman.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		763EC00AFFD9B89D239A7427 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6450A2F37BDEE478CB2A888D /* Pods-Hangman.debug.xcconfig */,
+				5335D00A5461AE17F5E13335 /* Pods-Hangman.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		883BE700D5E8A66E1FCB682D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F5AA33B22C41146A2108DEA2 /* Pods_Hangman.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BB75721E1E5523B40018FFD1 = {
 			isa = PBXGroup;
 			children = (
 				BB7572291E5523B50018FFD1 /* Hangman */,
 				BB7572281E5523B50018FFD1 /* Products */,
+				763EC00AFFD9B89D239A7427 /* Pods */,
+				883BE700D5E8A66E1FCB682D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,6 +110,11 @@
 			isa = PBXGroup;
 			children = (
 				BB75722C1E5523B50018FFD1 /* WelcomeViewController.swift */,
+				BBB913401E555F3F00E779AA /* LoginViewController.swift */,
+				BBB913421E555F4A00E779AA /* RegisterViewController.swift */,
+				BBB913441E555F5200E779AA /* MainViewController.swift */,
+				BBB913461E55601300E779AA /* SettingsViewController.swift */,
+				BBB913481E55601A00E779AA /* GameViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -103,6 +144,7 @@
 				BB75723D1E55591F0018FFD1 /* BiteChalkBold.ttf */,
 				BB75723E1E55591F0018FFD1 /* BiteChalkNormal.ttf */,
 				BB75723F1E55591F0018FFD1 /* BiteChalkSlim.ttf */,
+				BBB9134A1E5563CE00E779AA /* GoogleService-Info.plist */,
 				BB7572361E5523B50018FFD1 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -115,9 +157,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BB7572391E5523B50018FFD1 /* Build configuration list for PBXNativeTarget "Hangman" */;
 			buildPhases = (
+				D072DF36F8FB6B6384CB9490 /* [CP] Check Pods Manifest.lock */,
 				BB7572231E5523B50018FFD1 /* Sources */,
 				BB7572241E5523B50018FFD1 /* Frameworks */,
 				BB7572251E5523B50018FFD1 /* Resources */,
+				34A317C3F31BA0A2BCD0CB13 /* [CP] Embed Pods Frameworks */,
+				D0DFCE79FB189CA91004D4CB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -169,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBB9133F1E555AD800E779AA /* BiteChalkSlim.ttf in Resources */,
+				BBB9134B1E5563CE00E779AA /* GoogleService-Info.plist in Resources */,
 				BBB9133D1E555AD800E779AA /* BiteChalkBold.ttf in Resources */,
 				BBB9133C1E555AD400E779AA /* BiteChalk.ttf in Resources */,
 				BB7572351E5523B50018FFD1 /* LaunchScreen.storyboard in Resources */,
@@ -180,13 +226,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		34A317C3F31BA0A2BCD0CB13 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hangman/Pods-Hangman-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D072DF36F8FB6B6384CB9490 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D0DFCE79FB189CA91004D4CB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hangman/Pods-Hangman-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BB7572231E5523B50018FFD1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBB913491E55601A00E779AA /* GameViewController.swift in Sources */,
+				BBB913411E555F3F00E779AA /* LoginViewController.swift in Sources */,
 				BB75722D1E5523B50018FFD1 /* WelcomeViewController.swift in Sources */,
 				BB75722B1E5523B50018FFD1 /* AppDelegate.swift in Sources */,
+				BBB913431E555F4A00E779AA /* RegisterViewController.swift in Sources */,
+				BBB913451E555F5200E779AA /* MainViewController.swift in Sources */,
+				BBB913471E55601300E779AA /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +406,7 @@
 		};
 		BB75723A1E5523B50018FFD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6450A2F37BDEE478CB2A888D /* Pods-Hangman.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3SZW3Z4QTH;
@@ -320,6 +420,7 @@
 		};
 		BB75723B1E5523B50018FFD1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5335D00A5461AE17F5E13335 /* Pods-Hangman.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3SZW3Z4QTH;
