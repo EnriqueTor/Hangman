@@ -30,11 +30,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for button in keyboardButtons {
-            
-            button.isEnabled = false
-            
-        }
+        isKeyboardEnabled(status: false)
         
         nameLabel.text = userName
         livesLabel.text = "\(lives)"
@@ -60,11 +56,7 @@ class GameViewController: UIViewController {
                 
                 self.secretWordLabel.text = self.hiddenWord
                 
-                for button in self.keyboardButtons {
-                    
-                    button.isEnabled = true
-                    
-                }
+                self.isKeyboardEnabled(status: true)
             }
         }
         
@@ -78,28 +70,91 @@ class GameViewController: UIViewController {
         
         var buttonTitle = sender.titleLabel?.text
         
-        print(secretWord)
-        print(buttonTitle!)
-        
         if secretWord.range(of: buttonTitle!) != nil {
             
-            print("YES I EXIST IN THIS WORD")
-            sender.setTitleColor(.green, for: .normal)
+            correct(button: sender)
             
         }
         else {
-            sender.setTitleColor(.red, for: .normal)
-            lives = lives - 1
-            livesLabel.text = "\(lives)"
-            print("GOOD LUCK NEXT TIME!")
-            print(lives)
+            
+            miss(button: sender)
+        }
+        
+        
+        }
+    
+    
+    func correct(button: UIButton) {
+        
+        print("YES I EXIST IN THIS WORD")
+        button.setTitleColor(.green, for: .normal)
+        button.isEnabled = false
+        
+        var buttonChar = button.titleLabel?.text?.characters.first!
+        
+        for (index, char) in secretWord.characters.enumerated() {
+            
+            if buttonChar == char {
+                
+                print("WE JUST FOUND A FRIEND OVER HERE! index = \(index), and char = \(char)")
+                
+            }
+            
+            
             
         }
         
         
+        
+        
+        
+    }
+    
+    func miss(button: UIButton) {
+        
+        button.setTitleColor(.red, for: .normal)
+        button.isEnabled = false
+        
+        lives = lives - 1
+        livesLabel.text = "\(lives)"
+        
+        print("GOOD LUCK NEXT TIME!")
+        
+        isHangman()
+
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    func isHangman() {
+        
+        if lives < 0 {
+            
+            print("THE GAME IS OVER")
+            livesLabel.text = "GAME OVER"
+            isKeyboardEnabled(status: false)
+            
+            
         }
+        
+        
+    }
     
-    
+    func isKeyboardEnabled(status: Bool) {
+        
+        for button in keyboardButtons {
+            
+            button.isEnabled = status
+            
+        }
+
+        
+    }
     
     
 }
