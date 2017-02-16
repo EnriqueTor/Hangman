@@ -7,25 +7,27 @@
 //
 
 import UIKit
+import Foundation
 
 class GameViewController: UIViewController {
+    
+    // MARK: - Outlets 
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var livesLabel: UILabel!
     @IBOutlet weak var secretWordLabel: UILabel!
-    
-    
-    
     @IBOutlet var keyboardButtons: [UIButton]!
     
-    let store = HangmanData.sharedInstance
+    // MARK: - Variables
     
+    let store = HangmanData.sharedInstance
     var userName = "Enrique"
     var lives = 6
     var secretWord = ""
     var wordCharacter = 0
     var hiddenWord = ""
     
+    // MARK: - Loads
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +65,7 @@ class GameViewController: UIViewController {
         
     }
     
-    
+    // MARK: - Actions
     
     @IBAction func letterPressed(_ sender: UIButton) {
         
@@ -83,6 +85,7 @@ class GameViewController: UIViewController {
         
     }
     
+    // MARK: - Methods
     
     func correct(button: UIButton) {
         
@@ -166,7 +169,21 @@ class GameViewController: UIViewController {
     func win() {
         
         if secretWord == hiddenWord {
+            
             isKeyboardEnabled(status: false)
+            
+            if UIReferenceLibraryViewController.dictionaryHasDefinition(forTerm: secretWord) == true {
+                
+                print("YES WE HAVE A DEFINITION")
+                
+                let ref: UIReferenceLibraryViewController = UIReferenceLibraryViewController(term: secretWord)
+                
+                present(ref, animated: true, completion: nil)
+                
+            } else {
+                
+                "the word doesn't exist"
+            }
             
             print("YOU WON!!!!")
             
