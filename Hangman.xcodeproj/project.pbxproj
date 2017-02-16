@@ -8,20 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		BB75722B1E5523B50018FFD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75722A1E5523B50018FFD1 /* AppDelegate.swift */; };
-		BB75722D1E5523B50018FFD1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75722C1E5523B50018FFD1 /* ViewController.swift */; };
+		BB75722D1E5523B50018FFD1 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75722C1E5523B50018FFD1 /* WelcomeViewController.swift */; };
 		BB7572301E5523B50018FFD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB75722E1E5523B50018FFD1 /* Main.storyboard */; };
 		BB7572321E5523B50018FFD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB7572311E5523B50018FFD1 /* Assets.xcassets */; };
 		BB7572351E5523B50018FFD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB7572331E5523B50018FFD1 /* LaunchScreen.storyboard */; };
+		BBB9133C1E555AD400E779AA /* BiteChalk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB75723C1E55591F0018FFD1 /* BiteChalk.ttf */; };
+		BBB9133D1E555AD800E779AA /* BiteChalkBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB75723D1E55591F0018FFD1 /* BiteChalkBold.ttf */; };
+		BBB9133E1E555AD800E779AA /* BiteChalkNormal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB75723E1E55591F0018FFD1 /* BiteChalkNormal.ttf */; };
+		BBB9133F1E555AD800E779AA /* BiteChalkSlim.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB75723F1E55591F0018FFD1 /* BiteChalkSlim.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BB7572271E5523B50018FFD1 /* Hangman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hangman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB75722A1E5523B50018FFD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BB75722C1E5523B50018FFD1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BB75722C1E5523B50018FFD1 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		BB75722F1E5523B50018FFD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BB7572311E5523B50018FFD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB7572341E5523B50018FFD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB7572361E5523B50018FFD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB75723C1E55591F0018FFD1 /* BiteChalk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BiteChalk.ttf; sourceTree = "<group>"; };
+		BB75723D1E55591F0018FFD1 /* BiteChalkBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BiteChalkBold.ttf; sourceTree = "<group>"; };
+		BB75723E1E55591F0018FFD1 /* BiteChalkNormal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BiteChalkNormal.ttf; sourceTree = "<group>"; };
+		BB75723F1E55591F0018FFD1 /* BiteChalkSlim.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BiteChalkSlim.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +62,50 @@
 		BB7572291E5523B50018FFD1 /* Hangman */ = {
 			isa = PBXGroup;
 			children = (
-				BB75722A1E5523B50018FFD1 /* AppDelegate.swift */,
-				BB75722C1E5523B50018FFD1 /* ViewController.swift */,
-				BB75722E1E5523B50018FFD1 /* Main.storyboard */,
-				BB7572311E5523B50018FFD1 /* Assets.xcassets */,
-				BB7572331E5523B50018FFD1 /* LaunchScreen.storyboard */,
-				BB7572361E5523B50018FFD1 /* Info.plist */,
+				BB7572421E5559400018FFD1 /* Model */,
+				BB7572401E5559310018FFD1 /* Controllers */,
+				BB7572411E55593A0018FFD1 /* Views */,
+				BB7572431E5559480018FFD1 /* Supporting Files */,
 			);
 			path = Hangman;
+			sourceTree = "<group>";
+		};
+		BB7572401E5559310018FFD1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BB75722C1E5523B50018FFD1 /* WelcomeViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		BB7572411E55593A0018FFD1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BB75722E1E5523B50018FFD1 /* Main.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		BB7572421E5559400018FFD1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BB75722A1E5523B50018FFD1 /* AppDelegate.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		BB7572431E5559480018FFD1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BB7572311E5523B50018FFD1 /* Assets.xcassets */,
+				BB7572331E5523B50018FFD1 /* LaunchScreen.storyboard */,
+				BB75723C1E55591F0018FFD1 /* BiteChalk.ttf */,
+				BB75723D1E55591F0018FFD1 /* BiteChalkBold.ttf */,
+				BB75723E1E55591F0018FFD1 /* BiteChalkNormal.ttf */,
+				BB75723F1E55591F0018FFD1 /* BiteChalkSlim.ttf */,
+				BB7572361E5523B50018FFD1 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,7 +168,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBB9133F1E555AD800E779AA /* BiteChalkSlim.ttf in Resources */,
+				BBB9133D1E555AD800E779AA /* BiteChalkBold.ttf in Resources */,
+				BBB9133C1E555AD400E779AA /* BiteChalk.ttf in Resources */,
 				BB7572351E5523B50018FFD1 /* LaunchScreen.storyboard in Resources */,
+				BBB9133E1E555AD800E779AA /* BiteChalkNormal.ttf in Resources */,
 				BB7572321E5523B50018FFD1 /* Assets.xcassets in Resources */,
 				BB7572301E5523B50018FFD1 /* Main.storyboard in Resources */,
 			);
@@ -137,7 +185,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB75722D1E5523B50018FFD1 /* ViewController.swift in Sources */,
+				BB75722D1E5523B50018FFD1 /* WelcomeViewController.swift in Sources */,
 				BB75722B1E5523B50018FFD1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,6 +350,7 @@
 				BB75723B1E5523B50018FFD1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
