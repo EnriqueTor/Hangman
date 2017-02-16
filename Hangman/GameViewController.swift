@@ -63,7 +63,7 @@ class GameViewController: UIViewController {
         
     }
     
-   
+    
     
     @IBAction func letterPressed(_ sender: UIButton) {
         
@@ -81,7 +81,7 @@ class GameViewController: UIViewController {
         }
         
         
-        }
+    }
     
     
     func correct(button: UIButton) {
@@ -98,6 +98,24 @@ class GameViewController: UIViewController {
                 
                 print("WE JUST FOUND A FRIEND OVER HERE! index = \(index), and char = \(char)")
                 
+                var newWord = ""
+                
+                for (newIndex, newChar) in hiddenWord.characters.enumerated() {
+                    
+                    if newIndex == index {
+                        
+                        newWord.append(char)
+                        
+                    } else {
+                        
+                        newWord.append(newChar)
+                    }
+                    
+                }
+                
+                hiddenWord = newWord
+                secretWordLabel.text = hiddenWord
+                win()
             }
             
             
@@ -121,7 +139,7 @@ class GameViewController: UIViewController {
         print("GOOD LUCK NEXT TIME!")
         
         isHangman()
-
+        
         
         
         
@@ -145,6 +163,18 @@ class GameViewController: UIViewController {
         
     }
     
+    func win() {
+        
+        if secretWord == hiddenWord {
+            isKeyboardEnabled(status: false)
+            
+            print("YOU WON!!!!")
+            
+        }
+        
+        
+    }
+    
     func isKeyboardEnabled(status: Bool) {
         
         for button in keyboardButtons {
@@ -152,7 +182,7 @@ class GameViewController: UIViewController {
             button.isEnabled = status
             
         }
-
+        
         
     }
     
