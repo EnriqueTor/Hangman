@@ -104,10 +104,10 @@
 		BB7572291E5523B50018FFD1 /* Hangman */ = {
 			isa = PBXGroup;
 			children = (
-				BB7572401E5559310018FFD1 /* Controllers */,
 				BB7572421E5559400018FFD1 /* Model */,
-				BB7572431E5559480018FFD1 /* Supporting Files */,
 				BB7572411E55593A0018FFD1 /* Views */,
+				BB7572401E5559310018FFD1 /* Controllers */,
+				BB7572431E5559480018FFD1 /* Supporting Files */,
 			);
 			path = Hangman;
 			sourceTree = "<group>";
@@ -115,12 +115,12 @@
 		BB7572401E5559310018FFD1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BB75722C1E5523B50018FFD1 /* WelcomeViewController.swift */,
-				BBB913401E555F3F00E779AA /* LoginViewController.swift */,
-				BBB913421E555F4A00E779AA /* RegisterViewController.swift */,
-				BBB913441E555F5200E779AA /* MainViewController.swift */,
-				BBB913461E55601300E779AA /* SettingsViewController.swift */,
 				BBB913481E55601A00E779AA /* GameViewController.swift */,
+				BBB913401E555F3F00E779AA /* LoginViewController.swift */,
+				BBB913441E555F5200E779AA /* MainViewController.swift */,
+				BBB913421E555F4A00E779AA /* RegisterViewController.swift */,
+				BBB913461E55601300E779AA /* SettingsViewController.swift */,
+				BB75722C1E5523B50018FFD1 /* WelcomeViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
