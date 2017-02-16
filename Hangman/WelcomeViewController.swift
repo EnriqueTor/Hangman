@@ -19,6 +19,7 @@ class WelcomeViewController: UIViewController {
         
         store.getWordFromAPI { (currentData) in
             
+            print("WE ARE IN WELCOME VC")
             print(currentData)
             print("YEAH")
             

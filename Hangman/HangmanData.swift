@@ -14,23 +14,30 @@ class HangmanData {
     
     static let sharedInstance = HangmanData()
     
+    var arrayOfWords: [String] = []
+    
+    
     // MARK: - Initializers
     
     private init() {}
     
     // MARK: - Methods
     
-    func getWordFromAPI(completion: @escaping ([String:Any]) -> Void) {
+    func getWordFromAPI(completion: @escaping (String) -> Void) {
         
         print("We are getting into the Current Data raw information")
         
-        var currentWord: [String:Any] = [:]
+        var currentWord: String = ""
         
         HangmanAPI.getHangmanWord { (JSON) in
             
-            currentWord = JSON["currently"] as! [String:Any]
+            let getWordPosition = Int(arc4random_uniform(UInt32(JSON.count)))
+            
             
             print("9a. We just load the CURRENT DATA")
+            print(getWordPosition)
+            
+            currentWord = JSON[getWordPosition - 1]
             
             completion(currentWord)
         }

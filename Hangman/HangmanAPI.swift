@@ -12,7 +12,7 @@ class HangmanAPI {
     
     // MARK: - Methods
     
-    class func getHangmanWord(with completion: @escaping (([String:Any]) -> Void)) {
+    class func getHangmanWord(with completion: @escaping (([String]) -> Void)) {
         
         let urlString = Secrets.link
         print("2. We put together the link, getting the data from Secrets")
@@ -34,10 +34,19 @@ class HangmanAPI {
             
             do {
                 
-                let JSON = try JSONSerialization.jsonObject(with: unwrappedData, options: []) as! [String:Any]
+                let words = try String(contentsOf: unwrappedUrl)
+                
                 print("8a. We are accessing the raw data")
                 
-                completion(JSON)
+                HangmanData.sharedInstance.arrayOfWords = words.components(separatedBy: ["\n"])
+                
+                
+                
+                //                let wordPositionPick =
+                
+                //                print(arrayOfWords[22])
+                
+                completion(HangmanData.sharedInstance.arrayOfWords)
                 
                 
             } catch {
