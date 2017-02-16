@@ -22,6 +22,9 @@
 		BBB913471E55601300E779AA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB913461E55601300E779AA /* SettingsViewController.swift */; };
 		BBB913491E55601A00E779AA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB913481E55601A00E779AA /* GameViewController.swift */; };
 		BBB9134B1E5563CE00E779AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBB9134A1E5563CE00E779AA /* GoogleService-Info.plist */; };
+		BBB9134F1E5600E800E779AA /* HangmanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB9134E1E5600E800E779AA /* HangmanAPI.swift */; };
+		BBB913511E56012800E779AA /* HangmanData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB913501E56012800E779AA /* HangmanData.swift */; };
+		BBDA19381E5607B40007FBA0 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDA19371E5607B40007FBA0 /* Secrets.swift */; };
 		BF7EBD834073AEFC7A23D4FD /* Pods_Hangman.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5AA33B22C41146A2108DEA2 /* Pods_Hangman.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +48,9 @@
 		BBB913461E55601300E779AA /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BBB913481E55601A00E779AA /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		BBB9134A1E5563CE00E779AA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BBB9134E1E5600E800E779AA /* HangmanAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HangmanAPI.swift; sourceTree = "<group>"; };
+		BBB913501E56012800E779AA /* HangmanData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HangmanData.swift; sourceTree = "<group>"; };
+		BBDA19371E5607B40007FBA0 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		F5AA33B22C41146A2108DEA2 /* Pods_Hangman.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hangman.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -98,10 +104,10 @@
 		BB7572291E5523B50018FFD1 /* Hangman */ = {
 			isa = PBXGroup;
 			children = (
-				BB7572421E5559400018FFD1 /* Model */,
 				BB7572401E5559310018FFD1 /* Controllers */,
-				BB7572411E55593A0018FFD1 /* Views */,
+				BB7572421E5559400018FFD1 /* Model */,
 				BB7572431E5559480018FFD1 /* Supporting Files */,
+				BB7572411E55593A0018FFD1 /* Views */,
 			);
 			path = Hangman;
 			sourceTree = "<group>";
@@ -131,6 +137,9 @@
 			isa = PBXGroup;
 			children = (
 				BB75722A1E5523B50018FFD1 /* AppDelegate.swift */,
+				BBB9134E1E5600E800E779AA /* HangmanAPI.swift */,
+				BBB913501E56012800E779AA /* HangmanData.swift */,
+				BBDA19371E5607B40007FBA0 /* Secrets.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -280,12 +289,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBB913491E55601A00E779AA /* GameViewController.swift in Sources */,
+				BBDA19381E5607B40007FBA0 /* Secrets.swift in Sources */,
 				BBB913411E555F3F00E779AA /* LoginViewController.swift in Sources */,
 				BB75722D1E5523B50018FFD1 /* WelcomeViewController.swift in Sources */,
 				BB75722B1E5523B50018FFD1 /* AppDelegate.swift in Sources */,
+				BBB913511E56012800E779AA /* HangmanData.swift in Sources */,
 				BBB913431E555F4A00E779AA /* RegisterViewController.swift in Sources */,
 				BBB913451E555F5200E779AA /* MainViewController.swift in Sources */,
 				BBB913471E55601300E779AA /* SettingsViewController.swift in Sources */,
+				BBB9134F1E5600E800E779AA /* HangmanAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

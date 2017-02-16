@@ -10,16 +10,31 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
 
+    
+    let store = HangmanData.sharedInstance
+    
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        super.viewDidLoad()        
+        
+        store.getWordFromAPI { (currentData) in
+            
+            print(currentData)
+            print("YEAH")
+            
+        }
+        
+        
+        
+        
+        
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
+    
+    
+    
+    
+    
 }
 
