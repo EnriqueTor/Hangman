@@ -17,14 +17,7 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()        
         
-        store.getWordFromAPI { (currentData) in
-            
-            print("WE ARE IN WELCOME VC")
-            print(currentData)
-            print("YEAH")
-            
-        }
-        
+                
         
         
         

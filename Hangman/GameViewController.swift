@@ -10,8 +10,8 @@ import UIKit
 
 class GameViewController: UIViewController {
 
-    
-    
+    let store = HangmanData.sharedInstance
+
     
     
     
@@ -20,7 +20,17 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+
+        store.getWordFromAPI { (currentData) in
+            
+            print("WE ARE IN WELCOME VC")
+            print(currentData)
+            print("YEAH")
+            
+        }
+
+        
+    
     }
 
    
