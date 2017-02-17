@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let customFontTitle = UIFont(name: "BiteChalk-regular", size: 28)
         let customFont = UIFont(name: "BiteChalkSlim-regular", size: 20)
         UINavigationBar.appearance().titleTextAttributes = [ NSFontAttributeName: customFontTitle!, NSForegroundColorAttributeName: UIColor.white]
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: customFont!, NSForegroundColorAttributeName: UIColor.white], for: UIControlState.normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: customFont!, NSForegroundColorAttributeName: UIColor.clear], for: UIControlState.normal)
         UINavigationBar.appearance().tintColor = UIColor.white
         
         UITextField.appearance().tintColor = UIColor.white

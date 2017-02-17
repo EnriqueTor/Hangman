@@ -21,6 +21,8 @@ class HangmanData {
     
     var chalkboard = UIImage(named: "Chalkboard")
     
+    var gameResult = "win"
+    
     // MARK: - Initializers
     
     private init() {}

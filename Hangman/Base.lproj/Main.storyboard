@@ -19,6 +19,9 @@
         <array key="BiteChalkNormal.ttf">
             <string>BiteChalkNormal-Regular</string>
         </array>
+        <array key="BiteChalkSlim.ttf">
+            <string>BiteChalkSlim-Regular</string>
+        </array>
     </customFonts>
     <scenes>
         <!--App Controller-->
@@ -76,6 +79,10 @@
                                     <action selector="registerPushed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4C9-6U-iiW"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="HangmanLogo" translatesAutoresizingMaskIntoConstraints="NO" id="27a-8b-abZ">
+                                <rect key="frame" x="102" y="150" width="170" height="194"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -93,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-38" y="210"/>
+            <point key="canvasLocation" x="-39.200000000000003" y="209.14542728635683"/>
         </scene>
         <!--Login-->
         <scene sceneID="8H5-dB-Ppe">
@@ -227,7 +234,7 @@
                                 <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CameraSelect" translatesAutoresizingMaskIntoConstraints="NO" id="6Ky-D2-Eyu">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Camera" translatesAutoresizingMaskIntoConstraints="NO" id="6Ky-D2-Eyu">
                                 <rect key="frame" x="131" y="80" width="125" height="125"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
@@ -235,7 +242,7 @@
                                     <outletCollection property="gestureRecognizers" destination="AkR-eY-1ZQ" appends="YES" id="WwT-Cn-jPW"/>
                                 </connections>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ProfileFrame" translatesAutoresizingMaskIntoConstraints="NO" id="aMq-hX-CKw">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Frame" translatesAutoresizingMaskIntoConstraints="NO" id="aMq-hX-CKw">
                                 <rect key="frame" x="118" y="67" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
@@ -306,7 +313,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="QhV-dT-3st">
-                                <rect key="frame" x="53" y="153" width="268" height="360"/>
+                                <rect key="frame" x="53.5" y="153.5" width="268" height="360"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d8U-Jj-hdP">
                                         <rect key="frame" x="0.0" y="0.0" width="268" height="72"/>
@@ -314,6 +321,9 @@
                                         <state key="normal" title="PLAY">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="playPushed:" destination="rY0-DK-ymS" eventType="touchUpInside" id="Gv9-R3-4C9"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbS-k4-cD4">
                                         <rect key="frame" x="0.0" y="72" width="268" height="72"/>
@@ -367,16 +377,17 @@
                         <outlet property="background" destination="MNU-Fd-RzO" id="47S-6c-0rW"/>
                         <segue destination="KTm-6O-rKd" kind="show" identifier="settingsSegue" id="g4h-yu-HJl"/>
                         <segue destination="82o-r0-OrU" kind="show" identifier="leaderboardSegue" id="igO-gS-ci9"/>
+                        <segue destination="lnO-v0-nao" kind="show" identifier="playSegue" id="sBD-xM-Fpk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2qd-FK-CdK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7" y="965"/>
         </scene>
-        <!--Game-->
+        <!--GAME-->
         <scene sceneID="Mff-Fo-CH8">
             <objects>
-                <viewController title="Game" id="lnO-v0-nao" customClass="GameViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="GAME" id="lnO-v0-nao" customClass="GameViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mki-nl-Dzb"/>
                         <viewControllerLayoutGuide type="bottom" id="BKs-on-qbB"/>
@@ -674,133 +685,58 @@
                                     <constraint firstAttribute="height" constant="15" id="ouj-qW-11t"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LC4-Tf-2wa">
-                                <rect key="frame" x="119" y="182" width="137" height="72"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="50"/>
-                                <state key="normal" title="O">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wXy-bB-Vgx">
-                                <rect key="frame" x="119" y="215" width="137" height="72"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="50"/>
-                                <state key="normal" title="|">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f4J-6n-oN4">
-                                <rect key="frame" x="125" y="248" width="137" height="72"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="50"/>
-                                <state key="normal" title="\">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wu5-La-mQw">
-                                <rect key="frame" x="109" y="248" width="137" height="72"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="50"/>
-                                <state key="normal" title="/">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kb3-n7-1mU">
-                                <rect key="frame" x="109" y="206" width="137" height="72"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="50"/>
-                                <state key="normal" title="-">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="th7-hf-Fv0">
-                                <rect key="frame" x="131" y="206" width="137" height="72"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="50"/>
-                                <state key="normal" title="-">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZD-Ft-BtU">
                                 <rect key="frame" x="20" y="462" width="335" height="0.0"/>
                                 <fontDescription key="fontDescription" name="BiteChalkBold-Regular" family="Bite Chalk Bold" pointSize="50"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qu8-rC-Uaa">
-                                <rect key="frame" x="295" y="41" width="46" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wuq-jR-fX9">
+                                <rect key="frame" x="231" y="204" width="66" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="20"/>
-                                <state key="normal" title="New">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="newPushed:" destination="lnO-v0-nao" eventType="touchUpInside" id="bqQ-cR-xHc"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4Y-65-3Mb">
-                                <rect key="frame" x="29" y="28" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="40"/>
-                                <state key="normal" title="X">
-                                    <color key="titleColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="backPushed:" destination="lnO-v0-nao" eventType="touchUpInside" id="OXv-3k-zXp"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yjf-AL-yQ8">
-                                <rect key="frame" x="202" y="64" width="149" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="BiteChalkNormal-Regular" family="Bite Chalk Normal" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="BiteChalkSlim-Regular" family="Bite Chalk Slim" pointSize="70"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lives:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Cy-97-Qz5">
-                                <rect key="frame" x="83" y="114" width="112" height="60"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Divider" translatesAutoresizingMaskIntoConstraints="NO" id="wp6-Lm-IW1">
+                                <rect key="frame" x="-12" y="62" width="401" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
-                                <color key="textColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfK-i0-Xpg">
-                                <rect key="frame" x="83" y="64" width="111" height="60"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Heart" translatesAutoresizingMaskIntoConstraints="NO" id="xcH-ru-SMe">
+                                <rect key="frame" x="305" y="219" width="50" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
-                                <color key="textColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wuq-jR-fX9">
-                                <rect key="frame" x="191" y="120" width="198" height="48"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="HangmanLogo" translatesAutoresizingMaskIntoConstraints="NO" id="sxF-HP-tDk">
+                                <rect key="frame" x="20" y="160" width="209" height="239"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="BiteChalkNormal-Regular" family="Bite Chalk Normal" pointSize="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="vZD-Ft-BtU" firstAttribute="centerX" secondItem="7Cy-aJ-tXd" secondAttribute="centerX" id="0rI-d6-9Ys"/>
                             <constraint firstItem="kc1-hZ-tlT" firstAttribute="height" secondItem="UmC-55-MQf" secondAttribute="height" id="2Jf-5x-day"/>
-                            <constraint firstItem="7Od-CN-ywd" firstAttribute="width" secondItem="kc1-hZ-tlT" secondAttribute="width" id="E5k-z3-pfa"/>
                             <constraint firstItem="7Od-CN-ywd" firstAttribute="top" secondItem="vZD-Ft-BtU" secondAttribute="bottom" constant="30" id="FsU-Kv-NBI"/>
                             <constraint firstItem="7Cy-aJ-tXd" firstAttribute="height" secondItem="UmC-55-MQf" secondAttribute="height" multiplier="0.2" id="Olz-Ld-P2z"/>
-                            <constraint firstItem="7Od-CN-ywd" firstAttribute="centerX" secondItem="7Cy-aJ-tXd" secondAttribute="centerX" id="TaR-Va-1CD"/>
                             <constraint firstItem="kc1-hZ-tlT" firstAttribute="width" secondItem="UmC-55-MQf" secondAttribute="width" id="Wb5-ua-jVF"/>
                             <constraint firstItem="kc1-hZ-tlT" firstAttribute="centerX" secondItem="UmC-55-MQf" secondAttribute="centerX" id="X8T-Ij-n9x"/>
                             <constraint firstItem="kc1-hZ-tlT" firstAttribute="centerY" secondItem="UmC-55-MQf" secondAttribute="centerY" id="Y5M-D1-nl5"/>
                             <constraint firstItem="vZD-Ft-BtU" firstAttribute="width" secondItem="7Cy-aJ-tXd" secondAttribute="width" id="ZWX-FA-84X"/>
                             <constraint firstAttribute="trailing" secondItem="7Cy-aJ-tXd" secondAttribute="trailing" constant="20" id="eaZ-fN-tuS"/>
                             <constraint firstItem="7Cy-aJ-tXd" firstAttribute="leading" secondItem="UmC-55-MQf" secondAttribute="leading" constant="20" id="h4L-02-m6z"/>
+                            <constraint firstItem="7Od-CN-ywd" firstAttribute="width" secondItem="UmC-55-MQf" secondAttribute="width" id="itV-ka-y74"/>
                             <constraint firstItem="7Cy-aJ-tXd" firstAttribute="top" secondItem="7Od-CN-ywd" secondAttribute="bottom" constant="7" id="mCx-u6-LSI"/>
                             <constraint firstItem="BKs-on-qbB" firstAttribute="top" secondItem="7Cy-aJ-tXd" secondAttribute="bottom" constant="20" id="nMa-hT-daJ"/>
+                            <constraint firstItem="7Od-CN-ywd" firstAttribute="centerX" secondItem="UmC-55-MQf" secondAttribute="centerX" id="nne-aW-rmb"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="GAME" id="3qU-Tn-h4y">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="i1L-T5-iW9">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="background" destination="kc1-hZ-tlT" id="4p4-nA-Hiz"/>
                         <outlet property="livesLabel" destination="Wuq-jR-fX9" id="7Nj-9h-bZ4"/>
-                        <outlet property="nameLabel" destination="Yjf-AL-yQ8" id="bpD-Dv-YCt"/>
                         <outlet property="secretWordLabel" destination="vZD-Ft-BtU" id="CZe-5f-s6t"/>
                         <outletCollection property="keyboardButtons" destination="qcD-1I-AW1" collectionClass="NSMutableArray" id="59j-lr-SWM"/>
                         <outletCollection property="keyboardButtons" destination="OgI-Qt-hHp" collectionClass="NSMutableArray" id="qVk-xT-4dX"/>
@@ -828,11 +764,115 @@
                         <outletCollection property="keyboardButtons" destination="rw2-58-cNS" collectionClass="NSMutableArray" id="svT-ac-7TX"/>
                         <outletCollection property="keyboardButtons" destination="Rm1-VI-6OG" collectionClass="NSMutableArray" id="Ol1-1b-wWi"/>
                         <outletCollection property="keyboardButtons" destination="tSD-1p-YJZ" collectionClass="NSMutableArray" id="Eyn-Mt-Ca3"/>
+                        <segue destination="4SW-MG-uvE" kind="presentation" identifier="resultSegue" modalPresentationStyle="overFullScreen" id="X5L-5I-m6a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fol-Hz-gIy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7311.1999999999998" y="909.89505247376314"/>
+            <point key="canvasLocation" x="1448.8" y="964.76761619190415"/>
+        </scene>
+        <!--Result View Controller-->
+        <scene sceneID="KLf-r4-Cat">
+            <objects>
+                <viewController id="4SW-MG-uvE" customClass="ResultViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="f7z-4i-HTu"/>
+                        <viewControllerLayoutGuide type="bottom" id="1Gd-Sb-I9Q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4Pv-ol-zVY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aiH-jY-ZsO">
+                                <rect key="frame" x="0.0" y="0.0" width="396" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mbe-4s-THA">
+                                <rect key="frame" x="10" y="144" width="354" height="264"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ChalkboardBlackOption" translatesAutoresizingMaskIntoConstraints="NO" id="1DB-WY-GYe">
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="264"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Banner" translatesAutoresizingMaskIntoConstraints="NO" id="uOe-b6-rZx">
+                                        <rect key="frame" x="48" y="30" width="273" height="112"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="YOU WON" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="90s-39-4m3">
+                                        <rect key="frame" x="53" y="38" width="267" height="64"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="35"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQy-HS-ZM1">
+                                        <rect key="frame" x="53" y="192" width="72" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="20"/>
+                                        <state key="normal" title="CLOSE">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closePushed:" destination="4SW-MG-uvE" eventType="touchUpInside" id="lld-oJ-fNM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wjn-GH-vKR">
+                                        <rect key="frame" x="256" y="192" width="52" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="20"/>
+                                        <state key="normal" title="NEW">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="newPushed:" destination="4SW-MG-uvE" eventType="touchUpInside" id="Tkg-fX-Z6I"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ELEPHANTASJDFK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q8p-Sq-RQQ">
+                                        <rect key="frame" x="47" y="140" width="283" height="51"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BiteChalkNormal-Regular" family="Bite Chalk Normal" pointSize="50"/>
+                                        <color key="textColor" red="0.96078431369999995" green="0.65098039220000004" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="+15" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fR-T3-1Jq">
+                                        <rect key="frame" x="234" y="106" width="74" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BiteChalkBold-Regular" family="Bite Chalk Bold" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Burst" translatesAutoresizingMaskIntoConstraints="NO" id="uDh-YC-Ugs">
+                                        <rect key="frame" x="310" y="118" width="25" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKb-Z7-Kfx">
+                                        <rect key="frame" x="159" y="198" width="50" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="20"/>
+                                        <state key="normal" title="define">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="definePushed:" destination="4SW-MG-uvE" eventType="touchUpInside" id="Z59-7Q-6L6"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="backround" destination="aiH-jY-ZsO" id="GNR-0h-KNB"/>
+                        <outlet property="resultLabel" destination="90s-39-4m3" id="nDZ-nx-OKK"/>
+                        <outlet property="scoreLabel" destination="7fR-T3-1Jq" id="5lY-fQ-hqP"/>
+                        <outlet property="secretWordLabel" destination="Q8p-Sq-RQQ" id="jVZ-vz-9io"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lrz-SB-1bx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1448.8" y="1712.2938530734634"/>
         </scene>
         <!--SETTINGS-->
         <scene sceneID="ma6-5g-yII">
@@ -854,7 +894,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EFx-JP-RTC">
-                                <rect key="frame" x="112" y="318" width="151" height="72"/>
+                                <rect key="frame" x="111" y="517" width="151" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="50"/>
                                 <state key="normal" title="LOGOUT">
@@ -863,6 +903,22 @@
                                 <connections>
                                     <action selector="logoutPushed:" destination="KTm-6O-rKd" eventType="touchUpInside" id="r6x-cf-Yb3"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J0c-7b-YAK">
+                                <rect key="frame" x="93" y="412" width="187" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
+                                <state key="normal" title="FEEDBACK">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="30b-DD-pXw">
+                                <rect key="frame" x="140" y="332" width="92" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
+                                <state key="normal" title="help">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mOC-aD-zSM">
                                 <rect key="frame" x="55" y="157" width="69" height="44"/>
@@ -895,6 +951,14 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yOY-wB-a68">
+                                <rect key="frame" x="30" y="252" width="314" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
+                                <state key="normal" title="CHANGE PROFILE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -913,10 +977,10 @@
             </objects>
             <point key="canvasLocation" x="-834" y="1739"/>
         </scene>
-        <!--Challenge-->
+        <!--LEADERBOARD-->
         <scene sceneID="vZu-kf-bRl">
             <objects>
-                <viewController id="9dB-Xs-3HC" customClass="LeaderboardChallengeViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="LEADERBOARD" id="9dB-Xs-3HC" customClass="LeaderboardChallengeViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Jz4-Jq-ubf"/>
                         <viewControllerLayoutGuide type="bottom" id="MaN-KK-SxN"/>
@@ -945,10 +1009,10 @@
             </objects>
             <point key="canvasLocation" x="-39" y="2493"/>
         </scene>
-        <!--Single-->
+        <!--LEADERBOARD-->
         <scene sceneID="VcJ-4e-TRh">
             <objects>
-                <viewController id="Nt4-8j-jvS" customClass="LeaderboardSingleViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="LEADERBOARD" id="Nt4-8j-jvS" customClass="LeaderboardSingleViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ew7-Kb-s9b"/>
                         <viewControllerLayoutGuide type="bottom" id="qxX-r5-mVZ"/>
@@ -986,10 +1050,10 @@
             </objects>
             <point key="canvasLocation" x="-786" y="2492"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--LEADERBOARD-->
         <scene sceneID="O5i-Bd-352">
             <objects>
-                <tabBarController id="82o-r0-OrU" sceneMemberID="viewController">
+                <tabBarController title="LEADERBOARD" id="82o-r0-OrU" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="ciA-QO-g1B">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1005,10 +1069,10 @@
             </objects>
             <point key="canvasLocation" x="6" y="1738"/>
         </scene>
-        <!--Multiplayer-->
+        <!--LEADERBOARD-->
         <scene sceneID="KnF-lJ-DYg">
             <objects>
-                <viewController id="a3c-oG-bAT" customClass="LeaderboardMultiplayerViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="LEADERBOARD" id="a3c-oG-bAT" customClass="LeaderboardMultiplayerViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JA1-p9-hhd"/>
                         <viewControllerLayoutGuide type="bottom" id="74b-nD-YRC"/>
@@ -1039,12 +1103,16 @@
         </scene>
     </scenes>
     <resources>
-        <image name="CameraSelect" width="475" height="474"/>
+        <image name="Banner" width="500" height="172"/>
+        <image name="Burst" width="100" height="145"/>
+        <image name="Camera" width="440" height="440"/>
         <image name="Chalkboard" width="1902" height="1810"/>
         <image name="ChalkboardBlackOption" width="637" height="443"/>
         <image name="ChalkboardBlueOption" width="637" height="443"/>
         <image name="ChalkboardGreenOption" width="637" height="443"/>
-        <image name="Divider" width="3435" height="151"/>
-        <image name="ProfileFrame" width="1717" height="1634"/>
+        <image name="Divider" width="1700" height="75"/>
+        <image name="Frame" width="500" height="476"/>
+        <image name="HangmanLogo" width="227" height="259"/>
+        <image name="Heart" width="200" height="180"/>
     </resources>
 </document>

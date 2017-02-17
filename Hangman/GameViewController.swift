@@ -14,7 +14,6 @@ class GameViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var background: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var livesLabel: UILabel!
     @IBOutlet weak var secretWordLabel: UILabel!
     @IBOutlet var keyboardButtons: [UIButton]!
@@ -44,13 +43,6 @@ class GameViewController: UIViewController {
     
     // MARK: - Actions
     
-    
-    @IBAction func backPushed(_ sender: UIButton) {
-        
-        
-        dismiss(animated: true, completion: nil)
-        
-    }
     
     
     
@@ -124,9 +116,10 @@ class GameViewController: UIViewController {
         
         if lives < 0 {
             
-            livesLabel.text = "GAME OVER"
+            print("GAME OVER")
+            store.gameResult = "lost"
             isKeyboardEnabled(status: false)
-            
+            performSegue(withIdentifier: "resultSegue", sender: self)
         }
         
     }
@@ -137,25 +130,41 @@ class GameViewController: UIViewController {
             
             isKeyboardEnabled(status: false)
             
-            livesLabel.text = "YOU WON!"
+            store.gameResult = "win"
+            print("YOU WON!")
+            
+            performSegue(withIdentifier: "resultSegue", sender: self)
             
             
-//            if UIReferenceLibraryViewController.dictionaryHasDefinition(forTerm: secretWord) == true {
-//                
-//                print("YES WE HAVE A DEFINITION")
-//                
-//                let ref: UIReferenceLibraryViewController = UIReferenceLibraryViewController(term: secretWord)
-//                
-//                present(ref, animated: true, completion: nil)
-//                
             } else {
                 
                 "the word doesn't exist"
             }
             
-//        }
         
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "resultSegue" {
+            
+            guard let dest = segue.destination as? ResultViewController else { return }
+            
+            if store.gameResult == "win" {
+             
+                dest.gameResult = "YOU WON"
+                dest.secretWord = secretWord
+                
+            } else {
+                
+                dest.gameResult = "YOU LOST"
+                dest.secretWord = secretWord
+                
+            }
+            
+            
+        }
     }
     
     func isKeyboardEnabled(status: Bool) {
@@ -198,7 +207,7 @@ class GameViewController: UIViewController {
     func newGame() {
         
         lives = 6
-        nameLabel.text = store.user.username
+        
         livesLabel.text = "\(lives)"
         secretWord = ""
         hiddenWord = ""
@@ -215,6 +224,9 @@ class GameViewController: UIViewController {
         
         
     }
+    
+    
+    
     
 }
 

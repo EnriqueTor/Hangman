@@ -24,6 +24,13 @@ extension UINavigationBar {
         self.setBackgroundImage(UIImage(), for: .default)
         self.shadowImage = UIImage()
         self.isTranslucent = true
+        
+        let backButton = UIImage(named: "Arrow")
+        self.backIndicatorImage = backButton
+        self.backIndicatorTransitionMaskImage = backButton
+        self.backItem?.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+
+//        self.backItem?.leftBarButtonItem?.setBackgroundImage(UIImage(named: "Arrow"), for: .normal, barMetrics: .compact)
     }
 }
 
@@ -35,5 +42,18 @@ extension UITabBar {
         self.isTranslucent = true
         self.tintColor = UIColor.white
         
+    }
+}
+
+extension UIImageView
+{
+    func addBlurEffect()
+    {
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.bounds
+        
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
+        self.addSubview(blurEffectView)
     }
 }
