@@ -11,7 +11,7 @@ import Firebase
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
-    
+    @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -35,6 +35,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         
+        background.image = store.chalkboard
+        
     }
 
     
@@ -50,7 +52,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func cancelPushed(_ sender: UIButton) {
     
-        dismiss(animated: true, completion: nil)
+        NotificationCenter.default.post(name: Notification.Name.openWelcomeVC, object: nil)
+
     
     }
     
@@ -81,7 +84,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         
                         self.addDataToKeychain(id: (user?.uid)!, name: self.store.user.username, email: email)
                         
-                        self.performSegue(withIdentifier: "mainSegue", sender: self)
+                        NotificationCenter.default.post(name: Notification.Name.openMainVC, object: nil)
+
                         
                     })
                 }
@@ -98,6 +102,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
 
     func addDataToKeychain(id: String, name: String, email: String) {
+        
         UserDefaults.standard.setValue(id, forKey: "id")
         UserDefaults.standard.setValue(name, forKey: "name")
         UserDefaults.standard.setValue(email, forKey: "email")

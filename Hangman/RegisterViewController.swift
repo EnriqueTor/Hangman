@@ -17,6 +17,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var profilePic: UIImageView!
+    @IBOutlet weak var background: UIImageView!
     
     let store = HangmanData.sharedInstance
     let database = FIRDatabase.database().reference()
@@ -42,6 +43,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         emailTextField.delegate = self
         passwordTextField.delegate = self
         
+        background.image = store.chalkboard
     }
     
 
@@ -92,7 +94,8 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
                         
                         self.saveProfileImage()
                         
-                        self.performSegue(withIdentifier: "mainSegue2", sender: self)
+                        NotificationCenter.default.post(name: Notification.Name.openMainVC, object: nil)
+
                         
                     }
                 }
@@ -116,7 +119,8 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
 
     @IBAction func cancelPushed(_ sender: UIButton) {
         
-        dismiss(animated: true, completion: nil)
+        NotificationCenter.default.post(name: Notification.Name.openWelcomeVC, object: nil)
+
     }
 
     @IBAction func profilePicPushed(_ sender: UITapGestureRecognizer) {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D30a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D30a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="JPT-iP-ZKS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -21,6 +21,24 @@
         </array>
     </customFonts>
     <scenes>
+        <!--App Controller-->
+        <scene sceneID="Egm-oT-mXh">
+            <objects>
+                <viewController id="JPT-iP-ZKS" customClass="AppController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nTd-yG-WpN"/>
+                        <viewControllerLayoutGuide type="bottom" id="vSA-Yr-FC0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NDM-fQ-zk8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lbf-VB-NIg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-796" y="223"/>
+        </scene>
         <!--Welcome-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -67,6 +85,9 @@
                             <constraint firstItem="03R-nb-aIn" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="pV9-mB-6wI"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="background" destination="03R-nb-aIn" id="iQR-fl-U4d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -137,6 +158,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="background" destination="IJW-di-Pvr" id="IJ7-gG-l7T"/>
                         <outlet property="emailTextField" destination="9ed-F2-C9G" id="jcv-dc-z6c"/>
                         <outlet property="passwordTextField" destination="t7G-Nu-Hgv" id="gKT-VI-ti4"/>
                     </connections>
@@ -230,6 +252,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="background" destination="Mk7-Ng-J3W" id="3IV-o9-3kl"/>
                         <outlet property="emailTextField" destination="1UT-Sr-0SY" id="3hQ-2q-tCC"/>
                         <outlet property="passwordTextField" destination="pzf-55-bGW" id="Xg8-kK-Oun"/>
                         <outlet property="profilePic" destination="6Ky-D2-Eyu" id="hg3-bH-hDC"/>
@@ -292,6 +315,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="background" destination="MNU-Fd-RzO" id="47S-6c-0rW"/>
                         <segue destination="lnO-v0-nao" kind="show" identifier="playSegue" id="mCY-mh-cNL"/>
                         <segue destination="KTm-6O-rKd" kind="show" identifier="settingsSegue" id="yOs-yo-QZU"/>
                     </connections>
@@ -725,6 +749,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="background" destination="kc1-hZ-tlT" id="4p4-nA-Hiz"/>
                         <outlet property="livesLabel" destination="Wuq-jR-fX9" id="7Nj-9h-bZ4"/>
                         <outlet property="nameLabel" destination="Yjf-AL-yQ8" id="bpD-Dv-YCt"/>
                         <outlet property="secretWordLabel" destination="vZD-Ft-BtU" id="CZe-5f-s6t"/>
@@ -786,6 +811,37 @@
                                     <action selector="logoutPushed:" destination="KTm-6O-rKd" eventType="touchUpInside" id="r6x-cf-Yb3"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mOC-aD-zSM">
+                                <rect key="frame" x="94" y="151" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="ChalkboardGreen"/>
+                                <connections>
+                                    <action selector="setChalkboardGreen:" destination="KTm-6O-rKd" eventType="touchUpInside" id="fvL-im-LCV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3h-7p-sNl">
+                                <rect key="frame" x="217" y="151" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPX-iu-WVY">
+                                <rect key="frame" x="128" y="97" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JLe-nu-ATf">
+                                <rect key="frame" x="33" y="44" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="40"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="backPushed:" destination="KTm-6O-rKd" eventType="touchUpInside" id="92O-4Q-qXm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -795,15 +851,19 @@
                             <constraint firstItem="m8P-Ab-HrV" firstAttribute="height" secondItem="iHX-2I-RXw" secondAttribute="height" id="zRz-pg-4G9"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="background" destination="m8P-Ab-HrV" id="5rU-oF-gyJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rdS-WL-3bl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="950" y="1707"/>
+            <point key="canvasLocation" x="876" y="1795"/>
         </scene>
     </scenes>
     <resources>
         <image name="CameraSelect" width="475" height="474"/>
         <image name="Chalkboard" width="1902" height="1810"/>
+        <image name="ChalkboardGreen" width="375" height="667"/>
         <image name="Divider" width="3435" height="151"/>
         <image name="ProfileFrame" width="1717" height="1634"/>
     </resources>

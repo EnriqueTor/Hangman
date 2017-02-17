@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class HangmanData {
     
@@ -17,6 +18,8 @@ class HangmanData {
     var arrayOfWords: [String] = []
     
     var user = User(id: "", username: "", email: "", profilePic: "")
+    
+    var chalkboard = UIImage(named: "Chalkboard")
     
     // MARK: - Initializers
     

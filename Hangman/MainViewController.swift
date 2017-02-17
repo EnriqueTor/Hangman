@@ -12,10 +12,11 @@ class MainViewController: UIViewController {
 
     
     
+    @IBOutlet weak var background: UIImageView!
+
     
     
-    
-    
+    let store = HangmanData.sharedInstance
     
     
     
@@ -27,12 +28,20 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        background.image = store.chalkboard
 
     
     }
 
-  
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        DispatchQueue.main.async {
+            
+        self.background.image = self.store.chalkboard
+        
+        }
+    }
     
     @IBAction func playPushed(_ sender: UIButton) {
         

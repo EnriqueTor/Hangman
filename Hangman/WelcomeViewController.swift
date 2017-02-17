@@ -11,13 +11,18 @@ import Firebase
 
 class WelcomeViewController: UIViewController {
     
+    @IBOutlet weak var background: UIImageView!
+    
     let myKeychainWrapper = KeychainWrapper()
-    //    let database = FIRDatabase.database().reference()
+    let database = FIRDatabase.database().reference()
     let store = HangmanData.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        background.image = store.chalkboard
+        
+        store.arrayOfWords.removeAll()
         HangmanAPI.getHangmanWord()
         
         welcome()
@@ -32,7 +37,7 @@ class WelcomeViewController: UIViewController {
     @IBAction func loginPushed(_ sender: UIButton) {
         
         NotificationCenter.default.post(name: Notification.Name.openLoginVC, object: nil)
-
+        
         
     }
     
@@ -40,54 +45,47 @@ class WelcomeViewController: UIViewController {
     @IBAction func registerPushed(_ sender: UIButton) {
         
         NotificationCenter.default.post(name: Notification.Name.openRegisterVC, object: nil)
-
+        
         
     }
     
     func welcome() {
         
-        func loginUser() {
+        if UserDefaults.standard.value(forKey: "email") as? String == nil {
             
-            if UserDefaults.standard.value(forKey: "email") as? String == nil {
+            
+            
+        }
+            
+        else {
+            
+            let email = UserDefaults.standard.value(forKey: "email") as? String
+            let pass = myKeychainWrapper.myObject(forKey: "v_Data") as? String
+            
+            FIRAuth.auth()?.signIn(withEmail: email!, password: pass!) { (user, error) in
                 
-                return
-                
-            }
-                
-            else {
-                
-                let email = UserDefaults.standard.value(forKey: "email") as? String
-                let pass = myKeychainWrapper.myObject(forKey: "v_Data") as? String
-                
-                FIRAuth.auth()?.signIn(withEmail: email!, password: pass!) { (user, error) in
+                if error != nil {
                     
-                    if error != nil {
+                }
+                    
+                else {
+                    
+                    let userData = self.database.child("users").child((user?.uid)!)
+                    
+                    // update daily list
+                    
+                    userData.observe(.value, with: { (snapshot) in
                         
-                    }
+                        let data = snapshot.value as? [String:Any]
+                        let loggedUser = User(id: "", username: "", email: "", profilePic: "")
+                        self.store.user = loggedUser.deserialize(data!)
                         
-                    else {
+                        NotificationCenter.default.post(name: Notification.Name.openMainVC, object: nil)
                         
-                        //                        let userData = self.database.child("users").child((user?.uid)!)
-                        //
-                        //                        // update daily list
-                        //
-                        //                        userData.observe(.value, with: { (snapshot) in
-                        //
-                        //                            let data = snapshot.value as? [String:Any]
-                        //                            let loggedUser = User(id: "", username: "", email: "", profilePic: "")
-                        //                            self.store.user = loggedUser.deserialize(data!)
-                        //
-                        //                            NotificationCenter.default.post(name: Notification.Name.openMainVC, object: nil)
-                        //                            
-                        //                        })
-                    }
+                    })
                 }
             }
         }
-        
-        
-        
     }
-    
 }
 

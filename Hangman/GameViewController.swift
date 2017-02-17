@@ -13,6 +13,7 @@ class GameViewController: UIViewController {
     
     // MARK: - Outlets
     
+    @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var livesLabel: UILabel!
     @IBOutlet weak var secretWordLabel: UILabel!
@@ -34,7 +35,7 @@ class GameViewController: UIViewController {
         isKeyboardEnabled(status: false)
         newGame()
         
-        
+        background.image = store.chalkboard
         
         print("HOLA!")
         
