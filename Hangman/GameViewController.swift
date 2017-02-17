@@ -190,7 +190,7 @@ class GameViewController: UIViewController {
     @IBAction func newPushed(_ sender: UIButton) {
         
         self.viewDidLoad()
-        self.viewDidAppear(true)
+//        self.viewDidAppear(true)
         newGame()
         
     }

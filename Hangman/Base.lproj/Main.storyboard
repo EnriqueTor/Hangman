@@ -87,6 +87,8 @@
                     </view>
                     <connections>
                         <outlet property="background" destination="03R-nb-aIn" id="iQR-fl-U4d"/>
+                        <outlet property="loginButton" destination="LER-4U-S8U" id="nV3-1r-6jl"/>
+                        <outlet property="registerButton" destination="dBT-WK-84h" id="o80-1i-9cA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

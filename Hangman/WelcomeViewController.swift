@@ -17,16 +17,24 @@ class WelcomeViewController: UIViewController {
     let database = FIRDatabase.database().reference()
     let store = HangmanData.sharedInstance
     
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var registerButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         background.image = store.chalkboard
+        loginButton.isHidden = true
+        registerButton.isHidden = true
         
         store.arrayOfWords.removeAll()
         HangmanAPI.getHangmanWord()
         
-        welcome()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
         
+        self.welcome()
+        
+        })
         
         
         
@@ -53,7 +61,8 @@ class WelcomeViewController: UIViewController {
         
         if UserDefaults.standard.value(forKey: "email") as? String == nil {
             
-            
+            loginButton.isHidden = false
+            registerButton.isHidden = false
             
         }
             

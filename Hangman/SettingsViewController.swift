@@ -10,26 +10,26 @@ import UIKit
 import Firebase
 
 class SettingsViewController: UIViewController {
-
+    
     
     @IBOutlet weak var background: UIImageView!
-
+    
     let store = HangmanData.sharedInstance
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         background.image = store.chalkboard
-    
-    
-    
+        
+        
+        
     }
     
     
-
-   
+    
+    
     @IBAction func logoutPushed(_ sender: UIButton) {
         
         do {
@@ -37,7 +37,7 @@ class SettingsViewController: UIViewController {
             UserDefaults.standard.setValue(nil, forKey: "id")
             UserDefaults.standard.setValue(nil, forKey: "name")
             UserDefaults.standard.setValue(nil, forKey: "email")
-     
+            
             dismiss(animated: true, completion: nil)
             dismiss(animated: true, completion: nil)
             
@@ -45,9 +45,9 @@ class SettingsViewController: UIViewController {
             
         } catch let signOutError as NSError {
             
+            
+        }
         
-    }
-
         
         
     }
