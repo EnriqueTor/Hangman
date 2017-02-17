@@ -41,6 +41,11 @@ class MainViewController: UIViewController {
     }
     
     
+    @IBAction func settingsPushed(_ sender: UIButton) {
+        
+        performSegue(withIdentifier: "settingsSegue", sender: self)
+        
+    }
     
     
     

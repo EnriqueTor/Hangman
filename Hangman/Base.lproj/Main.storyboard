@@ -24,7 +24,7 @@
         <!--Welcome-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Welcome" id="BYZ-38-t0r" customClass="WelcomeViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="welcome-view-controller" title="Welcome" id="BYZ-38-t0r" customClass="WelcomeViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -67,10 +67,6 @@
                             <constraint firstItem="03R-nb-aIn" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="pV9-mB-6wI"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <segue destination="8BC-tE-sdU" kind="show" identifier="loginSegue" id="Q30-0U-2rf"/>
-                        <segue destination="Mpp-KX-ry4" kind="show" identifier="registerSegue" id="R32-N3-9Io"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -79,7 +75,7 @@
         <!--Login-->
         <scene sceneID="8H5-dB-Ppe">
             <objects>
-                <viewController title="Login" id="8BC-tE-sdU" customClass="LoginViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="login-view-controller" title="Login" id="8BC-tE-sdU" customClass="LoginViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="08g-BZ-iI0"/>
                         <viewControllerLayoutGuide type="bottom" id="ol1-wJ-gtG"/>
@@ -143,7 +139,6 @@
                     <connections>
                         <outlet property="emailTextField" destination="9ed-F2-C9G" id="jcv-dc-z6c"/>
                         <outlet property="passwordTextField" destination="t7G-Nu-Hgv" id="gKT-VI-ti4"/>
-                        <segue destination="rY0-DK-ymS" kind="show" identifier="mainSegue" id="6Kc-rM-bHj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xQ9-6S-OlP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -153,7 +148,7 @@
         <!--Register-->
         <scene sceneID="2Ga-GZ-KYj">
             <objects>
-                <viewController title="Register" id="Mpp-KX-ry4" customClass="RegisterViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="register-view-controller" title="Register" id="Mpp-KX-ry4" customClass="RegisterViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="neq-gO-a9Y"/>
                         <viewControllerLayoutGuide type="bottom" id="mQI-Lv-elv"/>
@@ -239,7 +234,6 @@
                         <outlet property="passwordTextField" destination="pzf-55-bGW" id="Xg8-kK-Oun"/>
                         <outlet property="profilePic" destination="6Ky-D2-Eyu" id="hg3-bH-hDC"/>
                         <outlet property="usernameTextField" destination="rPq-OS-yei" id="xbc-oC-fNg"/>
-                        <segue destination="rY0-DK-ymS" kind="show" identifier="mainSegue2" id="eEi-SX-kEH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m62-X0-Xc8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -254,7 +248,7 @@
         <!--Main-->
         <scene sceneID="7E1-gb-zvd">
             <objects>
-                <viewController title="Main" id="rY0-DK-ymS" customClass="MainViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="main-view-controller" title="Main" id="rY0-DK-ymS" customClass="MainViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="v5D-pV-zrN"/>
                         <viewControllerLayoutGuide type="bottom" id="Dht-Fx-nwr"/>
@@ -284,6 +278,9 @@
                                 <state key="normal" title="SETTINGS">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="settingsPushed:" destination="rY0-DK-ymS" eventType="touchUpInside" id="32P-W7-VM4"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -296,11 +293,12 @@
                     </view>
                     <connections>
                         <segue destination="lnO-v0-nao" kind="show" identifier="playSegue" id="mCY-mh-cNL"/>
+                        <segue destination="KTm-6O-rKd" kind="show" identifier="settingsSegue" id="yOs-yo-QZU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2qd-FK-CdK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="950" y="985"/>
+            <point key="canvasLocation" x="876" y="1060"/>
         </scene>
         <!--Game-->
         <scene sceneID="Mff-Fo-CH8">
@@ -765,7 +763,7 @@
         <!--Settings-->
         <scene sceneID="ma6-5g-yII">
             <objects>
-                <viewController title="Settings" id="KTm-6O-rKd" sceneMemberID="viewController">
+                <viewController title="Settings" id="KTm-6O-rKd" customClass="SettingsViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EFn-dg-6Fl"/>
                         <viewControllerLayoutGuide type="bottom" id="8i5-dT-IrW"/>
@@ -778,12 +776,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EFx-JP-RTC">
-                                <rect key="frame" x="99" y="117" width="178" height="72"/>
+                                <rect key="frame" x="112" y="318" width="151" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="50"/>
-                                <state key="normal" title="SETTINGS">
+                                <state key="normal" title="LOGOUT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="logoutPushed:" destination="KTm-6O-rKd" eventType="touchUpInside" id="r6x-cf-Yb3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -806,7 +807,4 @@
         <image name="Divider" width="3435" height="151"/>
         <image name="ProfileFrame" width="1717" height="1634"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="6Kc-rM-bHj"/>
-    </inferredMetricsTieBreakers>
 </document>

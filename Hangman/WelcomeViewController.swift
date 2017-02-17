@@ -31,14 +31,16 @@ class WelcomeViewController: UIViewController {
     
     @IBAction func loginPushed(_ sender: UIButton) {
         
-        performSegue(withIdentifier: "loginSegue", sender: self)
+        NotificationCenter.default.post(name: Notification.Name.openLoginVC, object: nil)
+
         
     }
     
     
     @IBAction func registerPushed(_ sender: UIButton) {
         
-        performSegue(withIdentifier: "registerSegue", sender: self)
+        NotificationCenter.default.post(name: Notification.Name.openRegisterVC, object: nil)
+
         
     }
     

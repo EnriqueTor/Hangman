@@ -28,6 +28,7 @@
 		BBDA193E1E569AB40007FBA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBDA193D1E569AB40007FBA0 /* Assets.xcassets */; };
 		BBDA19401E56A2690007FBA0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDA193F1E56A2690007FBA0 /* Extensions.swift */; };
 		BBDA19421E56ACF80007FBA0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDA19411E56ACF80007FBA0 /* User.swift */; };
+		BBDA19441E56C7550007FBA0 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDA19431E56C7550007FBA0 /* AppController.swift */; };
 		BF7EBD834073AEFC7A23D4FD /* Pods_Hangman.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5AA33B22C41146A2108DEA2 /* Pods_Hangman.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		BBDA193D1E569AB40007FBA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BBDA193F1E56A2690007FBA0 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BBDA19411E56ACF80007FBA0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BBDA19431E56C7550007FBA0 /* AppController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 		F5AA33B22C41146A2108DEA2 /* Pods_Hangman.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hangman.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -146,6 +148,7 @@
 			children = (
 				BB75722A1E5523B50018FFD1 /* AppDelegate.swift */,
 				BBB9134E1E5600E800E779AA /* HangmanAPI.swift */,
+				BBDA19431E56C7550007FBA0 /* AppController.swift */,
 				BBB913501E56012800E779AA /* HangmanData.swift */,
 				BBDA19411E56ACF80007FBA0 /* User.swift */,
 				BBDA193F1E56A2690007FBA0 /* Extensions.swift */,
@@ -315,6 +318,7 @@
 				BBB913451E555F5200E779AA /* MainViewController.swift in Sources */,
 				BBB913471E55601300E779AA /* SettingsViewController.swift in Sources */,
 				BBB9134F1E5600E800E779AA /* HangmanAPI.swift in Sources */,
+				BBDA19441E56C7550007FBA0 /* AppController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
