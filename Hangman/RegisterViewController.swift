@@ -39,6 +39,11 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "password", attributes: attr)
         
         profilePic.clipsToBounds = true
+        
+        nicknameTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        
     }
     
 
@@ -121,6 +126,11 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
 //        }
 //    }
 
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nicknameTextField.resignFirstResponder()
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        return true
+    }
 
 }
