@@ -12,35 +12,32 @@ import Firebase
 class RegisterViewController: UIViewController, UIImagePickerControllerDelegate, UIGestureRecognizerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     
-    @IBOutlet weak var nicknameTextField: UITextField!
-    
+    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    
-    
     @IBOutlet weak var passwordTextField: UITextField!
-    
     @IBOutlet weak var profilePic: UIImageView!
     
+    let store = HangmanData.sharedInstance
+    let database = FIRDatabase.database().reference()
+    let myKeychainWrapper = KeychainWrapper()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         setupView()
-
     }
-
     
     func setupView() {
         
         let attr = [NSForegroundColorAttributeName: UIColor.white]
-        nicknameTextField.attributedPlaceholder = NSAttributedString(string: "username", attributes: attr)
+        usernameTextField.attributedPlaceholder = NSAttributedString(string: "username", attributes: attr)
         emailTextField.attributedPlaceholder = NSAttributedString(string: "email", attributes: attr)
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "password", attributes: attr)
         
         profilePic.clipsToBounds = true
         
-        nicknameTextField.delegate = self
+        usernameTextField.delegate = self
         emailTextField.delegate = self
         passwordTextField.delegate = self
         
@@ -49,7 +46,40 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
 
     @IBAction func registerPushed(_ sender: UIButton) {
         
+        guard let email = emailTextField.text, let password = passwordTextField.text, let username = usernameTextField.text else { return }
         
+        FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
+            
+            if error != nil {
+            
+                let alert = UIAlertController(title: nil, message: error?.localizedDescription, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
+                
+                self.present(alert, animated: true, completion: nil)
+            
+            } else {
+            
+                self.addDataToKeychain(id: (user?.uid)!, name: username, email: email)
+//                self.signIn()
+            }
+        }
+
+        
+        
+        
+        
+        
+        
+    }
+
+    func addDataToKeychain(id: String, name: String, email: String) {
+        UserDefaults.standard.setValue(id, forKey: "id")
+        UserDefaults.standard.setValue(name, forKey: "name")
+        UserDefaults.standard.setValue(email, forKey: "email")
+        
+        myKeychainWrapper.mySetObject(passwordTextField.text, forKey:kSecValueData)
+        myKeychainWrapper.writeToKeychain()
+        UserDefaults.standard.synchronize()
     }
 
 
@@ -63,11 +93,11 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBAction func profilePicPushed(_ sender: UITapGestureRecognizer) {
         
         pickPhotoFromAlbum()
-        print("PROFILE PIC")
     }
 
     
     func pickPhotoFromAlbum() {
+
         presentPicker(withSourceType: .photoLibrary)
     }
     
@@ -79,10 +109,8 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         imagePicker.sourceType = source
         imagePicker.navigationBar.barStyle = .blackTranslucent
         imagePicker.navigationBar.isTranslucent = true
-//        imagePicker.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Bite Chalk", size: 30)!]
         imagePicker.navigationBar.tintColor = .white
 
-        
         present(imagePicker, animated: true, completion: nil)
     }
     
@@ -127,7 +155,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
 //    }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        nicknameTextField.resignFirstResponder()
+        usernameTextField.resignFirstResponder()
         emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
         return true

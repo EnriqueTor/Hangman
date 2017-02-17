@@ -27,6 +27,7 @@
 		BBDA193C1E5683620007FBA0 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDA193B1E5683620007FBA0 /* KeychainWrapper.m */; };
 		BBDA193E1E569AB40007FBA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBDA193D1E569AB40007FBA0 /* Assets.xcassets */; };
 		BBDA19401E56A2690007FBA0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDA193F1E56A2690007FBA0 /* Extensions.swift */; };
+		BBDA19421E56ACF80007FBA0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDA19411E56ACF80007FBA0 /* User.swift */; };
 		BF7EBD834073AEFC7A23D4FD /* Pods_Hangman.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5AA33B22C41146A2108DEA2 /* Pods_Hangman.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		BBDA193B1E5683620007FBA0 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
 		BBDA193D1E569AB40007FBA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BBDA193F1E56A2690007FBA0 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		BBDA19411E56ACF80007FBA0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F5AA33B22C41146A2108DEA2 /* Pods_Hangman.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hangman.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -145,6 +147,7 @@
 				BB75722A1E5523B50018FFD1 /* AppDelegate.swift */,
 				BBB9134E1E5600E800E779AA /* HangmanAPI.swift */,
 				BBB913501E56012800E779AA /* HangmanData.swift */,
+				BBDA19411E56ACF80007FBA0 /* User.swift */,
 				BBDA193F1E56A2690007FBA0 /* Extensions.swift */,
 				BBDA19371E5607B40007FBA0 /* Secrets.swift */,
 			);
@@ -299,6 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBDA19421E56ACF80007FBA0 /* User.swift in Sources */,
 				BBB913491E55601A00E779AA /* GameViewController.swift in Sources */,
 				BBDA19381E5607B40007FBA0 /* Secrets.swift in Sources */,
 				BBB913411E555F3F00E779AA /* LoginViewController.swift in Sources */,

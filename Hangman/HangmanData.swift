@@ -16,6 +16,7 @@ class HangmanData {
     
     var arrayOfWords: [String] = []
     
+    var user = User(id: "", username: "", email: "", profilePic: "")
     
     // MARK: - Initializers
     
