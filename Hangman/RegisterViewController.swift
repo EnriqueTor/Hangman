@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SDWebImage
 
 class RegisterViewController: UIViewController, UIImagePickerControllerDelegate, UIGestureRecognizerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
@@ -60,17 +61,45 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
             } else {
             
                 self.addDataToKeychain(id: (user?.uid)!, name: username, email: email)
-//                self.signIn()
+                self.signIn()
             }
         }
-
-        
-        
-        
-        
-        
-        
     }
+    
+    func signIn() {
+        
+        guard let email = emailTextField.text, let password = passwordTextField.text, let username = usernameTextField.text else { return }
+        
+        FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
+            
+            if error != nil {
+                
+            } else {
+                
+                let changeRequest = user?.profileChangeRequest()
+                
+                changeRequest?.displayName = username
+                changeRequest?.commitChanges { error in
+                    
+                    if let error = error {
+                        
+                    } else {
+                        
+                        let newUser = User(id: (user?.uid)!, username: (user?.displayName)!, email: email, profilePic: "")
+                        
+                        self.store.user = newUser
+                        self.database.child("users").child((user?.uid)!).setValue(newUser.serialize())
+                        
+                        self.saveProfileImage()
+                        
+                        self.performSegue(withIdentifier: "mainSegue2", sender: self)
+                        
+                    }
+                }
+            }
+        }
+    }
+    
 
     func addDataToKeychain(id: String, name: String, email: String) {
         UserDefaults.standard.setValue(id, forKey: "id")
@@ -122,8 +151,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
             profilePic.contentMode = .scaleAspectFill
 
             profilePic.setRounded()
-           
-//            saveProfileImage()
+        
         }
         
         dismiss(animated: true, completion: nil)
@@ -133,26 +161,27 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         dismiss(animated: true, completion: nil)
     }
     
-//    func saveProfileImage() {
-//        DispatchQueue.main.async {
-//            let storageRef = FIRStorage.storage().reference(forURL: "gs://face-ba4e6.appspot.com")
-//            let imageId = self.store.user.id
-//            let storageImageRef = storageRef.child("profileImages").child(imageId)
-//            
-//            guard let uploadData = UIImageJPEGRepresentation(self.profileImage.image!, 0.20) else { return }
-//            
-//            storageImageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
-//                if error != nil {
-//                    return
-//                }
-//                guard let profileImageUrl = metadata?.downloadURL()?.absoluteString else { return }
-//                
-//                self.store.user.profilePic = profileImageUrl
-//                self.database.child("users").child(self.store.user.id).child("profilePic").setValue(self.store.user.profilePic)
-//            })
-//            
-//        }
-//    }
+    func saveProfileImage() {
+        
+        DispatchQueue.main.async {
+            let storageRef = FIRStorage.storage().reference(forURL: "gs://face-ba4e6.appspot.com")
+            let imageId = self.store.user.id
+            let storageImageRef = storageRef.child("profileImages").child(imageId)
+            
+            guard let uploadData = UIImageJPEGRepresentation(self.profilePic.image!, 0.20) else { return }
+            
+            storageImageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
+                if error != nil {
+                    return
+                }
+                guard let profileImageUrl = metadata?.downloadURL()?.absoluteString else { return }
+                
+                self.store.user.profilePic = profileImageUrl
+                self.database.child("users").child(self.store.user.id).child("profilePic").setValue(self.store.user.profilePic)
+            })
+            
+        }
+    }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         usernameTextField.resignFirstResponder()

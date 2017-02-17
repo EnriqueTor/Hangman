@@ -306,8 +306,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chalkboard" translatesAutoresizingMaskIntoConstraints="NO" id="kc1-hZ-tlT">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Divider" translatesAutoresizingMaskIntoConstraints="NO" id="7Od-CN-ywd">
+                                <rect key="frame" x="-0.5" y="425" width="375" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="ouj-qW-11t"/>
+                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LC4-Tf-2wa">
                                 <rect key="frame" x="119" y="182" width="137" height="72"/>
@@ -666,24 +669,30 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZD-Ft-BtU">
-                                <rect key="frame" x="20" y="417" width="335" height="0.0"/>
+                                <rect key="frame" x="20" y="380" width="335" height="0.0"/>
                                 <fontDescription key="fontDescription" name="BiteChalkBold-Regular" family="Bite Chalk Bold" pointSize="50"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chalkboard" translatesAutoresizingMaskIntoConstraints="NO" id="kc1-hZ-tlT">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="vZD-Ft-BtU" firstAttribute="centerX" secondItem="7Cy-aJ-tXd" secondAttribute="centerX" id="0rI-d6-9Ys"/>
                             <constraint firstItem="kc1-hZ-tlT" firstAttribute="height" secondItem="UmC-55-MQf" secondAttribute="height" id="2Jf-5x-day"/>
-                            <constraint firstItem="7Cy-aJ-tXd" firstAttribute="top" secondItem="vZD-Ft-BtU" secondAttribute="bottom" constant="30" id="H8z-hw-w48"/>
+                            <constraint firstItem="7Od-CN-ywd" firstAttribute="width" secondItem="kc1-hZ-tlT" secondAttribute="width" id="E5k-z3-pfa"/>
+                            <constraint firstItem="7Od-CN-ywd" firstAttribute="top" secondItem="vZD-Ft-BtU" secondAttribute="bottom" constant="45" id="FsU-Kv-NBI"/>
                             <constraint firstItem="7Cy-aJ-tXd" firstAttribute="height" secondItem="UmC-55-MQf" secondAttribute="height" multiplier="0.3" id="Olz-Ld-P2z"/>
+                            <constraint firstItem="7Od-CN-ywd" firstAttribute="centerX" secondItem="7Cy-aJ-tXd" secondAttribute="centerX" id="TaR-Va-1CD"/>
                             <constraint firstItem="kc1-hZ-tlT" firstAttribute="width" secondItem="UmC-55-MQf" secondAttribute="width" id="Wb5-ua-jVF"/>
                             <constraint firstItem="kc1-hZ-tlT" firstAttribute="centerX" secondItem="UmC-55-MQf" secondAttribute="centerX" id="X8T-Ij-n9x"/>
                             <constraint firstItem="kc1-hZ-tlT" firstAttribute="centerY" secondItem="UmC-55-MQf" secondAttribute="centerY" id="Y5M-D1-nl5"/>
                             <constraint firstItem="vZD-Ft-BtU" firstAttribute="width" secondItem="7Cy-aJ-tXd" secondAttribute="width" id="ZWX-FA-84X"/>
                             <constraint firstAttribute="trailing" secondItem="7Cy-aJ-tXd" secondAttribute="trailing" constant="20" id="eaZ-fN-tuS"/>
                             <constraint firstItem="7Cy-aJ-tXd" firstAttribute="leading" secondItem="UmC-55-MQf" secondAttribute="leading" constant="20" id="h4L-02-m6z"/>
+                            <constraint firstItem="7Cy-aJ-tXd" firstAttribute="top" secondItem="7Od-CN-ywd" secondAttribute="bottom" constant="7" id="mCx-u6-LSI"/>
                             <constraint firstItem="BKs-on-qbB" firstAttribute="top" secondItem="7Cy-aJ-tXd" secondAttribute="bottom" constant="20" id="nMa-hT-daJ"/>
                         </constraints>
                     </view>
@@ -721,7 +730,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fol-Hz-gIy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1820" y="914.392803598201"/>
+            <point key="canvasLocation" x="1826" y="961"/>
         </scene>
         <!--Settings-->
         <scene sceneID="ma6-5g-yII">
