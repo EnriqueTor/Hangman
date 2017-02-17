@@ -11,21 +11,38 @@ import UIKit
 class RegisterViewController: UIViewController {
 
     
+    @IBOutlet weak var nicknameTextField: UITextField!
+    
+    @IBOutlet weak var emailTextField: UITextField!
     
     
-    
+    @IBOutlet weak var passwordTextField: UITextField!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        setupView()
 
     }
 
     
+    func setupView() {
+        
+        let attr = [NSForegroundColorAttributeName: UIColor.white]
+        nicknameTextField.attributedPlaceholder = NSAttributedString(string: "username", attributes: attr)
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "email", attributes: attr)
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "password", attributes: attr)
+        
+        
+    }
+    
 
     @IBAction func registerPushed(_ sender: UIButton) {
+        
+        
     }
 
 

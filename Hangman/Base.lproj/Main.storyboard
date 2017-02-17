@@ -56,7 +56,6 @@
                                 </state>
                                 <connections>
                                     <action selector="registerPushed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4C9-6U-iiW"/>
-                                    <segue destination="Mpp-KX-ry4" kind="show" id="e6h-ar-9NX"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -70,6 +69,7 @@
                     </view>
                     <connections>
                         <segue destination="8BC-tE-sdU" kind="show" identifier="loginSegue" id="Q30-0U-2rf"/>
+                        <segue destination="Mpp-KX-ry4" kind="show" identifier="registerSegue" id="R32-N3-9Io"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -189,6 +189,35 @@
                                     <action selector="cancelPushed:" destination="Mpp-KX-ry4" eventType="touchUpInside" id="F8r-wT-4Bg"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="NICKNAME" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rPq-OS-yei">
+                                <rect key="frame" x="-3" y="258" width="375" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="40"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="PASSWORD" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pzf-55-bGW">
+                                <rect key="frame" x="-3" y="336" width="375" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="25"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="EMAIL" textAlignment="center" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1UT-Sr-0SY">
+                                <rect key="frame" x="0.0" y="299" width="375" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="25"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CameraSelect" translatesAutoresizingMaskIntoConstraints="NO" id="6Ky-D2-Eyu">
+                                <rect key="frame" x="156" y="101" width="75" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ProfilePic" translatesAutoresizingMaskIntoConstraints="NO" id="aMq-hX-CKw">
+                                <rect key="frame" x="93" y="38" width="200" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -199,12 +228,15 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="emailTextField" destination="1UT-Sr-0SY" id="3hQ-2q-tCC"/>
+                        <outlet property="nicknameTextField" destination="rPq-OS-yei" id="D5E-Ek-9Kf"/>
+                        <outlet property="passwordTextField" destination="pzf-55-bGW" id="Xg8-kK-Oun"/>
                         <segue destination="rY0-DK-ymS" kind="show" identifier="mainSegue2" id="eEi-SX-kEH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m62-X0-Xc8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137" y="911"/>
+            <point key="canvasLocation" x="136.80000000000001" y="909.89505247376314"/>
         </scene>
         <!--Main-->
         <scene sceneID="7E1-gb-zvd">
@@ -715,7 +747,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="CameraSelect" width="328" height="328"/>
         <image name="Chalkboard" width="1902" height="1810"/>
+        <image name="ProfilePic" width="1652" height="1652"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="eEi-SX-kEH"/>
