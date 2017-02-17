@@ -8,8 +8,10 @@
 
 import UIKit
 import Firebase
+import MessageUI
 
-class SettingsViewController: UIViewController {
+
+class SettingsViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
     
     @IBOutlet weak var background: UIImageView!
@@ -27,7 +29,9 @@ class SettingsViewController: UIViewController {
         
     }
     
-    
+    @IBAction func sendEmail(_ sender: UIButton) {
+        sendEmail()
+    }
     
     
     @IBAction func logoutPushed(_ sender: UIButton) {
@@ -72,7 +76,29 @@ class SettingsViewController: UIViewController {
         
     }
    
+    func sendEmail() {
+        
+        if MFMailComposeViewController.canSendMail() {
+        
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["thedocitapp@gmail.com"])
+            mail.setSubject("Feedback")
+            mail.setMessageBody("", isHTML: true)
+            
+            mail.navigationBar.tintColor = UIColor.white
+            
+            present(mail, animated: true)
+            
+        } else {
+            // show failure alert
+        }
+    }
     
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+    }
+
     
     
     

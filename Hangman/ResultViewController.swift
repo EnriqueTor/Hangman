@@ -73,5 +73,12 @@ class ResultViewController: UIViewController {
             
         }
     }
+    
+    func saveResultInfo() {
+    
+        
+        
+    
+    }
         
 }

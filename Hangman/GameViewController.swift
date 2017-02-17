@@ -17,6 +17,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var livesLabel: UILabel!
     @IBOutlet weak var secretWordLabel: UILabel!
     @IBOutlet var keyboardButtons: [UIButton]!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     // MARK: - Variables
     
@@ -25,7 +26,7 @@ class GameViewController: UIViewController {
     var secretWord = ""
     var wordCharacter = 0
     var hiddenWord = ""
-    var points = -5
+    var points = 10
     
     // MARK: - Loads
     
@@ -33,6 +34,7 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         isKeyboardEnabled(status: false)
+        
         newGame()
         
         background.image = store.chalkboard
@@ -42,11 +44,11 @@ class GameViewController: UIViewController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        viewDidLoad()
-//        newGame()
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        viewDidLoad()
+////        newGame()
+//    }
     
     // MARK: - Actions
     
@@ -97,6 +99,7 @@ class GameViewController: UIViewController {
                 hiddenWord = newWord
                 secretWordLabel.text = hiddenWord
                 points = points + 1
+                updateScore()
                 print(points)
                 win()
             }
@@ -114,6 +117,8 @@ class GameViewController: UIViewController {
         livesLabel.text = "\(lives)"
         
         points = points - 1
+        updateScore()
+
         print(points)
         isHangman()
         
@@ -125,6 +130,8 @@ class GameViewController: UIViewController {
             
             store.gameResult = "lost"
             isKeyboardEnabled(status: false)
+            points = points - 5
+            updateScore()
             performSegue(withIdentifier: "resultSegue", sender: self)
         }
         
@@ -211,7 +218,8 @@ class GameViewController: UIViewController {
         secretWord = ""
         hiddenWord = ""
         wordCharacter = 0
-        points = -5
+        points = 10
+        updateScore()
         
         for button in keyboardButtons {
             
@@ -225,6 +233,20 @@ class GameViewController: UIViewController {
         
     }
     
+    func updateScore() {
+        
+        if points >= 0 {
+            print("positive")
+            scoreLabel.text = "+\(points)"
+            
+            
+        } else {
+            print("negative")
+            scoreLabel.text = "\(points)"
+            
+        }
+
+    }
     
     
     
