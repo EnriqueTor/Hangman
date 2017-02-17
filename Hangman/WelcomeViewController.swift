@@ -30,7 +30,7 @@ class WelcomeViewController: UIViewController {
         store.arrayOfWords.removeAll()
         HangmanAPI.getHangmanWord()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
         
         self.welcome()
         

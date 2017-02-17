@@ -22,7 +22,7 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
         background.image = store.chalkboard
-        
+        self.title = "SETTINGS"
         
         
     }
@@ -65,12 +65,14 @@ class SettingsViewController: UIViewController {
     }
     
     
-    
-    @IBAction func backPushed(_ sender: UIButton) {
+    @IBAction func setChalkboardBlue(_ sender: UIButton) {
         
-        dismiss(animated: true, completion: nil)
+        store.chalkboard = UIImage(named: "ChalkboardBlue")
+        background.image = store.chalkboard
         
     }
+   
+    
     
     
     

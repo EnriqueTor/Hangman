@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB1F477D1E5764A700E840B5 /* LeaderboardSingleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1F477C1E5764A700E840B5 /* LeaderboardSingleViewController.swift */; };
+		BB1F477F1E5764C100E840B5 /* LeaderboardChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1F477E1E5764C100E840B5 /* LeaderboardChallengeViewController.swift */; };
+		BB1F47811E5764D300E840B5 /* LeaderboardMultiplayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1F47801E5764D300E840B5 /* LeaderboardMultiplayerViewController.swift */; };
 		BB75722B1E5523B50018FFD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75722A1E5523B50018FFD1 /* AppDelegate.swift */; };
 		BB75722D1E5523B50018FFD1 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75722C1E5523B50018FFD1 /* WelcomeViewController.swift */; };
 		BB7572301E5523B50018FFD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB75722E1E5523B50018FFD1 /* Main.storyboard */; };
@@ -35,6 +38,9 @@
 /* Begin PBXFileReference section */
 		5335D00A5461AE17F5E13335 /* Pods-Hangman.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hangman.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hangman/Pods-Hangman.release.xcconfig"; sourceTree = "<group>"; };
 		6450A2F37BDEE478CB2A888D /* Pods-Hangman.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hangman.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hangman/Pods-Hangman.debug.xcconfig"; sourceTree = "<group>"; };
+		BB1F477C1E5764A700E840B5 /* LeaderboardSingleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardSingleViewController.swift; sourceTree = "<group>"; };
+		BB1F477E1E5764C100E840B5 /* LeaderboardChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardChallengeViewController.swift; sourceTree = "<group>"; };
+		BB1F47801E5764D300E840B5 /* LeaderboardMultiplayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardMultiplayerViewController.swift; sourceTree = "<group>"; };
 		BB7572271E5523B50018FFD1 /* Hangman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hangman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB75722A1E5523B50018FFD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB75722C1E5523B50018FFD1 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +133,9 @@
 			children = (
 				BBB913481E55601A00E779AA /* GameViewController.swift */,
 				BBB913401E555F3F00E779AA /* LoginViewController.swift */,
+				BB1F477C1E5764A700E840B5 /* LeaderboardSingleViewController.swift */,
+				BB1F47801E5764D300E840B5 /* LeaderboardMultiplayerViewController.swift */,
+				BB1F477E1E5764C100E840B5 /* LeaderboardChallengeViewController.swift */,
 				BBB913441E555F5200E779AA /* MainViewController.swift */,
 				BBB913421E555F4A00E779AA /* RegisterViewController.swift */,
 				BBB913461E55601300E779AA /* SettingsViewController.swift */,
@@ -305,6 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB1F47811E5764D300E840B5 /* LeaderboardMultiplayerViewController.swift in Sources */,
 				BBDA19421E56ACF80007FBA0 /* User.swift in Sources */,
 				BBB913491E55601A00E779AA /* GameViewController.swift in Sources */,
 				BBDA19381E5607B40007FBA0 /* Secrets.swift in Sources */,
@@ -312,8 +322,10 @@
 				BB75722D1E5523B50018FFD1 /* WelcomeViewController.swift in Sources */,
 				BB75722B1E5523B50018FFD1 /* AppDelegate.swift in Sources */,
 				BBB913511E56012800E779AA /* HangmanData.swift in Sources */,
+				BB1F477D1E5764A700E840B5 /* LeaderboardSingleViewController.swift in Sources */,
 				BBB913431E555F4A00E779AA /* RegisterViewController.swift in Sources */,
 				BBDA19401E56A2690007FBA0 /* Extensions.swift in Sources */,
+				BB1F477F1E5764C100E840B5 /* LeaderboardChallengeViewController.swift in Sources */,
 				BBDA193C1E5683620007FBA0 /* KeychainWrapper.m in Sources */,
 				BBB913451E555F5200E779AA /* MainViewController.swift in Sources */,
 				BBB913471E55601300E779AA /* SettingsViewController.swift in Sources */,

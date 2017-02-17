@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UINavigationControllerDelegate {
 
     
     
@@ -29,7 +29,14 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
 
         background.image = store.chalkboard
+        self.navigationController?.navigationBar.transparentNavigationBar()
 
+        
+        
+        
+        
+        
+        self.title = "HANGMAN"
     
     }
 
@@ -43,23 +50,19 @@ class MainViewController: UIViewController {
         }
     }
     
-    @IBAction func playPushed(_ sender: UIButton) {
-        
-        performSegue(withIdentifier: "playSegue", sender: self)
-        
-    }
-    
     
     @IBAction func settingsPushed(_ sender: UIButton) {
         
         performSegue(withIdentifier: "settingsSegue", sender: self)
         
     }
-    
-    
-    
-    
-    
+
+    @IBAction func leaderboardPushed(_ sender: UIButton) {
+        
+        performSegue(withIdentifier: "leaderboardSegue", sender: self)
+        
+    }
+  
     
     
 }

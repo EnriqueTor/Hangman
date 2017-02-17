@@ -23,9 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
         
         let customFontTitle = UIFont(name: "BiteChalk-regular", size: 28)
-        let customFont = UIFont(name: "BiteChalk-regular", size: 20)
-        UINavigationBar.appearance().titleTextAttributes = [ NSFontAttributeName: customFontTitle!]
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: customFont!], for: UIControlState.normal)
+        let customFont = UIFont(name: "BiteChalkSlim-regular", size: 20)
+        UINavigationBar.appearance().titleTextAttributes = [ NSFontAttributeName: customFontTitle!, NSForegroundColorAttributeName: UIColor.white]
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: customFont!, NSForegroundColorAttributeName: UIColor.white], for: UIControlState.normal)
+        UINavigationBar.appearance().tintColor = UIColor.white
         
         UITextField.appearance().tintColor = UIColor.white
         

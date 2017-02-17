@@ -17,3 +17,23 @@ extension UIImageView {
         self.layer.masksToBounds = true
     }
 }
+
+extension UINavigationBar {
+    
+    func transparentNavigationBar() {
+        self.setBackgroundImage(UIImage(), for: .default)
+        self.shadowImage = UIImage()
+        self.isTranslucent = true
+    }
+}
+
+extension UITabBar {
+    
+    func transparentNavigationBar() {
+        self.backgroundImage = UIImage()
+        self.shadowImage = UIImage()
+        self.isTranslucent = true
+        self.tintColor = UIColor.white
+        
+    }
+}
