@@ -20,6 +20,7 @@ class ResultViewController: UIViewController {
     
     var gameResult = ""
     var secretWord = ""
+    var points = 0
     
     
     override func viewDidLoad() {
@@ -28,6 +29,17 @@ class ResultViewController: UIViewController {
         resultLabel.text = gameResult
         secretWordLabel.text = secretWord
         
+        if points >= 0 {
+            print("positive")
+                scoreLabel.text = "+\(points)"
+                scoreLabel.textColor = Constants.Colors.chalkGreen
+            
+        } else {
+            print("negative")
+            scoreLabel.text = "\(points)"
+                scoreLabel.textColor = Constants.Colors.chalkRed
+        }
+        
         backround.addBlurEffect()
         
     }
@@ -35,7 +47,8 @@ class ResultViewController: UIViewController {
     
     @IBAction func newPushed(_ sender: UIButton) {
         
-        
+        NotificationCenter.default.post(name: .openGameVC, object: nil)
+        dismiss(animated: true, completion: nil)
         
     }
     
@@ -43,7 +56,8 @@ class ResultViewController: UIViewController {
     @IBAction func closePushed(_ sender: UIButton) {
         
         
-        
+        NotificationCenter.default.post(name: .openMainVC, object: nil)
+        dismiss(animated: true, completion: nil)
         
     }
     

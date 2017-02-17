@@ -11,6 +11,7 @@
 		BB1F477F1E5764C100E840B5 /* LeaderboardChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1F477E1E5764C100E840B5 /* LeaderboardChallengeViewController.swift */; };
 		BB1F47811E5764D300E840B5 /* LeaderboardMultiplayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1F47801E5764D300E840B5 /* LeaderboardMultiplayerViewController.swift */; };
 		BB1F47831E579ADD00E840B5 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1F47821E579ADD00E840B5 /* ResultViewController.swift */; };
+		BB1F47851E57AC0400E840B5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1F47841E57AC0400E840B5 /* Constants.swift */; };
 		BB75722B1E5523B50018FFD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75722A1E5523B50018FFD1 /* AppDelegate.swift */; };
 		BB75722D1E5523B50018FFD1 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75722C1E5523B50018FFD1 /* WelcomeViewController.swift */; };
 		BB7572301E5523B50018FFD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB75722E1E5523B50018FFD1 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 		BB1F477E1E5764C100E840B5 /* LeaderboardChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardChallengeViewController.swift; sourceTree = "<group>"; };
 		BB1F47801E5764D300E840B5 /* LeaderboardMultiplayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardMultiplayerViewController.swift; sourceTree = "<group>"; };
 		BB1F47821E579ADD00E840B5 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		BB1F47841E57AC0400E840B5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BB7572271E5523B50018FFD1 /* Hangman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hangman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB75722A1E5523B50018FFD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB75722C1E5523B50018FFD1 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -158,13 +160,14 @@
 		BB7572421E5559400018FFD1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BB75722A1E5523B50018FFD1 /* AppDelegate.swift */,
-				BBB9134E1E5600E800E779AA /* HangmanAPI.swift */,
 				BBDA19431E56C7550007FBA0 /* AppController.swift */,
-				BBB913501E56012800E779AA /* HangmanData.swift */,
-				BBDA19411E56ACF80007FBA0 /* User.swift */,
+				BB75722A1E5523B50018FFD1 /* AppDelegate.swift */,
+				BB1F47841E57AC0400E840B5 /* Constants.swift */,
 				BBDA193F1E56A2690007FBA0 /* Extensions.swift */,
+				BBB9134E1E5600E800E779AA /* HangmanAPI.swift */,
+				BBB913501E56012800E779AA /* HangmanData.swift */,
 				BBDA19371E5607B40007FBA0 /* Secrets.swift */,
+				BBDA19411E56ACF80007FBA0 /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB1F47811E5764D300E840B5 /* LeaderboardMultiplayerViewController.swift in Sources */,
+				BB1F47851E57AC0400E840B5 /* Constants.swift in Sources */,
 				BBDA19421E56ACF80007FBA0 /* User.swift in Sources */,
 				BBB913491E55601A00E779AA /* GameViewController.swift in Sources */,
 				BBDA19381E5607B40007FBA0 /* Secrets.swift in Sources */,

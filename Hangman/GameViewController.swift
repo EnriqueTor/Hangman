@@ -25,6 +25,7 @@ class GameViewController: UIViewController {
     var secretWord = ""
     var wordCharacter = 0
     var hiddenWord = ""
+    var points = -5
     
     // MARK: - Loads
     
@@ -41,11 +42,13 @@ class GameViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewDidLoad()
+//        newGame()
+    }
+    
     // MARK: - Actions
-    
-    
-    
-    
     
     @IBAction func letterPressed(_ sender: UIButton) {
         
@@ -93,6 +96,8 @@ class GameViewController: UIViewController {
                 
                 hiddenWord = newWord
                 secretWordLabel.text = hiddenWord
+                points = points + 1
+                print(points)
                 win()
             }
             
@@ -108,6 +113,8 @@ class GameViewController: UIViewController {
         lives = lives - 1
         livesLabel.text = "\(lives)"
         
+        points = points - 1
+        print(points)
         isHangman()
         
     }
@@ -116,7 +123,6 @@ class GameViewController: UIViewController {
         
         if lives < 0 {
             
-            print("GAME OVER")
             store.gameResult = "lost"
             isKeyboardEnabled(status: false)
             performSegue(withIdentifier: "resultSegue", sender: self)
@@ -129,10 +135,9 @@ class GameViewController: UIViewController {
         if secretWord == hiddenWord {
             
             isKeyboardEnabled(status: false)
-            
             store.gameResult = "win"
-            print("YOU WON!")
-            
+            points = points + 5
+            print(points)
             performSegue(withIdentifier: "resultSegue", sender: self)
             
             
@@ -155,12 +160,13 @@ class GameViewController: UIViewController {
              
                 dest.gameResult = "YOU WON"
                 dest.secretWord = secretWord
+                dest.points = points
                 
             } else {
                 
                 dest.gameResult = "YOU LOST"
                 dest.secretWord = secretWord
-                
+                dest.points = points
             }
             
             
@@ -196,22 +202,16 @@ class GameViewController: UIViewController {
         
     }
     
-    @IBAction func newPushed(_ sender: UIButton) {
-        
-        self.viewDidLoad()
-//        self.viewDidAppear(true)
-        newGame()
-        
-    }
     
     func newGame() {
         
         lives = 6
         
-        livesLabel.text = "\(lives)"
+        livesLabel?.text = "\(lives)"
         secretWord = ""
         hiddenWord = ""
         wordCharacter = 0
+        points = -5
         
         for button in keyboardButtons {
             

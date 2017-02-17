@@ -15,6 +15,7 @@ extension Notification.Name {
     static let openLoginVC = Notification.Name("open-login-view-controller")
     static let openRegisterVC = Notification.Name("open-register-view-controller")
     static let openMainVC = Notification.Name("open-main-view-controller")
+    static let openGameVC = Notification.Name("open-game-view-controller")
     
 }
 
@@ -24,6 +25,7 @@ enum StoryboardID: String {
     case loginViewController = "login-view-controller"
     case registerViewController = "register-view-controller"
     case mainViewController = "main-view-controller"
+    case gameViewController = "game-view-controller"
 }
 
 class AppController: UIViewController {
@@ -56,8 +58,8 @@ extension AppController {
         NotificationCenter.default.addObserver(self, selector: #selector(switchViewController(withNotification:)), name: .openLoginVC, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(switchViewController(withNotification:)), name: .openMainVC, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(switchViewController(withNotification:)), name: .openWelcomeVC, object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(switchViewController(withNotification:)), name: .openRegisterVC, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(switchViewController(withNotification:)), name: .openGameVC, object: nil)
         
         // NotificationCenter.default.post(name: .closeLoginVC, object: nil)  -> notification of a post.
     }
@@ -103,6 +105,9 @@ extension AppController {
             
         case Notification.Name.openRegisterVC:
             switchToViewController(withStoryboardID: .registerViewController)
+            
+        case Notification.Name.openGameVC:
+            switchToViewController(withStoryboardID: .gameViewController)
             
         default:
             fatalError("No notifcation exists.")
