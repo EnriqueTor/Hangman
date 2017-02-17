@@ -9,10 +9,8 @@
 import UIKit
 
 class WelcomeViewController: UIViewController {
-
     
     let store = HangmanData.sharedInstance
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()        
@@ -26,8 +24,17 @@ class WelcomeViewController: UIViewController {
     }
 
     
+    @IBAction func loginPushed(_ sender: UIButton) {
+        
+        performSegue(withIdentifier: "loginSegue", sender: self)
+        
+    }
     
     
+    @IBAction func registerPushed(_ sender: UIButton) {
+        
+
+    }
     
     
 }
