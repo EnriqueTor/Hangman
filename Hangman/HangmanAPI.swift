@@ -12,7 +12,9 @@ class HangmanAPI {
     
     // MARK: - Methods
     
-    class func getHangmanWord(with completion: @escaping (([String]) -> Void)) {
+//    class func getHangmanWord(with completion: @escaping (([String]) -> Void)) {
+    
+        class func getHangmanWord() {
         
         let urlString = Secrets.link
         print("2. We put together the link, getting the data from Secrets")
@@ -46,7 +48,7 @@ class HangmanAPI {
                 
                 //                print(arrayOfWords[22])
                 
-                completion(HangmanData.sharedInstance.arrayOfWords)
+//                completion(HangmanData.sharedInstance.arrayOfWords)
                 
                 
             } catch {

@@ -12,20 +12,22 @@ import Firebase
 class WelcomeViewController: UIViewController {
     
     let myKeychainWrapper = KeychainWrapper()
-//    let database = FIRDatabase.database().reference()
+    //    let database = FIRDatabase.database().reference()
     let store = HangmanData.sharedInstance
     
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
         
-           welcome()
+        HangmanAPI.getHangmanWord()
+        
+        welcome()
         
         
         
         
         
     }
-
+    
     
     @IBAction func loginPushed(_ sender: UIButton) {
         
@@ -63,24 +65,24 @@ class WelcomeViewController: UIViewController {
                         
                     else {
                         
-//                        let userData = self.database.child("users").child((user?.uid)!)
-//                        
-//                        // update daily list
-//                        
-//                        userData.observe(.value, with: { (snapshot) in
-//                            
-//                            let data = snapshot.value as? [String:Any]
-//                            let loggedUser = User(id: "", username: "", email: "", profilePic: "")
-//                            self.store.user = loggedUser.deserialize(data!)
-//                            
-//                            NotificationCenter.default.post(name: Notification.Name.openMainVC, object: nil)
-//                            
-//                        })
+                        //                        let userData = self.database.child("users").child((user?.uid)!)
+                        //
+                        //                        // update daily list
+                        //
+                        //                        userData.observe(.value, with: { (snapshot) in
+                        //
+                        //                            let data = snapshot.value as? [String:Any]
+                        //                            let loggedUser = User(id: "", username: "", email: "", profilePic: "")
+                        //                            self.store.user = loggedUser.deserialize(data!)
+                        //
+                        //                            NotificationCenter.default.post(name: Notification.Name.openMainVC, object: nil)
+                        //                            
+                        //                        })
                     }
                 }
             }
         }
-
+        
         
         
     }

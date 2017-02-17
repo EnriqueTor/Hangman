@@ -11,7 +11,7 @@ import Foundation
 
 class GameViewController: UIViewController {
     
-    // MARK: - Outlets 
+    // MARK: - Outlets
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var livesLabel: UILabel!
@@ -21,7 +21,6 @@ class GameViewController: UIViewController {
     // MARK: - Variables
     
     let store = HangmanData.sharedInstance
-    var userName = "Enrique"
     var lives = 6
     var secretWord = ""
     var wordCharacter = 0
@@ -33,42 +32,29 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         isKeyboardEnabled(status: false)
+        newGame()
         
-        nameLabel.text = userName
-        livesLabel.text = "\(lives)"
         
-        store.getWordFromAPI { (currentData) in
-            
-            print("WE ARE IN WELCOME VC")
-            print(currentData)
-            print("YEAH")
-            
-            self.secretWord = currentData.uppercased()
-            
-            for _ in self.secretWord.characters {
-                
-                self.hiddenWord.append("_")
-                
-            }
-            
-            
-            
-            
-            DispatchQueue.main.async {
-                
-                self.secretWordLabel.text = self.hiddenWord
-                
-                self.isKeyboardEnabled(status: true)
-            }
-        }
+        
+        print("HOLA!")
         
         
     }
     
     // MARK: - Actions
     
-    @IBAction func letterPressed(_ sender: UIButton) {
+    
+    @IBAction func backPushed(_ sender: UIButton) {
         
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    
+    
+    
+    @IBAction func letterPressed(_ sender: UIButton) {
         
         var buttonTitle = sender.titleLabel?.text
         
@@ -82,14 +68,12 @@ class GameViewController: UIViewController {
             miss(button: sender)
         }
         
-        
     }
     
     // MARK: - Methods
     
     func correct(button: UIButton) {
         
-        print("YES I EXIST IN THIS WORD")
         button.setTitleColor(.green, for: .normal)
         button.isEnabled = false
         
@@ -98,8 +82,6 @@ class GameViewController: UIViewController {
         for (index, char) in secretWord.characters.enumerated() {
             
             if buttonChar == char {
-                
-                print("WE JUST FOUND A FRIEND OVER HERE! index = \(index), and char = \(char)")
                 
                 var newWord = ""
                 
@@ -121,13 +103,7 @@ class GameViewController: UIViewController {
                 win()
             }
             
-            
-            
         }
-        
-        
-        
-        
         
     }
     
@@ -139,30 +115,18 @@ class GameViewController: UIViewController {
         lives = lives - 1
         livesLabel.text = "\(lives)"
         
-        print("GOOD LUCK NEXT TIME!")
-        
         isHangman()
         
-        
-        
-        
-        
     }
-    
-    
-    
     
     func isHangman() {
         
         if lives < 0 {
             
-            print("THE GAME IS OVER")
             livesLabel.text = "GAME OVER"
             isKeyboardEnabled(status: false)
             
-            
         }
-        
         
     }
     
@@ -172,22 +136,23 @@ class GameViewController: UIViewController {
             
             isKeyboardEnabled(status: false)
             
-            if UIReferenceLibraryViewController.dictionaryHasDefinition(forTerm: secretWord) == true {
-                
-                print("YES WE HAVE A DEFINITION")
-                
-                let ref: UIReferenceLibraryViewController = UIReferenceLibraryViewController(term: secretWord)
-                
-                present(ref, animated: true, completion: nil)
-                
+            livesLabel.text = "YOU WON!"
+            
+            
+//            if UIReferenceLibraryViewController.dictionaryHasDefinition(forTerm: secretWord) == true {
+//                
+//                print("YES WE HAVE A DEFINITION")
+//                
+//                let ref: UIReferenceLibraryViewController = UIReferenceLibraryViewController(term: secretWord)
+//                
+//                present(ref, animated: true, completion: nil)
+//                
             } else {
                 
                 "the word doesn't exist"
             }
             
-            print("YOU WON!!!!")
-            
-        }
+//        }
         
         
     }
@@ -200,8 +165,56 @@ class GameViewController: UIViewController {
             
         }
         
+    }
+    
+    func letsPlay() {
+        
+        let allWords = Int(arc4random_uniform(UInt32(store.arrayOfWords.count)))
+        
+        secretWord = store.arrayOfWords[allWords - 1].uppercased()
+        
+        print(secretWord)
+        
+        for _ in self.secretWord.characters {
+            
+            self.hiddenWord.append("_")
+            
+        }
+        
+            self.secretWordLabel.text = self.hiddenWord
+            self.isKeyboardEnabled(status: true)
         
     }
     
+    @IBAction func newPushed(_ sender: UIButton) {
+        
+        self.viewDidLoad()
+        self.viewDidAppear(true)
+        newGame()
+        
+    }
+    
+    func newGame() {
+        
+        lives = 6
+        nameLabel.text = store.user.username
+        livesLabel.text = "\(lives)"
+        secretWord = ""
+        hiddenWord = ""
+        wordCharacter = 0
+        
+        for button in keyboardButtons {
+            
+            button.setTitleColor(.white, for: .normal)
+            
+        }
+        
+        letsPlay()
+
+        
+        
+    }
     
 }
+
+

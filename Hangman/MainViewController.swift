@@ -34,6 +34,11 @@ class MainViewController: UIViewController {
   
     
     
+    @IBAction func playPushed(_ sender: UIButton) {
+        
+        performSegue(withIdentifier: "playSegue", sender: self)
+        
+    }
     
     
     

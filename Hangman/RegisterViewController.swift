@@ -68,7 +68,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     
     func signIn() {
         
-        guard let email = emailTextField.text, let password = passwordTextField.text, let username = usernameTextField.text else { return }
+        guard let email = emailTextField.text, let password = passwordTextField.text, let username = usernameTextField.text?.uppercased() else { return }
         
         FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
             

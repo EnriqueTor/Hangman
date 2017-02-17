@@ -24,24 +24,24 @@ class HangmanData {
     
     // MARK: - Methods
     
-    func getWordFromAPI(completion: @escaping (String) -> Void) {
-        
-        print("We are getting into the Current Data raw information")
-        
-        var currentWord: String = ""
-        
-        HangmanAPI.getHangmanWord { (JSON) in
-            
-            let getWordPosition = Int(arc4random_uniform(UInt32(JSON.count)))
-            
-            
-            print("9a. We just load the CURRENT DATA")
-            print(getWordPosition)
-            
-            currentWord = JSON[getWordPosition - 1]
-            
-            completion(currentWord)
-        }
-    }
+//    func getWordFromAPI(completion: @escaping (String) -> Void) {
+//        
+//        print("We are getting into the Current Data raw information")
+//        
+//        var currentWord: String = ""
+//        
+//        HangmanAPI.getHangmanWord { (JSON) in
+//            
+//            let getWordPosition = Int(arc4random_uniform(UInt32(JSON.count)))
+//            
+//            
+//            print("9a. We just load the CURRENT DATA")
+//            print(getWordPosition)
+//            
+//            currentWord = JSON[getWordPosition - 1]
+//            
+//            completion(currentWord)
+//        }
+//    }
     
    }
