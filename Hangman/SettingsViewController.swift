@@ -59,6 +59,10 @@ class SettingsViewController: UIViewController {
         background.image = store.chalkboard
     }
     
+    @IBAction func setChalkboardGray(_ sender: UIButton) {
+        store.chalkboard = UIImage(named: "Chalkboard")
+        background.image = store.chalkboard
+    }
     
     
     
