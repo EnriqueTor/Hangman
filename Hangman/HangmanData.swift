@@ -19,36 +19,18 @@ class HangmanData {
     
     var user = User(id: "", username: "", email: "", profilePic: "", singleScore: "", challengeScore: "", multiplayerScore: "")
     
+    var game = Game(id: "", player: "", type: "", date: "", result: "", score: "", lives: "")
+    
     var chalkboard = UIImage(named: "Chalkboard")
     
     var playerWon = String()
     
-    var leaderboardSingle = [String : Any]()
+    var leaderboardSingle = [String]()
     
     // MARK: - Initializers
     
     private init() {}
     
-    // MARK: - Methods
     
-//    func getWordFromAPI(completion: @escaping (String) -> Void) {
-//        
-//        print("We are getting into the Current Data raw information")
-//        
-//        var currentWord: String = ""
-//        
-//        HangmanAPI.getHangmanWord { (JSON) in
-//            
-//            let getWordPosition = Int(arc4random_uniform(UInt32(JSON.count)))
-//            
-//            
-//            print("9a. We just load the CURRENT DATA")
-//            print(getWordPosition)
-//            
-//            currentWord = JSON[getWordPosition - 1]
-//            
-//            completion(currentWord)
-//        }
-//    }
     
-   }
+}
