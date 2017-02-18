@@ -43,9 +43,6 @@ class GameViewController: UIViewController {
         
         background.image = store.chalkboard
         
-        print("HOLA!")
-        
-        
     }
     
     func loadPlayerData() {
@@ -60,7 +57,7 @@ class GameViewController: UIViewController {
             //
             //            print(data)
             //
-            //            let loggedUser = User(id: "", username: "", email: "", profilePic: "", singleScore: "", challengeScore: "", multiplayerScore: "")
+            //            let loggedUser = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
             //
             //            self.store.user = loggedUser.deserialize(data!)
             
@@ -231,17 +228,17 @@ class GameViewController: UIViewController {
         database.child("games").child(gameID).setValue(newGame.serialize())
         database.child("playedSingle").child(store.user.id).child(gameID).setValue(getDate(date: Date()))
         
-        if self.store.user.singleScore == "" {
+        if self.store.user.scoreSingle == "" {
             
-            self.store.user.singleScore = "\(0 + self.points)"
+            self.store.user.scoreSingle = "\(0 + self.points)"
             
         } else {
             
-            self.store.user.singleScore = "\(Int32(self.store.user.singleScore)! + self.points)"
+            self.store.user.scoreSingle = "\(Int32(self.store.user.scoreSingle)! + self.points)"
         }
         
-        self.database.child("users").child(self.store.user.id).child("singleScore").setValue(self.store.user.singleScore)
-        self.database.child("leaderboardSingle").child(self.store.user.id).setValue(self.store.user.singleScore)
+        self.database.child("users").child(self.store.user.id).child("scoreSingle").setValue(self.store.user.scoreSingle)
+        self.database.child("leaderboardSingle").child(self.store.user.id).setValue(self.store.user.scoreSingle)
         performSegue(withIdentifier: "resultSegue", sender: self)
         
     }

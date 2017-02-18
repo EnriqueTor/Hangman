@@ -17,7 +17,7 @@ class HangmanData {
     
     var arrayOfWords: [String] = []
     
-    var user = User(id: "", username: "", email: "", profilePic: "", singleScore: "", challengeScore: "", multiplayerScore: "")
+    var user = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
     
     var game = Game(id: "", player: "", type: "", date: "", result: "", score: "", lives: "")
     

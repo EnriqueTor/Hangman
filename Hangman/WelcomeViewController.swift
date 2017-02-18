@@ -12,6 +12,13 @@ import Firebase
 class WelcomeViewController: UIViewController {
     
     @IBOutlet weak var background: UIImageView!
+    @IBOutlet weak var hLabel: UILabel!
+    @IBOutlet weak var a1Label: UILabel!
+    @IBOutlet weak var n1Label: UILabel!
+    @IBOutlet weak var gLabel: UILabel!
+    @IBOutlet weak var mLabel: UILabel!
+    @IBOutlet weak var a2Label: UILabel!
+    @IBOutlet weak var n2Label: UILabel!
     
     let myKeychainWrapper = KeychainWrapper()
     let database = FIRDatabase.database().reference()
@@ -30,15 +37,42 @@ class WelcomeViewController: UIViewController {
         store.arrayOfWords.removeAll()
         HangmanAPI.getHangmanWord()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
         
-        self.welcome()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        introAnimation()
         
+    }
+    
+    func introAnimation() {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+            self.a1Label.isHidden = false
+            self.a2Label.isHidden = false
         })
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            
+            self.n1Label.isHidden = false
+            self.n2Label.isHidden = false
+        })
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
+            
+            self.gLabel.isHidden = false
+        })
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+            
+            self.hLabel.isHidden = false
+        })
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
+            self.mLabel.isHidden = false
+            self.welcome()
+        })
     }
     
     
@@ -86,7 +120,7 @@ class WelcomeViewController: UIViewController {
                     userData.observe(.value, with: { (snapshot) in
                         
                         let data = snapshot.value as? [String:Any]
-                        let loggedUser = User(id: "", username: "", email: "", profilePic: "", singleScore: "", challengeScore: "", multiplayerScore: "")
+                        let loggedUser = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
                         
                         self.store.user = loggedUser.deserialize(data!)
                         

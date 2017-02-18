@@ -78,7 +78,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     
                     userData.observe(.value, with: { (snapshot) in
                         let data = snapshot.value as? [String:Any]
-                        let loggedUser = User(id: "", username: "", email: "", profilePic: "", singleScore: "", challengeScore: "", multiplayerScore: "")
+                        let loggedUser = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
                         
                         self.store.user = loggedUser.deserialize(data!)
                         

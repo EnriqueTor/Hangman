@@ -15,19 +15,19 @@ struct User {
     var username: String
     var email: String
     var profilePic: String
-    var singleScore: String
-    var challengeScore: String
-    var multiplayerScore: String
+    var scoreSingle: String
+    var scoreChallenge: String
+    var scoreMultiplayer: String
     
-    init(id: String, username: String, email: String, profilePic: String, singleScore: String, challengeScore: String, multiplayerScore: String) {
+    init(id: String, username: String, email: String, profilePic: String, scoreSingle: String, scoreChallenge: String, scoreMultiplayer: String) {
         
         self.id = id
         self.username = username
         self.email = email
         self.profilePic = profilePic
-        self.singleScore = singleScore
-        self.challengeScore = challengeScore
-        self.multiplayerScore = multiplayerScore
+        self.scoreSingle = scoreSingle
+        self.scoreChallenge = scoreChallenge
+        self.scoreMultiplayer = scoreMultiplayer
     }
     
     init(snapshot: FIRDataSnapshot) {
@@ -37,13 +37,13 @@ struct User {
         username = snapshotValue?["username"] as? String ?? "No username"
         email = snapshotValue?["email"] as? String ?? "No email"
         profilePic = snapshotValue?["profilePic"] as? String ?? "No profile pic"
-        singleScore = snapshotValue?["singleScore"] as? String ?? "No singleScore"
-        challengeScore = snapshotValue?["challengeScore"] as? String ?? "No challengeScore"
-        multiplayerScore = snapshotValue?["multiplayerScore"] as? String ?? "No multiplayerScore"
+        scoreSingle = snapshotValue?["scoreSingle"] as? String ?? "No scoreSingle"
+        scoreChallenge = snapshotValue?["scoreChallenge"] as? String ?? "No scoreChallenge"
+        scoreMultiplayer = snapshotValue?["scoreMultiplayer"] as? String ?? "No scoreMultiplayer"
     }
     
     func serialize() -> [String:Any] {
-        return  ["id": id, "username": username, "email": email, "profilePic": profilePic, "singleScore": singleScore, "challengeScore": challengeScore, "multiplayerScore": multiplayerScore]
+        return  ["id": id, "username": username, "email": email, "profilePic": profilePic, "scoreSingle": scoreSingle, "scoreChallenge": scoreChallenge, "scoreMultiplayer": scoreMultiplayer]
     }
     
     func deserialize(_ data: [String : Any]) -> User {
@@ -51,11 +51,11 @@ struct User {
         let username = data["username"] as? String ?? ""
         let email = data["email"] as? String ?? ""
         let profilePic = data["profilePic"] as? String ?? ""
-        let singleScore = data["singleScore"] as? String ?? ""
-        let challengeScore = data["challengeScore"] as? String ?? ""
-        let multiplayerScore = data["multiplayerScore"] as? String ?? ""
+        let scoreSingle = data["scoreSingle"] as? String ?? ""
+        let scoreChallenge = data["scoreChallenge"] as? String ?? ""
+        let scoreMultiplayer = data["scoreMultiplayer"] as? String ?? ""
 
-        return User(id: id, username: username, email: email, profilePic: profilePic, singleScore: singleScore, challengeScore: challengeScore, multiplayerScore: multiplayerScore)
+        return User(id: id, username: username, email: email, profilePic: profilePic, scoreSingle: scoreSingle, scoreChallenge: scoreChallenge, scoreMultiplayer: scoreMultiplayer)
     }
     
 }
