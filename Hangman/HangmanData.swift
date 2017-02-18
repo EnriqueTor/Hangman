@@ -23,6 +23,8 @@ class HangmanData {
     
     var playerWon = String()
     
+    var leaderboardSingle = [String : Any]()
+    
     // MARK: - Initializers
     
     private init() {}

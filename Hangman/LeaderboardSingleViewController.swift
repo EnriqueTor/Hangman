@@ -20,16 +20,16 @@ class LeaderboardSingleViewController: UIViewController, UITableViewDelegate, UI
     @IBOutlet weak var userPoints: UILabel!
     @IBOutlet weak var userPosition: UILabel!
     
-    
-    
-    
-    
     let store = HangmanData.sharedInstance
+    let database = FIRDatabase.database().reference()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        retrieveUserPoints()
         retrieveUserPic()
         background.image = store.chalkboard
         tabBarController?.tabBar.transparentNavigationBar()
@@ -66,6 +66,19 @@ class LeaderboardSingleViewController: UIViewController, UITableViewDelegate, UI
         
         return cell
         
+    }
+    
+    func retrieveUserPoints() {
+        
+        database.child("leaderboardSingle").observe(.value, with: { (snapshot) in
+            
+            guard let userPoints = snapshot.value as? [String : Any] else { return }
+            
+            self.store.leaderboardSingle = userPoints
+            
+            print(self.store.leaderboardSingle)
+
+        })
     }
     
 }
