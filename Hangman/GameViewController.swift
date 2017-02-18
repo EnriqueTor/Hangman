@@ -44,12 +44,6 @@ class GameViewController: UIViewController {
         
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        viewDidLoad()
-////        newGame()
-//    }
-    
     // MARK: - Actions
     
     @IBAction func letterPressed(_ sender: UIButton) {
@@ -98,9 +92,9 @@ class GameViewController: UIViewController {
                 
                 hiddenWord = newWord
                 secretWordLabel.text = hiddenWord
+                
                 points = points + 1
                 updateScore()
-                print(points)
                 win()
             }
             
@@ -113,18 +107,18 @@ class GameViewController: UIViewController {
         button.setTitleColor(.red, for: .normal)
         button.isEnabled = false
         
-        lives = lives - 1
-        livesLabel.text = "\(lives)"
         
         points = points - 1
         updateScore()
 
-        print(points)
-        isHangman()
+        lost()
         
     }
     
-    func isHangman() {
+    func lost() {
+        
+        lives = lives - 1
+        livesLabel.text = "\(lives)"
         
         if lives < 0 {
             
@@ -144,16 +138,19 @@ class GameViewController: UIViewController {
             isKeyboardEnabled(status: false)
             store.gameResult = "win"
             points = points + 5
-            print(points)
             performSegue(withIdentifier: "resultSegue", sender: self)
-            
-            
-            } else {
-                
-                "the word doesn't exist"
-            }
-            
+        }
+        else {
         
+        }
+    }
+    
+    func gameEnded(playerWon: Bool, pointsEarned: Int) {
+        
+            isKeyboardEnabled(status: false)
+            store.gameResult = playerWon
+            points = points + pointsEarned
+            performSegue(withIdentifier: "resultSegue", sender: self)
         
     }
     
@@ -185,9 +182,7 @@ class GameViewController: UIViewController {
         for button in keyboardButtons {
             
             button.isEnabled = status
-            
         }
-        
     }
     
     func letsPlay() {
@@ -195,8 +190,6 @@ class GameViewController: UIViewController {
         let allWords = Int(arc4random_uniform(UInt32(store.arrayOfWords.count)))
         
         secretWord = store.arrayOfWords[allWords - 1].uppercased()
-        
-        print(secretWord)
         
         for _ in self.secretWord.characters {
             
@@ -247,7 +240,6 @@ class GameViewController: UIViewController {
         }
 
     }
-    
     
     
 }
