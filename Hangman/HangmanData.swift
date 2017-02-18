@@ -17,7 +17,7 @@ class HangmanData {
     
     var arrayOfWords: [String] = []
     
-    var user = User(id: "", username: "", email: "", profilePic: "")
+    var user = User(id: "", username: "", email: "", profilePic: "", singleScore: "", challengeScore: "", multiplayerScore: "")
     
     var chalkboard = UIImage(named: "Chalkboard")
     
