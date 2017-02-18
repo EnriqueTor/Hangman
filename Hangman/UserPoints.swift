@@ -1,5 +1,5 @@
 //
-//  Leaderboard.swift
+//  UserPoints.swift
 //  Hangman
 //
 //  Created by Enrique Torrendell on 2/18/17.
@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-struct Leaderboard {
+struct UserPoints {
     
     var player: String
     var points: String
@@ -35,12 +35,12 @@ struct Leaderboard {
         return  ["player": player, "points": points]
     }
     
-    func deserialize(_ data: [String : Any]) -> Game {
+    func deserialize(_ data: [String : Any]) -> UserPoints {
         
         let player = data["player"] as? String ?? ""
         let points = data["points"] as? String ?? ""
         
-        return Game(player: player, points: points)
+        return UserPoints(player: player, points: points)
     }
     
 }
