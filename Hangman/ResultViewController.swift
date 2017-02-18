@@ -30,14 +30,18 @@ class ResultViewController: UIViewController {
         secretWordLabel.text = secretWord
         
         if points >= 0 {
-            print("positive")
                 scoreLabel.text = "+\(points)"
-                scoreLabel.textColor = Constants.Colors.chalkGreen
             
         } else {
-            print("negative")
             scoreLabel.text = "\(points)"
-                scoreLabel.textColor = Constants.Colors.chalkRed
+        }
+        
+        if gameResult == "YOU WON" {
+            scoreLabel.textColor = Constants.Colors.chalkGreen
+
+        } else {
+            scoreLabel.textColor = Constants.Colors.chalkRed
+            
         }
         
         backround.addBlurEffect()

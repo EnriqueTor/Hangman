@@ -11,12 +11,9 @@ import UIKit
 class LeaderboardSingleViewController: UIViewController {
 
     @IBOutlet weak var background: UIImageView!
-    
     @IBOutlet weak var singleButton: UITabBarItem!
     
     let store = HangmanData.sharedInstance
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +21,6 @@ class LeaderboardSingleViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         background.image = store.chalkboard
-
         tabBarController?.tabBar.transparentNavigationBar()
               
     }

@@ -140,7 +140,7 @@ class GameViewController: UIViewController {
         if isCorrect == true {
             
             button.isEnabled = false
-            button.setTitleColor(.green, for: .normal)
+            button.setTitleColor(Constants.Colors.chalkGreen, for: .normal)
             
             let buttonChar = button.titleLabel?.text?.characters.first!
             
@@ -174,7 +174,7 @@ class GameViewController: UIViewController {
         if isCorrect == false {
             
             button.isEnabled = false
-            button.setTitleColor(.red, for: .normal)
+            button.setTitleColor(Constants.Colors.chalkRed, for: .normal)
             updateScore(guessedRight: false)
         }
     }
@@ -241,7 +241,7 @@ class GameViewController: UIViewController {
         }
         
         self.database.child("users").child(self.store.user.id).child("singleScore").setValue(self.store.user.singleScore)
-        self.database.child("leaderboardSingle").child(self.store.user.singleScore).setValue(self.store.user.id)
+        self.database.child("leaderboardSingle").child(self.store.user.id).setValue(self.store.user.singleScore)
         performSegue(withIdentifier: "resultSegue", sender: self)
         
     }
@@ -265,7 +265,6 @@ class GameViewController: UIViewController {
                 dest.secretWord = secretWord
                 dest.points = points
             }
-            
         }
     }
     
