@@ -86,7 +86,8 @@ class WelcomeViewController: UIViewController {
                     userData.observe(.value, with: { (snapshot) in
                         
                         let data = snapshot.value as? [String:Any]
-                        let loggedUser = User(id: "", username: "", email: "", profilePic: "")
+                        let loggedUser = User(id: "", username: "", email: "", profilePic: "", singleScore: "", challengeScore: "", multiplayerScore: "")
+                        
                         self.store.user = loggedUser.deserialize(data!)
                         
                         NotificationCenter.default.post(name: Notification.Name.openMainVC, object: nil)

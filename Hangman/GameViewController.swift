@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import Firebase
 
 class GameViewController: UIViewController {
     
@@ -22,17 +23,20 @@ class GameViewController: UIViewController {
     // MARK: - Variables
     
     let store = HangmanData.sharedInstance
+    let database = FIRDatabase.database().reference()
     var lives = 6
     var secretWord = ""
     var wordCharacter = 0
     var hiddenWord = ""
     var points = 10
+    var typeOfGame = String()
+    var player: User!
     
     // MARK: - Loads
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loadPlayerData()
         isKeyboardEnabled(status: false)
         
         newGame()
@@ -44,6 +48,30 @@ class GameViewController: UIViewController {
         
     }
     
+    func loadPlayerData() {
+        
+        database.child("users").child(self.store.user.id).observe(.value, with: { (snapshot) in
+            
+            self.store.user = User(snapshot: snapshot)
+            
+            print(self.store.user)
+            
+            //            let data = snapshot.value as? [String:Any]
+            //
+            //            print(data)
+            //
+            //            let loggedUser = User(id: "", username: "", email: "", profilePic: "", singleScore: "", challengeScore: "", multiplayerScore: "")
+            //
+            //            self.store.user = loggedUser.deserialize(data!)
+            
+            //            self.store.user = User(snapshot: snapshot.value as! FIRDataSnapshot)
+            
+            
+            
+            
+        })
+    }
+    
     // MARK: - Actions
     
     @IBAction func letterPressed(_ sender: UIButton) {
@@ -51,138 +79,34 @@ class GameViewController: UIViewController {
         var buttonTitle = sender.titleLabel?.text
         
         if secretWord.range(of: buttonTitle!) != nil {
-            
-            correct(button: sender)
-            
+            play(isCorrect: true, button: sender)
         }
         else {
-            
-            miss(button: sender)
+            play(isCorrect: false, button: sender)
         }
-        
     }
     
     // MARK: - Methods
     
-    func correct(button: UIButton) {
-        
-        button.setTitleColor(.green, for: .normal)
-        button.isEnabled = false
-        
-        var buttonChar = button.titleLabel?.text?.characters.first!
-        
-        for (index, char) in secretWord.characters.enumerated() {
-            
-            if buttonChar == char {
-                
-                var newWord = ""
-                
-                for (newIndex, newChar) in hiddenWord.characters.enumerated() {
-                    
-                    if newIndex == index {
-                        
-                        newWord.append(char)
-                        
-                    } else {
-                        
-                        newWord.append(newChar)
-                    }
-                    
-                }
-                
-                hiddenWord = newWord
-                secretWordLabel.text = hiddenWord
-                
-                points = points + 1
-                updateScore()
-                win()
-            }
-            
-        }
-        
-    }
     
-    func miss(button: UIButton) {
+    func newGame() {
         
-        button.setTitleColor(.red, for: .normal)
-        button.isEnabled = false
+        lives = 6
+        livesLabel?.text = "\(lives)"
         
+        secretWord = ""
+        hiddenWord = ""
+        wordCharacter = 0
         
-        points = points - 1
-        updateScore()
-
-        lost()
-        
-    }
-    
-    func lost() {
-        
-        lives = lives - 1
-        livesLabel.text = "\(lives)"
-        
-        if lives < 0 {
-            
-            store.gameResult = "lost"
-            isKeyboardEnabled(status: false)
-            points = points - 5
-            updateScore()
-            performSegue(withIdentifier: "resultSegue", sender: self)
-        }
-        
-    }
-    
-    func win() {
-        
-        if secretWord == hiddenWord {
-            
-            isKeyboardEnabled(status: false)
-            store.gameResult = "win"
-            points = points + 5
-            performSegue(withIdentifier: "resultSegue", sender: self)
-        }
-        else {
-        
-        }
-    }
-    
-    func gameEnded(playerWon: Bool, pointsEarned: Int) {
-        
-            isKeyboardEnabled(status: false)
-            store.gameResult = playerWon
-            points = points + pointsEarned
-            performSegue(withIdentifier: "resultSegue", sender: self)
-        
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "resultSegue" {
-            
-            guard let dest = segue.destination as? ResultViewController else { return }
-            
-            if store.gameResult == "win" {
-             
-                dest.gameResult = "YOU WON"
-                dest.secretWord = secretWord
-                dest.points = points
-                
-            } else {
-                
-                dest.gameResult = "YOU LOST"
-                dest.secretWord = secretWord
-                dest.points = points
-            }
-            
-            
-        }
-    }
-    
-    func isKeyboardEnabled(status: Bool) {
+        points = 10
+        scoreLabel.text = "+\(points)"
         
         for button in keyboardButtons {
-            
-            button.isEnabled = status
+            button.setTitleColor(.white, for: .normal)
         }
+        
+        letsPlay()
+        
     }
     
     func letsPlay() {
@@ -197,50 +121,161 @@ class GameViewController: UIViewController {
             
         }
         
-            self.secretWordLabel.text = self.hiddenWord
-            self.isKeyboardEnabled(status: true)
+        self.secretWordLabel.text = self.hiddenWord
+        self.isKeyboardEnabled(status: true)
         
     }
     
     
-    func newGame() {
-        
-        lives = 6
-        
-        livesLabel?.text = "\(lives)"
-        secretWord = ""
-        hiddenWord = ""
-        wordCharacter = 0
-        points = 10
-        updateScore()
+    func isKeyboardEnabled(status: Bool) {
         
         for button in keyboardButtons {
             
-            button.setTitleColor(.white, for: .normal)
-            
+            button.isEnabled = status
         }
-        
-        letsPlay()
-
-        
-        
     }
     
-    func updateScore() {
+    func play(isCorrect: Bool, button: UIButton) {
+        
+        if isCorrect == true {
+            
+            button.isEnabled = false
+            button.setTitleColor(.green, for: .normal)
+            
+            let buttonChar = button.titleLabel?.text?.characters.first!
+            
+            for (index, char) in secretWord.characters.enumerated() {
+                
+                if buttonChar == char {
+                    
+                    var newWord = ""
+                    
+                    for (newIndex, newChar) in hiddenWord.characters.enumerated() {
+                        
+                        if newIndex == index {
+                            
+                            newWord.append(char)
+                            
+                        } else {
+                            
+                            newWord.append(newChar)
+                        }
+                        
+                    }
+                    
+                    hiddenWord = newWord
+                    secretWordLabel.text = hiddenWord
+                    
+                    updateScore(guessedRight: true)
+                }
+            }
+        }
+        
+        if isCorrect == false {
+            
+            button.isEnabled = false
+            button.setTitleColor(.red, for: .normal)
+            updateScore(guessedRight: false)
+        }
+    }
+    
+    func updateScore(guessedRight: Bool) {
+        
+        if guessedRight == true {
+            points = points + 1
+            winOrLose(test: "WON")
+        }
+        
+        if guessedRight == false {
+            lives = lives - 1
+            livesLabel.text = "\(lives)"
+            points = points - 1
+            winOrLose(test: "LOST")
+        }
         
         if points >= 0 {
-            print("positive")
             scoreLabel.text = "+\(points)"
             
             
         } else {
-            print("negative")
             scoreLabel.text = "\(points)"
-            
         }
-
     }
     
+    func winOrLose(test: String) {
+        
+        if test == "WON" {
+            if secretWord == hiddenWord {
+                gameEnded(result: "WON", pointsEarned: 10)
+            }
+        }
+        
+        if test == "LOST" {
+            if lives < 0 {
+                gameEnded(result: "LOST", pointsEarned: -10)
+            }
+        }
+    }
+    
+    func gameEnded(result: String, pointsEarned: Int) {
+        
+        isKeyboardEnabled(status: false)
+        store.playerWon = result
+        points = points + pointsEarned
+        
+        let root = database.child("game").childByAutoId()
+        let gameID = root.key
+        
+        let newGame = Game(id: gameID, player: store.user.id, type: "SINGLE", date: getDate(date: Date()), result: result, score: "\(points)", lives: "\(lives)")
+        
+        database.child("games").child(gameID).setValue(newGame.serialize())
+        database.child("playedSingle").child(store.user.id).child(gameID).setValue(getDate(date: Date()))
+        
+        if self.store.user.singleScore == "" {
+            
+            self.store.user.singleScore = "\(0 + self.points)"
+            
+        } else {
+            
+            self.store.user.singleScore = "\(Int32(self.store.user.singleScore)! + self.points)"
+        }
+        
+        self.database.child("users").child(self.store.user.id).child("singleScore").setValue(self.store.user.singleScore)
+        self.database.child("leaderboardSingle").child(self.store.user.singleScore).setValue(self.store.user.id)
+        performSegue(withIdentifier: "resultSegue", sender: self)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "resultSegue" {
+            
+            guard let dest = segue.destination as? ResultViewController else { return }
+            
+            if store.playerWon == "WON" {
+                
+                dest.gameResult = "YOU WON"
+                dest.secretWord = secretWord
+                dest.points = points
+                
+            }
+            if store.playerWon == "LOST" {
+                
+                dest.gameResult = "YOU LOST"
+                dest.secretWord = secretWord
+                dest.points = points
+            }
+            
+        }
+    }
+    
+    func getDate(date: Date) -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        return dateFormatter.string(from: date).uppercased()
+    }
     
 }
 
