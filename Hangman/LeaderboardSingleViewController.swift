@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import SDWebImage
 
-class LeaderboardSingleViewController: UIViewController {
+class LeaderboardSingleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var singleButton: UITabBarItem!
@@ -18,6 +18,7 @@ class LeaderboardSingleViewController: UIViewController {
     @IBOutlet weak var userPic: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userPoints: UILabel!
+    @IBOutlet weak var userPosition: UILabel!
     
     
     
@@ -46,5 +47,35 @@ class LeaderboardSingleViewController: UIViewController {
 
         
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "singleCell", for: indexPath)
+        
+        
+        
+        
+        
+        
+        
+        
+        return cell
+        
+    }
+    
+}
+
+class SingleTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var userPic: UIImageView!
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var userPoints: UILabel!
+    @IBOutlet weak var userPosition: UILabel!
+    
     
 }
