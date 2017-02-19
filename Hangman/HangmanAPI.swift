@@ -12,7 +12,7 @@ class HangmanAPI {
     
     // MARK: - Methods
     
-//    class func getHangmanWord(with completion: @escaping (([String]) -> Void)) {
+    //    class func getHangmanWord(with completion: @escaping (([String]) -> Void)) {
     
         class func getHangmanWord() {
         
@@ -42,23 +42,16 @@ class HangmanAPI {
                 
                 HangmanData.sharedInstance.arrayOfWords = words.components(separatedBy: ["\n"])
                 
-                
-                
                 //                let wordPositionPick =
-                
                 //                print(arrayOfWords[22])
-                
-//                completion(HangmanData.sharedInstance.arrayOfWords)
-                
+                //                completion(HangmanData.sharedInstance.arrayOfWords)
                 
             } catch {
                 
                 print("8b. Something failed!!")
             }
-            
         }
         task.resume()
         
     }
-    
 }

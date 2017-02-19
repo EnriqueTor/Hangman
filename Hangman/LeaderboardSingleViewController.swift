@@ -24,17 +24,12 @@ class LeaderboardSingleViewController: UIViewController, UITableViewDelegate, UI
     let database = FIRDatabase.database().reference()
     var userSimplePosition = String()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         retrieveUserPoints()
-        
-        
         background.image = store.chalkboard
         tabBarController?.tabBar.transparentNavigationBar()
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,7 +50,6 @@ class LeaderboardSingleViewController: UIViewController, UITableViewDelegate, UI
         userPosition.text = position + "."
         userName.text = name
         userPoints.text = points
-        
     }
     
     func retrieveUserPoints() {
@@ -71,32 +65,28 @@ class LeaderboardSingleViewController: UIViewController, UITableViewDelegate, UI
                 var key = Array(data.keys)
                 
                 key.sort { (o1, o2) -> Bool in
+                    
                     return Int32(data[o1]!)! > Int32(data[o2]!)!
                 }
+                
                 self.store.leaderboardSingle = key
                 
                 if let position = self.store.leaderboardSingle.index(where: {$0 == self.store.user.id}) {
-                
-                self.userSimplePosition = "\(Int(position) + 1)" ?? "?"
-                
-                print(self.userSimplePosition)
-                
-                self.retrieveUserInfo(url: self.store.user.profilePic, image: self.userPic, position: self.userSimplePosition, name: self.store.user.username, points: self.store.user.scoreSingle)
-                
-                
-                self.tableView.reloadData()
+                    
+                    self.userSimplePosition = "\(Int(position) + 1)" ?? "?"
+                    self.retrieveUserInfo(url: self.store.user.profilePic, image: self.userPic, position: self.userSimplePosition, name: self.store.user.username, points: self.store.user.scoreSingle)
+                    self.tableView.reloadData()
+                    
                 } else {
+                    
                     self.retrieveUserInfo(url: self.store.user.profilePic, image: self.userPic, position: "???", name: self.store.user.username, points: "???")
-            self.tableView.reloadData()
+                    self.tableView.reloadData()
                 }
             }
-                })
-        
+        })
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        print("THIS IS THE AMOUNT OF ROWS \(self.store.leaderboardSingle.count)")
         
         return self.store.leaderboardSingle.count
     }
@@ -104,15 +94,12 @@ class LeaderboardSingleViewController: UIViewController, UITableViewDelegate, UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "singleCell", for: indexPath) as! SingleTableViewCell
-        
         var user = self.store.leaderboardSingle[indexPath.row]
         
         self.database.child("users").child(user).observeSingleEvent(of: .value, with: { (snapshot) in
             
             let data = snapshot.value as? [String:Any]
-            
             let user = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
-            
             var userSelected = user.deserialize(data!)
             
             DispatchQueue.main.async {
@@ -120,22 +107,11 @@ class LeaderboardSingleViewController: UIViewController, UITableViewDelegate, UI
                 cell.retrieveUserInfo(url: userSelected.profilePic, image: cell.userPic, position: indexPath.row + 1, name: userSelected.username, points: userSelected.scoreSingle)
                 
                 cell.backgroundColor = UIColor.clear
-                
             }
-            
-            
-            
-            
         })
         
-        
-        
-        
         return cell
-        
     }
-    
-    
 }
 
 class SingleTableViewCell: UITableViewCell {
@@ -157,7 +133,5 @@ class SingleTableViewCell: UITableViewCell {
         userPosition.text = "\(position)."
         userName.text = name
         userPoints.text = points
-        
     }
-    
 }

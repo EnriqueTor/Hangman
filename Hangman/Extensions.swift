@@ -45,10 +45,10 @@ extension UITabBar {
     }
 }
 
-extension UIImageView
-{
-    func addBlurEffect()
-    {
+extension UIImageView {
+    
+    func addBlurEffect() {
+        
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = self.bounds

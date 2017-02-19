@@ -28,7 +28,6 @@ struct Game {
         self.result = result
         self.score = score
         self.lives = lives
-        
     }
     
     init(snapshot: FIRDataSnapshot) {
@@ -61,5 +60,4 @@ struct Game {
         
         return Game(id: id, player: player, type: type, date: date, result: result, score: score, lives: lives)
     }
-    
 }

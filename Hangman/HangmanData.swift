@@ -18,19 +18,13 @@ class HangmanData {
     var arrayOfWords: [String] = []
     
     var user = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
-    
     var game = Game(id: "", player: "", type: "", date: "", result: "", score: "", lives: "")
-    
     var chalkboard = UIImage(named: "Chalkboard")
-    
     var playerWon = String()
-    
     var leaderboardSingle = [String]()
     
     // MARK: - Initializers
     
     private init() {}
-    
-    
     
 }
