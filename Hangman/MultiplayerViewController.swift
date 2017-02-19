@@ -9,11 +9,14 @@
 import UIKit
 import Firebase
 
-class MultiplayerViewController: UIViewController {
+class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
+    @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var background: UIImageView!
+    
+   
     
     let store = HangmanData.sharedInstance
     
@@ -21,13 +24,14 @@ class MultiplayerViewController: UIViewController {
         super.viewDidLoad()
 
         background.image = store.chalkboard
-
-        // Do any additional setup after loading the view.
+        
+        
+        
+        tableView.reloadData()
     }
 
     
     @IBAction func createGamePushed(_ sender: UIButton) {
-        
         
         
     }
@@ -36,16 +40,44 @@ class MultiplayerViewController: UIViewController {
     @IBAction func activeGamesPushed(_ sender: UIButton) {
         
         
-        
-        
     }
     
     @IBAction func archivedGamesPushed(_ sender: UIButton) {
         
         
+    }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: "multiplayerCell", for: indexPath) as! MultiplayerTableViewCell
+        
+        
+        cell.backgroundColor = UIColor.clear
+        
+        
+         cell.gameLabel.text = "THE BEST TEAM"
+        
+        cell.user1Pic.setRounded()
+        cell.user2Pic.setRounded()
+        cell.user3Pic.setRounded()
+        cell.user4Pic.setRounded()
+
+        
+        
+        return cell
         
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+
+    
     
 }
 
