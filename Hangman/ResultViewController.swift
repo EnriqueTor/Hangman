@@ -11,21 +11,23 @@ import UIKit
 class ResultViewController: UIViewController {
     
     
-    
+    @IBOutlet weak var backgroundMessage: UIImageView!
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var secretWordLabel: UILabel!
-    @IBOutlet weak var backround: UIImageView!
+    @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var scoreLabel: UILabel!
     
     
     var gameResult = ""
     var secretWord = ""
     var points = 0
+    let store = HangmanData.sharedInstance
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        backgroundMessage.image = store.smallChalkboard
         resultLabel.text = gameResult
         secretWordLabel.text = secretWord
         
@@ -44,7 +46,7 @@ class ResultViewController: UIViewController {
             
         }
         
-        backround.addBlurEffect()
+        background.addBlurEffect()
         
     }
     

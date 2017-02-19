@@ -12,20 +12,17 @@ class MessageViewController: UIViewController {
 
     
     @IBOutlet weak var titleLabel: UILabel!
-    
-    
     @IBOutlet weak var messageTextView: UITextView!
+    @IBOutlet weak var backgroundMessage: UIImageView!
     
     
-    
-    
-    
+    let store = HangmanData.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        backgroundMessage.image = store.smallChalkboard
         titleLabel.textColor = Constants.Colors.chalkBlue
-        // Do any additional setup after loading the view.
     }
 
    
