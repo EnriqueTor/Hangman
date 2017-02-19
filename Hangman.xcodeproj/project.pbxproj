@@ -14,6 +14,7 @@
 		BB1F47851E57AC0400E840B5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1F47841E57AC0400E840B5 /* Constants.swift */; };
 		BB1F47871E57DF3500E840B5 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1F47861E57DF3500E840B5 /* Game.swift */; };
 		BB1F47891E58103900E840B5 /* UserPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1F47881E58103900E840B5 /* UserPoints.swift */; };
+		BB1F478B1E59458400E840B5 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1F478A1E59458400E840B5 /* MessageViewController.swift */; };
 		BB75722B1E5523B50018FFD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75722A1E5523B50018FFD1 /* AppDelegate.swift */; };
 		BB75722D1E5523B50018FFD1 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75722C1E5523B50018FFD1 /* WelcomeViewController.swift */; };
 		BB7572301E5523B50018FFD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB75722E1E5523B50018FFD1 /* Main.storyboard */; };
@@ -49,6 +50,7 @@
 		BB1F47841E57AC0400E840B5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BB1F47861E57DF3500E840B5 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		BB1F47881E58103900E840B5 /* UserPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPoints.swift; sourceTree = "<group>"; };
+		BB1F478A1E59458400E840B5 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		BB7572271E5523B50018FFD1 /* Hangman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hangman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB75722A1E5523B50018FFD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB75722C1E5523B50018FFD1 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				BBB913401E555F3F00E779AA /* LoginViewController.swift */,
 				BB1F477C1E5764A700E840B5 /* LeaderboardSingleViewController.swift */,
 				BB1F47801E5764D300E840B5 /* LeaderboardMultiplayerViewController.swift */,
+				BB1F478A1E59458400E840B5 /* MessageViewController.swift */,
 				BB1F477E1E5764C100E840B5 /* LeaderboardChallengeViewController.swift */,
 				BBB913441E555F5200E779AA /* MainViewController.swift */,
 				BB1F47821E579ADD00E840B5 /* ResultViewController.swift */,
@@ -344,6 +347,7 @@
 				BBDA193C1E5683620007FBA0 /* KeychainWrapper.m in Sources */,
 				BBB913451E555F5200E779AA /* MainViewController.swift in Sources */,
 				BBB913471E55601300E779AA /* SettingsViewController.swift in Sources */,
+				BB1F478B1E59458400E840B5 /* MessageViewController.swift in Sources */,
 				BBB9134F1E5600E800E779AA /* HangmanAPI.swift in Sources */,
 				BBDA19441E56C7550007FBA0 /* AppController.swift in Sources */,
 				BB1F47831E579ADD00E840B5 /* ResultViewController.swift in Sources */,

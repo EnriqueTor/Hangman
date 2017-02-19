@@ -40,7 +40,9 @@ class GameViewController: UIViewController {
         isKeyboardEnabled(status: false)
         
         newGame()
-        
+        print("==================================")
+        print(typeOfGame)
+        print("==================================")
         background.image = store.chalkboard
         
     }
@@ -223,22 +225,41 @@ class GameViewController: UIViewController {
         let root = database.child("game").childByAutoId()
         let gameID = root.key
         
-        let newGame = Game(id: gameID, player: store.user.id, type: "SINGLE", date: getDate(date: Date()), result: result, score: "\(points)", lives: "\(lives)")
+        let newGame = Game(id: gameID, player: store.user.id, type: typeOfGame, date: getDate(date: Date()), result: result, score: "\(points)", lives: "\(lives)")
         
         database.child("games").child(gameID).setValue(newGame.serialize())
-        database.child("playedSingle").child(store.user.id).child(gameID).setValue(getDate(date: Date()))
         
-        if self.store.user.scoreSingle == "" {
-            
-            self.store.user.scoreSingle = "\(0 + self.points)"
-            
-        } else {
-            
-            self.store.user.scoreSingle = "\(Int32(self.store.user.scoreSingle)! + self.points)"
+        if typeOfGame == "SINGLE" {
+            database.child("playedSingle").child(store.user.id).child(gameID).setValue(getDate(date: Date()))
+       
+            if self.store.user.scoreSingle == "" {
+                self.store.user.scoreSingle = "\(0 + self.points)"
+            }
+            else {
+                self.store.user.scoreSingle = "\(Int32(self.store.user.scoreSingle)! + self.points)"
+            }
+
+            self.database.child("users").child(self.store.user.id).child("scoreSingle").setValue(self.store.user.scoreSingle)
+            self.database.child("leaderboardSingle").child(self.store.user.id).setValue(self.store.user.scoreSingle)
+        
+        
         }
         
-        self.database.child("users").child(self.store.user.id).child("scoreSingle").setValue(self.store.user.scoreSingle)
-        self.database.child("leaderboardSingle").child(self.store.user.id).setValue(self.store.user.scoreSingle)
+        if typeOfGame == "CHALLENGE" {
+            
+            database.child("playedChallenge").child(store.user.id).child(getDate(date: Date())).setValue(gameID) 
+        
+            if self.store.user.scoreChallenge == "" {
+                self.store.user.scoreChallenge = "\(0 + self.points)"
+            }
+            else {
+                self.store.user.scoreChallenge = "\(Int32(self.store.user.scoreChallenge)! + self.points)"
+            }
+            
+            self.database.child("users").child(self.store.user.id).child("scoreChallenge").setValue(self.store.user.scoreChallenge)
+            self.database.child("leaderboardChallenge").child(self.store.user.id).setValue(self.store.user.scoreChallenge)
+        }
+        
         performSegue(withIdentifier: "resultSegue", sender: self)
         
     }

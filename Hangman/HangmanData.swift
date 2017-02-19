@@ -22,6 +22,7 @@ class HangmanData {
     var chalkboard = UIImage(named: "Chalkboard")
     var playerWon = String()
     var leaderboardSingle = [String]()
+    var leaderboardChallenge = [String]()
     
     // MARK: - Initializers
     

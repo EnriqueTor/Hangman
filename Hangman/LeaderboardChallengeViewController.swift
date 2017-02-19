@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class LeaderboardChallengeViewController: UIViewController {
+class LeaderboardChallengeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var challengeButton: UITabBarItem!
@@ -53,7 +53,7 @@ class LeaderboardChallengeViewController: UIViewController {
     
     func retrieveUserPoints() {
         
-        database.child("leaderboardSingle").observe(.value, with: { (snapshot) in
+        database.child("leaderboardChallenge").observe(.value, with: { (snapshot) in
             
             if snapshot.exists() == false {
                 
@@ -68,12 +68,12 @@ class LeaderboardChallengeViewController: UIViewController {
                     return Int32(data[o1]!)! > Int32(data[o2]!)!
                 }
                 
-                self.store.leaderboardSingle = key
+                self.store.leaderboardChallenge = key
                 
-                if let position = self.store.leaderboardSingle.index(where: {$0 == self.store.user.id}) {
+                if let position = self.store.leaderboardChallenge.index(where: {$0 == self.store.user.id}) {
                     
                     self.userSimplePosition = "\(Int(position) + 1)" ?? "?"
-                    self.retrieveUserInfo(url: self.store.user.profilePic, image: self.userPic, position: self.userSimplePosition, name: self.store.user.username, points: self.store.user.scoreSingle)
+                    self.retrieveUserInfo(url: self.store.user.profilePic, image: self.userPic, position: self.userSimplePosition, name: self.store.user.username, points: self.store.user.scoreChallenge)
                     self.tableView.reloadData()
                     
                 } else {
@@ -87,13 +87,13 @@ class LeaderboardChallengeViewController: UIViewController {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return self.store.leaderboardSingle.count
+        return self.store.leaderboardChallenge.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "singleCell", for: indexPath) as! SingleTableViewCell
-        var user = self.store.leaderboardSingle[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "challengeCell", for: indexPath) as! ChallengeTableViewCell
+        var user = self.store.leaderboardChallenge[indexPath.row]
         
         self.database.child("users").child(user).observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -103,7 +103,7 @@ class LeaderboardChallengeViewController: UIViewController {
             
             DispatchQueue.main.async {
                 
-                cell.retrieveUserInfo(url: userSelected.profilePic, image: cell.userPic, position: indexPath.row + 1, name: userSelected.username, points: userSelected.scoreSingle)
+                cell.retrieveUserInfo(url: userSelected.profilePic, image: cell.userPic, position: indexPath.row + 1, name: userSelected.username, points: userSelected.scoreChallenge)
                 
                 cell.backgroundColor = UIColor.clear
             }

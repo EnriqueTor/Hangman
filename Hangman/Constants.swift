@@ -15,5 +15,6 @@ struct Constants {
        
         static let chalkGreen = UIColor(red: 165/255, green: 220/255, blue: 125/255, alpha: 1.00)
         static let chalkRed = UIColor(red: 231/255, green: 133/255, blue: 99/255, alpha: 1.00)
+        static let chalkBlue = UIColor(red: 99/255, green: 156/255, blue: 194/255, alpha: 1.00)
     }
 }

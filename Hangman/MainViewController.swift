@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MainViewController: UIViewController, UINavigationControllerDelegate {
 
@@ -14,12 +15,14 @@ class MainViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBOutlet weak var background: UIImageView!
 
-    
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var challengeButton: UIButton!
+    @IBOutlet weak var multiplayerButton: UIButton!
     
     let store = HangmanData.sharedInstance
     
     
-    
+    let database = FIRDatabase.database().reference()
     
     
     
@@ -50,6 +53,21 @@ class MainViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
     
+    @IBAction func challengePushed(_ sender: UIButton) {
+        
+        self.database.child("playedChallenge").child(self.store.user.id).child(getDate(date: Date())).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if snapshot.exists() == true {
+                
+                self.performSegue(withIdentifier: "messageSegue", sender: self)
+                
+            }
+            else {
+        
+                self.performSegue(withIdentifier: "challengeSegue", sender: self)
+            }
+        })
+    }
     
     @IBAction func settingsPushed(_ sender: UIButton) {
         
@@ -69,5 +87,31 @@ class MainViewController: UIViewController, UINavigationControllerDelegate {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "playSegue" {
+            
+            guard let dest = segue.destination as? GameViewController else { return }
+            
+            dest.typeOfGame = "SINGLE"
+        }
+        
+        if segue.identifier == "challengeSegue" {
+            
+            guard let dest = segue.destination as? GameViewController else { return }
+            
+            dest.typeOfGame = "CHALLENGE"
+        }
+        
+        
+    }
     
+    func getDate(date: Date) -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        return dateFormatter.string(from: date).uppercased()
+    }
+
 }

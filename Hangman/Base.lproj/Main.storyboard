@@ -388,6 +388,9 @@
                                         <state key="normal" title="CHALLENGE">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="challengePushed:" destination="rY0-DK-ymS" eventType="touchUpInside" id="K5G-ai-B39"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mPN-O6-cnk">
                                         <rect key="frame" x="0.0" y="144" width="268" height="72"/>
@@ -432,9 +435,14 @@
                     <navigationItem key="navigationItem" title="HANGMAN" id="dAB-OU-F3G"/>
                     <connections>
                         <outlet property="background" destination="MNU-Fd-RzO" id="47S-6c-0rW"/>
+                        <outlet property="challengeButton" destination="mbS-k4-cD4" id="kEp-XK-Ai4"/>
+                        <outlet property="multiplayerButton" destination="mPN-O6-cnk" id="ryK-QP-fA4"/>
+                        <outlet property="playButton" destination="d8U-Jj-hdP" id="r2F-bL-Pdu"/>
                         <segue destination="KTm-6O-rKd" kind="show" identifier="settingsSegue" id="g4h-yu-HJl"/>
                         <segue destination="82o-r0-OrU" kind="show" identifier="leaderboardSegue" id="igO-gS-ci9"/>
                         <segue destination="lnO-v0-nao" kind="show" identifier="playSegue" id="sBD-xM-Fpk"/>
+                        <segue destination="lnO-v0-nao" kind="show" identifier="challengeSegue" id="99v-ir-wAk"/>
+                        <segue destination="ZUB-64-JRH" kind="presentation" identifier="messageSegue" modalPresentationStyle="overFullScreen" id="pwZ-zV-7BJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2qd-FK-CdK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -955,7 +963,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrz-SB-1bx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1448.8" y="1712.2938530734634"/>
+            <point key="canvasLocation" x="2287" y="965"/>
         </scene>
         <!--SETTINGS-->
         <scene sceneID="ma6-5g-yII">
@@ -971,6 +979,10 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chalkboard" translatesAutoresizingMaskIntoConstraints="NO" id="m8P-Ab-HrV">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Divider" translatesAutoresizingMaskIntoConstraints="NO" id="mSP-3l-39D">
+                                <rect key="frame" x="-10" y="477" width="400" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Divider" translatesAutoresizingMaskIntoConstraints="NO" id="zej-Jp-LC1">
                                 <rect key="frame" x="-14" y="61" width="400" height="15"/>
@@ -988,7 +1000,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J0c-7b-YAK">
-                                <rect key="frame" x="93" y="412" width="187" height="72"/>
+                                <rect key="frame" x="93" y="397" width="187" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
                                 <state key="normal" title="FEEDBACK">
@@ -999,7 +1011,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="30b-DD-pXw">
-                                <rect key="frame" x="140" y="332" width="92" height="72"/>
+                                <rect key="frame" x="140" y="347" width="92" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
                                 <state key="normal" title="help">
@@ -1038,7 +1050,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yOY-wB-a68">
-                                <rect key="frame" x="30" y="252" width="314" height="72"/>
+                                <rect key="frame" x="30" y="217" width="314" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
                                 <state key="normal" title="CHANGE PROFILE">
@@ -1442,6 +1454,124 @@
             </objects>
             <point key="canvasLocation" x="6" y="1738"/>
         </scene>
+        <!--Message View Controller-->
+        <scene sceneID="AJU-Ci-NdI">
+            <objects>
+                <viewController id="ZUB-64-JRH" customClass="MessageViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mcG-P1-VxY"/>
+                        <viewControllerLayoutGuide type="bottom" id="zef-7F-WJh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wte-qo-jiW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L4W-C7-rLu">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" alpha="0.94999998807907104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DG6-u6-9WO">
+                                        <rect key="frame" x="0.0" y="0.0" width="396" height="667"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0mk-R9-0mY">
+                                        <rect key="frame" x="10" y="144" width="354" height="264"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ChalkboardBlackOption" translatesAutoresizingMaskIntoConstraints="NO" id="dF9-iO-PCh">
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="264"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="COME BACK TOMORROW!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJl-pp-uFg">
+                                                <rect key="frame" x="16" y="20" width="327" height="64"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
+                                                <color key="textColor" red="0.1729090512" green="0.38734674450000001" blue="0.82395416499999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWg-LF-Igf">
+                                                <rect key="frame" x="143" y="191" width="72" height="48"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="20"/>
+                                                <state key="normal" title="CLOSE">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="closePushed:" destination="ZUB-64-JRH" eventType="touchUpInside" id="Jxb-cF-Uwn"/>
+                                                    <action selector="closePushed:" destination="4SW-MG-uvE" eventType="touchUpInside" id="PBq-N1-fUT"/>
+                                                </connections>
+                                            </button>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="SEEMS THAT YOU ALREADY PLAYED TODAY'S CHALLENGE. INSTEAD YOU CAN PLAY WITH THIS STAR..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="m06-xk-q84">
+                                                <rect key="frame" x="31" y="63" width="292" height="128"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLx-Wq-rSQ">
+                                                <rect key="frame" x="118" y="150" width="39" height="41"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="Star"/>
+                                                <connections>
+                                                    <action selector="starPushed:" destination="ZUB-64-JRH" eventType="touchUpInside" id="ADV-60-pXr"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yas-9q-6HF">
+                                                <rect key="frame" x="163" y="150" width="39" height="41"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="Star"/>
+                                                <connections>
+                                                    <action selector="starPushed:" destination="ZUB-64-JRH" eventType="touchUpInside" id="gcS-sV-tbY"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b8a-Hi-FXY">
+                                                <rect key="frame" x="212" y="150" width="39" height="41"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="Star"/>
+                                                <connections>
+                                                    <action selector="starPushed:" destination="ZUB-64-JRH" eventType="touchUpInside" id="EQ4-Ip-Ryw"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EMm-M0-oiL">
+                                                <rect key="frame" x="259" y="150" width="39" height="41"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="Star"/>
+                                                <connections>
+                                                    <action selector="starPushed:" destination="ZUB-64-JRH" eventType="touchUpInside" id="IrN-7M-mMC"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VXL-tB-4rB">
+                                                <rect key="frame" x="71" y="150" width="39" height="41"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="Star"/>
+                                                <connections>
+                                                    <action selector="starPushed:" destination="ZUB-64-JRH" eventType="touchUpInside" id="i0M-ve-yCb"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="L4W-C7-rLu" firstAttribute="width" secondItem="Wte-qo-jiW" secondAttribute="width" id="BYd-gt-nzf"/>
+                            <constraint firstItem="L4W-C7-rLu" firstAttribute="centerX" secondItem="Wte-qo-jiW" secondAttribute="centerX" id="mOi-ex-FeM"/>
+                            <constraint firstItem="L4W-C7-rLu" firstAttribute="height" secondItem="Wte-qo-jiW" secondAttribute="height" id="whr-SY-8T4"/>
+                            <constraint firstItem="L4W-C7-rLu" firstAttribute="centerY" secondItem="Wte-qo-jiW" secondAttribute="centerY" id="zOV-I0-A8C"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="messageTextView" destination="m06-xk-q84" id="ca4-GW-88W"/>
+                        <outlet property="titleLabel" destination="yJl-pp-uFg" id="V4S-7p-vh2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NJa-iK-032" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="736.79999999999995" y="1756.3718140929536"/>
+        </scene>
         <!--LEADERBOARD-->
         <scene sceneID="KnF-lJ-DYg">
             <objects>
@@ -1620,6 +1750,10 @@
         <image name="Frame" width="500" height="476"/>
         <image name="HangmanLogo" width="227" height="259"/>
         <image name="Heart" width="200" height="180"/>
+        <image name="Star" width="200" height="211"/>
         <image name="WelcomeLogo" width="1282" height="78"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="99v-ir-wAk"/>
+    </inferredMetricsTieBreakers>
 </document>
