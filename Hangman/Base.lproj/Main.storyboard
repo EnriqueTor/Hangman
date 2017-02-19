@@ -456,7 +456,7 @@
         <!--MULTIPLAYER-->
         <scene sceneID="SJz-Sp-ces">
             <objects>
-                <viewController title="MULTIPLAYER" id="RZD-BX-dcg" sceneMemberID="viewController">
+                <viewController title="MULTIPLAYER" id="RZD-BX-dcg" customClass="MultiplayerViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mVb-Mh-HEA"/>
                         <viewControllerLayoutGuide type="bottom" id="NBr-sg-AD4"/>
@@ -472,6 +472,105 @@
                                 <rect key="frame" x="-13" y="62" width="400" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zui-tD-TmK">
+                                <rect key="frame" x="90" y="599" width="195" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
+                                <state key="normal" title="ARCHIVED GAMES">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="archivedGamesPushed:" destination="RZD-BX-dcg" eventType="touchUpInside" id="qF5-N7-mND"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Frame2" translatesAutoresizingMaskIntoConstraints="NO" id="mGp-EB-bAU">
+                                <rect key="frame" x="32" y="189" width="311" height="400"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8pv-kH-77o">
+                                <rect key="frame" x="109" y="79" width="157" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="20"/>
+                                <state key="normal" title="create GAME">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="createGamePushed:" destination="RZD-BX-dcg" eventType="touchUpInside" id="3Ba-B6-QAV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfD-FX-g88">
+                                <rect key="frame" x="105" y="135" width="164" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
+                                <state key="normal" title="ACTIVE GAMES">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="activeGamesPushed:" destination="RZD-BX-dcg" eventType="touchUpInside" id="1ZL-Sb-qMc"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XCp-bu-YIL">
+                                <rect key="frame" x="54" y="171" width="266" height="408"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="multiplayerCell" rowHeight="79" id="P98-W1-JF8" customClass="MultiplayerTableViewCell" customModule="Hangman" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="266" height="79"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P98-W1-JF8" id="z6T-0A-Qg0">
+                                            <rect key="frame" x="0.0" y="0.0" width="266" height="79"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NSH-NT-QXB">
+                                                    <rect key="frame" x="13" y="-25" width="240" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Divider" translatesAutoresizingMaskIntoConstraints="NO" id="jBT-3O-flg">
+                                                            <rect key="frame" x="8" y="91" width="210" height="15"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tJ6-y2-1fj">
+                                                            <rect key="frame" x="15" y="40" width="123" height="43"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="20"/>
+                                                            <color key="textColor" red="0.96078431369999995" green="0.65098039220000004" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iZ3-03-iRi">
+                                                            <rect key="frame" x="182" y="27" width="28" height="28"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tmF-q2-cKW">
+                                                            <rect key="frame" x="182" y="62" width="28" height="28"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vPg-eb-3iT">
+                                                            <rect key="frame" x="146" y="27" width="28" height="28"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MRE-Ow-mHQ">
+                                                            <rect key="frame" x="146" y="62" width="28" height="28"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="gameLabel" destination="tJ6-y2-1fj" id="Kvv-qK-Lzb"/>
+                                            <outlet property="user1Pic" destination="vPg-eb-3iT" id="XBz-DX-aIy"/>
+                                            <outlet property="user2Pic" destination="iZ3-03-iRi" id="aLK-cg-7Ug"/>
+                                            <outlet property="user3Pic" destination="MRE-Ow-mHQ" id="b1K-Wp-9kU"/>
+                                            <outlet property="user4Pic" destination="tmF-q2-cKW" id="7kM-zU-egp"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="RZD-BX-dcg" id="2eB-RJ-DUc"/>
+                                    <outlet property="delegate" destination="RZD-BX-dcg" id="AOR-IP-15H"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -484,7 +583,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yCm-4j-cjI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="782" y="1755"/>
+            <point key="canvasLocation" x="781.60000000000002" y="1754.5727136431785"/>
         </scene>
         <!--GAME-->
         <scene sceneID="Mff-Fo-CH8">
@@ -1834,6 +1933,7 @@
         <image name="ChalkboardGreenOption" width="637" height="443"/>
         <image name="Divider" width="1700" height="75"/>
         <image name="Frame" width="500" height="476"/>
+        <image name="Frame2" width="573" height="893"/>
         <image name="HangmanLogo" width="227" height="259"/>
         <image name="Heart" width="200" height="180"/>
         <image name="Star" width="200" height="211"/>

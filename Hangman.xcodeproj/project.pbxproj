@@ -31,6 +31,7 @@
 		BBB9134B1E5563CE00E779AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBB9134A1E5563CE00E779AA /* GoogleService-Info.plist */; };
 		BBB9134F1E5600E800E779AA /* HangmanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB9134E1E5600E800E779AA /* HangmanAPI.swift */; };
 		BBB913511E56012800E779AA /* HangmanData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB913501E56012800E779AA /* HangmanData.swift */; };
+		BBD5C41E1E5991960020C676 /* MultiplayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD5C41D1E5991960020C676 /* MultiplayerViewController.swift */; };
 		BBDA19381E5607B40007FBA0 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDA19371E5607B40007FBA0 /* Secrets.swift */; };
 		BBDA193C1E5683620007FBA0 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDA193B1E5683620007FBA0 /* KeychainWrapper.m */; };
 		BBDA193E1E569AB40007FBA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBDA193D1E569AB40007FBA0 /* Assets.xcassets */; };
@@ -69,6 +70,7 @@
 		BBB9134A1E5563CE00E779AA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BBB9134E1E5600E800E779AA /* HangmanAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HangmanAPI.swift; sourceTree = "<group>"; };
 		BBB913501E56012800E779AA /* HangmanData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HangmanData.swift; sourceTree = "<group>"; };
+		BBD5C41D1E5991960020C676 /* MultiplayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiplayerViewController.swift; sourceTree = "<group>"; };
 		BBDA19371E5607B40007FBA0 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		BBDA19391E5683610007FBA0 /* Hangman-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hangman-Bridging-Header.h"; sourceTree = "<group>"; };
 		BBDA193A1E5683620007FBA0 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				BB1F477E1E5764C100E840B5 /* LeaderboardChallengeViewController.swift */,
 				BBB913441E555F5200E779AA /* MainViewController.swift */,
 				BB1F47821E579ADD00E840B5 /* ResultViewController.swift */,
+				BBD5C41D1E5991960020C676 /* MultiplayerViewController.swift */,
 				BBB913421E555F4A00E779AA /* RegisterViewController.swift */,
 				BBB913461E55601300E779AA /* SettingsViewController.swift */,
 				BB75722C1E5523B50018FFD1 /* WelcomeViewController.swift */,
@@ -350,6 +353,7 @@
 				BB1F478B1E59458400E840B5 /* MessageViewController.swift in Sources */,
 				BBB9134F1E5600E800E779AA /* HangmanAPI.swift in Sources */,
 				BBDA19441E56C7550007FBA0 /* AppController.swift in Sources */,
+				BBD5C41E1E5991960020C676 /* MultiplayerViewController.swift in Sources */,
 				BB1F47831E579ADD00E840B5 /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
