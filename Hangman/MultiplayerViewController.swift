@@ -59,15 +59,14 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
         
         cell.backgroundColor = UIColor.clear
         
-        
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+
          cell.gameLabel.text = "THE BEST TEAM"
         
         cell.user1Pic.setRounded()
         cell.user2Pic.setRounded()
         cell.user3Pic.setRounded()
         cell.user4Pic.setRounded()
-
-        
         
         return cell
         
@@ -76,8 +75,6 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-
-    
     
 }
 

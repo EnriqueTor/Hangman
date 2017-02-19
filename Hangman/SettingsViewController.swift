@@ -53,17 +53,20 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
     
     @IBAction func setChalkboardGreen(_ sender: UIButton) {
         store.chalkboard = UIImage(named: "ChalkboardGreen")
+        store.smallChalkboard = UIImage(named: "ChalkboardGreenOption")
         background.image = store.chalkboard
     }
     
     @IBAction func setChalkboardGray(_ sender: UIButton) {
         store.chalkboard = UIImage(named: "Chalkboard")
+        store.smallChalkboard = UIImage(named: "ChalkboardBlackOption")
         background.image = store.chalkboard
     }
     
     
     @IBAction func setChalkboardBlue(_ sender: UIButton) {
         store.chalkboard = UIImage(named: "ChalkboardBlue")
+        store.smallChalkboard = UIImage(named: "ChalkboardBlueOption")
         background.image = store.chalkboard
         
     }
