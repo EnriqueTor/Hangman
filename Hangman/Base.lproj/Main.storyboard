@@ -1736,6 +1736,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="background" destination="DG6-u6-9WO" id="Rqo-Xr-34G"/>
                         <outlet property="backgroundMessage" destination="dF9-iO-PCh" id="KKb-zi-MEY"/>
                         <outlet property="messageTextView" destination="m06-xk-q84" id="ca4-GW-88W"/>
                     </connections>
