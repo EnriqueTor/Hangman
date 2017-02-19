@@ -580,6 +580,9 @@
                             <constraint firstItem="8eR-YL-ocg" firstAttribute="centerY" secondItem="b86-S1-vHV" secondAttribute="centerY" id="mpL-no-qPj"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="background" destination="8eR-YL-ocg" id="Qbr-os-mh1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yCm-4j-cjI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

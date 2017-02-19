@@ -11,8 +11,16 @@ import Firebase
 
 class MultiplayerViewController: UIViewController {
 
+    
+    
+    @IBOutlet weak var background: UIImageView!
+    
+    let store = HangmanData.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        background.image = store.chalkboard
 
         // Do any additional setup after loading the view.
     }
