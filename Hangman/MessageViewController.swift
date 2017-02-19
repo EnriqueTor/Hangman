@@ -22,7 +22,7 @@ class MessageViewController: UIViewController {
         super.viewDidLoad()
 
         backgroundMessage.image = store.smallChalkboard
-        titleLabel.textColor = Constants.Colors.chalkBlue
+//        titleLabel.textColor = Constants.Colors.chalkBlue
     }
 
    

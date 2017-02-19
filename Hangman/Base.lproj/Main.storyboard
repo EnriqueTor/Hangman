@@ -1696,13 +1696,6 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="264"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="COME BACK TOMORROW!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJl-pp-uFg">
-                                                <rect key="frame" x="16" y="20" width="327" height="64"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
-                                                <color key="textColor" red="0.1729090512" green="0.38734674450000001" blue="0.82395416499999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWg-LF-Igf">
                                                 <rect key="frame" x="143" y="191" width="72" height="48"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1715,54 +1708,18 @@
                                                     <action selector="closePushed:" destination="4SW-MG-uvE" eventType="touchUpInside" id="PBq-N1-fUT"/>
                                                 </connections>
                                             </button>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="SEEMS THAT YOU ALREADY PLAYED TODAY'S CHALLENGE. INSTEAD YOU CAN PLAY WITH THIS STAR..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="m06-xk-q84">
-                                                <rect key="frame" x="31" y="63" width="292" height="128"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="EVERYDAY YOU GET A NEW WORD. YOU ALREADY PLAYED TODAY'S CHALLENGE." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="m06-xk-q84">
+                                                <rect key="frame" x="25" y="27" width="306" height="160"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="20"/>
+                                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLx-Wq-rSQ">
-                                                <rect key="frame" x="118" y="150" width="39" height="41"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Divider" translatesAutoresizingMaskIntoConstraints="NO" id="5Wm-cV-RAF">
+                                                <rect key="frame" x="25" y="184" width="306" height="15"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="Star"/>
-                                                <connections>
-                                                    <action selector="starPushed:" destination="ZUB-64-JRH" eventType="touchUpInside" id="ADV-60-pXr"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yas-9q-6HF">
-                                                <rect key="frame" x="163" y="150" width="39" height="41"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="Star"/>
-                                                <connections>
-                                                    <action selector="starPushed:" destination="ZUB-64-JRH" eventType="touchUpInside" id="gcS-sV-tbY"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b8a-Hi-FXY">
-                                                <rect key="frame" x="212" y="150" width="39" height="41"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="Star"/>
-                                                <connections>
-                                                    <action selector="starPushed:" destination="ZUB-64-JRH" eventType="touchUpInside" id="EQ4-Ip-Ryw"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EMm-M0-oiL">
-                                                <rect key="frame" x="259" y="150" width="39" height="41"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="Star"/>
-                                                <connections>
-                                                    <action selector="starPushed:" destination="ZUB-64-JRH" eventType="touchUpInside" id="IrN-7M-mMC"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VXL-tB-4rB">
-                                                <rect key="frame" x="71" y="150" width="39" height="41"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="Star"/>
-                                                <connections>
-                                                    <action selector="starPushed:" destination="ZUB-64-JRH" eventType="touchUpInside" id="i0M-ve-yCb"/>
-                                                </connections>
-                                            </button>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
@@ -1781,12 +1738,11 @@
                     <connections>
                         <outlet property="backgroundMessage" destination="dF9-iO-PCh" id="KKb-zi-MEY"/>
                         <outlet property="messageTextView" destination="m06-xk-q84" id="ca4-GW-88W"/>
-                        <outlet property="titleLabel" destination="yJl-pp-uFg" id="V4S-7p-vh2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NJa-iK-032" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6" y="1755"/>
+            <point key="canvasLocation" x="5.5999999999999996" y="1754.5727136431785"/>
         </scene>
         <!--LEADERBOARD-->
         <scene sceneID="KnF-lJ-DYg">
@@ -1967,7 +1923,6 @@
         <image name="Frame2" width="573" height="893"/>
         <image name="HangmanLogo" width="227" height="259"/>
         <image name="Heart" width="200" height="180"/>
-        <image name="Star" width="200" height="211"/>
         <image name="WelcomeLogo" width="1282" height="78"/>
         <image name="pic1" width="36" height="36"/>
         <image name="pic2" width="38" height="38"/>
