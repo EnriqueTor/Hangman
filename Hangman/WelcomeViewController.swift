@@ -48,30 +48,53 @@ class WelcomeViewController: UIViewController {
     
     func introAnimation() {
         
-        DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
-            self.a1Label.isHidden = false
-            self.a2Label.isHidden = false
-        })
+
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-            
-            self.n1Label.isHidden = false
-            self.n2Label.isHidden = false
-        })
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
+        UIView.animateKeyframes(withDuration: 3.0, delay: 0.00, options: [], animations: {
             
-            self.gLabel.isHidden = false
-        })
+            UIView.addKeyframe(withRelativeStartTime: 0.20, relativeDuration: 0.00, animations: {
+                
+                self.a1Label.alpha = 1
+                self.a2Label.alpha = 1
+                
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.40, relativeDuration: 0.00, animations: {
+                
+                self.n1Label.alpha = 1
+                self.n2Label.alpha = 1
+                
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.60, relativeDuration: 0.00, animations: {
+                
+                self.gLabel.alpha = 1
+
+
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.80, relativeDuration: 0.00, animations: {
+                
+                
+                self.hLabel.alpha = 1
+                
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 1.00, relativeDuration: 0.00, animations: {
+                
+                
+                self.mLabel.alpha = 1
+            })
+            
+            
+            
+        }, completion: nil)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
             
-            self.hLabel.isHidden = false
-        })
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
-            self.mLabel.isHidden = false
             self.welcome()
+
         })
     }
     

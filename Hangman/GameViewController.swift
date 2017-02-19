@@ -28,7 +28,7 @@ class GameViewController: UIViewController {
     var secretWord = ""
     var wordCharacter = 0
     var hiddenWord = ""
-    var points = 10
+    var points = 0
     var typeOfGame = String()
     var player: User!
     
@@ -97,8 +97,8 @@ class GameViewController: UIViewController {
         hiddenWord = ""
         wordCharacter = 0
         
-        points = 10
-        scoreLabel.text = "+\(points)"
+        points = 0
+        scoreLabel.text = "\(points)"
         
         for button in keyboardButtons {
             button.setTitleColor(.white, for: .normal)
@@ -181,7 +181,7 @@ class GameViewController: UIViewController {
     func updateScore(guessedRight: Bool) {
         
         if guessedRight == true {
-            points = points + 1
+            points = points + 3
             winOrLose(test: "WON")
         }
         
@@ -293,6 +293,8 @@ class GameViewController: UIViewController {
         
         return dateFormatter.string(from: date).uppercased()
     }
+    
+    
     
 }
 

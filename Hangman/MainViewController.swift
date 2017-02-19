@@ -80,6 +80,11 @@ class MainViewController: UIViewController, UINavigationControllerDelegate {
         performSegue(withIdentifier: "leaderboardSegue", sender: self)
         
     }
+    @IBAction func multiplayerPushed(_ sender: UIButton) {
+        
+        performSegue(withIdentifier: "multiplayerSegue", sender: self)
+        
+    }
   
     @IBAction func playPushed(_ sender: UIButton) {
         
