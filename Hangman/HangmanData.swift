@@ -25,6 +25,16 @@ class HangmanData {
     var leaderboardSingle = [String]()
     var leaderboardChallenge = [String]()
     
+    var inviteSelected = 1
+    var user2: User? = nil
+    var user3: User? = nil
+    var user4: User? = nil
+    var user2Change = false
+    var user3Change = false
+    var user4Change = false
+    var multiplayerAmountOfPlayers = 2
+    var multiplayerAmountOfWords = 0
+    
     // MARK: - Initializers
     
     private init() {}

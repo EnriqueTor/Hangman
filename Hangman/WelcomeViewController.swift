@@ -37,6 +37,7 @@ class WelcomeViewController: UIViewController {
         store.arrayOfWords.removeAll()
         HangmanAPI.getHangmanWord()
         
+        print("I WANT TO EAT SOME BURGERS!")
         
     }
     

@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SDWebImage
 
 class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -19,13 +20,17 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
    
     
     let store = HangmanData.sharedInstance
+    let database = FIRDatabase.database().reference()
+    var activeGames = [String]()
+    var picsStrings = [String]()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         background.image = store.chalkboard
         
-        
+        retrieveActiveGames()
         
         tableView.reloadData()
     }
@@ -33,6 +38,7 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBAction func createGamePushed(_ sender: UIButton) {
         
+        performSegue(withIdentifier: "createGameSegue", sender: self)
         
     }
     
@@ -49,24 +55,66 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return activeGames.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "multiplayerCell", for: indexPath) as! MultiplayerTableViewCell
         
-        
         cell.backgroundColor = UIColor.clear
-        
         cell.selectionStyle = UITableViewCellSelectionStyle.none
-
-         cell.gameLabel.text = "THE BEST TEAM"
         
-        cell.user1Pic.setRounded()
-        cell.user2Pic.setRounded()
-        cell.user3Pic.setRounded()
-        cell.user4Pic.setRounded()
+        let gameID = activeGames[indexPath.row]
+        print(gameID)
+        
+        database.child("multiplayer").child(gameID).child("data").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if snapshot.exists() == false {
+            
+            } else {
+                
+                guard let data = snapshot.value as? [String:Any] else { return }
+                cell.gameLabel.text = data["title"] as? String
+            }
+            
+        })
+        
+        database.child("multiplayer").child(gameID).child("players").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if snapshot.exists() == false {
+                
+            } else {
+                
+                guard let data = snapshot.value as? [String:Any] else { return }
+                
+                var picPosition = 0
+                
+                for (_, value) in data {
+                    
+                self.database.child("users").child(value as! String).observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                    guard let data = snapshot.value as? [String:Any] else { return }
+                    
+                    let profileImgUrl = URL(string: data["profilePic"]! as! String)
+                    
+                    cell.picturePlayers[indexPath.row + picPosition].isHidden = false
+                    cell.picturePlayers[indexPath.row + picPosition].contentMode = .scaleAspectFill
+                    cell.picturePlayers[indexPath.row + picPosition].setRounded()
+                    cell.picturePlayers[indexPath.row + picPosition].clipsToBounds = true
+                    
+                    
+                    DispatchQueue.main.async {
+                        
+                        cell.picturePlayers[indexPath.row + picPosition].sd_setImage(with: profileImgUrl)
+                        picPosition = picPosition + 1
+
+                    }
+                    
+                    })
+                }
+            }
+        })
         
         return cell
         
@@ -76,18 +124,39 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
         return 100
     }
     
+    
+    func retrieveActiveGames() {
+        
+        database.child("multiplayerStatus").child("active").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if snapshot.exists() == false {
+                
+            } else {
+                
+                guard let data = snapshot.value as? [String:String] else { return }
+                
+                for (key,_) in data {
+                    
+                    self.activeGames.append(key)
+                    self.tableView.reloadData()
+                }
+                
+            }
+            
+        })
+        
+        
+        
+    }
+
+    
 }
 
 
 class MultiplayerTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var user1Pic: UIImageView!
-    @IBOutlet weak var user2Pic: UIImageView!
-    @IBOutlet weak var user3Pic: UIImageView!
-    @IBOutlet weak var user4Pic: UIImageView!
     @IBOutlet weak var gameLabel: UILabel!
-
-
+    @IBOutlet var picturePlayers: [UIImageView]!
     
     
     
@@ -102,6 +171,7 @@ class MultiplayerTableViewCell: UITableViewCell {
         
         gameLabel.text = name
     }
+    
     
 }
 

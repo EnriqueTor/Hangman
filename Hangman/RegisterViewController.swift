@@ -91,6 +91,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
                         
                         self.store.user = newUser
                         self.database.child("users").child((user?.uid)!).setValue(newUser.serialize())
+                        self.database.child("username").child(self.store.user.username).setValue(self.store.user.id)
                         
                         self.saveProfileImage()
                         

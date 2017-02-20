@@ -13,12 +13,18 @@ import SDWebImage
 
 class SettingsViewController: UIViewController, MFMailComposeViewControllerDelegate, UIImagePickerControllerDelegate, UIGestureRecognizerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
+    // MARK: - Outlets 
+    
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var userProfile: UIImageView!
     @IBOutlet weak var userTextField: UITextField!
     
+    // MARK: - Variables
+    
     let database = FIRDatabase.database().reference()
     let store = HangmanData.sharedInstance
+    
+    // MARK: - Loads
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +33,8 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
         userTextField.delegate = self
         retrieveUserInfo(url: store.user.profilePic, image: userProfile, name: store.user.username)
     }
+    
+    // MARK: - Actions
     
     @IBAction func sendEmail(_ sender: UIButton) {
         sendEmail()
@@ -70,6 +78,8 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
         background.image = store.chalkboard
         
     }
+    
+    // MARK: Methods
     
     func sendEmail() {
         
@@ -125,6 +135,7 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
         imagePicker.sourceType = source
         imagePicker.navigationBar.barStyle = .blackTranslucent
         imagePicker.navigationBar.isTranslucent = true
+        
         imagePicker.navigationBar.tintColor = .white
         
         present(imagePicker, animated: true, completion: nil)

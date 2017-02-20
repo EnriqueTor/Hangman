@@ -32,6 +32,9 @@
 		BBB9134F1E5600E800E779AA /* HangmanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB9134E1E5600E800E779AA /* HangmanAPI.swift */; };
 		BBB913511E56012800E779AA /* HangmanData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB913501E56012800E779AA /* HangmanData.swift */; };
 		BBD5C41E1E5991960020C676 /* MultiplayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD5C41D1E5991960020C676 /* MultiplayerViewController.swift */; };
+		BBD5C4201E5A47EC0020C676 /* CreateGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD5C41F1E5A47EC0020C676 /* CreateGameViewController.swift */; };
+		BBD5C4221E5A616B0020C676 /* MultiplayerGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD5C4211E5A616B0020C676 /* MultiplayerGameViewController.swift */; };
+		BBD5C4241E5A71980020C676 /* SearchUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD5C4231E5A71980020C676 /* SearchUserViewController.swift */; };
 		BBDA19381E5607B40007FBA0 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDA19371E5607B40007FBA0 /* Secrets.swift */; };
 		BBDA193C1E5683620007FBA0 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDA193B1E5683620007FBA0 /* KeychainWrapper.m */; };
 		BBDA193E1E569AB40007FBA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBDA193D1E569AB40007FBA0 /* Assets.xcassets */; };
@@ -71,6 +74,9 @@
 		BBB9134E1E5600E800E779AA /* HangmanAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HangmanAPI.swift; sourceTree = "<group>"; };
 		BBB913501E56012800E779AA /* HangmanData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HangmanData.swift; sourceTree = "<group>"; };
 		BBD5C41D1E5991960020C676 /* MultiplayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiplayerViewController.swift; sourceTree = "<group>"; };
+		BBD5C41F1E5A47EC0020C676 /* CreateGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGameViewController.swift; sourceTree = "<group>"; };
+		BBD5C4211E5A616B0020C676 /* MultiplayerGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiplayerGameViewController.swift; sourceTree = "<group>"; };
+		BBD5C4231E5A71980020C676 /* SearchUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUserViewController.swift; sourceTree = "<group>"; };
 		BBDA19371E5607B40007FBA0 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		BBDA19391E5683610007FBA0 /* Hangman-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hangman-Bridging-Header.h"; sourceTree = "<group>"; };
 		BBDA193A1E5683620007FBA0 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
@@ -147,11 +153,14 @@
 				BBB913401E555F3F00E779AA /* LoginViewController.swift */,
 				BB1F477C1E5764A700E840B5 /* LeaderboardSingleViewController.swift */,
 				BB1F47801E5764D300E840B5 /* LeaderboardMultiplayerViewController.swift */,
+				BBD5C41F1E5A47EC0020C676 /* CreateGameViewController.swift */,
 				BB1F478A1E59458400E840B5 /* MessageViewController.swift */,
 				BB1F477E1E5764C100E840B5 /* LeaderboardChallengeViewController.swift */,
 				BBB913441E555F5200E779AA /* MainViewController.swift */,
 				BB1F47821E579ADD00E840B5 /* ResultViewController.swift */,
 				BBD5C41D1E5991960020C676 /* MultiplayerViewController.swift */,
+				BBD5C4231E5A71980020C676 /* SearchUserViewController.swift */,
+				BBD5C4211E5A616B0020C676 /* MultiplayerGameViewController.swift */,
 				BBB913421E555F4A00E779AA /* RegisterViewController.swift */,
 				BBB913461E55601300E779AA /* SettingsViewController.swift */,
 				BB75722C1E5523B50018FFD1 /* WelcomeViewController.swift */,
@@ -333,11 +342,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB1F47811E5764D300E840B5 /* LeaderboardMultiplayerViewController.swift in Sources */,
+				BBD5C4241E5A71980020C676 /* SearchUserViewController.swift in Sources */,
 				BB1F47851E57AC0400E840B5 /* Constants.swift in Sources */,
 				BBDA19421E56ACF80007FBA0 /* User.swift in Sources */,
+				BBD5C4221E5A616B0020C676 /* MultiplayerGameViewController.swift in Sources */,
 				BBB913491E55601A00E779AA /* GameViewController.swift in Sources */,
 				BBDA19381E5607B40007FBA0 /* Secrets.swift in Sources */,
 				BBB913411E555F3F00E779AA /* LoginViewController.swift in Sources */,
+				BBD5C4201E5A47EC0020C676 /* CreateGameViewController.swift in Sources */,
 				BB75722D1E5523B50018FFD1 /* WelcomeViewController.swift in Sources */,
 				BB75722B1E5523B50018FFD1 /* AppDelegate.swift in Sources */,
 				BBB913511E56012800E779AA /* HangmanData.swift in Sources */,
