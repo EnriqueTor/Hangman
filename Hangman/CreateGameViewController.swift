@@ -153,8 +153,6 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
         
         if gameNameTextField.text != "" && store.multiplayerAmountOfPlayers >= 2 && store.multiplayerAmountOfWords != "0" {
             
-            createButton.isEnabled = false
-            
             let root = database.child("multiplayer").childByAutoId()
             let groupID = root.key
             
