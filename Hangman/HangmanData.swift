@@ -22,6 +22,7 @@ class HangmanData {
     var game = Game(id: "", player: "", type: "", date: "", result: "", score: "", lives: "")
     
 //    var groupGame = GroupGame(id: "", player1: "", player2: "", player3: "", player4: "", date: "", status: "", title: "", words: "")
+    var gameSelected = ""
     
     var chalkboard = UIImage(named: "Chalkboard")
     var smallChalkboard = UIImage(named: "ChalkboardBlackOption")

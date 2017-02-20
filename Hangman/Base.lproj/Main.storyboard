@@ -609,6 +609,7 @@
                         <outlet property="background" destination="8eR-YL-ocg" id="Qbr-os-mh1"/>
                         <outlet property="tableView" destination="XCp-bu-YIL" id="H5X-kn-5nb"/>
                         <segue destination="ozk-gS-Qy7" kind="show" identifier="createGameSegue" id="QdF-BC-Kxb"/>
+                        <segue destination="Pb7-0U-2fW" kind="show" identifier="gameInfo2Segue" id="MHh-tF-bG2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yCm-4j-cjI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -901,7 +902,7 @@
         <!--GAME-->
         <scene sceneID="5qo-wc-wC5">
             <objects>
-                <viewController title="GAME" id="Pb7-0U-2fW" sceneMemberID="viewController">
+                <viewController title="GAME" id="Pb7-0U-2fW" customClass="InfoGameViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sr8-Vm-fvm"/>
                         <viewControllerLayoutGuide type="bottom" id="nHu-mn-pmA"/>
@@ -914,11 +915,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="77" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FBF-yg-TDl">
-                                <rect key="frame" x="0.0" y="157" width="375" height="403"/>
+                                <rect key="frame" x="0.0" y="177" width="375" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="singleCell" rowHeight="79" id="LOa-Wz-Ozm" customClass="SingleTableViewCell" customModule="Hangman" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="infoCell" rowHeight="79" id="LOa-Wz-Ozm" customClass="InfoTableViewCell" customModule="Hangman" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="79"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LOa-Wz-Ozm" id="aOw-et-z7e">
@@ -936,14 +937,14 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="145." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZh-ih-tUj">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="?." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZh-ih-tUj">
                                                             <rect key="frame" x="8" y="8" width="37" height="58"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1356" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISY-em-qRy">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISY-em-qRy">
                                                             <rect key="frame" x="262" y="20" width="61" height="36"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="BiteChalkBold-Regular" family="Bite Chalk Bold" pointSize="30"/>
@@ -966,7 +967,7 @@
                                                             <rect key="frame" x="60" y="14" width="52" height="52"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1356" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Hy-zl-ALK">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0/0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Hy-zl-ALK">
                                                             <rect key="frame" x="200" y="21" width="61" height="36"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="BiteChalkBold-Regular" family="Bite Chalk Bold" pointSize="30"/>
@@ -979,44 +980,26 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="gamesPlayed" destination="6Hy-zl-ALK" id="cH2-Vz-rqC"/>
+                                            <outlet property="playerNameLabel" destination="NJ8-g5-t6O" id="X0E-0Q-Fgs"/>
+                                            <outlet property="playerPic" destination="1Su-cD-j6N" id="ybr-b3-NaL"/>
+                                            <outlet property="pointsLabel" destination="ISY-em-qRy" id="pK6-cr-9WC"/>
+                                            <outlet property="positionLabel" destination="CZh-ih-tUj" id="qmy-pS-p2t"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Pb7-0U-2fW" id="p6k-fk-F7C"/>
+                                    <outlet property="delegate" destination="Pb7-0U-2fW" id="yXY-yg-1U8"/>
+                                </connections>
                             </tableView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="THE ROCKEFELLERS" placeholder="GAME NAME" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hXm-aZ-Xxs">
-                                <rect key="frame" x="19" y="119" width="343" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Divider" translatesAutoresizingMaskIntoConstraints="NO" id="vIW-rd-yZZ">
                                 <rect key="frame" x="-10" y="62" width="400" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOY-eW-D3g">
-                                <rect key="frame" x="235" y="592" width="110" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
-                                <state key="normal" title="PLAY">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="createGamePushed:" destination="ozk-gS-Qy7" eventType="touchUpInside" id="sWp-Ip-t3U"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y1M-eO-fEG">
-                                <rect key="frame" x="16" y="592" width="98" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
-                                <state key="normal" title="close">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="createGamePushed:" destination="ozk-gS-Qy7" eventType="touchUpInside" id="xPg-TQ-cq3"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcT-Kg-V7j">
-                                <rect key="frame" x="133" y="592" width="98" height="48"/>
+                                <rect key="frame" x="138" y="492" width="98" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
                                 <state key="normal" title="CHAT">
@@ -1024,6 +1007,24 @@
                                 </state>
                                 <connections>
                                     <action selector="createGamePushed:" destination="ozk-gS-Qy7" eventType="touchUpInside" id="iow-Uh-a1V"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sx-zE-OuA">
+                                <rect key="frame" x="25" y="113" width="334" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOY-eW-D3g">
+                                <rect key="frame" x="132" y="563" width="110" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="50"/>
+                                <state key="normal" title="PLAY">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="createGamePushed:" destination="ozk-gS-Qy7" eventType="touchUpInside" id="sWp-Ip-t3U"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1035,10 +1036,14 @@
                             <constraint firstItem="sSn-3f-Qoi" firstAttribute="centerX" secondItem="TJ2-Ya-Hjd" secondAttribute="centerX" id="ka8-oh-02T"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="FBF-yg-TDl" id="B3N-uV-FdK"/>
+                        <outlet property="titleLabel" destination="6sx-zE-OuA" id="rUM-Vu-L7t"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yub-30-SnK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1662" y="2499"/>
+            <point key="canvasLocation" x="1661.5999999999999" y="2497.6011994003002"/>
         </scene>
         <!--GAME-->
         <scene sceneID="Mff-Fo-CH8">
@@ -2354,5 +2359,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="99v-ir-wAk"/>
+        <segue reference="MHh-tF-bG2"/>
     </inferredMetricsTieBreakers>
 </document>

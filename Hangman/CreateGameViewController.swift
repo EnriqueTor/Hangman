@@ -153,31 +153,37 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
         if gameNameTextField.text != "" || store.multiplayerAmountOfPlayers >= 2 || store.multiplayerAmountOfWords != "0" {
             
             createButton.isEnabled = false
-
+            
             let root = database.child("multiplayer").childByAutoId()
             let groupID = root.key
-
+            
             let newGroupGame = GroupGame(id: groupID, player1: store.user, player1Pic: store.user.profilePic, player2: store.user2, player2Pic: store.user2.profilePic, player3: store.user3, player3Pic: store.user3.profilePic, player4: store.user4, player4Pic: store.user4.profilePic, date: getDate(date: Date()), status: "active", title: gameNameTextField.text!.uppercased(), words: store.multiplayerAmountOfWords)
-
+            
             database.child("multiplayer").child(groupID).setValue(newGroupGame.serialize())
-
+            
             if newGroupGame.player1.id != "" {
-            database.child("multiplayerStatus").child(newGroupGame.player1.id).child("active").child(groupID).setValue(getDate(date: Date()))
-            }
-
-            if newGroupGame.player2.id != "" {
-            database.child("multiplayerStatus").child(newGroupGame.player2.id).child("active").child(groupID).setValue(getDate(date: Date()))
-            }
-
-            if newGroupGame.player3.id != "" {
-            database.child("multiplayerStatus").child(newGroupGame.player3.id).child("active").child(groupID).setValue(getDate(date: Date()))
-            }
-
-            if newGroupGame.player4.id != "" {
-            database.child("multiplayerStatus").child(newGroupGame.player4.id).child("active").child(groupID).setValue(getDate(date: Date()))
+                database.child("multiplayerStatus").child(newGroupGame.player1.id).child("active").child(groupID).setValue(getDate(date: Date()))
+                database.child("multiplayerPoints").child(groupID).child(newGroupGame.player1.id).setValue("0")
             }
             
-            performSegue(withIdentifier: "createSegue", sender: self)
+            if newGroupGame.player2.id != "" {
+                database.child("multiplayerStatus").child(newGroupGame.player2.id).child("active").child(groupID).setValue(getDate(date: Date()))
+                database.child("multiplayerPoints").child(groupID).child(newGroupGame.player2.id).setValue("0")
+            }
+            
+            if newGroupGame.player3.id != "" {
+                database.child("multiplayerStatus").child(newGroupGame.player3.id).child("active").child(groupID).setValue(getDate(date: Date()))
+                database.child("multiplayerPoints").child(groupID).child(newGroupGame.player3.id).setValue("0")
+            }
+            
+            if newGroupGame.player4.id != "" {
+                database.child("multiplayerStatus").child(newGroupGame.player4.id).child("active").child(groupID).setValue(getDate(date: Date()))
+                database.child("multiplayerPoints").child(groupID).child(newGroupGame.player4.id).setValue("0")
+            }
+            
+        
+            store.gameSelected = groupID
+            performSegue(withIdentifier: "gameInfoSegue", sender: self)
         }
         
     }
@@ -208,5 +214,18 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         gameNameTextField.resignFirstResponder()
         return true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "gameInfoSegue" {
+            
+            guard let dest = segue.destination as? InfoGameViewController else { return }
+            
+            dest.gameTitle = gameNameTextField.text!
+            
+            dest.retrieveUserPoints()
+            
+        }
     }
 }

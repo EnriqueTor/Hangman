@@ -14,7 +14,6 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
     
     
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var background: UIImageView!
     
     
@@ -24,7 +23,7 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
     var activeGames = [String]()
     var gameSelected = ""
     
-//    var picsStrings = [String]()
+    //    var picsStrings = [String]()
     
     
     override func viewDidLoad() {
@@ -76,7 +75,6 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         
         let gameID = activeGames[indexPath.row]
-        print(gameID)
         
         database.child("multiplayer").child(gameID).observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -102,50 +100,37 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         gameSelected = activeGames[indexPath.row]
+        store.gameSelected = gameSelected
         
-        self.performSegue(withIdentifier: "gameInfoSegue", sender: self)
+        self.performSegue(withIdentifier: "gameInfo2Segue", sender: self)
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "gameInfoSegue" {
-
-        
-//            guard let dest = segue.destination as? CreateGameViewController else { return }
-//
-//            dest.userLabel.text = store.user.username
-//            dest.player2Label.text = store.user2.username
-//            dest.player3Label.text = store.user3.username
-//            dest.player4Label.text = store.user4.username
-//            
-//            database.child("multiplayer").child(gameSelected).observeSingleEvent(of: .value, with: { (snapshot) in
-//                
-//                if snapshot.exists() == false {
-//                    
-//                } else {
-//                    
-//                    guard let data = snapshot.value as? [String:Any] else { return }
-//                    
-//                    DispatchQueue.main.async {
-////                        dest.g gameLabel.text = data["title"] as! String?
-////                        dest.retrieveUserInfo(url: data["player1Pic"] as! String, image: dest.userPic)
-////                        dest.retrieveUserInfo(url: data["player2Pic"] as! String, image: dest.player2Pic)
-////                        dest.retrieveUserInfo(url: data["player3Pic"] as! String, image: dest.player3Pic)
-////                        dest.retrieveUserInfo(url: data["player4Pic"] as! String, image: dest.player4Pic)
-//                    }
-//                }
-//            })
-
+        if segue.identifier == "gameInfo2Segue" {
+            
+            guard let dest = segue.destination as? InfoGameViewController else { return }
+            
+            database.child("multiplayer").child(store.gameSelected).observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                guard let data = snapshot.value as? [String:Any] else { return }
+                
+                dest.titleLabel.text = data["title"] as! String
+                
+            })
+            
+            
+            dest.retrieveUserPoints()
             
         }
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
     
+
     
 }
 
@@ -162,15 +147,11 @@ class MultiplayerTableViewCell: UITableViewCell {
         
         let profileImgUrl = URL(string: url)
         
-        print(profileImgUrl)
-        
         image.contentMode = .scaleAspectFill
         image.setRounded()
         image.clipsToBounds = true
         image.sd_setImage(with: profileImgUrl)
         
-        
-        print("A")
     }
     
     
