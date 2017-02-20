@@ -153,6 +153,8 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
             let root = database.child("multiplayer").childByAutoId()
             let groupID = root.key
             
+            
+            
             if store.multiplayerAmountOfPlayers == 2 {
                 
                 database.child("multiplayer").child(groupID).child("players").child("player1").setValue(store.user.id)
