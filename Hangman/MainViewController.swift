@@ -81,9 +81,8 @@ class MainViewController: UIViewController, UINavigationControllerDelegate {
         
     }
     @IBAction func multiplayerPushed(_ sender: UIButton) {
-        
-        performSegue(withIdentifier: "multiplayerSegue", sender: self)
-        
+
+        self.performSegue(withIdentifier: "multiplayerSegue", sender: self)
     }
   
     @IBAction func playPushed(_ sender: UIButton) {
@@ -111,27 +110,31 @@ class MainViewController: UIViewController, UINavigationControllerDelegate {
         if segue.identifier == "multiplayerSegue" {
             
             guard let dest = segue.destination as? MultiplayerViewController else { return }
-            
+
             var activeGames = [String]()
-            
+
             database.child("multiplayerStatus").child(store.user.id).child("active").observeSingleEvent(of: .value, with: { (snapshot) in
-                
+
                 if snapshot.exists() == false {
-                    
+
                 } else {
-                    
-                    guard let data = snapshot.value as? [String:String] else { return }
-                    
+
+                    guard let data = snapshot.value as? [String:Any] else { return }
+
                     for (key,_) in data {
-                        
+
                         activeGames.append(key)
+                        dest.activeGames = activeGames
+
+                        
                     }
-                    
+
+                    dest.tableView.reloadData()
                 }
                 
             })
 
-            dest.activeGames = activeGames
+
             
         }
         

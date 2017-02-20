@@ -157,7 +157,7 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
             let root = database.child("multiplayer").childByAutoId()
             let groupID = root.key
 
-            let newGroupGame = GroupGame(id: groupID, player1: store.user, player2: store.user2, player3: store.user3, player4: store.user4, date: getDate(date: Date()), status: "active", title: gameNameTextField.text!.uppercased(), words: store.multiplayerAmountOfWords)
+            let newGroupGame = GroupGame(id: groupID, player1: store.user, player1Pic: store.user.profilePic, player2: store.user2, player2Pic: store.user2.profilePic, player3: store.user3, player3Pic: store.user3.profilePic, player4: store.user4, player4Pic: store.user4.profilePic, date: getDate(date: Date()), status: "active", title: gameNameTextField.text!.uppercased(), words: store.multiplayerAmountOfWords)
 
             database.child("multiplayer").child(groupID).setValue(newGroupGame.serialize())
 
