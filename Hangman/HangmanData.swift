@@ -31,12 +31,15 @@ class HangmanData {
     var leaderboardChallenge = [String]()
     
     var inviteSelected = 1
+    
     var user2: User = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
     var user3: User = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
     var user4: User = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
+    
     var user2Change = false
     var user3Change = false
     var user4Change = false
+    
     var multiplayerAmountOfPlayers = 1
     var multiplayerAmountOfWords = "0"
     

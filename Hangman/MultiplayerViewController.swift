@@ -31,8 +31,8 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
         
         background.image = store.chalkboard
         
-        
-        
+        print("OOOOOOOOOOO")
+        print(store.gameSelected)
         
     }
     
@@ -106,25 +106,29 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "gameInfo2Segue" {
-            
-            guard let dest = segue.destination as? InfoGameViewController else { return }
-            
-            database.child("multiplayer").child(store.gameSelected).observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                guard let data = snapshot.value as? [String:Any] else { return }
-                
-                dest.titleLabel.text = data["title"] as! String
-                
-            })
-            
-            
-            dest.retrieveUserPoints()
-            
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        
+//        if segue.identifier == "gameInfo2Segue" {
+//            
+//            guard let dest = segue.destination as? InfoGameViewController else { return }
+//            
+//            database.child("multiplayer").child(store.gameSelected).observeSingleEvent(of: .value, with: { (snapshot) in
+//                
+//                guard let data = snapshot.value as? [String:Any] else { return }
+//                
+//                dest.titleLabel.text = data["title"] as! String
+//                
+//                var rounds = data["words"] as! String
+//                
+//                dest.roundsGame.text = rounds + " ROUNDS"
+//            })
+//            
+//            
+//            
+////            dest.retrieveUserPoints()
+//            
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100

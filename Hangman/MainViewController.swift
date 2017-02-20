@@ -35,8 +35,9 @@ class MainViewController: UIViewController, UINavigationControllerDelegate {
         self.navigationController?.navigationBar.transparentNavigationBar()
 
         
-        
-        
+        print("===================>>>>>")
+        print(store.user.id)
+        print(store.user)
         
         
         self.title = "HANGMAN"

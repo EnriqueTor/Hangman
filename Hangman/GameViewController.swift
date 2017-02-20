@@ -31,6 +31,9 @@ class GameViewController: UIViewController {
     var points = 0
     var typeOfGame = String()
     var player: User!
+    var groupID = ""
+    var multiplayerPoints = ""
+    var multiplayerRounds = ""
     
     // MARK: - Loads
     
@@ -49,26 +52,36 @@ class GameViewController: UIViewController {
     
     func loadPlayerData() {
         
-        database.child("users").child(self.store.user.id).observe(.value, with: { (snapshot) in
+        database.child("users").child(self.store.user.id).observeSingleEvent(of: .value, with: { (snapshot) in
+        
+            
             
             self.store.user = User(snapshot: snapshot)
             
             print(self.store.user)
             
-            //            let data = snapshot.value as? [String:Any]
-            //
-            //            print(data)
-            //
-            //            let loggedUser = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
-            //
-            //            self.store.user = loggedUser.deserialize(data!)
+        })
+        
+        if typeOfGame == "MULTIPLAYER" {
             
-            //            self.store.user = User(snapshot: snapshot.value as! FIRDataSnapshot)
+            database.child("multiplayerPoints").child(self.store.gameSelected).child(self.store.user.id).observeSingleEvent(of: .value, with: { (snapshot) in
             
+                
+            self.multiplayerPoints = snapshot.value as! String
             
+           
+        })
+        
+        database.child("multiplayerRounds").child(self.store.gameSelected).child(self.store.user.id).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+          
+            
+                self.multiplayerRounds = snapshot.value as! String
             
             
         })
+        
+        }
     }
     
     // MARK: - Actions
@@ -260,6 +273,17 @@ class GameViewController: UIViewController {
             self.database.child("leaderboardChallenge").child(self.store.user.id).setValue(self.store.user.scoreChallenge)
         }
         
+        if typeOfGame == "MULTIPLAYER" {
+            
+            
+            self.multiplayerPoints = "\(Int32(self.multiplayerPoints)! + self.points)"
+            self.multiplayerRounds = "\(Int32(self.multiplayerRounds)! + 1)"
+            
+            database.child("multiplayerPoints").child(self.store.gameSelected).child(self.store.user.id).setValue(self.multiplayerPoints)
+            database.child("multiplayerRounds").child(self.store.gameSelected).child(self.store.user.id).setValue(self.multiplayerRounds)
+            
+        }
+        
         performSegue(withIdentifier: "resultSegue", sender: self)
         
     }
@@ -270,11 +294,15 @@ class GameViewController: UIViewController {
             
             guard let dest = segue.destination as? ResultViewController else { return }
             
+            dest.typeOfGame = typeOfGame
+            
             if store.playerWon == "WON" {
                 
                 dest.gameResult = "YOU WON"
                 dest.secretWord = secretWord
                 dest.points = points
+                newGame()
+                loadPlayerData()
                 
             }
             if store.playerWon == "LOST" {
@@ -282,6 +310,8 @@ class GameViewController: UIViewController {
                 dest.gameResult = "YOU LOST"
                 dest.secretWord = secretWord
                 dest.points = points
+                newGame()
+                loadPlayerData()
             }
         }
     }

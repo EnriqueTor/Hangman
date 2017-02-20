@@ -16,12 +16,14 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var secretWordLabel: UILabel!
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var newButton: UIButton!
     
     
     var gameResult = ""
     var secretWord = ""
     var points = 0
     let store = HangmanData.sharedInstance
+    var typeOfGame = ""
     
     
     override func viewDidLoad() {
@@ -46,6 +48,14 @@ class ResultViewController: UIViewController {
             
         }
         
+        if typeOfGame == "CHALLENGE" {
+            
+            newButton.isEnabled = false
+            newButton.isHidden = true
+            
+        }
+        
+        
         background.addBlurEffect()
         
     }
@@ -53,7 +63,6 @@ class ResultViewController: UIViewController {
     
     @IBAction func newPushed(_ sender: UIButton) {
         
-        NotificationCenter.default.post(name: .openGameVC, object: nil)
         dismiss(animated: true, completion: nil)
         
     }
@@ -61,9 +70,19 @@ class ResultViewController: UIViewController {
     
     @IBAction func closePushed(_ sender: UIButton) {
         
+        if typeOfGame == "SINGLE" || typeOfGame == "CHALLENGE" {
+            
+            self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+
+        }
         
-        NotificationCenter.default.post(name: .openMainVC, object: nil)
-        dismiss(animated: true, completion: nil)
+        if typeOfGame == "MULTIPLAYER" {
+            
+            
+            self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+            
+
+        }
         
     }
     

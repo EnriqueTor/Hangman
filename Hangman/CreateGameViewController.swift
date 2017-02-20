@@ -53,6 +53,7 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
         
         
         gameNameTextField.delegate = self
+//        gameNameTextField.text = ""
         
         store.multiplayerAmountOfPlayers = 1
         store.multiplayerAmountOfWords = "0"
@@ -150,7 +151,7 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func createGamePushed(_ sender: UIButton) {
         
-        if gameNameTextField.text != "" || store.multiplayerAmountOfPlayers >= 2 || store.multiplayerAmountOfWords != "0" {
+        if gameNameTextField.text != "" && store.multiplayerAmountOfPlayers >= 2 && store.multiplayerAmountOfWords != "0" {
             
             createButton.isEnabled = false
             
@@ -164,21 +165,28 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
             if newGroupGame.player1.id != "" {
                 database.child("multiplayerStatus").child(newGroupGame.player1.id).child("active").child(groupID).setValue(getDate(date: Date()))
                 database.child("multiplayerPoints").child(groupID).child(newGroupGame.player1.id).setValue("0")
+                database.child("multiplayerRounds").child(groupID).child(newGroupGame.player1.id).setValue("0")
             }
             
             if newGroupGame.player2.id != "" {
                 database.child("multiplayerStatus").child(newGroupGame.player2.id).child("active").child(groupID).setValue(getDate(date: Date()))
                 database.child("multiplayerPoints").child(groupID).child(newGroupGame.player2.id).setValue("0")
+                database.child("multiplayerRounds").child(groupID).child(newGroupGame.player2.id).setValue("0")
+
             }
             
             if newGroupGame.player3.id != "" {
                 database.child("multiplayerStatus").child(newGroupGame.player3.id).child("active").child(groupID).setValue(getDate(date: Date()))
                 database.child("multiplayerPoints").child(groupID).child(newGroupGame.player3.id).setValue("0")
+                database.child("multiplayerRounds").child(groupID).child(newGroupGame.player3.id).setValue("0")
+
             }
             
             if newGroupGame.player4.id != "" {
                 database.child("multiplayerStatus").child(newGroupGame.player4.id).child("active").child(groupID).setValue(getDate(date: Date()))
                 database.child("multiplayerPoints").child(groupID).child(newGroupGame.player4.id).setValue("0")
+                database.child("multiplayerRounds").child(groupID).child(newGroupGame.player4.id).setValue("0")
+
             }
             
         
