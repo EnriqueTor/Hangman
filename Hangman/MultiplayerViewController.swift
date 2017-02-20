@@ -30,7 +30,6 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
 
         background.image = store.chalkboard
         
-        retrieveActiveGames()
         
         tableView.reloadData()
     }
@@ -98,10 +97,10 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
                     
                     let profileImgUrl = URL(string: data["profilePic"]! as! String)
                     
-                    cell.picturePlayers[indexPath.row + picPosition].isHidden = false
-                    cell.picturePlayers[indexPath.row + picPosition].contentMode = .scaleAspectFill
-                    cell.picturePlayers[indexPath.row + picPosition].setRounded()
-                    cell.picturePlayers[indexPath.row + picPosition].clipsToBounds = true
+                    cell.picturePlayers[picPosition].isHidden = false
+                    cell.picturePlayers[picPosition].contentMode = .scaleAspectFill
+                    cell.picturePlayers[picPosition].setRounded()
+                    cell.picturePlayers[picPosition].clipsToBounds = true
                     
                     
                     DispatchQueue.main.async {
@@ -123,32 +122,6 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-    
-    
-    func retrieveActiveGames() {
-        
-        database.child("multiplayerStatus").child("active").observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            if snapshot.exists() == false {
-                
-            } else {
-                
-                guard let data = snapshot.value as? [String:String] else { return }
-                
-                for (key,_) in data {
-                    
-                    self.activeGames.append(key)
-                    self.tableView.reloadData()
-                }
-                
-            }
-            
-        })
-        
-        
-        
-    }
-
     
 }
 

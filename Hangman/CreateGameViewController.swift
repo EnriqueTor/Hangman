@@ -48,7 +48,7 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
         
         gameNameTextField.delegate = self
         
-        store.multiplayerAmountOfPlayers = 2
+        store.multiplayerAmountOfPlayers = 1
         store.multiplayerAmountOfWords = 0
         
         store.user2 = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
@@ -76,6 +76,7 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
             if store.user2Change == false {
                 
                 store.multiplayerAmountOfPlayers = store.multiplayerAmountOfPlayers + 1
+                store.user2Change = true
             }
         }
         
@@ -84,6 +85,7 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
             
             if store.user3Change == false {
                 store.multiplayerAmountOfPlayers = store.multiplayerAmountOfPlayers + 1
+                store.user3Change = true
             }
         }
         
@@ -92,6 +94,7 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
             
             if store.user4Change == false {
                 store.multiplayerAmountOfPlayers = store.multiplayerAmountOfPlayers + 1
+                store.user4Change = true
             }
         }
         
@@ -158,6 +161,9 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
                 database.child("multiplayer").child(groupID).child("points").child(store.user.id).setValue("0")
                 database.child("multiplayer").child(groupID).child("points").child((store.user2?.id)!).setValue("0")
                 
+                database.child("multiplayerStatus").child(store.user.id).child("active").child(groupID).setValue(getDate(date: Date()))
+                database.child("multiplayerStatus").child((store.user2?.id)!).child("active").child(groupID).setValue(getDate(date: Date()))
+                
             }
             
             if store.multiplayerAmountOfPlayers == 3 {
@@ -169,6 +175,10 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
                 database.child("multiplayer").child(groupID).child("points").child(store.user.id).setValue("0")
                 database.child("multiplayer").child(groupID).child("points").child((store.user2?.id)!).setValue("0")
                 database.child("multiplayer").child(groupID).child("points").child((store.user3?.id)!).setValue("0")
+                
+                database.child("multiplayerStatus").child(store.user.id).child("active").child(groupID).setValue(getDate(date: Date()))
+                database.child("multiplayerStatus").child((store.user2?.id)!).child("active").child(groupID).setValue(getDate(date: Date()))
+                database.child("multiplayerStatus").child((store.user3?.id)!).child("active").child(groupID).setValue(getDate(date: Date()))
                 
             }
             
@@ -184,9 +194,13 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
                 database.child("multiplayer").child(groupID).child("points").child((store.user3?.id)!).setValue("0")
                 database.child("multiplayer").child(groupID).child("points").child((store.user4?.id)!).setValue("0")
                 
+                database.child("multiplayerStatus").child(store.user.id).child("active").child(groupID).setValue(getDate(date: Date()))
+                database.child("multiplayerStatus").child((store.user2?.id)!).child("active").child(groupID).setValue(getDate(date: Date()))
+                database.child("multiplayerStatus").child((store.user3?.id)!).child("active").child(groupID).setValue(getDate(date: Date()))
+                database.child("multiplayerStatus").child((store.user4?.id)!).child("active").child(groupID).setValue(getDate(date: Date()))
+                
             }
             
-            database.child("multiplayerStatus").child("active").child(groupID).setValue(getDate(date: Date()))
             database.child("multiplayer").child(groupID).child("data").child("createdOn").setValue(getDate(date: Date()))
             database.child("multiplayer").child(groupID).child("data").child("status").setValue("active")
             database.child("multiplayer").child(groupID).child("data").child("totalWords").setValue(store.multiplayerAmountOfWords)
@@ -207,19 +221,16 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func addPlayer2(_ sender: UIButton) {
         store.inviteSelected = 2
-        store.user2Change = true
         performSegue(withIdentifier: "searchSegue", sender: self)
     }
     
     @IBAction func addPlayer3(_ sender: UIButton) {
         store.inviteSelected = 3
-        store.user3Change = true
         performSegue(withIdentifier: "searchSegue", sender: self)
     }
     
     @IBAction func addPlayer4(_ sender: UIButton) {
         store.inviteSelected = 4
-        store.user4Change = true
         performSegue(withIdentifier: "searchSegue", sender: self)
     }
     

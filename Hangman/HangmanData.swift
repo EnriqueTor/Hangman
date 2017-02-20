@@ -32,7 +32,7 @@ class HangmanData {
     var user2Change = false
     var user3Change = false
     var user4Change = false
-    var multiplayerAmountOfPlayers = 2
+    var multiplayerAmountOfPlayers = 1
     var multiplayerAmountOfWords = 0
     
     // MARK: - Initializers
