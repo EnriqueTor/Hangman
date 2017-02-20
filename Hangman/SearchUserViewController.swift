@@ -144,14 +144,13 @@ class SearchTableViewController: UITableViewController {
             selectedUserID = userIDAtSelectedRow
         }
 
-        if selectedUserID == store.user.id || selectedUserID == store.user2?.id || selectedUserID == store.user3?.id || selectedUserID == store.user4?.id {
-            
-        }
-        else {
-            
-        retrieveUsers(id: selectedUserID)
+        if selectedUserID == store.user.id || selectedUserID == store.user2.id || selectedUserID == store.user3.id || selectedUserID == store.user4.id {
         
+        } else {
+         
+            retrieveUsers(id: selectedUserID)
         }
+        
     }
     
     func retrieveUsers(id: String) {
@@ -161,7 +160,6 @@ class SearchTableViewController: UITableViewController {
         database.child("users").child(id).observe(.value, with: { (snapshot) in
             
             if snapshot.exists() == false {
-                print("NOOOOOOOOOOO")
                 
             } else {
                 
@@ -184,7 +182,7 @@ class SearchTableViewController: UITableViewController {
                 if self.store.inviteSelected == 4 {
                     
                     self.store.user4 = userNew.deserialize(data!)
-                    self.navigationController?.popViewController(animated: true)
+                    self.navigationController?.popViewController(animated: true) 
 
                 }
                 

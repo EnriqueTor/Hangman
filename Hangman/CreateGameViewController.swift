@@ -38,6 +38,7 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
     let store = HangmanData.sharedInstance
     let database = FIRDatabase.database().reference()
     
+    
     var user1: String = ""
     var totalWords: Int = 0
     
@@ -46,14 +47,17 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        gameNameTextField.delegate = self
-        
-        store.multiplayerAmountOfPlayers = 1
-        store.multiplayerAmountOfWords = 0
-        
         store.user2 = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
         store.user3 = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
         store.user4 = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
+        
+        
+        gameNameTextField.delegate = self
+        
+        store.multiplayerAmountOfPlayers = 1
+        store.multiplayerAmountOfWords = "0"
+        
+        
         
         setup()
         
@@ -71,7 +75,7 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
     func refreshUsers() {
         
         if store.inviteSelected == 2 {
-            retrieveUserInfo(url: (store.user2?.profilePic)!, image: player2Pic, label: player2Label, name: (store.user2?.username)!)
+            retrieveUserInfo(url: (store.user2.profilePic), image: player2Pic, label: player2Label, name: (store.user2.username))
             
             if store.user2Change == false {
                 
@@ -81,7 +85,7 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
         }
         
         if store.inviteSelected == 3 {
-            retrieveUserInfo(url: (store.user3?.profilePic)!, image: player3Pic, label: player3Label, name: (store.user3?.username)!)
+            retrieveUserInfo(url: (store.user3.profilePic), image: player3Pic, label: player3Label, name: (store.user3.username))
             
             if store.user3Change == false {
                 store.multiplayerAmountOfPlayers = store.multiplayerAmountOfPlayers + 1
@@ -90,7 +94,7 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
         }
         
         if store.inviteSelected == 4 {
-            retrieveUserInfo(url: (store.user4?.profilePic)!, image: player4Pic, label: player4Label, name: (store.user4?.username)!)
+            retrieveUserInfo(url: (store.user4.profilePic), image: player4Pic, label: player4Label, name: (store.user4.username))
             
             if store.user4Change == false {
                 store.multiplayerAmountOfPlayers = store.multiplayerAmountOfPlayers + 1
@@ -125,17 +129,17 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func number5Pushed(_ sender: UIButton) {
         hideCircles(number5: false, number10: true, number15: true)
-        store.multiplayerAmountOfWords = 5
+        store.multiplayerAmountOfWords = "5"
     }
     
     @IBAction func number10Pushed(_ sender: UIButton) {
         hideCircles(number5: true, number10: false, number15: true)
-        store.multiplayerAmountOfWords = 10
+        store.multiplayerAmountOfWords = "10"
     }
     
     @IBAction func number15Pushed(_ sender: UIButton) {
         hideCircles(number5: true, number10: true, number15: false)
-        store.multiplayerAmountOfWords = 15
+        store.multiplayerAmountOfWords = "15"
     }
     
     func hideCircles(number5: Bool, number10: Bool, number15: Bool) {
@@ -146,67 +150,32 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func createGamePushed(_ sender: UIButton) {
         
-        if gameNameTextField.text != "" || store.multiplayerAmountOfPlayers >= 2 || store.multiplayerAmountOfWords != 0 {
+        if gameNameTextField.text != "" || store.multiplayerAmountOfPlayers >= 2 || store.multiplayerAmountOfWords != "0" {
             
             createButton.isEnabled = false
-            
+
             let root = database.child("multiplayer").childByAutoId()
             let groupID = root.key
-            
-            
-            
-            if store.multiplayerAmountOfPlayers == 2 {
-                
-                database.child("multiplayer").child(groupID).child("players").child("player1").setValue(store.user.id)
-                database.child("multiplayer").child(groupID).child("players").child("player2").setValue(store.user2!.id)
-                
-                database.child("multiplayer").child(groupID).child("points").child(store.user.id).setValue("0")
-                database.child("multiplayer").child(groupID).child("points").child((store.user2?.id)!).setValue("0")
-                
-                database.child("multiplayerStatus").child(store.user.id).child("active").child(groupID).setValue(getDate(date: Date()))
-                database.child("multiplayerStatus").child((store.user2?.id)!).child("active").child(groupID).setValue(getDate(date: Date()))
-                
+
+            let newGroupGame = GroupGame(id: groupID, player1: store.user, player2: store.user2, player3: store.user3, player4: store.user4, date: getDate(date: Date()), status: "active", title: gameNameTextField.text!.uppercased(), words: store.multiplayerAmountOfWords)
+
+            database.child("multiplayer").child(groupID).setValue(newGroupGame.serialize())
+
+            if newGroupGame.player1.id != "" {
+            database.child("multiplayerStatus").child(newGroupGame.player1.id).child("active").child(groupID).setValue(getDate(date: Date()))
             }
-            
-            if store.multiplayerAmountOfPlayers == 3 {
-                
-                database.child("multiplayer").child(groupID).child("players").child("player1").setValue(store.user.id)
-                database.child("multiplayer").child(groupID).child("players").child("player2").setValue(store.user2!.id)
-                database.child("multiplayer").child(groupID).child("players").child("player3").setValue(store.user3!.id)
-                
-                database.child("multiplayer").child(groupID).child("points").child(store.user.id).setValue("0")
-                database.child("multiplayer").child(groupID).child("points").child((store.user2?.id)!).setValue("0")
-                database.child("multiplayer").child(groupID).child("points").child((store.user3?.id)!).setValue("0")
-                
-                database.child("multiplayerStatus").child(store.user.id).child("active").child(groupID).setValue(getDate(date: Date()))
-                database.child("multiplayerStatus").child((store.user2?.id)!).child("active").child(groupID).setValue(getDate(date: Date()))
-                database.child("multiplayerStatus").child((store.user3?.id)!).child("active").child(groupID).setValue(getDate(date: Date()))
-                
+
+            if newGroupGame.player2.id != "" {
+            database.child("multiplayerStatus").child(newGroupGame.player2.id).child("active").child(groupID).setValue(getDate(date: Date()))
             }
-            
-            if store.multiplayerAmountOfPlayers == 4 {
-                
-                database.child("multiplayer").child(groupID).child("players").child("player1").setValue(store.user.id)
-                database.child("multiplayer").child(groupID).child("players").child("player2").setValue(store.user2!.id)
-                database.child("multiplayer").child(groupID).child("players").child("player3").setValue(store.user3!.id)
-                database.child("multiplayer").child(groupID).child("players").child("player4").setValue(store.user4!.id)
-                
-                database.child("multiplayer").child(groupID).child("points").child(store.user.id).setValue("0")
-                database.child("multiplayer").child(groupID).child("points").child((store.user2?.id)!).setValue("0")
-                database.child("multiplayer").child(groupID).child("points").child((store.user3?.id)!).setValue("0")
-                database.child("multiplayer").child(groupID).child("points").child((store.user4?.id)!).setValue("0")
-                
-                database.child("multiplayerStatus").child(store.user.id).child("active").child(groupID).setValue(getDate(date: Date()))
-                database.child("multiplayerStatus").child((store.user2?.id)!).child("active").child(groupID).setValue(getDate(date: Date()))
-                database.child("multiplayerStatus").child((store.user3?.id)!).child("active").child(groupID).setValue(getDate(date: Date()))
-                database.child("multiplayerStatus").child((store.user4?.id)!).child("active").child(groupID).setValue(getDate(date: Date()))
-                
+
+            if newGroupGame.player3.id != "" {
+            database.child("multiplayerStatus").child(newGroupGame.player3.id).child("active").child(groupID).setValue(getDate(date: Date()))
             }
-            
-            database.child("multiplayer").child(groupID).child("data").child("createdOn").setValue(getDate(date: Date()))
-            database.child("multiplayer").child(groupID).child("data").child("status").setValue("active")
-            database.child("multiplayer").child(groupID).child("data").child("totalWords").setValue(store.multiplayerAmountOfWords)
-            database.child("multiplayer").child(groupID).child("data").child("title").setValue(gameNameTextField.text!.uppercased())
+
+            if newGroupGame.player4.id != "" {
+            database.child("multiplayerStatus").child(newGroupGame.player4.id).child("active").child(groupID).setValue(getDate(date: Date()))
+            }
             
             performSegue(withIdentifier: "createSegue", sender: self)
         }
