@@ -47,7 +47,7 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        retrieveActiveGames()
+//        retrieveActiveGames()
         
     }
     

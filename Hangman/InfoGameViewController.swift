@@ -14,6 +14,7 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var roundsGame: UILabel!
+    @IBOutlet weak var playGame: UIButton!
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -49,17 +50,18 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
         
         
 //        retrieveGameData()
+
         tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.roundsGame.text = self.store.gameRounds + " ROUNDS"
+        checkIfUserCanPlay()
     }
     
     func retrieveRounds() {
@@ -72,7 +74,7 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
             
             print("2c")
             self.userAmountOfRounds = data
-            print("2d")
+            print(self.userAmountOfRounds)
         })
         }
         
@@ -111,8 +113,6 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
             guard let data = snapshot.value as? [String:Any] else { return }
             
             DispatchQueue.main.async {
-
-            cell.gamesPlayed?.text =  "" + "/" + self.store.gameRounds
                 
             cell.playerNameLabel?.text = data["username"] as? String
             
@@ -132,6 +132,15 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
             
             }
         })
+        
+        database.child("multiplayerRounds").child(store.gameSelected).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            guard let data = snapshot.value as? [String:Any] else { return }
+            
+            cell.gamesPlayed?.text = (data[user] as! String?)! + "/" + self.store.gameRounds
+            
+        })
+        
         
         return cell
     }
@@ -160,20 +169,7 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
                 
                 self.players = key
                 
-                print("1A")
-                print(self.players)
-                //                if let position = self.players.index(where: {$0 == self.store.user.id}) {
-                //
-                //                    self.userSimplePosition = "\(Int(position) + 1)" ?? "?"
-                //                    self.retrieveUserInfo(url: self.store.user.profilePic, image: self.userPic, position: self.userSimplePosition, name: self.store.user.username, points: self.store.user.scoreSingle)
-                //                    self.tableView.reloadData()
-                //
-                //                } else {
-                //
-                //                    self.retrieveUserInfo(url: self.store.user.profilePic, image: self.userPic, position: "???", name: self.store.user.username, points: "???")
-                //                    self.tableView.reloadData()
-                //                }
-            }
+                  }
             self.tableView.reloadData()
             
         })
@@ -194,7 +190,36 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
         dest.groupID = store.gameSelected
     }
     
+    func checkIfUserCanPlay() {
+        
+        print("===============================================")
+        print("===============================================")
+        print("===============================================")
+        
+        print(userAmountOfRounds[store.user.id]!)
+        print(store.gameRounds)
+        
+        print("===============================================")
+        print("===============================================")
+        print("===============================================")
+        
+        if userAmountOfRounds[store.user.id] == gameRounds {
+            
+            playGame.isEnabled = false
+            
+            playGame.titleLabel?.text = "DONE"
+            
+            
+            
+        }
+        
+        
+        
+    }
     
+    
+    @IBAction func chatPushed(_ sender: UIButton) {
+    }
     
 }
 

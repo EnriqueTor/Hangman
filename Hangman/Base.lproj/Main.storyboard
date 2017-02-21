@@ -1005,6 +1005,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="chatPushed:" destination="Pb7-0U-2fW" eventType="touchUpInside" id="dPw-WX-fCV"/>
                                     <action selector="createGamePushed:" destination="ozk-gS-Qy7" eventType="touchUpInside" id="iow-Uh-a1V"/>
                                 </connections>
                             </button>
@@ -1023,7 +1024,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="createGamePushed:" destination="ozk-gS-Qy7" eventType="touchUpInside" id="sWp-Ip-t3U"/>
                                     <action selector="playPushed:" destination="Pb7-0U-2fW" eventType="touchUpInside" id="ImQ-Qx-Yfa"/>
                                 </connections>
                             </button>
@@ -1044,6 +1044,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="playGame" destination="ZOY-eW-D3g" id="hdY-c1-rzC"/>
                         <outlet property="roundsGame" destination="WPO-hG-yhx" id="Qmo-rj-TlB"/>
                         <outlet property="tableView" destination="FBF-yg-TDl" id="B3N-uV-FdK"/>
                         <outlet property="titleLabel" destination="6sx-zE-OuA" id="rUM-Vu-L7t"/>
