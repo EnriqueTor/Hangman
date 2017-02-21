@@ -33,10 +33,7 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
         background.image = store.chalkboard
         
         retrieveActiveGames()
-        
-        print("OOOOOOOOOOO")
-        print(store.gameSelected)
-        
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,14 +94,16 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
                 
             } else {
                 
-                guard let data = snapshot.value as? [String:Any] else { return }
-                
                 DispatchQueue.main.async {
-                    cell.gameLabel.text = data["title"] as! String?
-                    cell.retrieveUserInfo(url: data["player1Pic"] as! String, image: cell.pic1)
-                    cell.retrieveUserInfo(url: data["player2Pic"] as! String, image: cell.pic2)
-                    cell.retrieveUserInfo(url: data["player3Pic"] as! String, image: cell.pic3)
-                    cell.retrieveUserInfo(url: data["player4Pic"] as! String, image: cell.pic4)
+                
+                let newGroupGame = GroupGame(snapshot: snapshot)
+                
+                
+                    cell.gameLabel.text = newGroupGame.title
+                    cell.retrieveUserInfo(url: newGroupGame.player1Pic, image: cell.pic1)
+                    cell.retrieveUserInfo(url: newGroupGame.player2Pic, image: cell.pic2)
+                    cell.retrieveUserInfo(url: newGroupGame.player3Pic, image: cell.pic3)
+                    cell.retrieveUserInfo(url: newGroupGame.player4Pic, image: cell.pic4)
                 }
             }
         })
@@ -113,6 +112,7 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         
         gameSelected = activeGames[indexPath.row]
         store.gameSelected = gameSelected
