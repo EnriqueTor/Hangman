@@ -12,24 +12,27 @@ import SDWebImage
 
 class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    // MARK: - Outlets
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var background: UIImageView!
     
-    
+    // MARK: - Variables
     
     let store = HangmanData.sharedInstance
     let database = FIRDatabase.database().reference()
     var activeGames = [String]()
     var gameSelected = ""
+    var gameRounds = ""
     
-    //    var picsStrings = [String]()
-    
+    // MARK: - Loads
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         background.image = store.chalkboard
+        
+        retrieveActiveGames()
         
         print("OOOOOOOOOOO")
         print(store.gameSelected)
@@ -38,30 +41,42 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
+        
+        //        tableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        tableView.reloadData()
-    }
-    
-    @IBAction func createGamePushed(_ sender: UIButton) {
-        
-        performSegue(withIdentifier: "createGameSegue", sender: self)
+        retrieveActiveGames()
         
     }
     
+    // MARK: - Methods
     
-    @IBAction func activeGamesPushed(_ sender: UIButton) {
+    func retrieveActiveGames() {
         
+        activeGames.removeAll()
         
+        database.child("multiplayerStatus").child(store.user.id).child("active").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if snapshot.exists() == false {
+                
+            } else {
+                
+                guard let data = snapshot.value as? [String:Any] else { return }
+                
+                for (key,_) in data {
+                    
+                    self.activeGames.append(key)
+                }
+                
+                self.tableView.reloadData()
+            }
+        })
     }
     
-    @IBAction func archivedGamesPushed(_ sender: UIButton) {
-        
-        
-    }
+    // MARK: - Methods TableView
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return activeGames.count
@@ -106,36 +121,54 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
         
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        
-//        if segue.identifier == "gameInfo2Segue" {
-//            
-//            guard let dest = segue.destination as? InfoGameViewController else { return }
-//            
-//            database.child("multiplayer").child(store.gameSelected).observeSingleEvent(of: .value, with: { (snapshot) in
-//                
-//                guard let data = snapshot.value as? [String:Any] else { return }
-//                
-//                dest.titleLabel.text = data["title"] as! String
-//                
-//                var rounds = data["words"] as! String
-//                
-//                dest.roundsGame.text = rounds + " ROUNDS"
-//            })
-//            
-//            
-//            
-////            dest.retrieveUserPoints()
-//            
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "gameInfo2Segue" {
+            
+            guard let dest = segue.destination as? InfoGameViewController else { return }
+            
+            database.child("multiplayer").child(gameSelected).observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                guard let data = snapshot.value as? [String:Any] else { return }
+                
+                DispatchQueue.main.async {
+                    self.gameRounds = data["words"] as! String
+                    self.store.gameRounds = self.gameRounds
+                }
+            })
+            
+            database.child("multiplayerRounds").child(gameSelected).observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                guard let data = snapshot.value as? [String:Any] else { return }
+                
+                DispatchQueue.main.async {
+                    dest.userAmountOfRounds = data as! [String : String]
+                }
+            })
+        }
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
     
-
+    // MARK: - Actions
     
+    @IBAction func createGamePushed(_ sender: UIButton) {
+        
+        performSegue(withIdentifier: "createGameSegue", sender: self)
+        
+    }
+    
+    @IBAction func activeGamesPushed(_ sender: UIButton) {
+        
+        
+    }
+    
+    @IBAction func archivedGamesPushed(_ sender: UIButton) {
+        
+        
+    }
 }
 
 
@@ -157,8 +190,6 @@ class MultiplayerTableViewCell: UITableViewCell {
         image.sd_setImage(with: profileImgUrl)
         
     }
-    
-    
 }
 
 

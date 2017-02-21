@@ -34,32 +34,36 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
             
             titleLabel.text = gameTitle
         }
-        
-        print("1")
         retrieveUserPoints()
-        print("2")
         retrieveRounds()
-        print("3")
-        
-        print("gameRounds")
         
         print(gameRounds)
         
+        DispatchQueue.main.async {
+            
+        self.roundsGame.text = self.store.gameRounds + " ROUNDS"
+            
+            print(self.store.gameRounds)
+            print(self.roundsGame.text)
+        }
         
         
-        
-        retrieveGameData()
-        
+//        retrieveGameData()
+        tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        tableView.reloadData()
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.roundsGame.text = self.store.gameRounds + " ROUNDS"
     }
     
     func retrieveRounds() {
-        print("2A")
-        print(store.gameSelected)
+       
         DispatchQueue.main.async {
             
         self.database.child("multiplayerRounds").child(self.store.gameSelected).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -79,19 +83,13 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
         
         DispatchQueue.main.async {
             
-        print("3a")
         self.database.child("multiplayer").child(self.store.gameSelected).observeSingleEvent(of: .value, with: { (snapshot) in
-            print("3b")
                             guard let data = snapshot.value as? [String:Any] else { return }
-            print("3c")
                             self.titleLabel.text = data["title"] as? String
             
-            print("3d")
-                            let rounds = data["words"] as? String
-            print("3e")
-            self.gameRounds = rounds!
-                            self.roundsGame.text = rounds! + " ROUNDS"
-        print("3f")    
+//                            let rounds = data["words"] as? String
+//            self.gameRounds = rounds!
+                            self.roundsGame.text = self.gameRounds + " ROUNDS"
         })
 
         }
@@ -112,31 +110,27 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
             
             guard let data = snapshot.value as? [String:Any] else { return }
             
+            DispatchQueue.main.async {
+
+            cell.gamesPlayed?.text =  "" + "/" + self.store.gameRounds
+                
             cell.playerNameLabel?.text = data["username"] as? String
-            
-            print("playerName")
-            print(cell.playerNameLabel?.text)
             
             cell.retrieveUserPic(url: data["profilePic"] as! String, image: cell.playerPic!)
             
             
+                
             cell.backgroundColor = UIColor.clear
             
             cell.positionLabel?.text = "\(Int(indexPath.row) + 1)."
-            
-            print(cell.positionLabel?.text! ?? "")
             
             cell.selectionStyle = .none
             
             cell.pointsLabel?.text = self.points[user]
             
-            print(cell.pointsLabel?.text! ?? "")
-            print("gamesPlated")
 
-//            cell.gamesPlayed?.text =  self.userAmountOfRounds[user]! + "/" + self.gameRounds
             
-            print(cell.gamesPlayed?.text! ?? "")
-            
+            }
         })
         
         return cell

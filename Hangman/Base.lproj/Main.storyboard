@@ -821,7 +821,6 @@
                         <outlet property="player4Pic" destination="ydo-8j-s2V" id="4gv-qL-mW2"/>
                         <outlet property="userLabel" destination="Tyf-Sy-PRr" id="U8L-xJ-PK0"/>
                         <outlet property="userPic" destination="EF8-mz-g83" id="hS9-pP-4mt"/>
-                        <segue destination="Pb7-0U-2fW" kind="show" identifier="gameInfoSegue" id="skS-A7-Ua8"/>
                         <segue destination="h4j-9g-zbN" kind="show" identifier="searchSegue" id="aCj-eN-MLQ"/>
                     </connections>
                 </viewController>
@@ -2380,7 +2379,6 @@
         <image name="WelcomeLogo" width="1282" height="78"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="skS-A7-Ua8"/>
         <segue reference="t1E-8N-8Tb"/>
     </inferredMetricsTieBreakers>
 </document>

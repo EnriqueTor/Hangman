@@ -53,7 +53,7 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
         
         
         gameNameTextField.delegate = self
-//        gameNameTextField.text = ""
+        gameNameTextField.text = ""
         
         store.multiplayerAmountOfPlayers = 1
         store.multiplayerAmountOfWords = "0"
@@ -189,7 +189,7 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
             
         
             store.gameSelected = groupID
-            performSegue(withIdentifier: "gameInfoSegue", sender: self)
+            navigationController?.popViewController(animated: true)
         }
         
     }
@@ -222,16 +222,4 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "gameInfoSegue" {
-            
-            guard let dest = segue.destination as? InfoGameViewController else { return }
-            
-            dest.gameTitle = gameNameTextField.text!
-            
-            dest.retrieveUserPoints()
-            
-        }
-    }
 }
