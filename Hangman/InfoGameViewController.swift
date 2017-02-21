@@ -31,6 +31,16 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("===============================================")
+        print("===============================================")
+        print("===============================================")
+        
+        print(store.groupGame)
+        
+        print("===============================================")
+        print("===============================================")
+        print("===============================================")
+        
         if gameTitle != "" {
             
             titleLabel.text = gameTitle
@@ -192,16 +202,7 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     func checkIfUserCanPlay() {
         
-        print("===============================================")
-        print("===============================================")
-        print("===============================================")
-        
-        print(userAmountOfRounds[store.user.id]!)
-        print(store.gameRounds)
-        
-        print("===============================================")
-        print("===============================================")
-        print("===============================================")
+      
         
         if userAmountOfRounds[store.user.id] == gameRounds {
             

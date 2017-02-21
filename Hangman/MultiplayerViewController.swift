@@ -39,20 +39,18 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //        tableView.reloadData()
+//                tableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        retrieveActiveGames()
+        retrieveActiveGames()
         
     }
     
     // MARK: - Methods
     
     func retrieveActiveGames() {
-        
-        activeGames.removeAll()
         
         database.child("multiplayerStatus").child(store.user.id).child("active").observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -62,10 +60,7 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
                 
                 guard let data = snapshot.value as? [String:Any] else { return }
                 
-                for (key,_) in data {
-                    
-                    self.activeGames.append(key)
-                }
+                self.activeGames = Array(data.keys)
                 
                 self.tableView.reloadData()
             }
@@ -124,25 +119,13 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
         
         if segue.identifier == "gameInfo2Segue" {
             
-            guard let dest = segue.destination as? InfoGameViewController else { return }
+//            guard let dest = segue.destination as? InfoGameViewController else { return }
             
             database.child("multiplayer").child(gameSelected).observeSingleEvent(of: .value, with: { (snapshot) in
                 
-                guard let data = snapshot.value as? [String:Any] else { return }
+                let gameData = GroupGame(snapshot: snapshot)
                 
-                DispatchQueue.main.async {
-                    self.gameRounds = data["words"] as! String
-                    self.store.gameRounds = self.gameRounds
-                }
-            })
-            
-            database.child("multiplayerRounds").child(gameSelected).observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                guard let data = snapshot.value as? [String:Any] else { return }
-                
-                DispatchQueue.main.async {
-                    dest.userAmountOfRounds = data as! [String : String]
-                }
+                self.store.groupGame = gameData
             })
         }
     }

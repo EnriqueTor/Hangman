@@ -116,16 +116,10 @@ class SearchTableViewController: UITableViewController {
                 
                 cell.retrieveUserInfo(url: userSelected.profilePic, image: cell.userPic!, label: cell.userName, name: userSelected.username)
                 
-            }
-
-            
-            
-            
+            }    
         })
         
         return cell
-        
-        
         
     }
     
@@ -166,81 +160,23 @@ class SearchTableViewController: UITableViewController {
                 let data = snapshot.value as? [String:Any]
                 
                 if self.store.inviteSelected == 2 {
-                
                     self.store.user2 = userNew.deserialize(data!)
                     self.navigationController?.popViewController(animated: true)
-
                 }
                 
                 if self.store.inviteSelected == 3 {
-                    
                     self.store.user3 = userNew.deserialize(data!)
                     self.navigationController?.popViewController(animated: true)
-
                 }
                 
                 if self.store.inviteSelected == 4 {
-                    
                     self.store.user4 = userNew.deserialize(data!)
                     self.navigationController?.popViewController(animated: true) 
 
                 }
-                
             }
-            
         })
-        
     }
-
- 
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    
-//        if segue.identifier == "userProfileSegue" {
-//            
-//            guard let dest = segue.destination as? SearchProfileViewController else { return }
-//            //Pass the selectedUserID to the next vc
-//            
-//            self.database.child("users").child(self.selectedUserID).observeSingleEvent(of: .value, with: { snapshot in
-//                
-//                let newUser = User(snapshot: snapshot)
-//                
-//                self.selectedUser = newUser
-//                dest.userSelected = self.selectedUser!
-//                dest.userID = self.selectedUserID
-//                
-//                let profileImgUrl = URL(string: self.selectedUser.profilePic)
-//                dest.profileImage?.sd_setImage(with: profileImgUrl)
-//            })
-//            
-//            self.database.child("inbox").child(self.selectedUserID).observe(.value, with: { (snapshot) in
-//                
-//                if snapshot.exists() == true {
-//                    DispatchQueue.main.async {
-//                        let count =  snapshot.childrenCount
-//                        dest.lovegramsCount = Int(count)
-//                    }
-//                }
-//                else {
-//                    dest.lovegramsCount = 0
-//                }
-//            })
-//            
-//            self.database.child("favorites").child(selectedUserID).observe(.value, with: { snapshot in
-//                
-//                var newFavorites = [Message]()
-//                
-//                for message in snapshot.children {
-//                    
-//                    let newMessage = Message(snapshot: message as! FIRDataSnapshot)
-//                    newFavorites.insert(newMessage, at:0)
-//                    
-//                }
-//                
-//                dest.favorites = newFavorites
-//                dest.tableview.reloadData()
-//            })
-//        }
-//    }
 }
 
 extension SearchTableViewController: UISearchResultsUpdating {

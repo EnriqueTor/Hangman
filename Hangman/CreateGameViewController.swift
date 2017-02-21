@@ -51,58 +51,37 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
         store.user3 = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
         store.user4 = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
         
-        
         gameNameTextField.delegate = self
         gameNameTextField.text = ""
         
         store.multiplayerAmountOfPlayers = 1
         store.multiplayerAmountOfWords = "0"
         
-        
-        
         setup()
         
         retrieveUserInfo(url: store.user.profilePic, image: userPic, label: userLabel, name: store.user.username)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        refreshUsers()
     }
     
+    // MARK: - Methods
     
     func refreshUsers() {
         
         if store.inviteSelected == 2 {
             retrieveUserInfo(url: (store.user2.profilePic), image: player2Pic, label: player2Label, name: (store.user2.username))
-            
-            if store.user2Change == false {
-                
-                store.multiplayerAmountOfPlayers = store.multiplayerAmountOfPlayers + 1
-                store.user2Change = true
-            }
         }
         
         if store.inviteSelected == 3 {
             retrieveUserInfo(url: (store.user3.profilePic), image: player3Pic, label: player3Label, name: (store.user3.username))
-            
-            if store.user3Change == false {
-                store.multiplayerAmountOfPlayers = store.multiplayerAmountOfPlayers + 1
-                store.user3Change = true
-            }
         }
         
         if store.inviteSelected == 4 {
             retrieveUserInfo(url: (store.user4.profilePic), image: player4Pic, label: player4Label, name: (store.user4.username))
-            
-            if store.user4Change == false {
-                store.multiplayerAmountOfPlayers = store.multiplayerAmountOfPlayers + 1
-                store.user4Change = true
-            }
         }
-        
     }
     
     // MARK: - Methods
@@ -151,7 +130,12 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func createGamePushed(_ sender: UIButton) {
         
-        if gameNameTextField.text != "" && store.multiplayerAmountOfPlayers >= 2 && store.multiplayerAmountOfWords != "0" {
+        print(gameNameTextField.text)
+        print(store.multiplayerAmountOfPlayers)
+        print(store.multiplayerAmountOfWords)
+        
+        
+        if gameNameTextField.text == "" || store.user2.username == "" && store.user3.username == "" || store.user4.username == "" || store.multiplayerAmountOfWords == "0" {
             
             let root = database.child("multiplayer").childByAutoId()
             let groupID = root.key
@@ -163,34 +147,31 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
             if newGroupGame.player1Id != "" {
                 database.child("multiplayerStatus").child(newGroupGame.player1Id).child("active").child(groupID).setValue(getDate(date: Date()))
                 database.child("multiplayerPoints").child(groupID).child(newGroupGame.player1Id).setValue("0")
-                database.child("multiplayerRounds").child(groupID).child(newGroupGame.player1Id).setValue("0")
             }
             
             if newGroupGame.player2Id != "" {
                 database.child("multiplayerStatus").child(newGroupGame.player2Id).child("active").child(groupID).setValue(getDate(date: Date()))
                 database.child("multiplayerPoints").child(groupID).child(newGroupGame.player2Id).setValue("0")
-                database.child("multiplayerRounds").child(groupID).child(newGroupGame.player2Id).setValue("0")
-
             }
             
             if newGroupGame.player3Id != "" {
                 database.child("multiplayerStatus").child(newGroupGame.player3Id).child("active").child(groupID).setValue(getDate(date: Date()))
                 database.child("multiplayerPoints").child(groupID).child(newGroupGame.player3Id).setValue("0")
-                database.child("multiplayerRounds").child(groupID).child(newGroupGame.player3Id).setValue("0")
-
             }
             
             if newGroupGame.player4Id != "" {
                 database.child("multiplayerStatus").child(newGroupGame.player4Id).child("active").child(groupID).setValue(getDate(date: Date()))
                 database.child("multiplayerPoints").child(groupID).child(newGroupGame.player4Id).setValue("0")
-                database.child("multiplayerRounds").child(groupID).child(newGroupGame.player4Id).setValue("0")
-
             }
-        
+            
             store.gameSelected = groupID
+            store.user2.username = ""
+            store.user3.username = ""
+            store.user4.username = ""
+            store.multiplayerAmountOfWords = "0"
+            
             navigationController?.popViewController(animated: true)
         }
-        
     }
     
     func getDate(date: Date) -> String {
@@ -203,16 +184,19 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func addPlayer2(_ sender: UIButton) {
         store.inviteSelected = 2
+        //        refreshUsers()
         performSegue(withIdentifier: "searchSegue", sender: self)
     }
     
     @IBAction func addPlayer3(_ sender: UIButton) {
         store.inviteSelected = 3
+        //        refreshUsers()
         performSegue(withIdentifier: "searchSegue", sender: self)
     }
     
     @IBAction func addPlayer4(_ sender: UIButton) {
         store.inviteSelected = 4
+        //        refreshUsers()
         performSegue(withIdentifier: "searchSegue", sender: self)
     }
     
