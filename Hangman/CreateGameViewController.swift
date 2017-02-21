@@ -156,34 +156,34 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
             let root = database.child("multiplayer").childByAutoId()
             let groupID = root.key
             
-            let newGroupGame = GroupGame(id: groupID, player1: store.user, player1Pic: store.user.profilePic, player2: store.user2, player2Pic: store.user2.profilePic, player3: store.user3, player3Pic: store.user3.profilePic, player4: store.user4, player4Pic: store.user4.profilePic, date: getDate(date: Date()), status: "active", title: gameNameTextField.text!.uppercased(), words: store.multiplayerAmountOfWords)
+            let newGroupGame = GroupGame(id: groupID, player1Id: store.user.id, player1Name: store.user.username, player1Pic: store.user.profilePic, player1Rounds: "0", player2Id: store.user2.id, player2Name: store.user2.username, player2Pic: store.user2.profilePic, player2Rounds: "0", player3Id: store.user3.id, player3Name: store.user3.username, player3Pic: store.user3.profilePic, player3Rounds: "0", player4Id: store.user4.id, player4Name: store.user4.username, player4Pic: store.user4.profilePic, player4Rounds: "0", date: getDate(date: Date()), status: "active", title: gameNameTextField.text!.uppercased(), rounds: store.multiplayerAmountOfWords)
             
             database.child("multiplayer").child(groupID).setValue(newGroupGame.serialize())
             
-            if newGroupGame.player1.id != "" {
-                database.child("multiplayerStatus").child(newGroupGame.player1.id).child("active").child(groupID).setValue(getDate(date: Date()))
-                database.child("multiplayerPoints").child(groupID).child(newGroupGame.player1.id).setValue("0")
-                database.child("multiplayerRounds").child(groupID).child(newGroupGame.player1.id).setValue("0")
+            if newGroupGame.player1Id != "" {
+                database.child("multiplayerStatus").child(newGroupGame.player1Id).child("active").child(groupID).setValue(getDate(date: Date()))
+                database.child("multiplayerPoints").child(groupID).child(newGroupGame.player1Id).setValue("0")
+                database.child("multiplayerRounds").child(groupID).child(newGroupGame.player1Id).setValue("0")
             }
             
-            if newGroupGame.player2.id != "" {
-                database.child("multiplayerStatus").child(newGroupGame.player2.id).child("active").child(groupID).setValue(getDate(date: Date()))
-                database.child("multiplayerPoints").child(groupID).child(newGroupGame.player2.id).setValue("0")
-                database.child("multiplayerRounds").child(groupID).child(newGroupGame.player2.id).setValue("0")
+            if newGroupGame.player2Id != "" {
+                database.child("multiplayerStatus").child(newGroupGame.player2Id).child("active").child(groupID).setValue(getDate(date: Date()))
+                database.child("multiplayerPoints").child(groupID).child(newGroupGame.player2Id).setValue("0")
+                database.child("multiplayerRounds").child(groupID).child(newGroupGame.player2Id).setValue("0")
 
             }
             
-            if newGroupGame.player3.id != "" {
-                database.child("multiplayerStatus").child(newGroupGame.player3.id).child("active").child(groupID).setValue(getDate(date: Date()))
-                database.child("multiplayerPoints").child(groupID).child(newGroupGame.player3.id).setValue("0")
-                database.child("multiplayerRounds").child(groupID).child(newGroupGame.player3.id).setValue("0")
+            if newGroupGame.player3Id != "" {
+                database.child("multiplayerStatus").child(newGroupGame.player3Id).child("active").child(groupID).setValue(getDate(date: Date()))
+                database.child("multiplayerPoints").child(groupID).child(newGroupGame.player3Id).setValue("0")
+                database.child("multiplayerRounds").child(groupID).child(newGroupGame.player3Id).setValue("0")
 
             }
             
-            if newGroupGame.player4.id != "" {
-                database.child("multiplayerStatus").child(newGroupGame.player4.id).child("active").child(groupID).setValue(getDate(date: Date()))
-                database.child("multiplayerPoints").child(groupID).child(newGroupGame.player4.id).setValue("0")
-                database.child("multiplayerRounds").child(groupID).child(newGroupGame.player4.id).setValue("0")
+            if newGroupGame.player4Id != "" {
+                database.child("multiplayerStatus").child(newGroupGame.player4Id).child("active").child(groupID).setValue(getDate(date: Date()))
+                database.child("multiplayerPoints").child(groupID).child(newGroupGame.player4Id).setValue("0")
+                database.child("multiplayerRounds").child(groupID).child(newGroupGame.player4Id).setValue("0")
 
             }
             
