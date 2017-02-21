@@ -33,7 +33,6 @@
 		BBB913511E56012800E779AA /* HangmanData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB913501E56012800E779AA /* HangmanData.swift */; };
 		BBD5C41E1E5991960020C676 /* MultiplayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD5C41D1E5991960020C676 /* MultiplayerViewController.swift */; };
 		BBD5C4201E5A47EC0020C676 /* CreateGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD5C41F1E5A47EC0020C676 /* CreateGameViewController.swift */; };
-		BBD5C4221E5A616B0020C676 /* MultiplayerGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD5C4211E5A616B0020C676 /* MultiplayerGameViewController.swift */; };
 		BBD5C4241E5A71980020C676 /* SearchUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD5C4231E5A71980020C676 /* SearchUserViewController.swift */; };
 		BBD5C4261E5ACB7F0020C676 /* GroupGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD5C4251E5ACB7F0020C676 /* GroupGame.swift */; };
 		BBD5C4281E5B3ACE0020C676 /* InfoGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD5C4271E5B3ACE0020C676 /* InfoGameViewController.swift */; };
@@ -77,7 +76,6 @@
 		BBB913501E56012800E779AA /* HangmanData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HangmanData.swift; sourceTree = "<group>"; };
 		BBD5C41D1E5991960020C676 /* MultiplayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiplayerViewController.swift; sourceTree = "<group>"; };
 		BBD5C41F1E5A47EC0020C676 /* CreateGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGameViewController.swift; sourceTree = "<group>"; };
-		BBD5C4211E5A616B0020C676 /* MultiplayerGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiplayerGameViewController.swift; sourceTree = "<group>"; };
 		BBD5C4231E5A71980020C676 /* SearchUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUserViewController.swift; sourceTree = "<group>"; };
 		BBD5C4251E5ACB7F0020C676 /* GroupGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupGame.swift; sourceTree = "<group>"; };
 		BBD5C4271E5B3ACE0020C676 /* InfoGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoGameViewController.swift; sourceTree = "<group>"; };
@@ -162,7 +160,6 @@
 				BBB913401E555F3F00E779AA /* LoginViewController.swift */,
 				BBB913441E555F5200E779AA /* MainViewController.swift */,
 				BB1F478A1E59458400E840B5 /* MessageViewController.swift */,
-				BBD5C4211E5A616B0020C676 /* MultiplayerGameViewController.swift */,
 				BBD5C41D1E5991960020C676 /* MultiplayerViewController.swift */,
 				BBB913421E555F4A00E779AA /* RegisterViewController.swift */,
 				BB1F47821E579ADD00E840B5 /* ResultViewController.swift */,
@@ -352,7 +349,6 @@
 				BBD5C4241E5A71980020C676 /* SearchUserViewController.swift in Sources */,
 				BB1F47851E57AC0400E840B5 /* Constants.swift in Sources */,
 				BBDA19421E56ACF80007FBA0 /* User.swift in Sources */,
-				BBD5C4221E5A616B0020C676 /* MultiplayerGameViewController.swift in Sources */,
 				BBB913491E55601A00E779AA /* GameViewController.swift in Sources */,
 				BBDA19381E5607B40007FBA0 /* Secrets.swift in Sources */,
 				BBB913411E555F3F00E779AA /* LoginViewController.swift in Sources */,

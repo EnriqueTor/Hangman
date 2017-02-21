@@ -48,9 +48,7 @@ class ResultViewController: UIViewController {
         
         if typeOfGame == "CHALLENGE" {
             
-            newButton.isEnabled = false
-            newButton.isHidden = true
-            
+                     
         }
         
         
