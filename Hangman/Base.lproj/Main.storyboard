@@ -912,23 +912,46 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VYs-Af-ygx">
-                                            <rect key="frame" x="39" y="13" width="52" height="52"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Frame" translatesAutoresizingMaskIntoConstraints="NO" id="Nem-eq-C1X">
-                                            <rect key="frame" x="33" y="7" width="64" height="64"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <gestureRecognizers/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="QUIQUIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yT-LG-KcY">
-                                            <rect key="frame" x="116" y="10" width="196" height="58"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4nV-gU-3kn">
+                                            <rect key="frame" x="-0.5" y="-0.5" width="375" height="79"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Frame" translatesAutoresizingMaskIntoConstraints="NO" id="Nem-eq-C1X">
+                                                    <rect key="frame" x="15" y="7.5" width="64" height="64"/>
+                                                    <gestureRecognizers/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="64" id="3gZ-zu-hk2"/>
+                                                        <constraint firstAttribute="height" constant="64" id="9PK-Xh-ugE"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VYs-Af-ygx">
+                                                    <rect key="frame" x="21" y="13.5" width="52" height="52"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="VYs-Af-ygx" firstAttribute="centerX" secondItem="Nem-eq-C1X" secondAttribute="centerX" id="4s8-6Z-cjv"/>
+                                                <constraint firstItem="VYs-Af-ygx" firstAttribute="width" secondItem="Nem-eq-C1X" secondAttribute="width" multiplier="0.8" id="H7g-1Q-PXi"/>
+                                                <constraint firstItem="Nem-eq-C1X" firstAttribute="leading" secondItem="4nV-gU-3kn" secondAttribute="leading" constant="15" id="W1O-0V-3fV"/>
+                                                <constraint firstItem="VYs-Af-ygx" firstAttribute="height" secondItem="Nem-eq-C1X" secondAttribute="height" multiplier="0.8" id="aTB-al-0oa"/>
+                                                <constraint firstItem="Nem-eq-C1X" firstAttribute="centerY" secondItem="4nV-gU-3kn" secondAttribute="centerY" id="i9s-LI-C7j"/>
+                                                <constraint firstItem="VYs-Af-ygx" firstAttribute="centerY" secondItem="Nem-eq-C1X" secondAttribute="centerY" id="xjt-OB-Jbj"/>
+                                            </constraints>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QUIQUIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yT-LG-KcY">
+                                            <rect key="frame" x="83.5" y="21" width="90" height="36"/>
                                             <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="3yT-LG-KcY" firstAttribute="centerY" secondItem="Nem-eq-C1X" secondAttribute="centerY" id="GYy-Qh-W5q"/>
+                                        <constraint firstItem="4nV-gU-3kn" firstAttribute="height" secondItem="DaE-3t-0ob" secondAttribute="height" id="GgA-Gr-liP"/>
+                                        <constraint firstItem="4nV-gU-3kn" firstAttribute="centerX" secondItem="DaE-3t-0ob" secondAttribute="centerX" id="Zup-sU-7ka"/>
+                                        <constraint firstItem="4nV-gU-3kn" firstAttribute="centerY" secondItem="DaE-3t-0ob" secondAttribute="centerY" id="v03-KF-VTR"/>
+                                        <constraint firstItem="3yT-LG-KcY" firstAttribute="leading" secondItem="Nem-eq-C1X" secondAttribute="trailing" constant="5" id="vIg-Bv-2Na"/>
+                                        <constraint firstItem="4nV-gU-3kn" firstAttribute="width" secondItem="DaE-3t-0ob" secondAttribute="width" id="xpA-E6-86j"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="userName" destination="3yT-LG-KcY" id="9t6-XV-Ay2"/>
@@ -1961,16 +1984,16 @@
                                                     <rect key="frame" x="-0.5" y="0.0" width="375" height="79"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="145." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Tr-mI-AQq">
-                                                            <rect key="frame" x="0.0" y="22" width="55" height="36"/>
+                                                            <rect key="frame" x="0.0" y="22" width="44" height="36"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="55" id="Yzj-m3-ofk"/>
+                                                                <constraint firstAttribute="width" constant="44" id="Yzj-m3-ofk"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jEg-0a-vg1">
-                                                            <rect key="frame" x="58" y="4" width="71" height="71"/>
+                                                            <rect key="frame" x="47" y="4" width="71" height="71"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Frame" translatesAutoresizingMaskIntoConstraints="NO" id="YZO-jP-XTT">
                                                                     <rect key="frame" x="0.0" y="0.0" width="71" height="71"/>
@@ -1994,7 +2017,7 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QUIQUIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dak-45-U5N">
-                                                            <rect key="frame" x="136" y="21.5" width="130" height="36"/>
+                                                            <rect key="frame" x="125" y="21.5" width="130" height="36"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="130" id="RwO-Ns-Ld2"/>
                                                             </constraints>
@@ -2062,16 +2085,16 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="???." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wOE-PR-cRj">
-                                        <rect key="frame" x="0.0" y="20" width="55" height="36"/>
+                                        <rect key="frame" x="0.0" y="20" width="44" height="36"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="55" id="pK9-Nl-zvs"/>
+                                            <constraint firstAttribute="width" constant="44" id="pK9-Nl-zvs"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpW-FY-cLS">
-                                        <rect key="frame" x="58" y="3.5" width="69.5" height="69.5"/>
+                                        <rect key="frame" x="47" y="3.5" width="69.5" height="69.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Frame" translatesAutoresizingMaskIntoConstraints="NO" id="Nr5-lM-ywr">
                                                 <rect key="frame" x="0.0" y="0.0" width="69.5" height="69.5"/>
@@ -2095,7 +2118,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbW-6a-Hkm">
-                                        <rect key="frame" x="134.5" y="38" width="130" height="0.0"/>
+                                        <rect key="frame" x="123.5" y="38" width="130" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="130" id="Go3-lQ-KTk"/>
                                         </constraints>
@@ -2234,16 +2257,16 @@
                                                     <rect key="frame" x="-0.5" y="0.0" width="375" height="79"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="145." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sS4-JZ-TL9">
-                                                            <rect key="frame" x="0.0" y="22" width="55" height="36"/>
+                                                            <rect key="frame" x="0.0" y="22" width="44" height="36"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="55" id="gKv-Jb-vaf"/>
+                                                                <constraint firstAttribute="width" constant="44" id="gKv-Jb-vaf"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sQD-ra-hY0">
-                                                            <rect key="frame" x="58" y="4" width="71" height="71"/>
+                                                            <rect key="frame" x="47" y="4" width="71" height="71"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Frame" translatesAutoresizingMaskIntoConstraints="NO" id="AQ8-Yi-zG2">
                                                                     <rect key="frame" x="0.0" y="0.0" width="71" height="71"/>
@@ -2267,7 +2290,7 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QUIQUIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xW-H6-YqC">
-                                                            <rect key="frame" x="136" y="21.5" width="130" height="36"/>
+                                                            <rect key="frame" x="125" y="21.5" width="130" height="36"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="130" id="Y1B-5s-AKp"/>
                                                             </constraints>
@@ -2335,16 +2358,16 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="???." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRE-Gq-0Zr">
-                                        <rect key="frame" x="0.0" y="20.5" width="55" height="36"/>
+                                        <rect key="frame" x="0.0" y="20.5" width="44" height="36"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="55" id="06f-Ah-h1W"/>
+                                            <constraint firstAttribute="width" constant="44" id="06f-Ah-h1W"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tsO-Ro-hg4">
-                                        <rect key="frame" x="58" y="4" width="69" height="69"/>
+                                        <rect key="frame" x="47" y="4" width="69" height="69"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Frame" translatesAutoresizingMaskIntoConstraints="NO" id="FUK-mz-SSz">
                                                 <rect key="frame" x="0.0" y="0.0" width="69" height="69"/>
@@ -2368,7 +2391,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54n-Re-eNm">
-                                        <rect key="frame" x="134" y="38.5" width="130" height="0.0"/>
+                                        <rect key="frame" x="123" y="38.5" width="130" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="130" id="Unk-SV-h0a"/>
                                         </constraints>
@@ -2602,16 +2625,16 @@
                                                     <rect key="frame" x="-0.5" y="0.0" width="375" height="79"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="145." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rFP-cR-5TP">
-                                                            <rect key="frame" x="0.0" y="22" width="55" height="36"/>
+                                                            <rect key="frame" x="0.0" y="22" width="44" height="36"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="55" id="8tR-Vt-gGu"/>
+                                                                <constraint firstAttribute="width" constant="44" id="8tR-Vt-gGu"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bXF-FP-JE1">
-                                                            <rect key="frame" x="58" y="4" width="71" height="71"/>
+                                                            <rect key="frame" x="47" y="4" width="71" height="71"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Frame" translatesAutoresizingMaskIntoConstraints="NO" id="hxS-mb-OpR">
                                                                     <rect key="frame" x="0.0" y="0.0" width="71" height="71"/>
@@ -2635,7 +2658,7 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QUIQUIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4v-ma-DBX">
-                                                            <rect key="frame" x="136" y="21.5" width="130" height="36"/>
+                                                            <rect key="frame" x="125" y="21.5" width="130" height="36"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="130" id="1VQ-Hk-Iwt"/>
                                                             </constraints>
@@ -2703,16 +2726,16 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="???." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GSb-bZ-Oeg">
-                                        <rect key="frame" x="0.0" y="20" width="55" height="36"/>
+                                        <rect key="frame" x="0.0" y="20" width="44" height="36"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="55" id="Nej-oO-pIY"/>
+                                            <constraint firstAttribute="width" constant="44" id="Nej-oO-pIY"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V6v-yO-eio">
-                                        <rect key="frame" x="58" y="3.5" width="69.5" height="69.5"/>
+                                        <rect key="frame" x="47" y="3.5" width="69.5" height="69.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Frame" translatesAutoresizingMaskIntoConstraints="NO" id="Tv1-vZ-gjc">
                                                 <rect key="frame" x="0.0" y="0.0" width="69.5" height="69.5"/>
@@ -2736,7 +2759,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xKd-Os-DUv">
-                                        <rect key="frame" x="134.5" y="38.5" width="130" height="0.0"/>
+                                        <rect key="frame" x="123.5" y="38.5" width="130" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="130" id="X59-X0-3DE"/>
                                         </constraints>
