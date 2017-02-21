@@ -596,6 +596,10 @@
                                     <outlet property="delegate" destination="RZD-BX-dcg" id="AOR-IP-15H"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="AHC-OB-zrV">
+                                <rect key="frame" x="177" y="119" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -606,6 +610,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityInfo" destination="AHC-OB-zrV" id="ZPA-0X-Uq9"/>
                         <outlet property="background" destination="8eR-YL-ocg" id="Qbr-os-mh1"/>
                         <outlet property="tableView" destination="XCp-bu-YIL" id="H5X-kn-5nb"/>
                         <segue destination="ozk-gS-Qy7" kind="show" identifier="createGameSegue" id="QdF-BC-Kxb"/>

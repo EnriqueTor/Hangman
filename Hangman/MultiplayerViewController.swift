@@ -16,6 +16,7 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var background: UIImageView!
+    @IBOutlet weak var activityInfo: UIActivityIndicatorView!
     
     // MARK: - Variables
     
@@ -117,14 +118,18 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
             
             self.store.groupGame = gameData
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-                self.performSegue(withIdentifier: "gameInfo2Segue", sender: self)
-            })
-})
+            self.activityInfo.startAnimating()
 
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                self.activityInfo.stopAnimating()
+                self.performSegue(withIdentifier: "gameInfo2Segue", sender: self)
+            
+            })
+        })
+        
         
     }
-      
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
