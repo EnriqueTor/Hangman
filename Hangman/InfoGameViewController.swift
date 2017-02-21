@@ -40,6 +40,8 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
         print("===============================================")
         
         retrieveUsers()
+        checkIfUserCanPlay()
+
         setupView()
         
     }
@@ -54,7 +56,6 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         retrieveUsers()
-        checkIfUserCanPlay()
     }
     
     // MARK: - Methods
@@ -178,11 +179,11 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
         
         
         
-        if userAmountOfRounds[store.user.id] == gameRounds {
+        if store.groupGame.player1Rounds == store.groupGame.rounds {
             
             playGame.isEnabled = false
             
-            playGame.titleLabel?.text = "DONE"
+            playGame.setTitle("FINISHED", for: .normal)
             
             
             

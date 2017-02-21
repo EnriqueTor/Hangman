@@ -72,15 +72,6 @@ class GameViewController: UIViewController {
            
         })
         
-        database.child("multiplayerRounds").child(self.store.gameSelected).child(self.store.user.id).observeSingleEvent(of: .value, with: { (snapshot) in
-            
-          
-            
-                self.multiplayerRounds = snapshot.value as! String
-            
-            
-        })
-        
         }
     }
     
@@ -276,11 +267,11 @@ class GameViewController: UIViewController {
         if typeOfGame == "MULTIPLAYER" {
             
             
-            self.multiplayerPoints = "\(Int32(self.multiplayerPoints)! + self.points)"
-            self.multiplayerRounds = "\(Int32(self.multiplayerRounds)! + 1)"
+            self.store.groupGame.player1Points = "\(Int32(self.store.groupGame.player1Points)! + self.points)"
+            self.store.groupGame.player1Rounds = "\(Int32(self.store.groupGame.player1Rounds)! + 1)"
             
-            database.child("multiplayerPoints").child(self.store.gameSelected).child(self.store.user.id).setValue(self.multiplayerPoints)
-            database.child("multiplayerRounds").child(self.store.gameSelected).child(self.store.user.id).setValue(self.multiplayerRounds)
+            database.child("multiplayer").child(self.store.groupGame.id).child("player1Points").setValue(store.groupGame.player1Points)
+            database.child("multiplayer").child(self.store.groupGame.id).child("player1Rounds").setValue(self.store.groupGame.player1Rounds)
             
         }
         
