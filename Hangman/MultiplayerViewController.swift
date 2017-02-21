@@ -83,7 +83,7 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
         
         let gameID = activeGames[indexPath.row]
         
-        database.child("multiplayer").child(gameID).observeSingleEvent(of: .value, with: { (snapshot) in
+        database.child("multiplayer").child(gameID).observe(.value, with: { (snapshot) in
             
             if snapshot.exists() == false {
                 
@@ -115,20 +115,20 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "gameInfo2Segue" {
-            
-//            guard let dest = segue.destination as? InfoGameViewController else { return }
-            
-            database.child("multiplayer").child(gameSelected).observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                let gameData = GroupGame(snapshot: snapshot)
-                
-                self.store.groupGame = gameData
-            })
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        
+//        if segue.identifier == "gameInfo2Segue" {
+//            
+////            guard let dest = segue.destination as? InfoGameViewController else { return }
+//            
+//            database.child("multiplayer").child(gameSelected).observeSingleEvent(of: .value, with: { (snapshot) in
+//                
+//                let gameData = GroupGame(snapshot: snapshot)
+//                
+//                self.store.groupGame = gameData
+//            })
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100

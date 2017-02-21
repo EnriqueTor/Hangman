@@ -60,11 +60,12 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
         setup()
         
         retrieveUserInfo(url: store.user.profilePic, image: userPic, label: userLabel, name: store.user.username)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        refreshUsers()
     }
     
     // MARK: - Methods
@@ -72,6 +73,7 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
     func refreshUsers() {
         
         if store.inviteSelected == 2 {
+            print(store.user2.profilePic)
             retrieveUserInfo(url: (store.user2.profilePic), image: player2Pic, label: player2Label, name: (store.user2.username))
         }
         
@@ -130,17 +132,21 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func createGamePushed(_ sender: UIButton) {
         
-        print(gameNameTextField.text)
-        print(store.multiplayerAmountOfPlayers)
-        print(store.multiplayerAmountOfWords)
+        if gameNameTextField.text != "" && player2Pic.image != nil || player3Pic.image != nil || player4Pic.image != nil && store.multiplayerAmountOfWords != "0" {
+            createGame()
+        }
         
-        
-        if gameNameTextField.text == "" || store.user2.username == "" && store.user3.username == "" || store.user4.username == "" || store.multiplayerAmountOfWords == "0" {
+    }
+    
+        func createGame() {
             
             let root = database.child("multiplayer").childByAutoId()
             let groupID = root.key
             
             let newGroupGame = GroupGame(id: groupID, date: getDate(date: Date()), status: "active", title: gameNameTextField.text!.uppercased(), rounds: store.multiplayerAmountOfWords, player1Id: store.user.id, player1Name: store.user.username, player1Pic: store.user.profilePic, player1Rounds: "0", player1Points: "0", player2Id: store.user2.id, player2Name: store.user2.username, player2Pic: store.user2.profilePic, player2Rounds: "0", player2Points: "0", player3Id: store.user3.id, player3Name: store.user3.username, player3Pic: store.user3.profilePic, player3Rounds: "0", player3Points: "0", player4Id: store.user4.id, player4Name: store.user4.username, player4Pic: store.user4.profilePic, player4Rounds: "0", player4Points: "0")
+            
+            print("THIS IS THE NEW GAME")
+            print(newGroupGame)
             
             database.child("multiplayer").child(groupID).setValue(newGroupGame.serialize())
             
@@ -165,15 +171,12 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
             }
             
             store.gameSelected = groupID
-            store.user2.username = ""
-            store.user3.username = ""
-            store.user4.username = ""
             store.multiplayerAmountOfWords = "0"
             
             navigationController?.popViewController(animated: true)
+        
         }
-    }
-    
+        
     func getDate(date: Date) -> String {
         
         let dateFormatter = DateFormatter()

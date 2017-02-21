@@ -149,31 +149,28 @@ class SearchTableViewController: UITableViewController {
     
     func retrieveUsers(id: String) {
         
-        var userNew = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
-        
-        database.child("users").child(id).observe(.value, with: { (snapshot) in
+        database.child("users").child(id).observe( .value, with: { (snapshot) in
             
-            if snapshot.exists() == false {
-                
-            } else {
-                
-                let data = snapshot.value as? [String:Any]
-                
+//            if snapshot.exists() == false {
+//                
+//            } else {
+            
                 if self.store.inviteSelected == 2 {
-                    self.store.user2 = userNew.deserialize(data!)
+                    self.store.user2 = User(snapshot: snapshot)
+                    print(self.store.user2)
                     self.navigationController?.popViewController(animated: true)
                 }
                 
                 if self.store.inviteSelected == 3 {
-                    self.store.user3 = userNew.deserialize(data!)
+                    self.store.user3 = User(snapshot: snapshot)
                     self.navigationController?.popViewController(animated: true)
                 }
                 
                 if self.store.inviteSelected == 4 {
-                    self.store.user4 = userNew.deserialize(data!)
+                    self.store.user4 = User(snapshot: snapshot)
                     self.navigationController?.popViewController(animated: true) 
 
-                }
+//                }
             }
         })
     }

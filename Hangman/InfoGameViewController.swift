@@ -11,22 +11,24 @@ import Firebase
 
 class InfoGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    // MARK: - Outlets
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var roundsGame: UILabel!
     @IBOutlet weak var playGame: UIButton!
-    
-    
     @IBOutlet weak var tableView: UITableView!
     
-    var gameTitle = ""
+    // MARK: - Variables
     
+    var gameTitle = ""
     var players: [String] = []
     let database = FIRDatabase.database().reference()
     let store = HangmanData.sharedInstance
     var points: [String:String] = [:]
     var gameRounds = ""
     var userAmountOfRounds: [String:String] = [:]
+    
+    // MARK: - Loads
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,74 +38,46 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
         print("===============================================")
         
         print(store.groupGame)
+        print(store.gameSelected)
         
         print("===============================================")
         print("===============================================")
         print("===============================================")
         
-        if gameTitle != "" {
-            
-            titleLabel.text = gameTitle
-        }
-        retrieveUserPoints()
-        retrieveRounds()
+        retrieveUsers()
         
-        print(gameRounds)
+                retrieveGameData()
         
-        DispatchQueue.main.async {
-            
-        self.roundsGame.text = self.store.gameRounds + " ROUNDS"
-            
-            print(self.store.gameRounds)
-            print(self.roundsGame.text)
-        }
-        
-        
-//        retrieveGameData()
-
-        tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.roundsGame.text = self.store.gameRounds + " ROUNDS"
+        retrieveUsers()
         checkIfUserCanPlay()
     }
     
-    func retrieveRounds() {
-       
-        DispatchQueue.main.async {
-            
-        self.database.child("multiplayerRounds").child(self.store.gameSelected).observeSingleEvent(of: .value, with: { (snapshot) in
-            print("2b")
-            guard let data = snapshot.value as? [String:String] else { return }
-            
-            print("2c")
-            self.userAmountOfRounds = data
-            print(self.userAmountOfRounds)
-        })
-        }
-        
-    }
+    // MARK: - Methods
     
     func retrieveGameData() {
         
-        
         DispatchQueue.main.async {
             
-        self.database.child("multiplayer").child(self.store.gameSelected).observeSingleEvent(of: .value, with: { (snapshot) in
-                            guard let data = snapshot.value as? [String:Any] else { return }
-                            self.titleLabel.text = data["title"] as? String
-            
-//                            let rounds = data["words"] as? String
-//            self.gameRounds = rounds!
-                            self.roundsGame.text = self.gameRounds + " ROUNDS"
-        })
-
+            self.database.child("multiplayer").child(self.store.gameSelected).observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                let gameData = GroupGame(snapshot: snapshot)
+                self.store.groupGame = gameData
+                
+                self.store.groupGame = gameData
+                self.titleLabel.text = gameData.title
+                self.roundsGame.text = gameData.rounds + " ROUNDS"
+            })
         }
     }
     
@@ -116,48 +90,54 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! InfoTableViewCell
         
+        cell.backgroundColor = UIColor.clear
+        cell.selectionStyle = .none
+        cell.positionLabel?.text = "\(Int(indexPath.row) + 1)."
+
         let user = players[indexPath.row]
         
-        database.child("users").child(user).observeSingleEvent(of: .value, with: { (snapshot) in
+        print("THIS IS THE USER!!!!")
+        print(user)
+        
+        if user == store.groupGame.player1Id {
             
-            guard let data = snapshot.value as? [String:Any] else { return }
+            cell.playerNameLabel?.text = store.groupGame.player1Name
+            cell.retrieveUserPic(url: store.groupGame.player1Pic, image: cell.playerPic!)
+            cell.pointsLabel?.text = store.groupGame.player1Points
+            cell.gamesPlayed?.text = store.groupGame.player1Rounds + "/" + self.store.gameRounds
+        }
+        
+        if user == store.groupGame.player2Id {
             
-            DispatchQueue.main.async {
-                
-            cell.playerNameLabel?.text = data["username"] as? String
-            
-            cell.retrieveUserPic(url: data["profilePic"] as! String, image: cell.playerPic!)
-            
-            
-                
-            cell.backgroundColor = UIColor.clear
-            
-            cell.positionLabel?.text = "\(Int(indexPath.row) + 1)."
-            
-            cell.selectionStyle = .none
-            
-            cell.pointsLabel?.text = self.points[user]
-            
+            cell.playerNameLabel?.text = store.groupGame.player2Name
+            cell.retrieveUserPic(url: store.groupGame.player2Pic, image: cell.playerPic!)
+            cell.pointsLabel?.text = store.groupGame.player2Points
+            cell.gamesPlayed?.text = store.groupGame.player2Rounds + "/" + self.store.gameRounds
 
-            
-            }
-        })
+        }
         
-        database.child("multiplayerRounds").child(store.gameSelected).observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            guard let data = snapshot.value as? [String:Any] else { return }
-            
-            cell.gamesPlayed?.text = (data[user] as! String?)! + "/" + self.store.gameRounds
-            
-        })
+        if user == store.groupGame.player3Id {
+          
+            cell.playerNameLabel?.text = store.groupGame.player3Name
+            cell.retrieveUserPic(url: store.groupGame.player3Pic, image: cell.playerPic!)
+            cell.pointsLabel?.text = store.groupGame.player3Points
+            cell.gamesPlayed?.text = store.groupGame.player3Rounds + "/" + self.store.gameRounds
+        }
         
+        if user == store.groupGame.player4Id {
+            
+            cell.playerNameLabel?.text = store.groupGame.player4Name
+            cell.retrieveUserPic(url: store.groupGame.player4Pic, image: cell.playerPic!)
+            cell.pointsLabel?.text = store.groupGame.player4Points
+            cell.gamesPlayed?.text = store.groupGame.player4Rounds + "/" + self.store.gameRounds
+        }
         
         return cell
     }
     
     
     
-    func retrieveUserPoints() {
+    func retrieveUsers() {
         
         database.child("multiplayerPoints").child(store.gameSelected).observe(.value, with: { (snapshot) in
             
@@ -167,20 +147,17 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
                 
                 guard let data = snapshot.value as? [String : String] else { return }
                 
-                
                 self.points = data
-                
                 var key = Array(data.keys)
                 
                 key.sort { (o1, o2) -> Bool in
                     
                     return Int32(data[o1]!)! > Int32(data[o2]!)!
                 }
-                
                 self.players = key
                 
-                  }
-            self.tableView.reloadData()
+                self.tableView.reloadData()
+            }
             
         })
     }
@@ -202,7 +179,7 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     func checkIfUserCanPlay() {
         
-      
+        
         
         if userAmountOfRounds[store.user.id] == gameRounds {
             
