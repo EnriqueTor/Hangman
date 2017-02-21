@@ -89,7 +89,7 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
             cell.playerNameLabel?.text = store.groupGame.player1Name
             cell.retrieveUserPic(url: store.groupGame.player1Pic, image: cell.playerPic!)
             cell.pointsLabel?.text = store.groupGame.player1Points
-            cell.gamesPlayed?.text = store.groupGame.player1Rounds + "/" + self.store.gameRounds
+            cell.gamesPlayed?.text = store.groupGame.player1Rounds + "/" + self.store.groupGame.rounds
         }
         
         if user == store.groupGame.player2Id {
@@ -97,7 +97,7 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
             cell.playerNameLabel?.text = store.groupGame.player2Name
             cell.retrieveUserPic(url: store.groupGame.player2Pic, image: cell.playerPic!)
             cell.pointsLabel?.text = store.groupGame.player2Points
-            cell.gamesPlayed?.text = store.groupGame.player2Rounds + "/" + self.store.gameRounds
+            cell.gamesPlayed?.text = store.groupGame.player2Rounds + "/" + self.store.groupGame.rounds
             
         }
         
@@ -106,7 +106,7 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
             cell.playerNameLabel?.text = store.groupGame.player3Name
             cell.retrieveUserPic(url: store.groupGame.player3Pic, image: cell.playerPic!)
             cell.pointsLabel?.text = store.groupGame.player3Points
-            cell.gamesPlayed?.text = store.groupGame.player3Rounds + "/" + self.store.gameRounds
+            cell.gamesPlayed?.text = store.groupGame.player3Rounds + "/" + self.store.groupGame.rounds
         }
         
         if user == store.groupGame.player4Id {
@@ -114,7 +114,7 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
             cell.playerNameLabel?.text = store.groupGame.player4Name
             cell.retrieveUserPic(url: store.groupGame.player4Pic, image: cell.playerPic!)
             cell.pointsLabel?.text = store.groupGame.player4Points
-            cell.gamesPlayed?.text = store.groupGame.player4Rounds + "/" + self.store.gameRounds
+            cell.gamesPlayed?.text = store.groupGame.player4Rounds + "/" + self.store.groupGame.rounds
         }
         
         return cell
@@ -124,9 +124,7 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     func retrieveUsers() {
         
-        
         var userAndPoints = [store.groupGame.player1Id: store.groupGame.player1Points]
-        
         
         if store.groupGame.player2Id != "" {
             userAndPoints[store.groupGame.player2Id] = store.groupGame.player2Points
@@ -146,44 +144,19 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
             print(userAndPoints)
         }
         
-        print("THIS IS MUY COOL")
-        print(userAndPoints)
+        var key = Array(userAndPoints.keys)
         
-//        var key = Array(userAndPoints.keys)
-//        
-//        key.sort { (o1, o2) -> Bool in
-//            
-//            return Int32(data[o1]!)! > Int32(data[o2]!)!
-//        }
-//        self.players = key
+        key.sort { (o1, o2) -> Bool in
+            
+            return Int32(userAndPoints[o1]!)! > Int32(userAndPoints[o2]!)!
+        }
+        self.players = key
         
+        print("THIS ARE THE PLAYERS")
+        print(players)
         
+        tableView.reloadData()
         
-        
-        
-        //
-        //
-        //        database.child("multiplayerPoints").child(store.gameSelected).observe(.value, with: { (snapshot) in
-        //
-        //            if snapshot.exists() == false {
-        //
-        //            } else {
-        //
-        //                guard let data = snapshot.value as? [String : String] else { return }
-        //
-        //                self.points = data
-        //                var key = Array(data.keys)
-        //
-        //                key.sort { (o1, o2) -> Bool in
-        //
-        //                    return Int32(data[o1]!)! > Int32(data[o2]!)!
-        //                }
-        //                self.players = key
-        //
-        //                self.tableView.reloadData()
-        //            }
-        //
-        //        })
     }
     
     
