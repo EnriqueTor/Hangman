@@ -266,13 +266,46 @@ class GameViewController: UIViewController {
         
         if typeOfGame == "MULTIPLAYER" {
             
-            
+            if store.user.id == store.groupGame.player1Id {
+
             self.store.groupGame.player1Points = "\(Int32(self.store.groupGame.player1Points)! + self.points)"
             self.store.groupGame.player1Rounds = "\(Int32(self.store.groupGame.player1Rounds)! + 1)"
             
             database.child("multiplayer").child(self.store.groupGame.id).child("player1Points").setValue(store.groupGame.player1Points)
             database.child("multiplayer").child(self.store.groupGame.id).child("player1Rounds").setValue(self.store.groupGame.player1Rounds)
             
+            }
+            
+            if store.user.id == store.groupGame.player2Id {
+                
+                self.store.groupGame.player2Points = "\(Int32(self.store.groupGame.player2Points)! + self.points)"
+                self.store.groupGame.player2Rounds = "\(Int32(self.store.groupGame.player2Rounds)! + 1)"
+                
+                database.child("multiplayer").child(self.store.groupGame.id).child("player2Points").setValue(store.groupGame.player2Points)
+                database.child("multiplayer").child(self.store.groupGame.id).child("player2Rounds").setValue(self.store.groupGame.player2Rounds)
+                
+            }
+            
+            if store.user.id == store.groupGame.player3Id {
+                
+                self.store.groupGame.player3Points = "\(Int32(self.store.groupGame.player3Points)! + self.points)"
+                self.store.groupGame.player3Rounds = "\(Int32(self.store.groupGame.player3Rounds)! + 1)"
+                
+                database.child("multiplayer").child(self.store.groupGame.id).child("player3Points").setValue(store.groupGame.player3Points)
+                database.child("multiplayer").child(self.store.groupGame.id).child("player3Rounds").setValue(self.store.groupGame.player3Rounds)
+                
+            }
+            
+            if store.user.id == store.groupGame.player4Id {
+                
+                self.store.groupGame.player4Points = "\(Int32(self.store.groupGame.player4Points)! + self.points)"
+                self.store.groupGame.player4Rounds = "\(Int32(self.store.groupGame.player4Rounds)! + 1)"
+                
+                database.child("multiplayer").child(self.store.groupGame.id).child("player4Points").setValue(store.groupGame.player4Points)
+                database.child("multiplayer").child(self.store.groupGame.id).child("player4Rounds").setValue(self.store.groupGame.player4Rounds)
+                
+            }
+                
         }
         
         performSegue(withIdentifier: "resultSegue", sender: self)

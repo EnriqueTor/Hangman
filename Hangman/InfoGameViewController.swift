@@ -41,7 +41,7 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
         
         retrieveUsers()
         checkIfUserCanPlay()
-
+        
         setupView()
         
     }
@@ -56,6 +56,8 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         retrieveUsers()
+        checkIfUserCanPlay()
+        
     }
     
     // MARK: - Methods
@@ -129,20 +131,14 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
         
         if store.groupGame.player2Id != "" {
             userAndPoints[store.groupGame.player2Id] = store.groupGame.player2Points
-            print("user2")
-            print(userAndPoints)
         }
         
         if store.groupGame.player3Id != "" {
             userAndPoints[store.groupGame.player3Id] = store.groupGame.player3Points
-            print("user3")
-            print(userAndPoints)
         }
         
         if store.groupGame.player4Id != "" {
             userAndPoints[store.groupGame.player4Id] = store.groupGame.player4Points
-            print("user4")
-            print(userAndPoints)
         }
         
         var key = Array(userAndPoints.keys)
@@ -152,9 +148,6 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
             return Int32(userAndPoints[o1]!)! > Int32(userAndPoints[o2]!)!
         }
         self.players = key
-        
-        print("THIS ARE THE PLAYERS")
-        print(players)
         
         tableView.reloadData()
         
@@ -177,24 +170,54 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     func checkIfUserCanPlay() {
         
-        
-        
-        if store.groupGame.player1Rounds == store.groupGame.rounds {
+        if store.user.id == store.groupGame.player1Id && store.groupGame.player1Rounds == store.groupGame.rounds {
             
             playGame.isEnabled = false
-            
             playGame.setTitle("FINISHED", for: .normal)
             
+            database.child("multiplayerStatus").child(store.groupGame.player1Id).child("active").child(store.groupGame.id).removeValue()
+            database.child("multiplayerStatus").child(store.groupGame.player1Id).child("finished").child(store.groupGame.id).setValue(getDate(date: Date()))
+        }
+        
+        if store.user.id == store.groupGame.player2Id && store.groupGame.player2Rounds == store.groupGame.rounds{
             
+            playGame.isEnabled = false
+            playGame.setTitle("FINISHED", for: .normal)
+            
+            database.child("multiplayerStatus").child(store.groupGame.player2Id).child("active").child(store.groupGame.id).removeValue()
+            database.child("multiplayerStatus").child(store.groupGame.player2Id).child("finished").child(store.groupGame.id).setValue(getDate(date: Date()))
             
         }
         
+        if store.user.id == store.groupGame.player3Id && store.groupGame.player3Rounds == store.groupGame.rounds{
+            
+            playGame.isEnabled = false
+            playGame.setTitle("FINISHED", for: .normal)
+            
+            database.child("multiplayerStatus").child(store.groupGame.player3Id).child("active").child(store.groupGame.id).removeValue()
+            database.child("multiplayerStatus").child(store.groupGame.player3Id).child("finished").child(store.groupGame.id).setValue(getDate(date: Date()))
+            
+        }
         
-        
+        if store.user.id == store.groupGame.player4Id && store.groupGame.player4Rounds == store.groupGame.rounds{
+            
+            playGame.isEnabled = false
+            playGame.setTitle("FINISHED", for: .normal)
+            
+            database.child("multiplayerStatus").child(store.groupGame.player4Id).child("active").child(store.groupGame.id).removeValue()
+            database.child("multiplayerStatus").child(store.groupGame.player4Id).child("finished").child(store.groupGame.id).setValue(getDate(date: Date()))
+        }
     }
     
-    
     @IBAction func chatPushed(_ sender: UIButton) {
+    }
+    
+    func getDate(date: Date) -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        return dateFormatter.string(from: date).uppercased()
     }
     
 }

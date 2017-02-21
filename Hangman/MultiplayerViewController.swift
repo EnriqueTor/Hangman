@@ -22,7 +22,7 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
     
     let store = HangmanData.sharedInstance
     let database = FIRDatabase.database().reference()
-    var activeGames = [String]()
+    var games = [String]()
     var gameSelected = ""
     var gameRounds = ""
     
@@ -57,22 +57,49 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
             
             if snapshot.exists() == false {
                 
+                self.games = []
+                
+                self.tableView.reloadData()
+
+                
             } else {
                 
                 guard let data = snapshot.value as? [String:Any] else { return }
                 
-                self.activeGames = Array(data.keys)
+                self.games = Array(data.keys)
                 
                 self.tableView.reloadData()
             }
         })
     }
     
+    func retrieveFinishedGames() {
+        
+        database.child("multiplayerStatus").child(store.user.id).child("finished").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if snapshot.exists() == false {
+                
+                self.games = []
+                
+                self.tableView.reloadData()
+                
+            } else {
+                
+                guard let data = snapshot.value as? [String:Any] else { return }
+                
+                self.games = Array(data.keys)
+                
+                self.tableView.reloadData()
+            }
+        })
+    }
+
+    
     // MARK: - Methods TableView
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return activeGames.count
+        return games.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -82,7 +109,7 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
         cell.backgroundColor = UIColor.clear
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         
-        let gameID = activeGames[indexPath.row]
+        let gameID = games[indexPath.row]
         
         database.child("multiplayer").child(gameID).observe(.value, with: { (snapshot) in
             
@@ -109,7 +136,7 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         
-        gameSelected = activeGames[indexPath.row]
+        gameSelected = games[indexPath.row]
         store.gameSelected = gameSelected
         
         database.child("multiplayer").child(gameSelected).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -144,11 +171,12 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBAction func activeGamesPushed(_ sender: UIButton) {
         
-        
+        retrieveActiveGames()
     }
     
     @IBAction func archivedGamesPushed(_ sender: UIButton) {
         
+        retrieveFinishedGames()
         
     }
 }
