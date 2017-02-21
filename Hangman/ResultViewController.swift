@@ -15,9 +15,7 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var secretWordLabel: UILabel!
     @IBOutlet weak var background: UIImageView!
-    @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var newButton: UIButton!
-    
+    @IBOutlet weak var scoreLabel: UILabel!    
     
     var gameResult = ""
     var secretWord = ""
@@ -59,14 +57,6 @@ class ResultViewController: UIViewController {
         background.addBlurEffect()
         
     }
-    
-    
-    @IBAction func newPushed(_ sender: UIButton) {
-        
-        dismiss(animated: true, completion: nil)
-        
-    }
-    
     
     @IBAction func closePushed(_ sender: UIButton) {
         

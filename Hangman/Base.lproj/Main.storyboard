@@ -1506,28 +1506,6 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQy-HS-ZM1">
-                                        <rect key="frame" x="53" y="192" width="72" height="48"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="20"/>
-                                        <state key="normal" title="CLOSE">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="closePushed:" destination="4SW-MG-uvE" eventType="touchUpInside" id="lld-oJ-fNM"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKb-Z7-Kfx">
-                                        <rect key="frame" x="152" y="198" width="50" height="36"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="20"/>
-                                        <state key="normal" title="define">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="definePushed:" destination="4SW-MG-uvE" eventType="touchUpInside" id="Z59-7Q-6L6"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ELEPHANTASJDFK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q8p-Sq-RQQ">
                                         <rect key="frame" x="36" y="139" width="283" height="51"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1550,15 +1528,26 @@
                                         <rect key="frame" x="139" y="105" width="25" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wjn-GH-vKR">
-                                        <rect key="frame" x="245" y="192" width="52" height="48"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQy-HS-ZM1">
+                                        <rect key="frame" x="103" y="193" width="72" height="48"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="20"/>
-                                        <state key="normal" title="NEW">
+                                        <state key="normal" title="CLOSE">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="newPushed:" destination="4SW-MG-uvE" eventType="touchUpInside" id="Tkg-fX-Z6I"/>
+                                            <action selector="closePushed:" destination="4SW-MG-uvE" eventType="touchUpInside" id="lld-oJ-fNM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKb-Z7-Kfx">
+                                        <rect key="frame" x="202" y="199" width="50" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="20"/>
+                                        <state key="normal" title="define">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="definePushed:" destination="4SW-MG-uvE" eventType="touchUpInside" id="Z59-7Q-6L6"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1570,7 +1559,6 @@
                     <connections>
                         <outlet property="background" destination="aiH-jY-ZsO" id="GMU-FG-rgX"/>
                         <outlet property="backgroundMessage" destination="1DB-WY-GYe" id="SKH-8w-jc4"/>
-                        <outlet property="newButton" destination="wjn-GH-vKR" id="Tww-wt-A7Y"/>
                         <outlet property="resultLabel" destination="90s-39-4m3" id="nDZ-nx-OKK"/>
                         <outlet property="scoreLabel" destination="7fR-T3-1Jq" id="5lY-fQ-hqP"/>
                         <outlet property="secretWordLabel" destination="Q8p-Sq-RQQ" id="jVZ-vz-9io"/>
