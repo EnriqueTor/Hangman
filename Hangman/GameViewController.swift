@@ -32,13 +32,13 @@ class GameViewController: UIViewController {
     var typeOfGame = String()
     var player: User!
     var groupID = ""
-    var multiplayerPoints = ""
-    var multiplayerRounds = ""
     
     // MARK: - Loads
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        background.image = store.chalkboard
         loadPlayerData()
         isKeyboardEnabled(status: false)
         
@@ -46,33 +46,15 @@ class GameViewController: UIViewController {
         print("==================================")
         print(typeOfGame)
         print("==================================")
-        background.image = store.chalkboard
         
     }
     
     func loadPlayerData() {
         
         database.child("users").child(self.store.user.id).observeSingleEvent(of: .value, with: { (snapshot) in
-        
-            
             
             self.store.user = User(snapshot: snapshot)
-            
-            print(self.store.user)
-            
         })
-        
-        if typeOfGame == "MULTIPLAYER" {
-            
-            database.child("multiplayerPoints").child(self.store.gameSelected).child(self.store.user.id).observeSingleEvent(of: .value, with: { (snapshot) in
-            
-                
-            self.multiplayerPoints = snapshot.value as! String
-            
-           
-        })
-        
-        }
     }
     
     // MARK: - Actions
@@ -235,24 +217,24 @@ class GameViewController: UIViewController {
         
         if typeOfGame == "SINGLE" {
             database.child("playedSingle").child(store.user.id).child(gameID).setValue(getDate(date: Date()))
-       
+            
             if self.store.user.scoreSingle == "" {
                 self.store.user.scoreSingle = "\(0 + self.points)"
             }
             else {
                 self.store.user.scoreSingle = "\(Int32(self.store.user.scoreSingle)! + self.points)"
             }
-
+            
             self.database.child("users").child(self.store.user.id).child("scoreSingle").setValue(self.store.user.scoreSingle)
             self.database.child("leaderboardSingle").child(self.store.user.id).setValue(self.store.user.scoreSingle)
-        
-        
+            
+            
         }
         
         if typeOfGame == "CHALLENGE" {
             
-            database.child("playedChallenge").child(store.user.id).child(getDate(date: Date())).setValue(gameID) 
-        
+            database.child("playedChallenge").child(store.user.id).child(getDate(date: Date())).setValue(gameID)
+            
             if self.store.user.scoreChallenge == "" {
                 self.store.user.scoreChallenge = "\(0 + self.points)"
             }
@@ -267,13 +249,23 @@ class GameViewController: UIViewController {
         if typeOfGame == "MULTIPLAYER" {
             
             if store.user.id == store.groupGame.player1Id {
-
-            self.store.groupGame.player1Points = "\(Int32(self.store.groupGame.player1Points)! + self.points)"
-            self.store.groupGame.player1Rounds = "\(Int32(self.store.groupGame.player1Rounds)! + 1)"
-            
-            database.child("multiplayer").child(self.store.groupGame.id).child("player1Points").setValue(store.groupGame.player1Points)
-            database.child("multiplayer").child(self.store.groupGame.id).child("player1Rounds").setValue(self.store.groupGame.player1Rounds)
-            
+                
+                self.store.groupGame.player1Points = "\(Int32(self.store.groupGame.player1Points)! + self.points)"
+                self.store.groupGame.player1Rounds = "\(Int32(self.store.groupGame.player1Rounds)! + 1)"
+                
+                database.child("multiplayer").child(self.store.groupGame.id).child("player1Points").setValue(store.groupGame.player1Points)
+                database.child("multiplayer").child(self.store.groupGame.id).child("player1Rounds").setValue(self.store.groupGame.player1Rounds)
+                
+                if self.store.user.scoreMultiplayer == "" {
+                    self.store.user.scoreMultiplayer = "\(0 + self.points)"
+                }
+                else {
+                    self.store.user.scoreMultiplayer = "\(Int32(self.store.user.scoreMultiplayer)! + self.points)"
+                }
+                
+                self.database.child("users").child(self.store.user.id).child("scoreMultiplayer").setValue(self.store.user.scoreMultiplayer)
+                self.database.child("leaderboardMultiplayer").child(self.store.user.id).setValue(self.store.user.scoreMultiplayer)
+                
             }
             
             if store.user.id == store.groupGame.player2Id {
@@ -284,6 +276,15 @@ class GameViewController: UIViewController {
                 database.child("multiplayer").child(self.store.groupGame.id).child("player2Points").setValue(store.groupGame.player2Points)
                 database.child("multiplayer").child(self.store.groupGame.id).child("player2Rounds").setValue(self.store.groupGame.player2Rounds)
                 
+                if self.store.user.scoreMultiplayer == "" {
+                    self.store.user.scoreMultiplayer = "\(0 + self.points)"
+                }
+                else {
+                    self.store.user.scoreMultiplayer = "\(Int32(self.store.user.scoreMultiplayer)! + self.points)"
+                }
+                
+                self.database.child("users").child(self.store.user.id).child("scoreMultiplayer").setValue(self.store.user.scoreMultiplayer)
+                self.database.child("leaderboardMultiplayer").child(self.store.user.id).setValue(self.store.user.scoreMultiplayer)
             }
             
             if store.user.id == store.groupGame.player3Id {
@@ -294,6 +295,15 @@ class GameViewController: UIViewController {
                 database.child("multiplayer").child(self.store.groupGame.id).child("player3Points").setValue(store.groupGame.player3Points)
                 database.child("multiplayer").child(self.store.groupGame.id).child("player3Rounds").setValue(self.store.groupGame.player3Rounds)
                 
+                if self.store.user.scoreMultiplayer == "" {
+                    self.store.user.scoreMultiplayer = "\(0 + self.points)"
+                }
+                else {
+                    self.store.user.scoreMultiplayer = "\(Int32(self.store.user.scoreMultiplayer)! + self.points)"
+                }
+                
+                self.database.child("users").child(self.store.user.id).child("scoreMultiplayer").setValue(self.store.user.scoreMultiplayer)
+                self.database.child("leaderboardMultiplayer").child(self.store.user.id).setValue(self.store.user.scoreMultiplayer)
             }
             
             if store.user.id == store.groupGame.player4Id {
@@ -304,8 +314,17 @@ class GameViewController: UIViewController {
                 database.child("multiplayer").child(self.store.groupGame.id).child("player4Points").setValue(store.groupGame.player4Points)
                 database.child("multiplayer").child(self.store.groupGame.id).child("player4Rounds").setValue(self.store.groupGame.player4Rounds)
                 
-            }
+                if self.store.user.scoreMultiplayer == "" {
+                    self.store.user.scoreMultiplayer = "\(0 + self.points)"
+                }
+                else {
+                    self.store.user.scoreMultiplayer = "\(Int32(self.store.user.scoreMultiplayer)! + self.points)"
+                }
                 
+                self.database.child("users").child(self.store.user.id).child("scoreMultiplayer").setValue(self.store.user.scoreMultiplayer)
+                self.database.child("leaderboardMultiplayer").child(self.store.user.id).setValue(self.store.user.scoreMultiplayer)
+            }
+            
         }
         
         performSegue(withIdentifier: "resultSegue", sender: self)

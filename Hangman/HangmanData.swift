@@ -32,6 +32,7 @@ class HangmanData {
     
     var leaderboardSingle = [String]()
     var leaderboardChallenge = [String]()
+    var leaderboardMultiplayer = [String]()
     
     // Multiplayer
     

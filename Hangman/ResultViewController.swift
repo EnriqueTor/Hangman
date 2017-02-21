@@ -47,13 +47,10 @@ class ResultViewController: UIViewController {
         }
         
         if typeOfGame == "CHALLENGE" {
-            
-                     
+        
         }
         
-        
         background.addBlurEffect()
-        
     }
     
     @IBAction func closePushed(_ sender: UIButton) {
@@ -61,24 +58,17 @@ class ResultViewController: UIViewController {
         if typeOfGame == "SINGLE" || typeOfGame == "CHALLENGE" {
             
             self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
-
         }
         
         if typeOfGame == "MULTIPLAYER" {
             
-            
             self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
-            
-
         }
-        
     }
     
     @IBAction func definePushed(_ sender: UIButton) {
         
         if UIReferenceLibraryViewController.dictionaryHasDefinition(forTerm: secretWord) == true {
-            
-            print("YES WE HAVE A DEFINITION")
             
             let ref: UIReferenceLibraryViewController = UIReferenceLibraryViewController(term: secretWord)
             
@@ -86,12 +76,4 @@ class ResultViewController: UIViewController {
             
         }
     }
-    
-    func saveResultInfo() {
-    
-        
-        
-    
-    }
-        
 }

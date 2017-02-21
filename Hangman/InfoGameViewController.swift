@@ -32,30 +32,26 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("===============================================")
-        
-        print(store.groupGame)
-        
-        print("===============================================")
-        
-        retrieveUsers()
-        checkIfUserCanPlay()
-        
+        print("1")
         setupView()
-        
+        print("2")
+        retrieveUsers()
+        print("3")
+        checkIfUserCanPlay()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+    print("4")
         
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        print("5")
         retrieveUsers()
+        print("6")
         checkIfUserCanPlay()
         
     }
@@ -71,6 +67,7 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return players.count
     }
     
@@ -83,9 +80,6 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
         cell.positionLabel?.text = "\(Int(indexPath.row) + 1)."
         
         let user = players[indexPath.row]
-        
-        print("THIS IS THE USER!!!!")
-        print(user)
         
         if user == store.groupGame.player1Id {
             
@@ -150,14 +144,12 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
         self.players = key
         
         tableView.reloadData()
-        
     }
     
     
     @IBAction func playPushed(_ sender: UIButton) {
         
         performSegue(withIdentifier: "playMultiplayerSegue", sender: self)
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -170,42 +162,22 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     func checkIfUserCanPlay() {
         
-        if store.user.id == store.groupGame.player1Id && store.groupGame.player1Rounds == store.groupGame.rounds {
-            
-            playGame.isEnabled = false
-            playGame.setTitle("FINISHED", for: .normal)
-            
-            database.child("multiplayerStatus").child(store.groupGame.player1Id).child("active").child(store.groupGame.id).removeValue()
-            database.child("multiplayerStatus").child(store.groupGame.player1Id).child("finished").child(store.groupGame.id).setValue(getDate(date: Date()))
-        }
+        gameEnded(playerId: store.groupGame.player1Id, playerRounds: store.groupGame.player1Rounds)
+        gameEnded(playerId: store.groupGame.player2Id, playerRounds: store.groupGame.player2Rounds)
+        gameEnded(playerId: store.groupGame.player3Id, playerRounds: store.groupGame.player3Rounds)
+        gameEnded(playerId: store.groupGame.player4Id, playerRounds: store.groupGame.player4Rounds)
         
-        if store.user.id == store.groupGame.player2Id && store.groupGame.player2Rounds == store.groupGame.rounds{
-            
-            playGame.isEnabled = false
-            playGame.setTitle("FINISHED", for: .normal)
-            
-            database.child("multiplayerStatus").child(store.groupGame.player2Id).child("active").child(store.groupGame.id).removeValue()
-            database.child("multiplayerStatus").child(store.groupGame.player2Id).child("finished").child(store.groupGame.id).setValue(getDate(date: Date()))
-            
-        }
+    }
+
+    func gameEnded(playerId: String, playerRounds: String) {
         
-        if store.user.id == store.groupGame.player3Id && store.groupGame.player3Rounds == store.groupGame.rounds{
+        if store.user.id == playerId && playerRounds == store.groupGame.rounds {
             
             playGame.isEnabled = false
             playGame.setTitle("FINISHED", for: .normal)
             
-            database.child("multiplayerStatus").child(store.groupGame.player3Id).child("active").child(store.groupGame.id).removeValue()
-            database.child("multiplayerStatus").child(store.groupGame.player3Id).child("finished").child(store.groupGame.id).setValue(getDate(date: Date()))
-            
-        }
-        
-        if store.user.id == store.groupGame.player4Id && store.groupGame.player4Rounds == store.groupGame.rounds{
-            
-            playGame.isEnabled = false
-            playGame.setTitle("FINISHED", for: .normal)
-            
-            database.child("multiplayerStatus").child(store.groupGame.player4Id).child("active").child(store.groupGame.id).removeValue()
-            database.child("multiplayerStatus").child(store.groupGame.player4Id).child("finished").child(store.groupGame.id).setValue(getDate(date: Date()))
+            database.child("multiplayerStatus").child(playerId).child("active").child(store.groupGame.id).removeValue()
+            database.child("multiplayerStatus").child(playerId).child("finished").child(store.groupGame.id).setValue(getDate(date: Date()))
         }
     }
     

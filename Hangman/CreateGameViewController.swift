@@ -135,7 +135,6 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
         if gameNameTextField.text != "" && player2Pic.image != nil || player3Pic.image != nil || player4Pic.image != nil && store.multiplayerAmountOfWords != "0" {
             createGame()
         }
-        
     }
     
         func createGame() {
@@ -145,29 +144,22 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
             
             let newGroupGame = GroupGame(id: groupID, date: getDate(date: Date()), status: "active", title: gameNameTextField.text!.uppercased(), rounds: store.multiplayerAmountOfWords, player1Id: store.user.id, player1Name: store.user.username, player1Pic: store.user.profilePic, player1Rounds: "0", player1Points: "0", player2Id: store.user2.id, player2Name: store.user2.username, player2Pic: store.user2.profilePic, player2Rounds: "0", player2Points: "0", player3Id: store.user3.id, player3Name: store.user3.username, player3Pic: store.user3.profilePic, player3Rounds: "0", player3Points: "0", player4Id: store.user4.id, player4Name: store.user4.username, player4Pic: store.user4.profilePic, player4Rounds: "0", player4Points: "0")
             
-            print("THIS IS THE NEW GAME")
-            print(newGroupGame)
-            
             database.child("multiplayer").child(groupID).setValue(newGroupGame.serialize())
             
             if newGroupGame.player1Id != "" {
                 database.child("multiplayerStatus").child(newGroupGame.player1Id).child("active").child(groupID).setValue(getDate(date: Date()))
-                database.child("multiplayerPoints").child(groupID).child(newGroupGame.player1Id).setValue("0")
             }
             
             if newGroupGame.player2Id != "" {
                 database.child("multiplayerStatus").child(newGroupGame.player2Id).child("active").child(groupID).setValue(getDate(date: Date()))
-                database.child("multiplayerPoints").child(groupID).child(newGroupGame.player2Id).setValue("0")
             }
             
             if newGroupGame.player3Id != "" {
                 database.child("multiplayerStatus").child(newGroupGame.player3Id).child("active").child(groupID).setValue(getDate(date: Date()))
-                database.child("multiplayerPoints").child(groupID).child(newGroupGame.player3Id).setValue("0")
             }
             
             if newGroupGame.player4Id != "" {
                 database.child("multiplayerStatus").child(newGroupGame.player4Id).child("active").child(groupID).setValue(getDate(date: Date()))
-                database.child("multiplayerPoints").child(groupID).child(newGroupGame.player4Id).setValue("0")
             }
             
             store.gameSelected = groupID
