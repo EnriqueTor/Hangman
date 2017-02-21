@@ -34,27 +34,21 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         
         print("===============================================")
-        print("===============================================")
-        print("===============================================")
         
         print(store.groupGame)
-        print(store.gameSelected)
         
-        print("===============================================")
-        print("===============================================")
         print("===============================================")
         
         retrieveUsers()
-        
-                retrieveGameData()
+        setupView()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-
-
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -65,20 +59,11 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     // MARK: - Methods
     
-    func retrieveGameData() {
+    func setupView() {
         
-        DispatchQueue.main.async {
-            
-            self.database.child("multiplayer").child(self.store.gameSelected).observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                let gameData = GroupGame(snapshot: snapshot)
-                self.store.groupGame = gameData
-                
-                self.store.groupGame = gameData
-                self.titleLabel.text = gameData.title
-                self.roundsGame.text = gameData.rounds + " ROUNDS"
-            })
-        }
+        let gameData = self.store.groupGame
+        self.titleLabel.text = gameData.title
+        self.roundsGame.text = gameData.rounds + " ROUNDS"
     }
     
     
@@ -93,7 +78,7 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
         cell.backgroundColor = UIColor.clear
         cell.selectionStyle = .none
         cell.positionLabel?.text = "\(Int(indexPath.row) + 1)."
-
+        
         let user = players[indexPath.row]
         
         print("THIS IS THE USER!!!!")
@@ -113,11 +98,11 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
             cell.retrieveUserPic(url: store.groupGame.player2Pic, image: cell.playerPic!)
             cell.pointsLabel?.text = store.groupGame.player2Points
             cell.gamesPlayed?.text = store.groupGame.player2Rounds + "/" + self.store.gameRounds
-
+            
         }
         
         if user == store.groupGame.player3Id {
-          
+            
             cell.playerNameLabel?.text = store.groupGame.player3Name
             cell.retrieveUserPic(url: store.groupGame.player3Pic, image: cell.playerPic!)
             cell.pointsLabel?.text = store.groupGame.player3Points
@@ -139,27 +124,66 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     func retrieveUsers() {
         
-        database.child("multiplayerPoints").child(store.gameSelected).observe(.value, with: { (snapshot) in
-            
-            if snapshot.exists() == false {
-                
-            } else {
-                
-                guard let data = snapshot.value as? [String : String] else { return }
-                
-                self.points = data
-                var key = Array(data.keys)
-                
-                key.sort { (o1, o2) -> Bool in
-                    
-                    return Int32(data[o1]!)! > Int32(data[o2]!)!
-                }
-                self.players = key
-                
-                self.tableView.reloadData()
-            }
-            
-        })
+        
+        var userAndPoints = [store.groupGame.player1Id: store.groupGame.player1Points]
+        
+        
+        if store.groupGame.player2Id != "" {
+            userAndPoints[store.groupGame.player2Id] = store.groupGame.player2Points
+            print("user2")
+            print(userAndPoints)
+        }
+        
+        if store.groupGame.player3Id != "" {
+            userAndPoints[store.groupGame.player3Id] = store.groupGame.player3Points
+            print("user3")
+            print(userAndPoints)
+        }
+        
+        if store.groupGame.player4Id != "" {
+            userAndPoints[store.groupGame.player4Id] = store.groupGame.player4Points
+            print("user4")
+            print(userAndPoints)
+        }
+        
+        print("THIS IS MUY COOL")
+        print(userAndPoints)
+        
+//        var key = Array(userAndPoints.keys)
+//        
+//        key.sort { (o1, o2) -> Bool in
+//            
+//            return Int32(data[o1]!)! > Int32(data[o2]!)!
+//        }
+//        self.players = key
+        
+        
+        
+        
+        
+        //
+        //
+        //        database.child("multiplayerPoints").child(store.gameSelected).observe(.value, with: { (snapshot) in
+        //
+        //            if snapshot.exists() == false {
+        //
+        //            } else {
+        //
+        //                guard let data = snapshot.value as? [String : String] else { return }
+        //
+        //                self.points = data
+        //                var key = Array(data.keys)
+        //
+        //                key.sort { (o1, o2) -> Bool in
+        //
+        //                    return Int32(data[o1]!)! > Int32(data[o2]!)!
+        //                }
+        //                self.players = key
+        //
+        //                self.tableView.reloadData()
+        //            }
+        //
+        //        })
     }
     
     

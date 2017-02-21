@@ -111,25 +111,20 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
         gameSelected = activeGames[indexPath.row]
         store.gameSelected = gameSelected
         
-        self.performSegue(withIdentifier: "gameInfo2Segue", sender: self)
+        database.child("multiplayer").child(gameSelected).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            let gameData = GroupGame(snapshot: snapshot)
+            
+            self.store.groupGame = gameData
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                self.performSegue(withIdentifier: "gameInfo2Segue", sender: self)
+            })
+})
+
         
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        
-//        if segue.identifier == "gameInfo2Segue" {
-//            
-////            guard let dest = segue.destination as? InfoGameViewController else { return }
-//            
-//            database.child("multiplayer").child(gameSelected).observeSingleEvent(of: .value, with: { (snapshot) in
-//                
-//                let gameData = GroupGame(snapshot: snapshot)
-//                
-//                self.store.groupGame = gameData
-//            })
-//        }
-//    }
-    
+      
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
