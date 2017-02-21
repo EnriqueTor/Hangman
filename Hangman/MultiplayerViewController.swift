@@ -97,8 +97,7 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
                 DispatchQueue.main.async {
                 
                 let newGroupGame = GroupGame(snapshot: snapshot)
-                
-                
+                    
                     cell.gameLabel.text = newGroupGame.title
                     cell.retrieveUserInfo(url: newGroupGame.player1Pic, image: cell.pic1)
                     cell.retrieveUserInfo(url: newGroupGame.player2Pic, image: cell.pic2)

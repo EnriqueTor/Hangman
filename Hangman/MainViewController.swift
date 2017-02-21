@@ -11,35 +11,25 @@ import Firebase
 
 class MainViewController: UIViewController, UINavigationControllerDelegate {
 
-    
+    // MARK: - Outlets
     
     @IBOutlet weak var background: UIImageView!
-
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var challengeButton: UIButton!
     @IBOutlet weak var multiplayerButton: UIButton!
     
+    // MARK: - Variables
+    
     let store = HangmanData.sharedInstance
-    
-    
     let database = FIRDatabase.database().reference()
     
-    
-    
-    
+    // MARK: - Loads
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         background.image = store.chalkboard
         self.navigationController?.navigationBar.transparentNavigationBar()
-
-        
-        print("===================>>>>>")
-        print(store.user.id)
-        print(store.user)
-        
-        
         self.title = "HANGMAN"
     
     }
@@ -48,67 +38,25 @@ class MainViewController: UIViewController, UINavigationControllerDelegate {
         super.viewWillAppear(animated)
         
         DispatchQueue.main.async {
-            
         self.background.image = self.store.chalkboard
-        
         }
     }
     
-    @IBAction func challengePushed(_ sender: UIButton) {
-        
-        self.database.child("playedChallenge").child(self.store.user.id).child(getDate(date: Date())).observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            if snapshot.exists() == true {
-                
-                self.performSegue(withIdentifier: "messageSegue", sender: self)
-                
-            }
-            else {
-        
-                self.performSegue(withIdentifier: "challengeSegue", sender: self)
-            }
-        })
-    }
-    
-    @IBAction func settingsPushed(_ sender: UIButton) {
-        
-        performSegue(withIdentifier: "settingsSegue", sender: self)
-        
-    }
-
-    @IBAction func leaderboardPushed(_ sender: UIButton) {
-        
-        performSegue(withIdentifier: "leaderboardSegue", sender: self)
-        
-    }
-    @IBAction func multiplayerPushed(_ sender: UIButton) {
-
-        self.performSegue(withIdentifier: "multiplayerSegue", sender: self)
-    }
-  
-    @IBAction func playPushed(_ sender: UIButton) {
-        
-         performSegue(withIdentifier: "playSegue", sender: self)
-        
-    }
+    // MARK: - Methods
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "playSegue" {
             
             guard let dest = segue.destination as? GameViewController else { return }
-            
             dest.typeOfGame = "SINGLE"
         }
         
         if segue.identifier == "challengeSegue" {
             
             guard let dest = segue.destination as? GameViewController else { return }
-            
             dest.typeOfGame = "CHALLENGE"
         }
-                
-        
     }
     
     func getDate(date: Date) -> String {
@@ -119,4 +67,37 @@ class MainViewController: UIViewController, UINavigationControllerDelegate {
         return dateFormatter.string(from: date).uppercased()
     }
 
+    // MARK: - Actions
+    
+    @IBAction func challengePushed(_ sender: UIButton) {
+        
+        self.database.child("playedChallenge").child(self.store.user.id).child(getDate(date: Date())).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if snapshot.exists() == true {
+                
+                self.performSegue(withIdentifier: "messageSegue", sender: self)
+            }
+            else {
+                
+                self.performSegue(withIdentifier: "challengeSegue", sender: self)
+            }
+        })
+    }
+    
+    @IBAction func settingsPushed(_ sender: UIButton) {
+        performSegue(withIdentifier: "settingsSegue", sender: self)
+    }
+
+    @IBAction func leaderboardPushed(_ sender: UIButton) {
+        performSegue(withIdentifier: "leaderboardSegue", sender: self)
+    }
+    
+    @IBAction func multiplayerPushed(_ sender: UIButton) {
+        performSegue(withIdentifier: "multiplayerSegue", sender: self)
+    }
+  
+    @IBAction func playPushed(_ sender: UIButton) {
+         performSegue(withIdentifier: "playSegue", sender: self)
+    }
+    
 }

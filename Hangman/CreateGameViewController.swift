@@ -156,7 +156,7 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
             let root = database.child("multiplayer").childByAutoId()
             let groupID = root.key
             
-            let newGroupGame = GroupGame(id: groupID, player1Id: store.user.id, player1Name: store.user.username, player1Pic: store.user.profilePic, player1Rounds: "0", player2Id: store.user2.id, player2Name: store.user2.username, player2Pic: store.user2.profilePic, player2Rounds: "0", player3Id: store.user3.id, player3Name: store.user3.username, player3Pic: store.user3.profilePic, player3Rounds: "0", player4Id: store.user4.id, player4Name: store.user4.username, player4Pic: store.user4.profilePic, player4Rounds: "0", date: getDate(date: Date()), status: "active", title: gameNameTextField.text!.uppercased(), rounds: store.multiplayerAmountOfWords)
+            let newGroupGame = GroupGame(id: groupID, date: getDate(date: Date()), status: "active", title: gameNameTextField.text!.uppercased(), rounds: store.multiplayerAmountOfWords, player1Id: store.user.id, player1Name: store.user.username, player1Pic: store.user.profilePic, player1Rounds: "0", player1Points: "0", player2Id: store.user2.id, player2Name: store.user2.username, player2Pic: store.user2.profilePic, player2Rounds: "0", player2Points: "0", player3Id: store.user3.id, player3Name: store.user3.username, player3Pic: store.user3.profilePic, player3Rounds: "0", player3Points: "0", player4Id: store.user4.id, player4Name: store.user4.username, player4Pic: store.user4.profilePic, player4Rounds: "0", player4Points: "0")
             
             database.child("multiplayer").child(groupID).setValue(newGroupGame.serialize())
             
@@ -186,7 +186,6 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
                 database.child("multiplayerRounds").child(groupID).child(newGroupGame.player4Id).setValue("0")
 
             }
-            
         
             store.gameSelected = groupID
             navigationController?.popViewController(animated: true)
