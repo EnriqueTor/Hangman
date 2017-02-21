@@ -2505,35 +2505,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L4W-C7-rLu">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="16" width="375" height="636"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" alpha="0.94999998807907104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DG6-u6-9WO">
-                                        <rect key="frame" x="0.0" y="0.0" width="396" height="667"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView userInteractionEnabled="NO" alpha="0.94999998807907104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DG6-u6-9WO">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="636"/>
                                     </imageView>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0mk-R9-0mY">
-                                        <rect key="frame" x="10" y="144" width="354" height="264"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0mk-R9-0mY">
+                                        <rect key="frame" x="19" y="186" width="338" height="264"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ChalkboardBlackOption" translatesAutoresizingMaskIntoConstraints="NO" id="dF9-iO-PCh">
-                                                <rect key="frame" x="0.0" y="0.0" width="354" height="264"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ChalkboardBlackOption" translatesAutoresizingMaskIntoConstraints="NO" id="dF9-iO-PCh">
+                                                <rect key="frame" x="0.0" y="0.0" width="338" height="264"/>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Divider" translatesAutoresizingMaskIntoConstraints="NO" id="5Wm-cV-RAF">
-                                                <rect key="frame" x="25" y="184" width="306" height="15"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Divider" translatesAutoresizingMaskIntoConstraints="NO" id="5Wm-cV-RAF">
+                                                <rect key="frame" x="25.5" y="180" width="287" height="15"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="15" id="tLD-D0-wna"/>
+                                                </constraints>
                                             </imageView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="YOU'VE ALREADY PLAYED TODAY'S WORD CHALLENGE. COME BACK TOMORROW." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="m06-xk-q84">
-                                                <rect key="frame" x="33" y="23" width="290" height="160"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m06-xk-q84">
+                                                <rect key="frame" x="25.5" y="20" width="287" height="160"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="160" id="qP0-bI-0Bp"/>
+                                                </constraints>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="YOU'VE ALREADY PLAYED TODAY'S WORD CHALLENGE. COME BACK TOMORROW.">
+                                                        <attributes>
+                                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <font key="NSFont" size="30" name="BiteChalk-Regular"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWg-LF-Igf">
-                                                <rect key="frame" x="141" y="191" width="72" height="48"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWg-LF-Igf">
+                                                <rect key="frame" x="25.5" y="195" width="287" height="36"/>
                                                 <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="20"/>
                                                 <state key="normal" title="CLOSE">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2545,16 +2552,41 @@
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="5Wm-cV-RAF" firstAttribute="centerX" secondItem="m06-xk-q84" secondAttribute="centerX" id="0Jp-ow-HnX"/>
+                                            <constraint firstItem="HWg-LF-Igf" firstAttribute="width" secondItem="5Wm-cV-RAF" secondAttribute="width" id="2Ux-A0-Vda"/>
+                                            <constraint firstItem="dF9-iO-PCh" firstAttribute="centerX" secondItem="0mk-R9-0mY" secondAttribute="centerX" id="9KX-J9-T5U"/>
+                                            <constraint firstItem="dF9-iO-PCh" firstAttribute="top" secondItem="m06-xk-q84" secondAttribute="top" constant="-20" id="EPo-RO-IKx"/>
+                                            <constraint firstItem="dF9-iO-PCh" firstAttribute="centerY" secondItem="0mk-R9-0mY" secondAttribute="centerY" id="HhP-oS-MBd"/>
+                                            <constraint firstItem="5Wm-cV-RAF" firstAttribute="width" secondItem="m06-xk-q84" secondAttribute="width" id="LJX-kA-9HQ"/>
+                                            <constraint firstItem="m06-xk-q84" firstAttribute="width" secondItem="dF9-iO-PCh" secondAttribute="width" multiplier="0.85" id="P0i-Sk-h6u"/>
+                                            <constraint firstItem="m06-xk-q84" firstAttribute="centerX" secondItem="dF9-iO-PCh" secondAttribute="centerX" id="UrK-e0-IcV"/>
+                                            <constraint firstItem="HWg-LF-Igf" firstAttribute="top" secondItem="5Wm-cV-RAF" secondAttribute="bottom" id="asV-aC-fWp"/>
+                                            <constraint firstAttribute="height" constant="264" id="c9s-FX-jQL"/>
+                                            <constraint firstItem="dF9-iO-PCh" firstAttribute="width" secondItem="0mk-R9-0mY" secondAttribute="width" id="cZo-MA-nOt"/>
+                                            <constraint firstItem="HWg-LF-Igf" firstAttribute="centerX" secondItem="5Wm-cV-RAF" secondAttribute="centerX" id="g9I-Ep-Nl1"/>
+                                            <constraint firstItem="dF9-iO-PCh" firstAttribute="height" secondItem="0mk-R9-0mY" secondAttribute="height" id="iTP-W1-mCl"/>
+                                            <constraint firstItem="5Wm-cV-RAF" firstAttribute="top" secondItem="m06-xk-q84" secondAttribute="bottom" id="mao-Qa-IKZ"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="0mk-R9-0mY" firstAttribute="centerX" secondItem="DG6-u6-9WO" secondAttribute="centerX" id="2Qn-G7-ybM"/>
+                                    <constraint firstAttribute="trailing" secondItem="DG6-u6-9WO" secondAttribute="trailing" id="5q5-Qw-QE6"/>
+                                    <constraint firstItem="DG6-u6-9WO" firstAttribute="top" secondItem="L4W-C7-rLu" secondAttribute="top" id="EfN-h8-K8F"/>
+                                    <constraint firstAttribute="bottom" secondItem="DG6-u6-9WO" secondAttribute="bottom" id="aSa-lo-ID9"/>
+                                    <constraint firstItem="0mk-R9-0mY" firstAttribute="width" secondItem="L4W-C7-rLu" secondAttribute="width" multiplier="0.9" id="dtT-zy-C7u"/>
+                                    <constraint firstItem="0mk-R9-0mY" firstAttribute="centerY" secondItem="DG6-u6-9WO" secondAttribute="centerY" id="pUo-xR-Zua"/>
+                                    <constraint firstItem="DG6-u6-9WO" firstAttribute="leading" secondItem="L4W-C7-rLu" secondAttribute="leading" id="qnD-hb-PdC"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="L4W-C7-rLu" firstAttribute="width" secondItem="Wte-qo-jiW" secondAttribute="width" id="BYd-gt-nzf"/>
                             <constraint firstItem="L4W-C7-rLu" firstAttribute="centerX" secondItem="Wte-qo-jiW" secondAttribute="centerX" id="mOi-ex-FeM"/>
-                            <constraint firstItem="L4W-C7-rLu" firstAttribute="height" secondItem="Wte-qo-jiW" secondAttribute="height" id="whr-SY-8T4"/>
+                            <constraint firstItem="zef-7F-WJh" firstAttribute="top" secondItem="L4W-C7-rLu" secondAttribute="bottom" constant="15" id="o05-o9-yLO"/>
                             <constraint firstItem="L4W-C7-rLu" firstAttribute="centerY" secondItem="Wte-qo-jiW" secondAttribute="centerY" id="zOV-I0-A8C"/>
                         </constraints>
                     </view>
