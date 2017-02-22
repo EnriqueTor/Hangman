@@ -13,10 +13,12 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     // MARK: - Outlets
     
+    @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var roundsGame: UILabel!
     @IBOutlet weak var playGame: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    
     
     // MARK: - Variables
     
@@ -32,6 +34,7 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        background.image = store.chalkboard
         print("1")
         setupView()
         print("2")

@@ -1289,38 +1289,17 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bm5-BE-kM1">
                                                     <rect key="frame" x="-0.5" y="0.0" width="375" height="79"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QUIQUIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJ8-g5-t6O">
-                                                            <rect key="frame" x="125" y="21" width="130" height="36"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="130" id="e95-9K-mSY"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZh-ih-tUj">
-                                                            <rect key="frame" x="0.0" y="21" width="44" height="36"/>
+                                                            <rect key="frame" x="-0.5" y="22" width="30" height="36"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="44" id="yYW-pc-VQM"/>
+                                                                <constraint firstAttribute="width" constant="30" id="yYW-pc-VQM"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISY-em-qRy">
-                                                            <rect key="frame" x="325" y="21" width="11" height="36"/>
-                                                            <fontDescription key="fontDescription" name="BiteChalkBold-Regular" family="Bite Chalk Bold" pointSize="30"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SS8-9K-8l5">
-                                                            <rect key="frame" x="346" y="27.5" width="24" height="24"/>
-                                                            <fontDescription key="fontDescription" name="BiteChalkBold-Regular" family="Bite Chalk Bold" pointSize="20"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ip2-Dn-nqf">
-                                                            <rect key="frame" x="47" y="3.5" width="71" height="71"/>
+                                                            <rect key="frame" x="32.5" y="4" width="71" height="71"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Frame" translatesAutoresizingMaskIntoConstraints="NO" id="36J-Zp-Y5P">
                                                                     <rect key="frame" x="0.0" y="0.0" width="71" height="71"/>
@@ -1343,25 +1322,47 @@
                                                                 <constraint firstItem="36J-Zp-Y5P" firstAttribute="height" secondItem="Ip2-Dn-nqf" secondAttribute="height" id="upa-ER-Cjl"/>
                                                             </constraints>
                                                         </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0/0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Hy-zl-ALK">
-                                                            <rect key="frame" x="200" y="21" width="61" height="36"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QUIQUIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="NJ8-g5-t6O">
+                                                            <rect key="frame" x="111" y="22" width="130" height="36"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="130" id="e95-9K-mSY"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="6Hy-zl-ALK">
+                                                            <rect key="frame" x="274" y="22" width="31" height="36"/>
                                                             <fontDescription key="fontDescription" name="BiteChalkBold-Regular" family="Bite Chalk Bold" pointSize="30"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISY-em-qRy">
+                                                            <rect key="frame" x="332" y="22" width="11" height="36"/>
+                                                            <fontDescription key="fontDescription" name="BiteChalkBold-Regular" family="Bite Chalk Bold" pointSize="30"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SS8-9K-8l5">
+                                                            <rect key="frame" x="348" y="27.5" width="24" height="24"/>
+                                                            <fontDescription key="fontDescription" name="BiteChalkBold-Regular" family="Bite Chalk Bold" pointSize="20"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="SS8-9K-8l5" secondAttribute="trailing" constant="5" id="17X-GP-Z2f"/>
+                                                        <constraint firstAttribute="trailing" secondItem="SS8-9K-8l5" secondAttribute="trailing" constant="3" id="17X-GP-Z2f"/>
                                                         <constraint firstItem="NJ8-g5-t6O" firstAttribute="leading" secondItem="Ip2-Dn-nqf" secondAttribute="trailing" constant="7" id="BRS-X1-Fhl"/>
                                                         <constraint firstItem="Ip2-Dn-nqf" firstAttribute="height" secondItem="Bm5-BE-kM1" secondAttribute="height" multiplier="0.9" id="EXF-Cs-0kE"/>
                                                         <constraint firstItem="NJ8-g5-t6O" firstAttribute="centerY" secondItem="Ip2-Dn-nqf" secondAttribute="centerY" id="IuE-7A-6fM"/>
+                                                        <constraint firstAttribute="trailing" secondItem="6Hy-zl-ALK" secondAttribute="trailing" constant="70" id="a7H-6U-GbJ"/>
                                                         <constraint firstItem="CZh-ih-tUj" firstAttribute="leading" secondItem="Bm5-BE-kM1" secondAttribute="leading" id="ccK-KM-NcK"/>
                                                         <constraint firstItem="Ip2-Dn-nqf" firstAttribute="centerY" secondItem="Bm5-BE-kM1" secondAttribute="centerY" id="dUU-IT-ZlP"/>
                                                         <constraint firstItem="SS8-9K-8l5" firstAttribute="centerY" secondItem="Ip2-Dn-nqf" secondAttribute="centerY" id="kik-65-WJ1"/>
                                                         <constraint firstItem="Ip2-Dn-nqf" firstAttribute="leading" secondItem="CZh-ih-tUj" secondAttribute="trailing" constant="3" id="puN-9m-PhQ"/>
-                                                        <constraint firstItem="SS8-9K-8l5" firstAttribute="leading" secondItem="ISY-em-qRy" secondAttribute="trailing" constant="10" id="rbo-LT-cZD"/>
+                                                        <constraint firstItem="SS8-9K-8l5" firstAttribute="leading" secondItem="ISY-em-qRy" secondAttribute="trailing" constant="5" id="rbo-LT-cZD"/>
+                                                        <constraint firstItem="6Hy-zl-ALK" firstAttribute="centerY" secondItem="Ip2-Dn-nqf" secondAttribute="centerY" id="src-bt-Nlp"/>
                                                         <constraint firstItem="ISY-em-qRy" firstAttribute="centerY" secondItem="Ip2-Dn-nqf" secondAttribute="centerY" id="uGN-hW-VYu"/>
                                                         <constraint firstItem="CZh-ih-tUj" firstAttribute="centerY" secondItem="Ip2-Dn-nqf" secondAttribute="centerY" id="vMk-GR-9EJ"/>
                                                     </constraints>
@@ -1453,6 +1454,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="background" destination="sSn-3f-Qoi" id="1wm-dT-1eO"/>
                         <outlet property="playGame" destination="ZOY-eW-D3g" id="hdY-c1-rzC"/>
                         <outlet property="roundsGame" destination="WPO-hG-yhx" id="Qmo-rj-TlB"/>
                         <outlet property="tableView" destination="FBF-yg-TDl" id="B3N-uV-FdK"/>
@@ -1479,6 +1481,79 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chalkboard" translatesAutoresizingMaskIntoConstraints="NO" id="kc1-hZ-tlT">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MTJ-oL-et2">
+                                <rect key="frame" x="0.0" y="20" width="375" height="36"/>
+                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="20"/>
+                                <state key="normal" title="HANGMAN">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="createGamePushed:" destination="RZD-BX-dcg" eventType="touchUpInside" id="qTB-AT-IhA"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Divider" translatesAutoresizingMaskIntoConstraints="NO" id="wp6-Lm-IW1">
+                                <rect key="frame" x="-19" y="62" width="413" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="T9D-6a-RIQ"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="-25" translatesAutoresizingMaskIntoConstraints="NO" id="8ok-aP-ume">
+                                <rect key="frame" x="234.5" y="114.5" width="136" height="119"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SCORE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4RV-5g-NsF">
+                                        <rect key="frame" x="18" y="0.0" width="100.5" height="72"/>
+                                        <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="40"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9IX-fZ-KXI">
+                                        <rect key="frame" x="54.5" y="47" width="27" height="72"/>
+                                        <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="60"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Divider" translatesAutoresizingMaskIntoConstraints="NO" id="7Od-CN-ywd">
+                                <rect key="frame" x="-0.5" y="492" width="375" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="ouj-qW-11t"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HangmanLogo" translatesAutoresizingMaskIntoConstraints="NO" id="sxF-HP-tDk">
+                                <rect key="frame" x="0.0" y="150" width="209" height="233.5"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="aRQ-KX-seL">
+                                <rect key="frame" x="246" y="233.5" width="113" height="133"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LIVES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Pp-cy-EEZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="113" height="66.5"/>
+                                        <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="40"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="akV-UA-W0L">
+                                        <rect key="frame" x="0.0" y="66.5" width="113" height="66.5"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="Heart" translatesAutoresizingMaskIntoConstraints="NO" id="xcH-ru-SMe">
+                                                <rect key="frame" x="0.0" y="0.0" width="56.5" height="66.5"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wuq-jR-fX9">
+                                                <rect key="frame" x="56.5" y="0.0" width="56.5" height="66.5"/>
+                                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="60"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZD-Ft-BtU">
+                                <rect key="frame" x="20" y="462" width="335" height="0.0"/>
+                                <fontDescription key="fontDescription" name="BiteChalkBold-Regular" family="Bite Chalk Bold" pointSize="50"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7Cy-aJ-tXd">
                                 <rect key="frame" x="20" y="514" width="335" height="133"/>
                                 <subviews>
@@ -1759,86 +1834,40 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Divider" translatesAutoresizingMaskIntoConstraints="NO" id="7Od-CN-ywd">
-                                <rect key="frame" x="-0.5" y="492" width="375" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="ouj-qW-11t"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZD-Ft-BtU">
-                                <rect key="frame" x="20" y="462" width="335" height="0.0"/>
-                                <fontDescription key="fontDescription" name="BiteChalkBold-Regular" family="Bite Chalk Bold" pointSize="50"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Divider" translatesAutoresizingMaskIntoConstraints="NO" id="wp6-Lm-IW1">
-                                <rect key="frame" x="-12" y="62" width="401" height="15"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Heart" translatesAutoresizingMaskIntoConstraints="NO" id="xcH-ru-SMe">
-                                <rect key="frame" x="265" y="340" width="50" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="HangmanLogo" translatesAutoresizingMaskIntoConstraints="NO" id="sxF-HP-tDk">
-                                <rect key="frame" x="20" y="160" width="209" height="239"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9IX-fZ-KXI">
-                                <rect key="frame" x="252" y="203" width="103" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="60"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SCORE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4RV-5g-NsF">
-                                <rect key="frame" x="256" y="160" width="106" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="40"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LIVES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Pp-cy-EEZ">
-                                <rect key="frame" x="265" y="284" width="82" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="40"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wuq-jR-fX9">
-                                <rect key="frame" x="284" y="327" width="66" height="72"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="60"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MTJ-oL-et2">
-                                <rect key="frame" x="110" y="20" width="157" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="20"/>
-                                <state key="normal" title="HANGMAN">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="createGamePushed:" destination="RZD-BX-dcg" eventType="touchUpInside" id="qTB-AT-IhA"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="8ok-aP-ume" firstAttribute="centerX" secondItem="aRQ-KX-seL" secondAttribute="centerX" id="0qO-ve-YD7"/>
                             <constraint firstItem="vZD-Ft-BtU" firstAttribute="centerX" secondItem="7Cy-aJ-tXd" secondAttribute="centerX" id="0rI-d6-9Ys"/>
+                            <constraint firstItem="MTJ-oL-et2" firstAttribute="top" secondItem="mki-nl-Dzb" secondAttribute="bottom" id="28H-pb-hQW"/>
                             <constraint firstItem="kc1-hZ-tlT" firstAttribute="height" secondItem="UmC-55-MQf" secondAttribute="height" id="2Jf-5x-day"/>
+                            <constraint firstItem="aRQ-KX-seL" firstAttribute="top" secondItem="8ok-aP-ume" secondAttribute="bottom" id="7Aw-S9-Z7v"/>
+                            <constraint firstItem="8ok-aP-ume" firstAttribute="width" secondItem="aRQ-KX-seL" secondAttribute="width" multiplier="1.2" id="Apj-hb-4UM"/>
                             <constraint firstItem="7Od-CN-ywd" firstAttribute="top" secondItem="vZD-Ft-BtU" secondAttribute="bottom" constant="30" id="FsU-Kv-NBI"/>
+                            <constraint firstItem="aRQ-KX-seL" firstAttribute="height" secondItem="UmC-55-MQf" secondAttribute="height" multiplier="0.2" id="Gyg-KX-fBk"/>
                             <constraint firstItem="7Cy-aJ-tXd" firstAttribute="height" secondItem="UmC-55-MQf" secondAttribute="height" multiplier="0.2" id="Olz-Ld-P2z"/>
+                            <constraint firstItem="aRQ-KX-seL" firstAttribute="width" secondItem="UmC-55-MQf" secondAttribute="width" multiplier="0.3" id="UfB-GS-0Pb"/>
                             <constraint firstItem="kc1-hZ-tlT" firstAttribute="width" secondItem="UmC-55-MQf" secondAttribute="width" id="Wb5-ua-jVF"/>
                             <constraint firstItem="kc1-hZ-tlT" firstAttribute="centerX" secondItem="UmC-55-MQf" secondAttribute="centerX" id="X8T-Ij-n9x"/>
                             <constraint firstItem="kc1-hZ-tlT" firstAttribute="centerY" secondItem="UmC-55-MQf" secondAttribute="centerY" id="Y5M-D1-nl5"/>
                             <constraint firstItem="vZD-Ft-BtU" firstAttribute="width" secondItem="7Cy-aJ-tXd" secondAttribute="width" id="ZWX-FA-84X"/>
+                            <constraint firstItem="wp6-Lm-IW1" firstAttribute="width" secondItem="MTJ-oL-et2" secondAttribute="width" multiplier="1.1" id="bdR-zO-OBf"/>
+                            <constraint firstItem="aRQ-KX-seL" firstAttribute="centerY" secondItem="UmC-55-MQf" secondAttribute="centerY" multiplier="0.9" id="blJ-uz-Fnf"/>
+                            <constraint firstItem="wp6-Lm-IW1" firstAttribute="centerX" secondItem="MTJ-oL-et2" secondAttribute="centerX" id="bsw-nD-ZkJ"/>
+                            <constraint firstItem="sxF-HP-tDk" firstAttribute="height" secondItem="kc1-hZ-tlT" secondAttribute="height" multiplier="0.35" id="eFj-9y-fGg"/>
                             <constraint firstAttribute="trailing" secondItem="7Cy-aJ-tXd" secondAttribute="trailing" constant="20" id="eaZ-fN-tuS"/>
+                            <constraint firstItem="wp6-Lm-IW1" firstAttribute="top" secondItem="MTJ-oL-et2" secondAttribute="bottom" constant="6" id="fvD-8c-dEh"/>
                             <constraint firstItem="7Cy-aJ-tXd" firstAttribute="leading" secondItem="UmC-55-MQf" secondAttribute="leading" constant="20" id="h4L-02-m6z"/>
+                            <constraint firstItem="sxF-HP-tDk" firstAttribute="centerY" secondItem="kc1-hZ-tlT" secondAttribute="centerY" multiplier="0.8" id="hwn-WT-hnO"/>
+                            <constraint firstItem="sxF-HP-tDk" firstAttribute="width" secondItem="kc1-hZ-tlT" secondAttribute="height" multiplier="209:667" id="i7v-p0-zkw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aRQ-KX-seL" secondAttribute="trailing" id="iPb-Ny-d2O"/>
                             <constraint firstItem="7Od-CN-ywd" firstAttribute="width" secondItem="UmC-55-MQf" secondAttribute="width" id="itV-ka-y74"/>
+                            <constraint firstItem="MTJ-oL-et2" firstAttribute="centerX" secondItem="UmC-55-MQf" secondAttribute="centerX" id="jNL-s1-eKR"/>
                             <constraint firstItem="7Cy-aJ-tXd" firstAttribute="top" secondItem="7Od-CN-ywd" secondAttribute="bottom" constant="7" id="mCx-u6-LSI"/>
                             <constraint firstItem="BKs-on-qbB" firstAttribute="top" secondItem="7Cy-aJ-tXd" secondAttribute="bottom" constant="20" id="nMa-hT-daJ"/>
                             <constraint firstItem="7Od-CN-ywd" firstAttribute="centerX" secondItem="UmC-55-MQf" secondAttribute="centerX" id="nne-aW-rmb"/>
+                            <constraint firstItem="sxF-HP-tDk" firstAttribute="leading" secondItem="kc1-hZ-tlT" secondAttribute="leading" id="qCX-YI-RAW"/>
+                            <constraint firstItem="MTJ-oL-et2" firstAttribute="width" secondItem="UmC-55-MQf" secondAttribute="width" id="qmX-Vu-UNy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="GAME" id="3qU-Tn-h4y"/>
@@ -1902,32 +1931,32 @@
                                         <rect key="frame" x="0.0" y="0.0" width="337.5" height="264"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Banner" translatesAutoresizingMaskIntoConstraints="NO" id="uOe-b6-rZx">
-                                        <rect key="frame" x="32.5" y="30" width="273" height="112"/>
+                                        <rect key="frame" x="35" y="30" width="268" height="110"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="112" id="llj-7I-Kls"/>
+                                            <constraint firstAttribute="height" constant="110" id="llj-7I-Kls"/>
                                             <constraint firstAttribute="width" secondItem="uOe-b6-rZx" secondAttribute="height" multiplier="39:16" id="vde-Le-Ujz"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOU WON" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="90s-39-4m3">
-                                        <rect key="frame" x="32.5" y="48" width="273" height="42"/>
+                                        <rect key="frame" x="35" y="48" width="268" height="42"/>
                                         <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="35"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="pzR-Ty-GgA">
-                                        <rect key="frame" x="0.0" y="142" width="337.5" height="97"/>
+                                        <rect key="frame" x="0.0" y="140" width="337.5" height="99"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ELEPHANTASJDFK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q8p-Sq-RQQ">
-                                                <rect key="frame" x="0.0" y="0.0" width="337.5" height="48.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="337.5" height="49.5"/>
                                                 <fontDescription key="fontDescription" name="BiteChalkNormal-Regular" family="Bite Chalk Normal" pointSize="50"/>
                                                 <color key="textColor" red="0.96078431369999995" green="0.65098039220000004" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="LIw-gC-F0L">
-                                                <rect key="frame" x="0.0" y="48.5" width="337.5" height="48.5"/>
+                                                <rect key="frame" x="0.0" y="49.5" width="337.5" height="49.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQy-HS-ZM1">
-                                                        <rect key="frame" x="0.0" y="0.0" width="169" height="48.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="169" height="49.5"/>
                                                         <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="20"/>
                                                         <state key="normal" title="CLOSE">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1937,7 +1966,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKb-Z7-Kfx">
-                                                        <rect key="frame" x="169" y="0.0" width="168.5" height="48.5"/>
+                                                        <rect key="frame" x="169" y="0.0" width="168.5" height="49.5"/>
                                                         <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="20"/>
                                                         <state key="normal" title="define">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1951,7 +1980,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fR-T3-1Jq">
-                                        <rect key="frame" x="146.5" y="97" width="45.5" height="48"/>
+                                        <rect key="frame" x="146.5" y="95" width="45.5" height="48"/>
                                         <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="40"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
