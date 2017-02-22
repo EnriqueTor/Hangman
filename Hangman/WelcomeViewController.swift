@@ -51,6 +51,8 @@ class WelcomeViewController: UIViewController {
     
     // MARK: - Methods
     
+    /* This method does the cool efect on the logo */
+    
     func introAnimation() {
         
         UIView.animateKeyframes(withDuration: 3.0, delay: 0.00, options: [], animations: {
@@ -83,6 +85,8 @@ class WelcomeViewController: UIViewController {
             self.welcome()
         })
     }
+    
+    /* This method checks if the UserDefaults has data to see if this is a recurrent user. If it is not a recurrent user it will stop. If it is it brigns the email from UserDefaults and the password from the framework myKeychainWrapper. Then it goes to Firebase to fetch the data of the User and it segues to the Main view. */
     
     func welcome() {
         
