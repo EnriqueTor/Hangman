@@ -376,9 +376,7 @@ class GameViewController: UIViewController {
         if segue.identifier == "resultSegue" {
             
             guard let dest = segue.destination as? ResultViewController else { return }
-            
-            dest.typeOfGame = typeOfGame
-            
+                        
             if store.playerWon == "WON" {
                 
                 dest.gameResult = "YOU WON"

@@ -17,7 +17,6 @@ extension Notification.Name {
     static let openMainVC = Notification.Name("open-main-view-controller")
     static let openGameVC = Notification.Name("open-game-view-controller")
     static let openInfoGameVC = Notification.Name("open-infoGame-view-controller")
-    
 }
 
 enum StoryboardID: String {
@@ -49,7 +48,6 @@ class AppController: UIViewController {
         addNotificationObservers()
         loadInitialViewController()
     }
-    
 }
 
 
@@ -63,10 +61,7 @@ extension AppController {
         NotificationCenter.default.addObserver(self, selector: #selector(switchViewController(withNotification:)), name: .openRegisterVC, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(switchViewController(withNotification:)), name: .openGameVC, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(switchViewController(withNotification:)), name: .openInfoGameVC, object: nil)
-        
-        // NotificationCenter.default.post(name: .closeLoginVC, object: nil)  -> notification of a post.
     }
-    
 }
 
 // MARK: - Loading View Controllers
@@ -79,13 +74,10 @@ extension AppController {
         add(viewController: activeVC, animated: true)
     }
     
-    
     func loadViewController(withStoryboardID id: StoryboardID) -> UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: id.rawValue)
     }
-    
-    
 }
 
 
