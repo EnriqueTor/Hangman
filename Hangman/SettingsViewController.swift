@@ -167,6 +167,8 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
             UserDefaults.standard.setValue(nil, forKey: "id")
             UserDefaults.standard.setValue(nil, forKey: "name")
             UserDefaults.standard.setValue(nil, forKey: "email")
+            UserDefaults.standard.setValue(nil, forKey: "ChalkboardBlue")
+
             
             dismiss(animated: true, completion: nil)
             dismiss(animated: true, completion: nil)
@@ -199,21 +201,21 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
     @IBAction func setChalkboardGreen(_ sender: UIButton) {
         store.chalkboard = UIImage(named: "ChalkboardGreen")
         store.smallChalkboard = UIImage(named: "ChalkboardGreenOption")
-        UserDefaults.standard.setValue("board", forKey: "ChalkboardGreen")
+        UserDefaults.standard.setValue("ChalkboardGreen", forKey: "board")
         background.image = store.chalkboard
     }
     
     @IBAction func setChalkboardGray(_ sender: UIButton) {
         store.chalkboard = UIImage(named: "Chalkboard")
         store.smallChalkboard = UIImage(named: "ChalkboardBlackOption")
-        UserDefaults.standard.setValue("board", forKey: "Chalkboard")
+        UserDefaults.standard.setValue("Chalkboard", forKey: "board")
         background.image = store.chalkboard
     }
     
     @IBAction func setChalkboardBlue(_ sender: UIButton) {
         store.chalkboard = UIImage(named: "ChalkboardBlue")
         store.smallChalkboard = UIImage(named: "ChalkboardBlueOption")
-        UserDefaults.standard.setValue("board", forKey: "ChalkboardBlue")
+        UserDefaults.standard.setValue("ChalkboardBlue", forKey: "board")
         background.image = store.chalkboard
     }
 }
