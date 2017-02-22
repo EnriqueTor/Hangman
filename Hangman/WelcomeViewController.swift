@@ -38,6 +38,9 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let boardColor = UserDefaults.standard.value(forKey: "board") as? String {
+            store.chalkboard = UIImage(named: boardColor)
+        }
         background.image = store.chalkboard
         loginButton.isHidden = true
         registerButton.isHidden = true
