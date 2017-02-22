@@ -54,6 +54,7 @@ class SearchTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    /* This method retrieves all user information from Firrebase and generate an Array with their IDs */
     func fetchAllUsers() {
         
         usernames.removeAll()
@@ -76,6 +77,7 @@ class SearchTableViewController: UITableViewController {
         return 1
     }
     
+    /* This method retrieves the amount of rows to be in the tableView. It will change if the user search or not. */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchController.isActive && searchController.searchBar.text != nil {
             return filteredUsernames.count
@@ -84,13 +86,13 @@ class SearchTableViewController: UITableViewController {
         }
     }
     
+    /* This method takes the userID and retrieved their data to display in the tableView. */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchTableViewCell
         
         cell.backgroundColor = UIColor.clear
 
-        
         var eachUsername = String()
         
         if searchController.isActive && searchController.searchBar.text != nil {
@@ -100,11 +102,9 @@ class SearchTableViewController: UITableViewController {
         }
         
         cell.selectionStyle = .none
-        
         cell.userName?.text = eachUsername
     
         let userID = allUsers[eachUsername]! as String
-        
         
         database.child("users").child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -115,18 +115,18 @@ class SearchTableViewController: UITableViewController {
             DispatchQueue.main.async {
                 
                 cell.retrieveUserInfo(url: userSelected.profilePic, image: cell.userPic!, label: cell.userName, name: userSelected.username)
-                
-            }    
+            }
         })
         
         return cell
-        
     }
     
+    /* This method asigns a height to the cell in the TableView */
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 79
     }
     
+    /* This method filters and retrieves the user ID of the player selected */
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if searchController.isActive && searchController.searchBar.text != nil {
@@ -147,6 +147,7 @@ class SearchTableViewController: UITableViewController {
         
     }
     
+    /* This method retrieves the user data passed in the segue, download the info from Firebase and saved it in the Hangman Data store */
     func retrieveUsers(id: String) {
         
         database.child("users").child(id).observe( .value, with: { (snapshot) in
@@ -197,6 +198,5 @@ class SearchTableViewCell: UITableViewCell {
         
         label.text = name
     }
-    
 }
 

@@ -34,60 +34,17 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
         retrieveUserInfo(url: store.user.profilePic, image: userProfile, name: store.user.username)
     }
     
-    // MARK: - Actions
-    
-    @IBAction func sendEmail(_ sender: UIButton) {
-        sendEmail()
-    }
-    
-    @IBAction func logoutPushed(_ sender: UIButton) {
-        
-        do {
-            try FIRAuth.auth()?.signOut()
-            UserDefaults.standard.setValue(nil, forKey: "id")
-            UserDefaults.standard.setValue(nil, forKey: "name")
-            UserDefaults.standard.setValue(nil, forKey: "email")
-            
-            dismiss(animated: true, completion: nil)
-            dismiss(animated: true, completion: nil)
-            
-            NotificationCenter.default.post(name: .openWelcomeVC, object: nil)
-            
-        } catch let signOutError as NSError {
-            
-        }
-    }
-    
-    
-    @IBAction func setChalkboardGreen(_ sender: UIButton) {
-        store.chalkboard = UIImage(named: "ChalkboardGreen")
-        store.smallChalkboard = UIImage(named: "ChalkboardGreenOption")
-        background.image = store.chalkboard
-    }
-    
-    @IBAction func setChalkboardGray(_ sender: UIButton) {
-        store.chalkboard = UIImage(named: "Chalkboard")
-        store.smallChalkboard = UIImage(named: "ChalkboardBlackOption")
-        background.image = store.chalkboard
-    }
-    
-    
-    @IBAction func setChalkboardBlue(_ sender: UIButton) {
-        store.chalkboard = UIImage(named: "ChalkboardBlue")
-        store.smallChalkboard = UIImage(named: "ChalkboardBlueOption")
-        background.image = store.chalkboard
-        
-    }
     
     // MARK: Methods
     
+    /* This method will open the Mail ViewController so the user can send some feedback */
     func sendEmail() {
         
         if MFMailComposeViewController.canSendMail() {
             
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
-            mail.setToRecipients(["thedocitapp@gmail.com"])
+            mail.setToRecipients(["etorrendell@gmail.com"])
             mail.setSubject("Feedback")
             mail.setMessageBody("", isHTML: true)
             
@@ -101,9 +58,11 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
     }
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        
         controller.dismiss(animated: true)
     }
-    
+
+    /* This method retrieves the user data and image using the SDWebImage framework */
     func retrieveUserInfo(url: String, image: UIImageView, name: String) {
         
         let profileImgUrl = URL(string: url)
@@ -119,11 +78,11 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
         }
     }
     
-    @IBAction func changePicturePushed(_ sender: UITapGestureRecognizer) {
-        pickPhotoFromAlbum()
-    }
+    // MARK: Methods 
     
+    /* This is the same integration than the one in register View Controller */
     func pickPhotoFromAlbum() {
+        
         presentPicker(withSourceType: .photoLibrary)
     }
     
@@ -142,6 +101,7 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             
             DispatchQueue.main.async {
@@ -155,11 +115,11 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
             saveProfileImage()
             
         }
-        
         dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -181,11 +141,11 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
                 
                 self.database.child("users").child(self.store.user.id).child("profilePic").setValue(profileImageUrl)
                 self.store.user.profilePic = profileImageUrl
-                
             })
         }
     }
     
+    /* When the user hits return the new name gets saved in Firebase and in the Hangman Data store */
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         self.store.user.username = userTextField.text!
@@ -199,4 +159,58 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
         return true
     }
     
+    /* This method delete the keys from UserDefaults and log you out of Firebase. Once than it takes you to the Welcome View Controller */
+    func logout() {
+        
+        do {
+            try FIRAuth.auth()?.signOut()
+            UserDefaults.standard.setValue(nil, forKey: "id")
+            UserDefaults.standard.setValue(nil, forKey: "name")
+            UserDefaults.standard.setValue(nil, forKey: "email")
+            
+            dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)
+            
+            NotificationCenter.default.post(name: .openWelcomeVC, object: nil)
+            
+        } catch let signOutError as NSError {
+            
+        }
+
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func changePicturePushed(_ sender: UITapGestureRecognizer) {
+        
+        pickPhotoFromAlbum()
+    }
+    
+    @IBAction func sendEmail(_ sender: UIButton) {
+        
+        sendEmail()
+    }
+    
+    @IBAction func logoutPushed(_ sender: UIButton) {
+        
+        logout()
+    }
+    
+    @IBAction func setChalkboardGreen(_ sender: UIButton) {
+        store.chalkboard = UIImage(named: "ChalkboardGreen")
+        store.smallChalkboard = UIImage(named: "ChalkboardGreenOption")
+        background.image = store.chalkboard
+    }
+    
+    @IBAction func setChalkboardGray(_ sender: UIButton) {
+        store.chalkboard = UIImage(named: "Chalkboard")
+        store.smallChalkboard = UIImage(named: "ChalkboardBlackOption")
+        background.image = store.chalkboard
+    }
+    
+    @IBAction func setChalkboardBlue(_ sender: UIButton) {
+        store.chalkboard = UIImage(named: "ChalkboardBlue")
+        store.smallChalkboard = UIImage(named: "ChalkboardBlueOption")
+        background.image = store.chalkboard
+    }
 }
