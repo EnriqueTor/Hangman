@@ -44,6 +44,7 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         introAnimation()
         
     }
@@ -120,10 +121,12 @@ class WelcomeViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func loginPushed(_ sender: UIButton) {
+        
         NotificationCenter.default.post(name: Notification.Name.openLoginVC, object: nil)
     }
     
     @IBAction func registerPushed(_ sender: UIButton) {
+        
         NotificationCenter.default.post(name: Notification.Name.openRegisterVC, object: nil)
     }
 }

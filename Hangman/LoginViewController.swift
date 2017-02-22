@@ -10,8 +10,8 @@ import UIKit
 import Firebase
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
-
-    // MARK: - Outlets 
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var emailTextField: UITextField!
@@ -23,15 +23,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     let store = HangmanData.sharedInstance
     let myKeychainWrapper = KeychainWrapper()
     
-    // MARK: - Loads 
+    // MARK: - Loads
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupView()
     }
-
-    // MARK: Methods 
+    
+    // MARK: Methods
     
     func setupView() {
         
@@ -95,14 +95,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         myKeychainWrapper.writeToKeychain()
         UserDefaults.standard.synchronize()
     }
-
+    
     // MARK: - Actions
     
     @IBAction func loginPushed(_ sender: UIButton) {
+        
         login()
     }
     
     @IBAction func cancelPushed(_ sender: UIButton) {
+        
         NotificationCenter.default.post(name: Notification.Name.openWelcomeVC, object: nil)
     }
 }

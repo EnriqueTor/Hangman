@@ -11,7 +11,8 @@ import Firebase
 import SDWebImage
 
 class RegisterViewController: UIViewController, UIImagePickerControllerDelegate, UIGestureRecognizerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
-
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -19,16 +20,22 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var background: UIImageView!
     
+    // MARK: - Variables
+    
     let store = HangmanData.sharedInstance
     let database = FIRDatabase.database().reference()
     let myKeychainWrapper = KeychainWrapper()
-
+    
+    
+    // MARK: - Loads
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
     }
+    
+    // MARK: Methods
     
     func setupView() {
         
@@ -38,15 +45,12 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "password", attributes: attr)
         
         profilePic.clipsToBounds = true
-        
         usernameTextField.delegate = self
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        
         background.image = store.chalkboard
     }
     
-
     @IBAction func registerPushed(_ sender: UIButton) {
         
         guard let email = emailTextField.text, let password = passwordTextField.text, let username = usernameTextField.text else { return }
@@ -54,14 +58,14 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
             
             if error != nil {
-            
+                
                 let alert = UIAlertController(title: nil, message: error?.localizedDescription, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
                 
                 self.present(alert, animated: true, completion: nil)
-            
+                
             } else {
-            
+                
                 self.addDataToKeychain(id: (user?.uid)!, name: username, email: email)
                 self.signIn()
             }
@@ -96,16 +100,23 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
                         self.saveProfileImage()
                         
                         NotificationCenter.default.post(name: Notification.Name.openMainVC, object: nil)
-
-                        
                     }
                 }
             }
         }
     }
     
-
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        usernameTextField.resignFirstResponder()
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        
+        return true
+    }
+    
     func addDataToKeychain(id: String, name: String, email: String) {
+        
         UserDefaults.standard.setValue(id, forKey: "id")
         UserDefaults.standard.setValue(name, forKey: "name")
         UserDefaults.standard.setValue(email, forKey: "email")
@@ -114,24 +125,11 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         myKeychainWrapper.writeToKeychain()
         UserDefaults.standard.synchronize()
     }
-
-
-
-
-    @IBAction func cancelPushed(_ sender: UIButton) {
-        
-        NotificationCenter.default.post(name: Notification.Name.openWelcomeVC, object: nil)
-
-    }
-
-    @IBAction func profilePicPushed(_ sender: UITapGestureRecognizer) {
-        
-        pickPhotoFromAlbum()
-    }
-
+    
+    // MARK: Methods Picker
     
     func pickPhotoFromAlbum() {
-
+        
         presentPicker(withSourceType: .photoLibrary)
     }
     
@@ -144,31 +142,34 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         imagePicker.navigationBar.barStyle = .blackTranslucent
         imagePicker.navigationBar.isTranslucent = true
         imagePicker.navigationBar.tintColor = .white
-
+        
         present(imagePicker, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             
             profilePic.image = image
             profilePic.clipsToBounds = true
             profilePic.contentMode = .scaleAspectFill
-
+            
             profilePic.setRounded()
-        
+            
         }
         
         dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        
         dismiss(animated: true, completion: nil)
     }
     
     func saveProfileImage() {
         
         DispatchQueue.main.async {
+            
             let storageRef = FIRStorage.storage().reference(forURL: "gs://face-ba4e6.appspot.com")
             let imageId = self.store.user.id
             let storageImageRef = storageRef.child("profileImages").child(imageId)
@@ -176,6 +177,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
             guard let uploadData = UIImageJPEGRepresentation(self.profilePic.image!, 0.20) else { return }
             
             storageImageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
+                
                 if error != nil {
                     return
                 }
@@ -184,15 +186,18 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
                 self.store.user.profilePic = profileImageUrl
                 self.database.child("users").child(self.store.user.id).child("profilePic").setValue(self.store.user.profilePic)
             })
-            
         }
     }
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        usernameTextField.resignFirstResponder()
-        emailTextField.resignFirstResponder()
-        passwordTextField.resignFirstResponder()
-        return true
+    
+    // MARK: - Actions
+    
+    @IBAction func cancelPushed(_ sender: UIButton) {
+        
+        NotificationCenter.default.post(name: Notification.Name.openWelcomeVC, object: nil)
     }
-
+    
+    @IBAction func profilePicPushed(_ sender: UITapGestureRecognizer) {
+        
+        pickPhotoFromAlbum()
+    }
 }
