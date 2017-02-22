@@ -1520,7 +1520,7 @@
                                     <constraint firstAttribute="height" constant="15" id="ouj-qW-11t"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HangmanLogo" translatesAutoresizingMaskIntoConstraints="NO" id="sxF-HP-tDk">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HangmanLogo0" translatesAutoresizingMaskIntoConstraints="NO" id="sxF-HP-tDk">
                                 <rect key="frame" x="0.0" y="150" width="209" height="233.5"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="aRQ-KX-seL">
@@ -1873,6 +1873,7 @@
                     <navigationItem key="navigationItem" title="GAME" id="3qU-Tn-h4y"/>
                     <connections>
                         <outlet property="background" destination="kc1-hZ-tlT" id="4p4-nA-Hiz"/>
+                        <outlet property="hangmanImage" destination="sxF-HP-tDk" id="8HB-ar-LD0"/>
                         <outlet property="livesLabel" destination="Wuq-jR-fX9" id="7Nj-9h-bZ4"/>
                         <outlet property="scoreLabel" destination="9IX-fZ-KXI" id="lEC-gf-bS9"/>
                         <outlet property="secretWordLabel" destination="vZD-Ft-BtU" id="CZe-5f-s6t"/>
@@ -3264,6 +3265,7 @@
         <image name="Frame" width="500" height="476"/>
         <image name="Frame2" width="573" height="893"/>
         <image name="HangmanLogo" width="227" height="259"/>
+        <image name="HangmanLogo0" width="227" height="259"/>
         <image name="Heart" width="200" height="180"/>
         <image name="WelcomeLogo" width="1191" height="78"/>
     </resources>

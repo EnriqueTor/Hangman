@@ -19,6 +19,8 @@ class GameViewController: UIViewController {
     @IBOutlet weak var secretWordLabel: UILabel!
     @IBOutlet var keyboardButtons: [UIButton]!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var hangmanImage: UIImageView!
+    
     
     // MARK: - Variables
     
@@ -175,6 +177,7 @@ class GameViewController: UIViewController {
             lives = lives - 1
             livesLabel.text = "\(lives)"
             points = points - 1
+            changeHangmanImage()
             winOrLose(test: "LOST")
         }
         
@@ -186,6 +189,43 @@ class GameViewController: UIViewController {
             scoreLabel.text = "\(points)"
         }
     }
+    
+    func changeHangmanImage() {
+        
+        if lives == 6 {
+            hangmanImage.image = UIImage(named: "HangmanLogo0")
+        }
+        
+        if lives == 5 {
+            hangmanImage.image = UIImage(named: "HangmanLogo1")
+        }
+        
+        if lives == 4 {
+            hangmanImage.image = UIImage(named: "HangmanLogo2")
+        }
+        
+        if lives == 3 {
+            hangmanImage.image = UIImage(named: "HangmanLogo3")
+        }
+        
+        if lives == 2 {
+            hangmanImage.image = UIImage(named: "HangmanLogo4")
+        }
+        
+        if lives == 1 {
+            hangmanImage.image = UIImage(named: "HangmanLogo5")
+        }
+        
+        if lives == 0 {
+            hangmanImage.image = UIImage(named: "HangmanLogo")
+        }
+        
+        if lives == -1 {
+            hangmanImage.image = UIImage(named: "HangmanLogo6")
+
+        }
+    }
+    
     
     func winOrLose(test: String) {
         
