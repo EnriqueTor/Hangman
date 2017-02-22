@@ -32,7 +32,7 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         
         background.image = store.chalkboard
-        retrieveActiveGames()
+        retrieveGames()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,10 +41,21 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        retrieveActiveGames()
+        retrieveGames()
     }
     
     // MARK: - Methods
+    
+    func retrieveGames() {
+        
+        if store.gamesActiveOrFinished == "active" {
+            retrieveActiveGames()
+        }
+        
+        if store.gamesActiveOrFinished == "finished" {
+            retrieveFinishedGames()
+        }
+    }
     
     /* This method retrieves from firbase the active games of the user */
     func retrieveActiveGames() {
@@ -161,12 +172,12 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @IBAction func activeGamesPushed(_ sender: UIButton) {
-        
+        store.gamesActiveOrFinished = "active"
         retrieveActiveGames()
     }
     
     @IBAction func archivedGamesPushed(_ sender: UIButton) {
-       
+        store.gamesActiveOrFinished = "finished"
         retrieveFinishedGames()
     }
 }

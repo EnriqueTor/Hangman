@@ -52,6 +52,7 @@ class HangmanData {
     
     var multiplayerAmountOfPlayers = 1
     var multiplayerAmountOfWords = "0"
+    var gamesActiveOrFinished = "active"
     
     // MARK: - Initializers
     

@@ -554,10 +554,10 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Frame2" translatesAutoresizingMaskIntoConstraints="NO" id="mGp-EB-bAU">
-                                <rect key="frame" x="37.5" y="203.5" width="300" height="387"/>
+                                <rect key="frame" x="38" y="204" width="300" height="387"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XCp-bu-YIL">
-                                <rect key="frame" x="52" y="223" width="270" height="348"/>
+                                <rect key="frame" x="53" y="223" width="270" height="348"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="multiplayerCell" rowHeight="100" id="P98-W1-JF8" customClass="MultiplayerTableViewCell" customModule="Hangman" customModuleProvider="target">
@@ -690,7 +690,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zui-tD-TmK">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="100"/>
                                         <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="30"/>
-                                        <state key="normal" title="ARCHIVED GAMES">
+                                        <state key="normal" title="FINISHED GAMES">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -1275,8 +1275,8 @@
                                     <constraint firstAttribute="height" constant="15" id="bLC-uG-v1P"/>
                                 </constraints>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="77" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FBF-yg-TDl">
-                                <rect key="frame" x="0.0" y="177" width="375" height="333.5"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="77" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FBF-yg-TDl">
+                                <rect key="frame" x="0.0" y="177" width="375" height="367"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="infoCell" rowHeight="79" id="LOa-Wz-Ozm" customClass="InfoTableViewCell" customModule="Hangman" customModuleProvider="target">
@@ -1332,13 +1332,16 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="6Hy-zl-ALK">
-                                                            <rect key="frame" x="274" y="22" width="31" height="36"/>
+                                                            <rect key="frame" x="264" y="22" width="31" height="36"/>
                                                             <fontDescription key="fontDescription" name="BiteChalkBold-Regular" family="Bite Chalk Bold" pointSize="30"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISY-em-qRy">
-                                                            <rect key="frame" x="332" y="22" width="11" height="36"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="???" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="ISY-em-qRy">
+                                                            <rect key="frame" x="313" y="22" width="30" height="36"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="30" id="y9t-vg-z3O"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" name="BiteChalkBold-Regular" family="Bite Chalk Bold" pointSize="30"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -1356,7 +1359,7 @@
                                                         <constraint firstItem="NJ8-g5-t6O" firstAttribute="leading" secondItem="Ip2-Dn-nqf" secondAttribute="trailing" constant="7" id="BRS-X1-Fhl"/>
                                                         <constraint firstItem="Ip2-Dn-nqf" firstAttribute="height" secondItem="Bm5-BE-kM1" secondAttribute="height" multiplier="0.9" id="EXF-Cs-0kE"/>
                                                         <constraint firstItem="NJ8-g5-t6O" firstAttribute="centerY" secondItem="Ip2-Dn-nqf" secondAttribute="centerY" id="IuE-7A-6fM"/>
-                                                        <constraint firstAttribute="trailing" secondItem="6Hy-zl-ALK" secondAttribute="trailing" constant="70" id="a7H-6U-GbJ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="6Hy-zl-ALK" secondAttribute="trailing" constant="80" id="a7H-6U-GbJ"/>
                                                         <constraint firstItem="CZh-ih-tUj" firstAttribute="leading" secondItem="Bm5-BE-kM1" secondAttribute="leading" id="ccK-KM-NcK"/>
                                                         <constraint firstItem="Ip2-Dn-nqf" firstAttribute="centerY" secondItem="Bm5-BE-kM1" secondAttribute="centerY" id="dUU-IT-ZlP"/>
                                                         <constraint firstItem="SS8-9K-8l5" firstAttribute="centerY" secondItem="Ip2-Dn-nqf" secondAttribute="centerY" id="kik-65-WJ1"/>
@@ -1408,16 +1411,28 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOY-eW-D3g">
-                                <rect key="frame" x="141.5" y="555" width="92" height="72"/>
-                                <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="50"/>
-                                <state key="normal" title="PLAY">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="playPushed:" destination="Pb7-0U-2fW" eventType="touchUpInside" id="ImQ-Qx-Yfa"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="llW-Wq-n5c">
+                                <rect key="frame" x="16" y="533.5" width="343" height="133.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOY-eW-D3g">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="133.5"/>
+                                        <fontDescription key="fontDescription" name="BiteChalk-Regular" family="Bite Chalk" pointSize="50"/>
+                                        <state key="normal" title="PLAY">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="playPushed:" destination="Pb7-0U-2fW" eventType="touchUpInside" id="ImQ-Qx-Yfa"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ZOY-eW-D3g" firstAttribute="centerX" secondItem="llW-Wq-n5c" secondAttribute="centerX" id="3uz-uy-D1p"/>
+                                    <constraint firstItem="ZOY-eW-D3g" firstAttribute="height" secondItem="llW-Wq-n5c" secondAttribute="height" id="BGM-oA-Z68"/>
+                                    <constraint firstItem="ZOY-eW-D3g" firstAttribute="width" secondItem="llW-Wq-n5c" secondAttribute="width" id="QtO-IK-BU7"/>
+                                    <constraint firstItem="ZOY-eW-D3g" firstAttribute="top" secondItem="llW-Wq-n5c" secondAttribute="top" id="ibk-2S-Xk1"/>
+                                </constraints>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPO-hG-yhx">
                                 <rect key="frame" x="-19" y="142" width="413" height="24"/>
                                 <fontDescription key="fontDescription" name="BiteChalkBold-Regular" family="Bite Chalk Bold" pointSize="20"/>
@@ -1427,22 +1442,24 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="llW-Wq-n5c" firstAttribute="height" secondItem="TJ2-Ya-Hjd" secondAttribute="height" multiplier="0.2" id="2hW-Yv-FT3"/>
                             <constraint firstItem="6sx-zE-OuA" firstAttribute="width" secondItem="vIW-rd-yZZ" secondAttribute="width" id="8qm-bN-82G"/>
+                            <constraint firstItem="nHu-mn-pmA" firstAttribute="top" secondItem="llW-Wq-n5c" secondAttribute="bottom" id="AXG-6W-647"/>
                             <constraint firstItem="vIW-rd-yZZ" firstAttribute="centerX" secondItem="TJ2-Ya-Hjd" secondAttribute="centerX" id="Aa1-zD-Y8f"/>
-                            <constraint firstItem="ZOY-eW-D3g" firstAttribute="bottom" secondItem="sSn-3f-Qoi" secondAttribute="bottom" constant="-40" id="BCT-Bw-9vp"/>
                             <constraint firstItem="6sx-zE-OuA" firstAttribute="centerX" secondItem="vIW-rd-yZZ" secondAttribute="centerX" id="Bif-0k-rkC"/>
                             <constraint firstItem="sSn-3f-Qoi" firstAttribute="centerY" secondItem="TJ2-Ya-Hjd" secondAttribute="centerY" id="CH7-kd-ld5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="llW-Wq-n5c" secondAttribute="trailing" id="D9N-bv-aPY"/>
                             <constraint firstItem="FBF-yg-TDl" firstAttribute="top" secondItem="WPO-hG-yhx" secondAttribute="bottom" constant="11" id="Dzh-ht-xOp"/>
                             <constraint firstItem="FBF-yg-TDl" firstAttribute="centerX" secondItem="WPO-hG-yhx" secondAttribute="centerX" id="EPy-sx-SpC"/>
                             <constraint firstItem="sSn-3f-Qoi" firstAttribute="width" secondItem="TJ2-Ya-Hjd" secondAttribute="width" id="KA2-dq-YFm"/>
                             <constraint firstItem="vIW-rd-yZZ" firstAttribute="top" secondItem="sr8-Vm-fvm" secondAttribute="bottom" id="KiZ-q3-UwY"/>
                             <constraint firstItem="WPO-hG-yhx" firstAttribute="centerX" secondItem="6sx-zE-OuA" secondAttribute="centerX" id="Kow-rs-qWZ"/>
-                            <constraint firstItem="FBF-yg-TDl" firstAttribute="height" secondItem="TJ2-Ya-Hjd" secondAttribute="height" multiplier="0.5" id="RSj-Gh-Ett"/>
+                            <constraint firstItem="llW-Wq-n5c" firstAttribute="leading" secondItem="TJ2-Ya-Hjd" secondAttribute="leadingMargin" id="Nzy-3l-dMx"/>
+                            <constraint firstItem="FBF-yg-TDl" firstAttribute="height" secondItem="TJ2-Ya-Hjd" secondAttribute="height" multiplier="0.55" id="RSj-Gh-Ett"/>
                             <constraint firstItem="vIW-rd-yZZ" firstAttribute="width" secondItem="TJ2-Ya-Hjd" secondAttribute="width" multiplier="1.1" id="XoS-cz-3LB"/>
                             <constraint firstItem="WPO-hG-yhx" firstAttribute="top" secondItem="6sx-zE-OuA" secondAttribute="bottom" id="ZEQ-K2-R3F"/>
                             <constraint firstItem="FBF-yg-TDl" firstAttribute="width" secondItem="sSn-3f-Qoi" secondAttribute="width" id="bHG-XW-cZk"/>
                             <constraint firstItem="6sx-zE-OuA" firstAttribute="top" secondItem="vIW-rd-yZZ" secondAttribute="bottom" constant="15" id="hTB-TU-zb4"/>
-                            <constraint firstItem="ZOY-eW-D3g" firstAttribute="centerX" secondItem="sSn-3f-Qoi" secondAttribute="centerX" id="ja6-HK-F9b"/>
                             <constraint firstItem="sSn-3f-Qoi" firstAttribute="height" secondItem="TJ2-Ya-Hjd" secondAttribute="height" id="kFJ-FZ-Eef"/>
                             <constraint firstItem="sSn-3f-Qoi" firstAttribute="centerX" secondItem="TJ2-Ya-Hjd" secondAttribute="centerX" id="ka8-oh-02T"/>
                             <constraint firstItem="WPO-hG-yhx" firstAttribute="width" secondItem="6sx-zE-OuA" secondAttribute="width" id="tBb-Ol-Egi"/>

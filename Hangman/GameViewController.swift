@@ -42,7 +42,6 @@ class GameViewController: UIViewController {
         background.image = store.chalkboard
         loadPlayerData()
         isKeyboardEnabled(status: false)
-        
         newGame()
     }
     

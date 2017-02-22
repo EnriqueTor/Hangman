@@ -57,5 +57,4 @@ struct User {
 
         return User(id: id, username: username, email: email, profilePic: profilePic, scoreSingle: scoreSingle, scoreChallenge: scoreChallenge, scoreMultiplayer: scoreMultiplayer)
     }
-    
 }
