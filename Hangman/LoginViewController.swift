@@ -36,7 +36,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func setupView() {
         
         /* Changing some design details */
-
         let attr = [NSForegroundColorAttributeName: UIColor.white]
         emailTextField.attributedPlaceholder = NSAttributedString(string: "email", attributes: attr)
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "password", attributes: attr)
@@ -48,7 +47,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     /* This method log in to the app. It goes into Firebase and confirms that the email and password is the right one. Once done, it downloads the User and it adds the user, email and password to the UserDefaults and myKeychainWrapper. Then it goes to the Main ViewController using a custom AppController notification. */
-    
     func login() {
         
         guard let email = emailTextField.text, let pass = passwordTextField.text else { return }
@@ -56,7 +54,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if email != "" && pass != "" {
             
             /* Check authentification */
-
             FIRAuth.auth()?.signIn(withEmail: email, password: pass) { (user, error) in
                 
                 if error != nil {
@@ -71,21 +68,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     let userData = self.database.child("users").child((user?.uid)!)
                     
                     /* Download User data */
-
                     userData.observe(.value, with: { (snapshot) in
                         let data = snapshot.value as? [String:Any]
                         let loggedUser = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
                         
                         /* Store the User data into the HangmanData store */
-
                         self.store.user = loggedUser.deserialize(data!)
                         
                         /* Save into UserDefaults and myKeychainWrapper */
-                        
                         self.addDataToKeychain(id: (user?.uid)!, name: self.store.user.username, email: email)
                         
                         /* Switch View Controller */
-
                         NotificationCenter.default.post(name: Notification.Name.openMainVC, object: nil)
                     })
                 }
@@ -94,7 +87,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     /* This methods make the keyboard disappear in the app when we press the key return */
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         emailTextField.resignFirstResponder()

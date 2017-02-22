@@ -14,7 +14,6 @@ class WelcomeViewController: UIViewController {
     // MARK: - Outlets
     
     /* The labels here are part of the logo. */
-
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var hLabel: UILabel!
     @IBOutlet weak var a1Label: UILabel!
@@ -29,7 +28,6 @@ class WelcomeViewController: UIViewController {
     // MARK: - Variables
     
     /* myKychainWrapper conects the ViewController with the framework. The database is a shortcut to Firebase and store is a shortcut to HangmanData where we saved some useful data to move it though different ViewControllers. */
-    
     let myKeychainWrapper = KeychainWrapper()
     let database = FIRDatabase.database().reference()
     let store = HangmanData.sharedInstance
@@ -37,7 +35,6 @@ class WelcomeViewController: UIViewController {
     // MARK: - Loads
     
     /* The method on HangmanAPI download the dictionary for the game. */
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,13 +49,11 @@ class WelcomeViewController: UIViewController {
         super.viewDidAppear(animated)
         
         introAnimation()
-        
     }
     
     // MARK: - Methods
     
     /* This method does the cool efect on the logo */
-    
     func introAnimation() {
         
         UIView.animateKeyframes(withDuration: 3.0, delay: 0.00, options: [], animations: {
@@ -93,11 +88,9 @@ class WelcomeViewController: UIViewController {
     }
     
     /* This method checks if the UserDefaults has data to see if this is a recurrent user. If it is not a recurrent user it will stop. If it is it brigns the email from UserDefaults and the password from the framework myKeychainWrapper. Then it goes to Firebase to fetch the data of the User and it jumps to the Main view using a custom Notification (AppController). */
-    
     func welcome() {
         
         /* Checking UserDefaults */
-
         if UserDefaults.standard.value(forKey: "email") as? String == nil {
             
             loginButton.isHidden = false
@@ -106,12 +99,10 @@ class WelcomeViewController: UIViewController {
         else {
             
             /* Fetching data from UserDefaults and myKeychainWrapper */
-
             let email = UserDefaults.standard.value(forKey: "email") as? String
             let pass = myKeychainWrapper.myObject(forKey: "v_Data") as? String
             
             /* Sign in to Firebase */
-
             FIRAuth.auth()?.signIn(withEmail: email!, password: pass!) { (user, error) in
                 
                 if error != nil {
@@ -121,18 +112,15 @@ class WelcomeViewController: UIViewController {
                     let userData = self.database.child("users").child((user?.uid)!)
                     
                     /* Downloading User data */
-
                     userData.observe(.value, with: { (snapshot) in
                         
                         let data = snapshot.value as? [String:Any]
                         let loggedUser = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
                         
                         /* Store the data into our HangmanData using a custom method. */
-
                         self.store.user = loggedUser.deserialize(data!)
                         
                         /* Switch View Controller */
-
                         NotificationCenter.default.post(name: Notification.Name.openMainVC, object: nil)
                     })
                 }
