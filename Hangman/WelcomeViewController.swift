@@ -11,6 +11,8 @@ import Firebase
 
 class WelcomeViewController: UIViewController {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var hLabel: UILabel!
     @IBOutlet weak var a1Label: UILabel!
@@ -19,13 +21,16 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var mLabel: UILabel!
     @IBOutlet weak var a2Label: UILabel!
     @IBOutlet weak var n2Label: UILabel!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var registerButton: UIButton!
+    
+    // MARK: - Variables
     
     let myKeychainWrapper = KeychainWrapper()
     let database = FIRDatabase.database().reference()
     let store = HangmanData.sharedInstance
     
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var registerButton: UIButton!
+    // MARK: - Loads
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,12 +38,8 @@ class WelcomeViewController: UIViewController {
         background.image = store.chalkboard
         loginButton.isHidden = true
         registerButton.isHidden = true
-        
         store.arrayOfWords.removeAll()
         HangmanAPI.getHangmanWord()
-        
-        print("I WANT TO EAT SOME BURGERS!")
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -47,72 +48,39 @@ class WelcomeViewController: UIViewController {
         
     }
     
+    // MARK: - Methods
+    
     func introAnimation() {
-        
-
-        
         
         UIView.animateKeyframes(withDuration: 3.0, delay: 0.00, options: [], animations: {
             
             UIView.addKeyframe(withRelativeStartTime: 0.20, relativeDuration: 0.00, animations: {
-                
                 self.a1Label.alpha = 1
                 self.a2Label.alpha = 1
-                
             })
             
             UIView.addKeyframe(withRelativeStartTime: 0.40, relativeDuration: 0.00, animations: {
-                
                 self.n1Label.alpha = 1
                 self.n2Label.alpha = 1
-                
             })
             
             UIView.addKeyframe(withRelativeStartTime: 0.60, relativeDuration: 0.00, animations: {
-                
                 self.gLabel.alpha = 1
-
-
             })
             
             UIView.addKeyframe(withRelativeStartTime: 0.80, relativeDuration: 0.00, animations: {
-                
-                
                 self.hLabel.alpha = 1
-                
             })
             
             UIView.addKeyframe(withRelativeStartTime: 1.00, relativeDuration: 0.00, animations: {
-                
-                
                 self.mLabel.alpha = 1
             })
-            
-            
             
         }, completion: nil)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
-            
             self.welcome()
-
         })
-    }
-    
-    
-    @IBAction func loginPushed(_ sender: UIButton) {
-        
-        NotificationCenter.default.post(name: Notification.Name.openLoginVC, object: nil)
-        
-        
-    }
-    
-    
-    @IBAction func registerPushed(_ sender: UIButton) {
-        
-        NotificationCenter.default.post(name: Notification.Name.openRegisterVC, object: nil)
-        
-        
     }
     
     func welcome() {
@@ -121,9 +89,7 @@ class WelcomeViewController: UIViewController {
             
             loginButton.isHidden = false
             registerButton.isHidden = false
-            
         }
-            
         else {
             
             let email = UserDefaults.standard.value(forKey: "email") as? String
@@ -132,14 +98,10 @@ class WelcomeViewController: UIViewController {
             FIRAuth.auth()?.signIn(withEmail: email!, password: pass!) { (user, error) in
                 
                 if error != nil {
-                    
                 }
-                    
                 else {
                     
                     let userData = self.database.child("users").child((user?.uid)!)
-                    
-                    // update daily list
                     
                     userData.observe(.value, with: { (snapshot) in
                         
@@ -149,11 +111,20 @@ class WelcomeViewController: UIViewController {
                         self.store.user = loggedUser.deserialize(data!)
                         
                         NotificationCenter.default.post(name: Notification.Name.openMainVC, object: nil)
-                        
                     })
                 }
             }
         }
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func loginPushed(_ sender: UIButton) {
+        NotificationCenter.default.post(name: Notification.Name.openLoginVC, object: nil)
+    }
+    
+    @IBAction func registerPushed(_ sender: UIButton) {
+        NotificationCenter.default.post(name: Notification.Name.openRegisterVC, object: nil)
     }
 }
 
