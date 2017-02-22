@@ -116,7 +116,7 @@ struct GroupGame {
     
     func serialize() -> [String:Any] {
         
-        return  ["id": id, "date": date, "status": status, "title": title, "rounds": rounds, "player1Id": player1Id, "player1Name": player1Name, "player1Pic": player1Pic, "player1Rounds": player1Rounds, "player1Points": player1Points, "player2Id": player2Id, "player2Name": player2Name, "player2Pic": player2Pic, "player2Rounds": player2Rounds,"player2Points": player2Points, "player3Id": player3Id, "player3Name": player3Name, "player3Pic": player3Pic, "player3Roudns": player3Rounds, "player3Points": player3Points, "player4Id": player4Id, "player4Name": player4Name, "player4Pic": player4Pic, "player4Roudns": player4Rounds, "player4Points": player4Points]
+        return  ["id": id, "date": date, "status": status, "title": title, "rounds": rounds, "player1Id": player1Id, "player1Name": player1Name, "player1Pic": player1Pic, "player1Rounds": player1Rounds, "player1Points": player1Points, "player2Id": player2Id, "player2Name": player2Name, "player2Pic": player2Pic, "player2Rounds": player2Rounds,"player2Points": player2Points, "player3Id": player3Id, "player3Name": player3Name, "player3Pic": player3Pic, "player3Rounds": player3Rounds, "player3Points": player3Points, "player4Id": player4Id, "player4Name": player4Name, "player4Pic": player4Pic, "player4Rounds": player4Rounds, "player4Points": player4Points]
     }
     
     func deserialize(_ data: [String : Any]) -> GroupGame {

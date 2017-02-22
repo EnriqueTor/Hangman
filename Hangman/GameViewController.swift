@@ -21,7 +21,6 @@ class GameViewController: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var hangmanImage: UIImageView!
     
-    
     // MARK: - Variables
     
     let store = HangmanData.sharedInstance
@@ -45,12 +44,9 @@ class GameViewController: UIViewController {
         isKeyboardEnabled(status: false)
         
         newGame()
-        print("==================================")
-        print(typeOfGame)
-        print("==================================")
-        
     }
     
+    /* This method retrieves the user data and link it to our HangmanData store */
     func loadPlayerData() {
         
         database.child("users").child(self.store.user.id).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -59,23 +55,9 @@ class GameViewController: UIViewController {
         })
     }
     
-    // MARK: - Actions
-    
-    @IBAction func letterPressed(_ sender: UIButton) {
-        
-        var buttonTitle = sender.titleLabel?.text
-        
-        if secretWord.range(of: buttonTitle!) != nil {
-            play(isCorrect: true, button: sender)
-        }
-        else {
-            play(isCorrect: false, button: sender)
-        }
-    }
-    
     // MARK: - Methods
     
-    
+    /* This method reset all the variables to be able to play a new game  */
     func newGame() {
         
         lives = 6
@@ -93,9 +75,9 @@ class GameViewController: UIViewController {
         }
         
         letsPlay()
-        
     }
     
+    /* This method prepares the game */
     func letsPlay() {
         
         let allWords = Int(arc4random_uniform(UInt32(store.arrayOfWords.count)))
@@ -105,15 +87,13 @@ class GameViewController: UIViewController {
         for _ in self.secretWord.characters {
             
             self.hiddenWord.append("_")
-            
         }
         
         self.secretWordLabel.text = self.hiddenWord
         self.isKeyboardEnabled(status: true)
-        
     }
     
-    
+    /* This method sets the keyboard to be enabled or not */
     func isKeyboardEnabled(status: Bool) {
         
         for button in keyboardButtons {
@@ -122,6 +102,7 @@ class GameViewController: UIViewController {
         }
     }
     
+    /* This method check if the letter selected is correct or not */
     func play(isCorrect: Bool, button: UIButton) {
         
         if isCorrect == true {
@@ -140,16 +121,11 @@ class GameViewController: UIViewController {
                     for (newIndex, newChar) in hiddenWord.characters.enumerated() {
                         
                         if newIndex == index {
-                            
                             newWord.append(char)
-                            
                         } else {
-                            
                             newWord.append(newChar)
                         }
-                        
                     }
-                    
                     hiddenWord = newWord
                     secretWordLabel.text = hiddenWord
                     
@@ -166,6 +142,7 @@ class GameViewController: UIViewController {
         }
     }
     
+    /* This method updates the score od the user */
     func updateScore(guessedRight: Bool) {
         
         if guessedRight == true {
@@ -184,12 +161,13 @@ class GameViewController: UIViewController {
         if points >= 0 {
             scoreLabel.text = "+\(points)"
             
-            
         } else {
             scoreLabel.text = "\(points)"
         }
     }
     
+    /* This changes the hangman image as the user loses lives */
+    // TODO: We can do this better
     func changeHangmanImage() {
         
         if lives == 6 {
@@ -226,7 +204,7 @@ class GameViewController: UIViewController {
         }
     }
     
-    
+    /* This method checks if the user won or lost. */
     func winOrLose(test: String) {
         
         if test == "WON" {
@@ -242,6 +220,8 @@ class GameViewController: UIViewController {
         }
     }
     
+    /* Once the game finished, this method updates all the different databases. */
+    // TODO: We can do this better
     func gameEnded(result: String, pointsEarned: Int) {
         
         isKeyboardEnabled(status: false)
@@ -267,8 +247,6 @@ class GameViewController: UIViewController {
             
             self.database.child("users").child(self.store.user.id).child("scoreSingle").setValue(self.store.user.scoreSingle)
             self.database.child("leaderboardSingle").child(self.store.user.id).setValue(self.store.user.scoreSingle)
-            
-            
         }
         
         if typeOfGame == "CHALLENGE" {
@@ -305,7 +283,6 @@ class GameViewController: UIViewController {
                 
                 self.database.child("users").child(self.store.user.id).child("scoreMultiplayer").setValue(self.store.user.scoreMultiplayer)
                 self.database.child("leaderboardMultiplayer").child(self.store.user.id).setValue(self.store.user.scoreMultiplayer)
-                
             }
             
             if store.user.id == store.groupGame.player2Id {
@@ -364,9 +341,7 @@ class GameViewController: UIViewController {
                 self.database.child("users").child(self.store.user.id).child("scoreMultiplayer").setValue(self.store.user.scoreMultiplayer)
                 self.database.child("leaderboardMultiplayer").child(self.store.user.id).setValue(self.store.user.scoreMultiplayer)
             }
-            
         }
-        
         performSegue(withIdentifier: "resultSegue", sender: self)
         
     }
@@ -384,7 +359,7 @@ class GameViewController: UIViewController {
                 dest.points = points
                 newGame()
                 loadPlayerData()
-                
+
             }
             if store.playerWon == "LOST" {
                 
@@ -397,6 +372,7 @@ class GameViewController: UIViewController {
         }
     }
     
+    /* Retrieves today's Date */
     func getDate(date: Date) -> String {
         
         let dateFormatter = DateFormatter()
@@ -405,7 +381,20 @@ class GameViewController: UIViewController {
         return dateFormatter.string(from: date).uppercased()
     }
     
+    // MARK: - Actions
     
+    /* Method that check if the letter pressed is correct or not. */
+    @IBAction func letterPressed(_ sender: UIButton) {
+        
+        var buttonTitle = sender.titleLabel?.text
+        
+        if secretWord.range(of: buttonTitle!) != nil {
+            play(isCorrect: true, button: sender)
+        }
+        else {
+            play(isCorrect: false, button: sender)
+        }
+    }
     
 }
 

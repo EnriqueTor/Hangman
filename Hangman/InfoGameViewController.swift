@@ -35,26 +35,20 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         background.image = store.chalkboard
-        print("1")
         setupView()
-        print("2")
         retrieveUsers()
-        print("3")
         checkIfUserCanPlay()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    print("4")
         
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("5")
         retrieveUsers()
-        print("6")
         checkIfUserCanPlay()
         
     }
@@ -68,12 +62,14 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
         self.roundsGame.text = gameData.rounds + " ROUNDS"
     }
     
-    
+    /* Method that assign the amount of rows for the tableView. */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return players.count
     }
     
+    /* This assign a user to a cell and then retrieves all the data for that user and display it. */
+    // TODO: I think this can be done better
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! InfoTableViewCell
@@ -121,40 +117,43 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     
-    
+    /* This method checks how many players are playing the Group Game and order them by their point score*/
+    // TODO: I think this can be done better
     func retrieveUsers() {
         
+        /* create the dictionary */
         var userAndPoints = [store.groupGame.player1Id: store.groupGame.player1Points]
         
+        /* check player 2 */
         if store.groupGame.player2Id != "" {
             userAndPoints[store.groupGame.player2Id] = store.groupGame.player2Points
         }
         
+        /* check player 3 */
         if store.groupGame.player3Id != "" {
             userAndPoints[store.groupGame.player3Id] = store.groupGame.player3Points
         }
         
+        /* check player 4 */
         if store.groupGame.player4Id != "" {
             userAndPoints[store.groupGame.player4Id] = store.groupGame.player4Points
         }
         
+        /* create an array from the dictionary */
         var key = Array(userAndPoints.keys)
         
+        /* order them accordingly to their high score */
         key.sort { (o1, o2) -> Bool in
             
             return Int32(userAndPoints[o1]!)! > Int32(userAndPoints[o2]!)!
         }
+        /* asign the new array to the array players */
         self.players = key
         
         tableView.reloadData()
     }
-    
-    
-    @IBAction func playPushed(_ sender: UIButton) {
-        
-        performSegue(withIdentifier: "playMultiplayerSegue", sender: self)
-    }
-    
+
+    /* This method saves the groupGameId and also saves the typeGame. Both informations will be useful once we segue */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         guard let dest = segue.destination as? GameViewController else { return }
@@ -172,6 +171,7 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
 
+    /* This method checks if the user finished all his rounds. If he did the systems will move the Group Game from the Active child to the Finished one in MultiplayerStatus database. */
     func gameEnded(playerId: String, playerRounds: String) {
         
         if store.user.id == playerId && playerRounds == store.groupGame.rounds {
@@ -184,9 +184,7 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    @IBAction func chatPushed(_ sender: UIButton) {
-    }
-    
+    /* This method retrieves Today's date. */
     func getDate(date: Date) -> String {
         
         let dateFormatter = DateFormatter()
@@ -195,18 +193,27 @@ class InfoGameViewController: UIViewController, UITableViewDelegate, UITableView
         return dateFormatter.string(from: date).uppercased()
     }
     
+    // MARK: - Actions
+    
+    @IBAction func playPushed(_ sender: UIButton) {
+        
+        performSegue(withIdentifier: "playMultiplayerSegue", sender: self)
+    }
+    
 }
 
 
 class InfoTableViewCell: UITableViewCell {
     
+    // MARK: - Outlets
     
     @IBOutlet weak var playerNameLabel: UILabel?
     @IBOutlet weak var playerPic: UIImageView?
-    
     @IBOutlet weak var gamesPlayed: UILabel?
     @IBOutlet weak var pointsLabel: UILabel?
     @IBOutlet weak var positionLabel: UILabel?
+    
+    // MARK: - Methods
     
     func retrieveUserPic(url: String, image: UIImageView) {
         

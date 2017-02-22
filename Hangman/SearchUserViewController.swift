@@ -151,10 +151,6 @@ class SearchTableViewController: UITableViewController {
         
         database.child("users").child(id).observe( .value, with: { (snapshot) in
             
-//            if snapshot.exists() == false {
-//                
-//            } else {
-            
                 if self.store.inviteSelected == 2 {
                     self.store.user2 = User(snapshot: snapshot)
                     print(self.store.user2)
@@ -168,9 +164,7 @@ class SearchTableViewController: UITableViewController {
                 
                 if self.store.inviteSelected == 4 {
                     self.store.user4 = User(snapshot: snapshot)
-                    self.navigationController?.popViewController(animated: true) 
-
-//                }
+                    self.navigationController?.popViewController(animated: true)
             }
         })
     }
@@ -185,8 +179,12 @@ extension SearchTableViewController: UISearchResultsUpdating {
 
 class SearchTableViewCell: UITableViewCell {
     
+    // MARK: - Outlets 
+    
     @IBOutlet weak var userPic: UIImageView?
     @IBOutlet weak var userName: UILabel!
+    
+    // MARK: - Methods 
     
     func retrieveUserInfo(url: String, image: UIImageView, label: UILabel, name: String) {
         

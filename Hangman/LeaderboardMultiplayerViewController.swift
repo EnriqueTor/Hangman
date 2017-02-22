@@ -11,6 +11,8 @@ import Firebase
 
 class LeaderboardMultiplayerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    /* Please find same comments in LeaderboardSingleViewController */
+    
     // MARK: - Outlets 
     
     @IBOutlet weak var background: UIImageView!
@@ -93,6 +95,8 @@ class LeaderboardMultiplayerViewController: UIViewController, UITableViewDelegat
         })
     }
     
+    // MARK: - Methods TableView
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return self.store.leaderboardMultiplayer.count
@@ -122,11 +126,15 @@ class LeaderboardMultiplayerViewController: UIViewController, UITableViewDelegat
 }
 
 class MultiplayerLeaderboardTableViewCell: UITableViewCell {
-    
+
+    // MARK: - Outlets
+
     @IBOutlet weak var userPic: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userPoints: UILabel!
     @IBOutlet weak var userPosition: UILabel!
+    
+    // MARK: - Methods
     
     func retrieveUserInfo(url: String, image: UIImageView, position: Int, name: String, points: String) {
         

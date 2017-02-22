@@ -11,6 +11,8 @@ import Firebase
 import SDWebImage
 
 class LeaderboardSingleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+    // MARK: - Outlets 
     
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var singleButton: UITabBarItem!
@@ -20,9 +22,13 @@ class LeaderboardSingleViewController: UIViewController, UITableViewDelegate, UI
     @IBOutlet weak var userPoints: UILabel!
     @IBOutlet weak var userPosition: UILabel!
     
+    // MARK: - Variables
+    
     let store = HangmanData.sharedInstance
     let database = FIRDatabase.database().reference()
     var userSimplePosition = String()
+    
+    // MARK: - Loads 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +44,9 @@ class LeaderboardSingleViewController: UIViewController, UITableViewDelegate, UI
         tableView.reloadData()
     }
     
+    // MARK: - Methods
+    
+    /* This methods brings the image, position, name and points of any user selected. */
     func retrieveUserInfo(url: String, image: UIImageView, position: String, name: String, points: String) {
         
         let profileImgUrl = URL(string: url)
@@ -52,6 +61,7 @@ class LeaderboardSingleViewController: UIViewController, UITableViewDelegate, UI
         userPoints.text = points
     }
     
+    /* This method retrieve the users of the single games and order them from higher to lower accordingly to their points. */
     func retrieveUserPoints() {
         
         database.child("leaderboardSingle").observe(.value, with: { (snapshot) in
@@ -86,16 +96,24 @@ class LeaderboardSingleViewController: UIViewController, UITableViewDelegate, UI
         })
     }
     
+    // MARK: - Methods TableView
+    
+    /* This assign the amount of rows the tableView is going to have. */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return self.store.leaderboardSingle.count
     }
     
+    /* This method takes the userID and retrieved their data to display in the tableView. */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        /* Select the cell */
         let cell = tableView.dequeueReusableCell(withIdentifier: "singleCell", for: indexPath) as! SingleTableViewCell
+        
+        /* Select the user */
         var user = self.store.leaderboardSingle[indexPath.row]
         
+        /* Retrieve the user data */
         self.database.child("users").child(user).observeSingleEvent(of: .value, with: { (snapshot) in
             
             let data = snapshot.value as? [String:Any]
@@ -104,6 +122,7 @@ class LeaderboardSingleViewController: UIViewController, UITableViewDelegate, UI
             
             DispatchQueue.main.async {
                 
+                /* Display the user data */
                 cell.retrieveUserInfo(url: userSelected.profilePic, image: cell.userPic, position: indexPath.row + 1, name: userSelected.username, points: userSelected.scoreSingle)
                 
                 cell.backgroundColor = UIColor.clear
@@ -115,12 +134,17 @@ class LeaderboardSingleViewController: UIViewController, UITableViewDelegate, UI
 }
 
 class SingleTableViewCell: UITableViewCell {
+
+    // MARK: - Outlets 
     
     @IBOutlet weak var userPic: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userPoints: UILabel!
     @IBOutlet weak var userPosition: UILabel!
     
+    // MARK: - Methods 
+    
+    /* Same explanation than above */
     func retrieveUserInfo(url: String, image: UIImageView, position: Int, name: String, points: String) {
         
         let profileImgUrl = URL(string: url)

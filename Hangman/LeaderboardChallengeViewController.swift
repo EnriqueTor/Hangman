@@ -11,6 +11,10 @@ import Firebase
 
 class LeaderboardChallengeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    /* Please find same comments in LeaderboardSingleViewController */
+
+    // MARK: - Outlets 
+    
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var challengeButton: UITabBarItem!
     @IBOutlet weak var tableView: UITableView!
@@ -19,9 +23,13 @@ class LeaderboardChallengeViewController: UIViewController, UITableViewDelegate,
     @IBOutlet weak var userPoints: UILabel!
     @IBOutlet weak var userPosition: UILabel!
     
+    // MARK: - Variables
+    
     let store = HangmanData.sharedInstance
     let database = FIRDatabase.database().reference()
     var userSimplePosition = String()
+    
+    // MARK: - Loads
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +44,8 @@ class LeaderboardChallengeViewController: UIViewController, UITableViewDelegate,
         
         tableView.reloadData()
     }
+    
+    // MARK: - Methods 
     
     func retrieveUserInfo(url: String, image: UIImageView, position: String, name: String, points: String) {
         
@@ -85,6 +95,8 @@ class LeaderboardChallengeViewController: UIViewController, UITableViewDelegate,
         })
     }
     
+    // MARK: - Methods TableView 
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return self.store.leaderboardChallenge.count
@@ -115,10 +127,14 @@ class LeaderboardChallengeViewController: UIViewController, UITableViewDelegate,
 
 class ChallengeTableViewCell: UITableViewCell {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak var userPic: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userPoints: UILabel!
     @IBOutlet weak var userPosition: UILabel!
+    
+    // MARK: - Methods 
     
     func retrieveUserInfo(url: String, image: UIImageView, position: Int, name: String, points: String) {
         

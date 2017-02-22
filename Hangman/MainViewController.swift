@@ -44,6 +44,7 @@ class MainViewController: UIViewController, UINavigationControllerDelegate {
     
     // MARK: - Methods
     
+    /* This method pass the type of Game to the next View Controller */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "playSegue" {
@@ -59,6 +60,7 @@ class MainViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
     
+    /* This grab today's date */
     func getDate(date: Date) -> String {
         
         let dateFormatter = DateFormatter()
@@ -69,6 +71,7 @@ class MainViewController: UIViewController, UINavigationControllerDelegate {
 
     // MARK: - Actions
     
+    /* This method checks if the user already played the challenge of the day, if he did then it segues to message, if he didn't it goes to the challenge of the day */
     @IBAction func challengePushed(_ sender: UIButton) {
         
         self.database.child("playedChallenge").child(self.store.user.id).child(getDate(date: Date())).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -85,19 +88,23 @@ class MainViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     @IBAction func settingsPushed(_ sender: UIButton) {
+        
         performSegue(withIdentifier: "settingsSegue", sender: self)
     }
 
     @IBAction func leaderboardPushed(_ sender: UIButton) {
+        
         performSegue(withIdentifier: "leaderboardSegue", sender: self)
     }
     
     @IBAction func multiplayerPushed(_ sender: UIButton) {
+        
         performSegue(withIdentifier: "multiplayerSegue", sender: self)
     }
   
     @IBAction func playPushed(_ sender: UIButton) {
-         performSegue(withIdentifier: "playSegue", sender: self)
+        
+        performSegue(withIdentifier: "playSegue", sender: self)
     }
     
 }
