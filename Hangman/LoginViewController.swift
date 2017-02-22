@@ -11,21 +11,28 @@ import Firebase
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
+    // MARK: - Outlets 
+    
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
+    // MARK: - Variables
     
     let database = FIRDatabase.database().reference()
     let store = HangmanData.sharedInstance
     let myKeychainWrapper = KeychainWrapper()
     
+    // MARK: - Loads 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupView()
-    
     }
 
+    // MARK: Methods 
+    
     func setupView() {
         
         let attr = [NSForegroundColorAttributeName: UIColor.white]
@@ -34,27 +41,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        
         background.image = store.chalkboard
-        
-    }
-
-    
-    
-    @IBAction func loginPushed(_ sender: UIButton) {
-        
-        login()
-        
-    }
-    
-    
-    
-    
-    @IBAction func cancelPushed(_ sender: UIButton) {
-    
-        NotificationCenter.default.post(name: Notification.Name.openWelcomeVC, object: nil)
-
-    
     }
     
     func login() {
@@ -64,9 +51,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if email != "" && pass != "" {
             
             FIRAuth.auth()?.signIn(withEmail: email, password: pass) { (user, error) in
-            
-                if error != nil {
                 
+                if error != nil {
+                    
                     let alert = UIAlertController(title: nil, message: error?.localizedDescription, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
                     
@@ -81,18 +68,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         let loggedUser = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
                         
                         self.store.user = loggedUser.deserialize(data!)
-                        
                         self.addDataToKeychain(id: (user?.uid)!, name: self.store.user.username, email: email)
                         
                         NotificationCenter.default.post(name: Notification.Name.openMainVC, object: nil)
-
-                        
                     })
                 }
             }
         }
     }
-
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         emailTextField.resignFirstResponder()
@@ -100,7 +84,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         return true
     }
-
+    
     func addDataToKeychain(id: String, name: String, email: String) {
         
         UserDefaults.standard.setValue(id, forKey: "id")
@@ -112,5 +96,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         UserDefaults.standard.synchronize()
     }
 
+    // MARK: - Actions
     
+    @IBAction func loginPushed(_ sender: UIButton) {
+        login()
+    }
+    
+    @IBAction func cancelPushed(_ sender: UIButton) {
+        NotificationCenter.default.post(name: Notification.Name.openWelcomeVC, object: nil)
+    }
 }
