@@ -2,7 +2,7 @@
 
 Welcome to the Hangman Challenge by Enrique Torrendell. General information about the game can be find in https://www.thehangmanchallenge.com/. 
 
-<b>THE GAME<b>
+<b>THE GAME</b>
 
 The game has 3 ways of being played: Single, Challenge and Multiplayer. 
 
@@ -18,7 +18,7 @@ You can only play the challenge game once per day. Once you finish the word of t
 
 Once you enter multiplayer mode, you can create a game or play an active game. To create a game, just click on ÒCreate GameÓ and you will be able to set a title and select up to 3 friends. Then pick the amount of words you want to compete. Creating your own multiplayer game will allow you to have a small leaderboard where you can compete against your friends and track how many points and rounds each user did. Eventually in a future update the idea is to include a chat so you can have fun with your friends.
 
-<b>HOW TO SETUP THE GAME<b>
+<b>HOW TO SETUP THE GAME</b>
 
 1) Click the green "Clone or download" button
 
@@ -30,7 +30,7 @@ Once you enter multiplayer mode, you can create a game or play an active game. T
 
 5) The game works with iPhone SE, iPhone 7 and iPhone 7+. I recommend running the simulator with iPhone 7.
 
-<b>INSTRUCTIONS (VIEW BY VIEW)<b>
+<b>INSTRUCTIONS (VIEW BY VIEW)</b>
 
 Welcome View: 
 
