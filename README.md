@@ -90,4 +90,8 @@ In here you are going to be able to see the evolution of your multiplayer game -
 
 It let you pick Single, Challenge, Multiplayer to see the list of the people and their points. It orders them by position. Also, it'll always show your position and score in case there are thousands of players. 
 
+## BUGS
 
+1) The picker in photo album is not showing the Cancel button 
+2) The built in dictionary is not showing the go back button 
+3) Sometimes the dictionary doesn't have the definition of a word and it will simple do nothing. Need to implement an Alert message to handle that error.
