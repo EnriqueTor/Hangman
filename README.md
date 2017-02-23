@@ -97,3 +97,9 @@ It let you pick Single, Challenge, Multiplayer to see the list of the people and
 2) The built in dictionary is not showing the go back button 
 
 3) Sometimes the dictionary doesn't have the definition of a word and it will simple do nothing. Need to implement an Alert message to handle that error.
+
+4) When you finished playing a multiplayer game, the view goes back to the Main view instead of the Info View.
+
+5) If the user changes the name or picture from Setting View the app will jump to the Main View instead of staying in the Setting View.
+
+6) If you launch a game very fast it may happen that the dicitonary didn't download yet (very rare ocassion). I should put a closure on Welcome View to fix this. 
