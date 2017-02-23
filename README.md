@@ -24,13 +24,13 @@ Once you enter multiplayer mode, you can create a game or play an active game. T
 
 1) Click the green "Clone or download" button
 
-2) Click in Download ZIP
+2) Click on Download ZIP
 
 3) Open the ZIP file
 
-4) Open Hangman.xcworkspace file with Xcode.
+4) Open the Hangman.xcworkspace file with Xcode.
 
-5) If you install the game with these instructions you will have to install the Google plist file. 
+5) If you install the game following these instructions you will also have to import the Google plist file in the project (ask the admin for it). 
 
 5) The game works with iPhone SE, iPhone 7 and iPhone 7+. I recommend running the simulator with iPhone 7.
 
