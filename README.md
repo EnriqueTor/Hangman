@@ -98,7 +98,7 @@ It let you pick Single, Challenge, Multiplayer to see the list of the people and
 
 2) The built in dictionary is not showing the go back button 
 
-3) Sometimes the dictionary doesn't have the definition of a word and it will simple do nothing. Need to implement an Alert message to handle that error.
+3) Sometimes the dictionary doesn't have the definition of a word and it will simply do nothing. Need to implement an Alert message to handle that error.
 
 4) When you finished playing a multiplayer game, the view goes back to the Main view instead of the Info View.
 
