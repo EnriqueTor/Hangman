@@ -194,13 +194,13 @@ class GameViewController: UIViewController {
         }
         
         if lives == 0 {
-            hangmanImage.image = UIImage(named: "HangmanLogo")
+            hangmanImage.image = UIImage(named: "HangmanLogo6")
         }
         
-        if lives == -1 {
-            hangmanImage.image = UIImage(named: "HangmanLogo6")
-
-        }
+//        if lives == -1 {
+//            hangmanImage.image = UIImage(named: "HangmanLogo6")
+//
+//        }
     }
     
     /* This method checks if the user won or lost. */
@@ -213,7 +213,7 @@ class GameViewController: UIViewController {
         }
         
         if test == "LOST" {
-            if lives < 0 {
+            if lives < 1 {
                 gameEnded(result: "LOST", pointsEarned: -10)
             }
         }
