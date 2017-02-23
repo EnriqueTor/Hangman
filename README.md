@@ -43,7 +43,7 @@ Put your email, your username, a profile picture and a password. Once you click 
 
 Login View: 
 
-On the login view, just enter your email and your password. Once you get in the app, your information gets saved and you donÕt have to put it in ever again unless you installed the app.
+On the login view, just enter your email and your password. Once you get in the app, your information gets saved and you don't have to put it in ever again unless you installed the app.
 
 Main View: 
 
