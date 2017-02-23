@@ -107,6 +107,7 @@ class LeaderboardChallengeViewController: UIViewController, UITableViewDelegate,
         let cell = tableView.dequeueReusableCell(withIdentifier: "challengeCell", for: indexPath) as! ChallengeTableViewCell
         var user = self.store.leaderboardChallenge[indexPath.row]
         
+        
         self.database.child("users").child(user).observeSingleEvent(of: .value, with: { (snapshot) in
             
             let data = snapshot.value as? [String:Any]
@@ -118,6 +119,7 @@ class LeaderboardChallengeViewController: UIViewController, UITableViewDelegate,
                 cell.retrieveUserInfo(url: userSelected.profilePic, image: cell.userPic, position: indexPath.row + 1, name: userSelected.username, points: userSelected.scoreChallenge)
                 
                 cell.backgroundColor = UIColor.clear
+                cell.selectionStyle = .none
             }
         })
         

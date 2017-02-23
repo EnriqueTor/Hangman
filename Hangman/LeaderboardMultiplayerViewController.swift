@@ -118,6 +118,7 @@ class LeaderboardMultiplayerViewController: UIViewController, UITableViewDelegat
                 cell.retrieveUserInfo(url: userSelected.profilePic, image: cell.userPic, position: indexPath.row + 1, name: userSelected.username, points: userSelected.scoreMultiplayer)
                 
                 cell.backgroundColor = UIColor.clear
+                cell.selectionStyle = .none
             }
         })
         
