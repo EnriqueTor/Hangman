@@ -1,7 +1,8 @@
 # Hangman
 
 Welcome to the Hangman Challenge by Enrique Torrendell. General information about the game can be found on https://www.thehangmanchallenge.com/. 
-Inside the code you will find comments that explain what each method functionality is. 
+
+Inside the actual game code you will find comments that explain what each method functionality is. 
 
 ## THE GAME
 
