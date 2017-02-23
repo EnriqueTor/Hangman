@@ -18,6 +18,7 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var userProfile: UIImageView!
     @IBOutlet weak var userTextField: UITextField!
+    @IBOutlet var tapGesture: UITapGestureRecognizer!
     
     // MARK: - Variables
     
@@ -183,9 +184,10 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
     
     // MARK: - Actions
     
-    @IBAction func changePicturePushed(_ sender: UITapGestureRecognizer) {
+    @IBAction func changePicPushed(_ sender: UITapGestureRecognizer) {
         
         pickPhotoFromAlbum()
+
     }
     
     @IBAction func sendEmail(_ sender: UIButton) {
