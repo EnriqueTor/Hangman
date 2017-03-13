@@ -59,10 +59,9 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
     /* This clean the users in the HangmanData store */
     func cleanDataStore() {
         
-        store.user2 = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
-        store.user3 = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
-        store.user4 = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
-        
+        store.user2 = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", singleWon: "", singleLost: "", scoreChallenge: "", scoreMultiplayer: "")
+        store.user3 = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", singleWon: "", singleLost: "", scoreChallenge: "", scoreMultiplayer: "")
+        store.user4 = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", singleWon: "", singleLost: "", scoreChallenge: "", scoreMultiplayer: "")        
         store.multiplayerAmountOfPlayers = 1
         store.multiplayerAmountOfWords = "0"
     }

@@ -14,6 +14,7 @@
 		BB1F47851E57AC0400E840B5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1F47841E57AC0400E840B5 /* Constants.swift */; };
 		BB1F47871E57DF3500E840B5 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1F47861E57DF3500E840B5 /* Game.swift */; };
 		BB1F478B1E59458400E840B5 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1F478A1E59458400E840B5 /* MessageViewController.swift */; };
+		BB480F1E1E764BA400C6ADFC /* Dictionary in Resources */ = {isa = PBXBuildFile; fileRef = BB480F1D1E764BA400C6ADFC /* Dictionary */; };
 		BB75722B1E5523B50018FFD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75722A1E5523B50018FFD1 /* AppDelegate.swift */; };
 		BB75722D1E5523B50018FFD1 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75722C1E5523B50018FFD1 /* WelcomeViewController.swift */; };
 		BB7572301E5523B50018FFD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB75722E1E5523B50018FFD1 /* Main.storyboard */; };
@@ -54,6 +55,7 @@
 		BB1F47841E57AC0400E840B5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BB1F47861E57DF3500E840B5 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		BB1F478A1E59458400E840B5 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		BB480F1D1E764BA400C6ADFC /* Dictionary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dictionary; sourceTree = "<group>"; };
 		BB7572271E5523B50018FFD1 /* Hangman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hangman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB75722A1E5523B50018FFD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB75722C1E5523B50018FFD1 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				BB7572331E5523B50018FFD1 /* LaunchScreen.storyboard */,
+				BB480F1D1E764BA400C6ADFC /* Dictionary */,
 				BBDA193D1E569AB40007FBA0 /* Assets.xcassets */,
 				BB75723C1E55591F0018FFD1 /* BiteChalk.ttf */,
 				BB75723D1E55591F0018FFD1 /* BiteChalkBold.ttf */,
@@ -281,6 +284,7 @@
 				BBB9133C1E555AD400E779AA /* BiteChalk.ttf in Resources */,
 				BB7572351E5523B50018FFD1 /* LaunchScreen.storyboard in Resources */,
 				BBB9133E1E555AD800E779AA /* BiteChalkNormal.ttf in Resources */,
+				BB480F1E1E764BA400C6ADFC /* Dictionary in Resources */,
 				BBDA193E1E569AB40007FBA0 /* Assets.xcassets in Resources */,
 				BB7572301E5523B50018FFD1 /* Main.storyboard in Resources */,
 			);

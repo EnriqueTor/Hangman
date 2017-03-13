@@ -101,7 +101,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
                         
                     } else {
                         
-                        let newUser = User(id: (user?.uid)!, username: (user?.displayName)!, email: email, profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
+                        let newUser = User(id: (user?.uid)!, username: (user?.displayName)!, email: email, profilePic: "", scoreSingle: "", singleWon: "", singleLost: "", scoreChallenge: "", scoreMultiplayer: "")
                         
                         self.store.user = newUser
                         self.database.child("users").child((user?.uid)!).setValue(newUser.serialize())

@@ -197,10 +197,10 @@ class GameViewController: UIViewController {
             hangmanImage.image = UIImage(named: "HangmanLogo6")
         }
         
-//        if lives == -1 {
-//            hangmanImage.image = UIImage(named: "HangmanLogo6")
-//
-//        }
+        //        if lives == -1 {
+        //            hangmanImage.image = UIImage(named: "HangmanLogo6")
+        //
+        //        }
     }
     
     /* This method checks if the user won or lost. */
@@ -246,6 +246,34 @@ class GameViewController: UIViewController {
             
             self.database.child("users").child(self.store.user.id).child("scoreSingle").setValue(self.store.user.scoreSingle)
             self.database.child("leaderboardSingle").child(self.store.user.id).setValue(self.store.user.scoreSingle)
+            
+            if result == "WON" {
+                
+                if self.store.user.singleWon == "" {
+                    
+                    self.store.user.singleWon = "\(1)"
+                    
+                } else {
+                    
+                    self.store.user.singleWon = "\(Int32(self.store.user.singleWon)! + 1)"
+                }
+    
+                self.database.child("users").child(self.store.user.id).child("singleWon").setValue(self.store.user.singleWon)
+            }
+            
+            if result == "LOST" {
+                
+                if self.store.user.singleLost == "" {
+                    
+                    self.store.user.singleLost = "\(1)"
+                    
+                } else {
+                    
+                    self.store.user.singleLost = "\(Int32(self.store.user.singleLost)! + 1)"
+                }
+                
+                self.database.child("users").child(self.store.user.id).child("singleLost").setValue(self.store.user.singleLost)
+            }
         }
         
         if typeOfGame == "CHALLENGE" {
@@ -350,7 +378,7 @@ class GameViewController: UIViewController {
         if segue.identifier == "resultSegue" {
             
             guard let dest = segue.destination as? ResultViewController else { return }
-                        
+            
             if store.playerWon == "WON" {
                 
                 dest.gameResult = "YOU WON"
@@ -358,7 +386,7 @@ class GameViewController: UIViewController {
                 dest.points = points
                 newGame()
                 loadPlayerData()
-
+                
             }
             if store.playerWon == "LOST" {
                 

@@ -109,7 +109,7 @@ class SearchTableViewController: UITableViewController {
         database.child("users").child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
             
             let data = snapshot.value as? [String:Any]
-            let user = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
+            let user = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", singleWon: "", singleLost: "", scoreChallenge: "", scoreMultiplayer: "")
             let userSelected = user.deserialize(data!)
 
             DispatchQueue.main.async {

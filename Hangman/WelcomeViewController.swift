@@ -118,7 +118,7 @@ class WelcomeViewController: UIViewController {
                     userData.observe(.value, with: { (snapshot) in
                         
                         let data = snapshot.value as? [String:Any]
-                        let loggedUser = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
+                        let loggedUser = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", singleWon: "", singleLost: "", scoreChallenge: "", scoreMultiplayer: "")
                         
                         /* Store the data into our HangmanData using a custom method. */
                         self.store.user = loggedUser.deserialize(data!)

@@ -19,8 +19,7 @@ class HangmanData {
     
     var chalkboard = UIImage(named: "Chalkboard")
     var smallChalkboard = UIImage(named: "ChalkboardBlackOption")
-    var user = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
-    
+    var user = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", singleWon: "", singleLost: "", scoreChallenge: "", scoreMultiplayer: "")
     
     // Play
     
@@ -42,9 +41,9 @@ class HangmanData {
     var gameSelected = ""
     var gameRounds = "?"
     
-    var user2: User = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
-    var user3: User = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
-    var user4: User = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
+    var user2: User = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", singleWon: "", singleLost: "", scoreChallenge: "", scoreMultiplayer: "")
+    var user3: User = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", singleWon: "", singleLost: "", scoreChallenge: "", scoreMultiplayer: "")
+    var user4 = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", singleWon: "", singleLost: "", scoreChallenge: "", scoreMultiplayer: "")
     
     var user2Change = false
     var user3Change = false

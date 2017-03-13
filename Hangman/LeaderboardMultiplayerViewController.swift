@@ -110,7 +110,7 @@ class LeaderboardMultiplayerViewController: UIViewController, UITableViewDelegat
         self.database.child("users").child(user).observeSingleEvent(of: .value, with: { (snapshot) in
             
             let data = snapshot.value as? [String:Any]
-            let user = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
+            let user = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", singleWon: "", singleLost: "", scoreChallenge: "", scoreMultiplayer: "")
             var userSelected = user.deserialize(data!)
             
             DispatchQueue.main.async {

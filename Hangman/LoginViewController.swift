@@ -31,7 +31,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         setupView()
     }
     
-    // MARK: Methods
+    // MARK: - Methods
     
     func setupView() {
         
@@ -70,7 +70,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     /* Download User data */
                     userData.observe(.value, with: { (snapshot) in
                         let data = snapshot.value as? [String:Any]
-                        let loggedUser = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
+                        let loggedUser = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", singleWon: "", singleLost: "", scoreChallenge: "", scoreMultiplayer: "")
                         
                         /* Store the User data into the HangmanData store */
                         self.store.user = loggedUser.deserialize(data!)

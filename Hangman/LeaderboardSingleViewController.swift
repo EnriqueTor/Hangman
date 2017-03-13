@@ -19,8 +19,10 @@ class LeaderboardSingleViewController: UIViewController, UITableViewDelegate, UI
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userPic: UIImageView!
     @IBOutlet weak var userName: UILabel!
-    @IBOutlet weak var userPoints: UILabel!
+//    @IBOutlet weak var userPoints: UILabel!
     @IBOutlet weak var userPosition: UILabel!
+    @IBOutlet weak var scoreWon: UILabel!
+    @IBOutlet weak var scoreLoss: UILabel!
     
     // MARK: - Variables
     
@@ -47,7 +49,7 @@ class LeaderboardSingleViewController: UIViewController, UITableViewDelegate, UI
     // MARK: - Methods
     
     /* This methods brings the image, position, name and points of any user selected. */
-    func retrieveUserInfo(url: String, image: UIImageView, position: String, name: String, points: String) {
+    func retrieveUserInfo(url: String, image: UIImageView, position: String, name: String, wins: String, losses: String) {
         
         let profileImgUrl = URL(string: url)
         
@@ -58,7 +60,9 @@ class LeaderboardSingleViewController: UIViewController, UITableViewDelegate, UI
         
         userPosition.text = position + "."
         userName.text = name
-        userPoints.text = points
+        scoreWon.text = wins
+        scoreLoss.text = losses
+//        userPoints.text = points
     }
     
     /* This method retrieve the users of the single games and order them from higher to lower accordingly to their points. */
@@ -83,13 +87,19 @@ class LeaderboardSingleViewController: UIViewController, UITableViewDelegate, UI
                 
                 if let position = self.store.leaderboardSingle.index(where: {$0 == self.store.user.id}) {
                     
-                    self.userSimplePosition = "\(Int(position) + 1)" ?? "?"
-                    self.retrieveUserInfo(url: self.store.user.profilePic, image: self.userPic, position: self.userSimplePosition, name: self.store.user.username, points: self.store.user.scoreSingle)
+                    self.userSimplePosition = "\(Int(position) + 1)"
+                    self.retrieveUserInfo(url: self.store.user.profilePic,
+                                          image: self.userPic,
+                                          position: self.userSimplePosition,
+                                          name: self.store.user.username,
+                                          wins: self.store.user.singleWon,
+                                          losses: self.store.user.singleLost)
+                    
                     self.tableView.reloadData()
                     
                 } else {
                     
-                    self.retrieveUserInfo(url: self.store.user.profilePic, image: self.userPic, position: "???", name: self.store.user.username, points: "???")
+                    self.retrieveUserInfo(url: self.store.user.profilePic, image: self.userPic, position: "???", name: self.store.user.username, wins: "0", losses: "0")
                     self.tableView.reloadData()
                 }
             }
@@ -117,13 +127,13 @@ class LeaderboardSingleViewController: UIViewController, UITableViewDelegate, UI
         self.database.child("users").child(user).observeSingleEvent(of: .value, with: { (snapshot) in
             
             let data = snapshot.value as? [String:Any]
-            let user = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", scoreChallenge: "", scoreMultiplayer: "")
+            let user = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", singleWon: "", singleLost: "", scoreChallenge: "", scoreMultiplayer: "")
             var userSelected = user.deserialize(data!)
             
             DispatchQueue.main.async {
                 
                 /* Display the user data */
-                cell.retrieveUserInfo(url: userSelected.profilePic, image: cell.userPic, position: indexPath.row + 1, name: userSelected.username, points: userSelected.scoreSingle)
+                cell.retrieveUserInfo(url: userSelected.profilePic, image: cell.userPic, position: indexPath.row + 1, name: userSelected.username, wins: userSelected.singleWon, losses: userSelected.singleLost)
                 
                 cell.backgroundColor = UIColor.clear
                 cell.selectionStyle = .none
@@ -140,13 +150,15 @@ class SingleTableViewCell: UITableViewCell {
     
     @IBOutlet weak var userPic: UIImageView!
     @IBOutlet weak var userName: UILabel!
-    @IBOutlet weak var userPoints: UILabel!
+//    @IBOutlet weak var userPoints: UILabel!
     @IBOutlet weak var userPosition: UILabel!
+    @IBOutlet weak var scoreWon: UILabel!
+    @IBOutlet weak var scoreLoss: UILabel!
     
     // MARK: - Methods 
     
     /* Same explanation than above */
-    func retrieveUserInfo(url: String, image: UIImageView, position: Int, name: String, points: String) {
+    func retrieveUserInfo(url: String, image: UIImageView, position: Int, name: String,  wins: String, losses: String) {
         
         let profileImgUrl = URL(string: url)
         
@@ -157,6 +169,8 @@ class SingleTableViewCell: UITableViewCell {
         
         userPosition.text = "\(position)."
         userName.text = name
-        userPoints.text = points
+//        userPoints.text = points
+        scoreWon.text = wins
+        scoreLoss.text = losses
     }
 }
