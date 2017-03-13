@@ -67,6 +67,8 @@ class LeaderboardMultiplayerViewController: UIViewController, UITableViewDelegat
             
             if snapshot.exists() == false {
                 
+                self.retrieveUserInfo(url: self.store.user.profilePic, image: self.userPic, position: "???", name: self.store.user.username, points: self.store.user.scoreMultiplayer)
+                
             } else {
                 
                 guard let data = snapshot.value as? [String : String] else { return }
