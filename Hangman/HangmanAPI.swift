@@ -10,6 +10,8 @@ import Foundation
 
 class HangmanAPI {
     
+    // OLD CODE
+    
     // MARK: - Methods
     
     //    class func getHangmanWord(with completion: @escaping (([String]) -> Void)) {

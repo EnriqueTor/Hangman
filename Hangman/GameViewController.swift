@@ -79,17 +79,44 @@ class GameViewController: UIViewController {
     /* This method prepares the game */
     func letsPlay() {
         
-        let allWords = Int(arc4random_uniform(UInt32(store.arrayOfWords.count)))
-        
-        secretWord = store.arrayOfWords[allWords - 1].uppercased()
-        
-        for _ in self.secretWord.characters {
+        if let wordsFilePath = Bundle.main.path(forResource: "Dictionary", ofType: nil) {
             
-            self.hiddenWord.append("_")
+            do {
+                let wordsString = try String(contentsOfFile: wordsFilePath)
+                
+                let wordLines = wordsString.components(separatedBy: .newlines)
+                
+                let randomLine = wordLines[numericCast(arc4random_uniform(numericCast(wordLines.count)))]
+                
+                secretWord = randomLine.uppercased()
+                print(secretWord)
+                
+                for _ in self.secretWord.characters {
+                    
+                    self.hiddenWord.append("_")
+                }
+                
+                self.secretWordLabel.text = self.hiddenWord
+                self.isKeyboardEnabled(status: true)
+                
+                
+            } catch { // contentsOfFile throws an error
+                print("Error: \(error)")
+            }
         }
         
-        self.secretWordLabel.text = self.hiddenWord
-        self.isKeyboardEnabled(status: true)
+        // OLD CODE
+        //        let allWords = Int(arc4random_uniform(UInt32(store.arrayOfWords.count)))
+        //
+        //        secretWord = store.arrayOfWords[allWords - 1].uppercased()
+        //
+        //        for _ in self.secretWord.characters {
+        //
+        //            self.hiddenWord.append("_")
+        //        }
+        //
+        //        self.secretWordLabel.text = self.hiddenWord
+        //        self.isKeyboardEnabled(status: true)
     }
     
     /* This method sets the keyboard to be enabled or not */
@@ -257,7 +284,7 @@ class GameViewController: UIViewController {
                     
                     self.store.user.singleWon = "\(Int32(self.store.user.singleWon)! + 1)"
                 }
-    
+                
                 self.database.child("users").child(self.store.user.id).child("singleWon").setValue(self.store.user.singleWon)
             }
             
@@ -413,7 +440,7 @@ class GameViewController: UIViewController {
     /* Method that check if the letter pressed is correct or not. */
     @IBAction func letterPressed(_ sender: UIButton) {
         
-        var buttonTitle = sender.titleLabel?.text
+        let buttonTitle = sender.titleLabel?.text
         
         if secretWord.range(of: buttonTitle!) != nil {
             play(isCorrect: true, button: sender)

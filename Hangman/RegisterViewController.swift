@@ -19,6 +19,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var background: UIImageView!
+    @IBOutlet weak var errorLabel: UILabel!
     
     // MARK: - Variables
     
@@ -52,6 +53,9 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         passwordTextField.delegate = self
         
         background.image = store.chalkboard
+        
+        errorLabel.text = ""
+        errorLabel.textColor = Constants.Colors.chalkRed
     }
     
    /* This method grab the information in the textfields and create a user in Firebase. */
@@ -89,6 +93,8 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
             
             if error != nil {
+                
+                self.errorLabel.text = error.debugDescription
                 
             } else {
                 
@@ -200,6 +206,8 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
             storageImageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
                 
                 if error != nil {
+                    
+                    self.errorLabel.text = error.debugDescription
                     return
                 }
 
@@ -217,8 +225,21 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     
     @IBAction func registerPushed(_ sender: UIButton) {
         
-        register()
+        if usernameTextField.text != "" {
         
+            if profilePic.image != UIImage(named: "Camera") {
+            
+                register()
+                
+            } else {
+                
+                errorLabel.text = "Please pick a profile picture"
+            }
+            
+        } else {
+            
+            errorLabel.text = "Please enter a username"
+        }
     }
     
     @IBAction func cancelPushed(_ sender: UIButton) {

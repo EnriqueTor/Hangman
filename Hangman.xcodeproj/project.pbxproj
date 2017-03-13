@@ -19,6 +19,7 @@
 		BB75722D1E5523B50018FFD1 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75722C1E5523B50018FFD1 /* WelcomeViewController.swift */; };
 		BB7572301E5523B50018FFD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB75722E1E5523B50018FFD1 /* Main.storyboard */; };
 		BB7572351E5523B50018FFD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB7572331E5523B50018FFD1 /* LaunchScreen.storyboard */; };
+		BB8CB2451E76EAFC0019D431 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB8CB2441E76EAFC0019D431 /* GoogleService-Info.plist */; };
 		BBB9133C1E555AD400E779AA /* BiteChalk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB75723C1E55591F0018FFD1 /* BiteChalk.ttf */; };
 		BBB9133D1E555AD800E779AA /* BiteChalkBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB75723D1E55591F0018FFD1 /* BiteChalkBold.ttf */; };
 		BBB9133E1E555AD800E779AA /* BiteChalkNormal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB75723E1E55591F0018FFD1 /* BiteChalkNormal.ttf */; };
@@ -28,7 +29,6 @@
 		BBB913451E555F5200E779AA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB913441E555F5200E779AA /* MainViewController.swift */; };
 		BBB913471E55601300E779AA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB913461E55601300E779AA /* SettingsViewController.swift */; };
 		BBB913491E55601A00E779AA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB913481E55601A00E779AA /* GameViewController.swift */; };
-		BBB9134B1E5563CE00E779AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBB9134A1E5563CE00E779AA /* GoogleService-Info.plist */; };
 		BBB9134F1E5600E800E779AA /* HangmanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB9134E1E5600E800E779AA /* HangmanAPI.swift */; };
 		BBB913511E56012800E779AA /* HangmanData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB913501E56012800E779AA /* HangmanData.swift */; };
 		BBD5C41E1E5991960020C676 /* MultiplayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD5C41D1E5991960020C676 /* MultiplayerViewController.swift */; };
@@ -66,12 +66,12 @@
 		BB75723D1E55591F0018FFD1 /* BiteChalkBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BiteChalkBold.ttf; sourceTree = "<group>"; };
 		BB75723E1E55591F0018FFD1 /* BiteChalkNormal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BiteChalkNormal.ttf; sourceTree = "<group>"; };
 		BB75723F1E55591F0018FFD1 /* BiteChalkSlim.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BiteChalkSlim.ttf; sourceTree = "<group>"; };
+		BB8CB2441E76EAFC0019D431 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BBB913401E555F3F00E779AA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BBB913421E555F4A00E779AA /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		BBB913441E555F5200E779AA /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BBB913461E55601300E779AA /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BBB913481E55601A00E779AA /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		BBB9134A1E5563CE00E779AA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BBB9134E1E5600E800E779AA /* HangmanAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HangmanAPI.swift; sourceTree = "<group>"; };
 		BBB913501E56012800E779AA /* HangmanData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HangmanData.swift; sourceTree = "<group>"; };
 		BBD5C41D1E5991960020C676 /* MultiplayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiplayerViewController.swift; sourceTree = "<group>"; };
@@ -205,9 +205,9 @@
 				BB75723D1E55591F0018FFD1 /* BiteChalkBold.ttf */,
 				BB75723E1E55591F0018FFD1 /* BiteChalkNormal.ttf */,
 				BB75723F1E55591F0018FFD1 /* BiteChalkSlim.ttf */,
+				BB8CB2441E76EAFC0019D431 /* GoogleService-Info.plist */,
 				BBDA193A1E5683620007FBA0 /* KeychainWrapper.h */,
 				BBDA193B1E5683620007FBA0 /* KeychainWrapper.m */,
-				BBB9134A1E5563CE00E779AA /* GoogleService-Info.plist */,
 				BB7572361E5523B50018FFD1 /* Info.plist */,
 				BBDA19391E5683610007FBA0 /* Hangman-Bridging-Header.h */,
 			);
@@ -279,8 +279,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBB9133F1E555AD800E779AA /* BiteChalkSlim.ttf in Resources */,
-				BBB9134B1E5563CE00E779AA /* GoogleService-Info.plist in Resources */,
 				BBB9133D1E555AD800E779AA /* BiteChalkBold.ttf in Resources */,
+				BB8CB2451E76EAFC0019D431 /* GoogleService-Info.plist in Resources */,
 				BBB9133C1E555AD400E779AA /* BiteChalk.ttf in Resources */,
 				BB7572351E5523B50018FFD1 /* LaunchScreen.storyboard in Resources */,
 				BBB9133E1E555AD800E779AA /* BiteChalkNormal.ttf in Resources */,

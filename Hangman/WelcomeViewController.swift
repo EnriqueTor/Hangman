@@ -45,7 +45,7 @@ class WelcomeViewController: UIViewController {
         loginButton.isHidden = true
         registerButton.isHidden = true
         store.arrayOfWords.removeAll()
-        HangmanAPI.getHangmanWord()
+//        HangmanAPI.getHangmanWord()
     }
     
     override func viewDidAppear(_ animated: Bool) {
