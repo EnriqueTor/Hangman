@@ -35,6 +35,7 @@ class LeaderboardChallengeViewController: UIViewController, UITableViewDelegate,
         super.viewDidLoad()
         
         retrieveUserPoints()
+        
         background.image = store.chalkboard
         tabBarController?.tabBar.transparentNavigationBar()
     }
@@ -66,6 +67,8 @@ class LeaderboardChallengeViewController: UIViewController, UITableViewDelegate,
         database.child("leaderboardChallenge").observe(.value, with: { (snapshot) in
             
             if snapshot.exists() == false {
+                
+                self.retrieveUserInfo(url: self.store.user.profilePic, image: self.userPic, position: "???", name: self.store.user.username, points: self.store.user.scoreChallenge)
                 
             } else {
                 
