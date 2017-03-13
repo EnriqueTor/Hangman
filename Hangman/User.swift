@@ -58,10 +58,10 @@ struct User {
         let email = data["email"] as? String ?? ""
         let profilePic = data["profilePic"] as? String ?? ""
         let scoreSingle = data["scoreSingle"] as? String ?? ""
-        let singleWon = data["singleWon"] as? String ?? ""
-        let singleLost = data["singleLost"] as? String ?? ""
-        let scoreChallenge = data["scoreChallenge"] as? String ?? ""
-        let scoreMultiplayer = data["scoreMultiplayer"] as? String ?? ""
+        let singleWon = data["singleWon"] as? String ?? "0"
+        let singleLost = data["singleLost"] as? String ?? "0"
+        let scoreChallenge = data["scoreChallenge"] as? String ?? "0"
+        let scoreMultiplayer = data["scoreMultiplayer"] as? String ?? "0"
 
         return User(id: id, username: username, email: email, profilePic: profilePic, scoreSingle: scoreSingle, singleWon: singleWon, singleLost: singleLost, scoreChallenge: scoreChallenge, scoreMultiplayer: scoreMultiplayer)
     }

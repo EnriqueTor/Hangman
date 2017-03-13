@@ -107,7 +107,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
                         
                     } else {
                         
-                        let newUser = User(id: (user?.uid)!, username: (user?.displayName)!, email: email, profilePic: "", scoreSingle: "", singleWon: "", singleLost: "", scoreChallenge: "", scoreMultiplayer: "")
+                        let newUser = User(id: (user?.uid)!, username: (user?.displayName)!, email: email, profilePic: "", scoreSingle: "0", singleWon: "0", singleLost: "0", scoreChallenge: "0", scoreMultiplayer: "0")
                         
                         self.store.user = newUser
                         self.database.child("users").child((user?.uid)!).setValue(newUser.serialize())
@@ -141,7 +141,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         
         myKeychainWrapper.mySetObject(passwordTextField.text, forKey:kSecValueData)
         myKeychainWrapper.writeToKeychain()
-        UserDefaults.standard.synchronize()
+        UserDefaults.standard.synchronize() 
     }
     
     // MARK: Methods Picker
