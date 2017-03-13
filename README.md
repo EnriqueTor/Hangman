@@ -1,6 +1,6 @@
 # Hangman
 
-Welcome to the Hangman Challenge by Enrique Torrendell. General information about the game can be found on https://www.thehangmanchallenge.com/. 
+Welcome to the Hangman Challenge by Enrique Torrendell. 
 
 Inside the actual game code you will find comments that explain what each method functionality is. The Hangman was made in Swift and I used Firebase as the back end.
 
@@ -98,7 +98,7 @@ It let you pick Single, Challenge, Multiplayer to see the list of the people and
 
 2) The built in dictionary is not showing the go back button 
 
-3) Sometimes the dictionary doesn't have the definition of a word and it will simple do nothing. Need to implement an Alert message to handle that error.
+3) Sometimes the dictionary doesn't have the definition of a word and it will simply do nothing. Need to implement an Alert message to handle that error.
 
 4) When you finished playing a multiplayer game, the view goes back to the Main view instead of the Info View.
 
