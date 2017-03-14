@@ -17,12 +17,14 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var activityInfo: UIActivityIndicatorView!
+    @IBOutlet weak var errorLabel: UILabel!
     
     // MARK: - Variables
     
     let store = HangmanData.sharedInstance
     let database = FIRDatabase.database().reference()
-    var games = [String]()
+    var activeGames = [String]()
+    var finishedGames = [String]()
     var gameSelected = ""
     var gameRounds = ""
     
@@ -32,6 +34,7 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         
         background.image = store.chalkboard
+        errorLabel.text = ""
         retrieveGames()
     }
     
@@ -64,14 +67,14 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
             
             if snapshot.exists() == false {
                 
-                self.games = []
+                self.activeGames = []
                 self.tableView.reloadData()
-
+                
             } else {
                 
                 guard let data = snapshot.value as? [String:Any] else { return }
                 
-                self.games = Array(data.keys)
+                self.activeGames = Array(data.keys)
                 self.tableView.reloadData()
             }
         })
@@ -84,14 +87,14 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
             
             if snapshot.exists() == false {
                 
-                self.games = []
+                self.finishedGames = []
                 self.tableView.reloadData()
                 
             } else {
                 
                 guard let data = snapshot.value as? [String:Any] else { return }
                 
-                self.games = Array(data.keys)
+                self.finishedGames = Array(data.keys)
                 self.tableView.reloadData()
             }
         })
@@ -101,8 +104,19 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
     
     /* This method set the amount of rows the TableView will have */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      
-        return games.count
+        
+        if store.gamesActiveOrFinished == "active" {
+            return activeGames.count
+        }
+        
+        if store.gamesActiveOrFinished == "finished" {
+            return finishedGames.count
+        }
+        
+        else {
+            
+            return activeGames.count
+        }
     }
     
     /* This method takes the userID and retrieved their data to display in the tableView. */
@@ -113,7 +127,15 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
         cell.backgroundColor = UIColor.clear
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         
-        let gameID = games[indexPath.row]
+        var gameID = activeGames[indexPath.row]
+        
+        if store.gamesActiveOrFinished == "active" {
+            gameID = activeGames[indexPath.row]
+        }
+        
+        if store.gamesActiveOrFinished == "finished" {
+            gameID = finishedGames[indexPath.row]
+        }
         
         database.child("multiplayer").child(gameID).observe(.value, with: { (snapshot) in
             
@@ -122,8 +144,8 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
             } else {
                 
                 DispatchQueue.main.async {
-                
-                let newGroupGame = GroupGame(snapshot: snapshot)
+                    
+                    let newGroupGame = GroupGame(snapshot: snapshot)
                     
                     cell.gameLabel.text = newGroupGame.title
                     cell.retrieveUserInfo(url: newGroupGame.player1Pic, image: cell.pic1)
@@ -140,7 +162,16 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
     /* This method retrieves data from Firebase depending on what player we picked. */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        gameSelected = games[indexPath.row]
+        gameSelected = activeGames[indexPath.row]
+        
+        if store.gamesActiveOrFinished == "active" {
+            gameSelected = activeGames[indexPath.row]
+        }
+        
+        if store.gamesActiveOrFinished == "finished" {
+            gameSelected = finishedGames[indexPath.row]
+        }
+        
         store.gameSelected = gameSelected
         
         database.child("multiplayer").child(gameSelected).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -150,7 +181,7 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
             self.store.groupGame = gameData
             
             self.activityInfo.startAnimating()
-
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                 self.activityInfo.stopAnimating()
                 self.performSegue(withIdentifier: "gameInfo2Segue", sender: self)
@@ -160,31 +191,36 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
     
     /* This method shows 100 users, if people wants to see more they can use the search functions */
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       
+        
         return 100
     }
     
     // MARK: - Actions
     
     @IBAction func createGamePushed(_ sender: UIButton) {
-        
-        performSegue(withIdentifier: "createGameSegue", sender: self)
+        if activeGames.count < 3 {
+            performSegue(withIdentifier: "createGameSegue", sender: self)
+        } else {
+            errorLabel.text = "FINISH YOUR ACTIVE GAMES FIRST"
+        }
     }
     
     @IBAction func activeGamesPushed(_ sender: UIButton) {
         store.gamesActiveOrFinished = "active"
+        errorLabel.text = ""
         retrieveActiveGames()
     }
     
     @IBAction func archivedGamesPushed(_ sender: UIButton) {
         store.gamesActiveOrFinished = "finished"
+        errorLabel.text = ""
         retrieveFinishedGames()
     }
 }
 
 class MultiplayerTableViewCell: UITableViewCell {
     
-    // MARK: - Outlets 
+    // MARK: - Outlets
     
     @IBOutlet weak var gameLabel: UILabel!
     @IBOutlet weak var pic1: UIImageView!

@@ -121,14 +121,14 @@ class LeaderboardSingleViewController: UIViewController, UITableViewDelegate, UI
         let cell = tableView.dequeueReusableCell(withIdentifier: "singleCell", for: indexPath) as! SingleTableViewCell
         
         /* Select the user */
-        var user = self.store.leaderboardSingle[indexPath.row]
+        let user = self.store.leaderboardSingle[indexPath.row]
         
         /* Retrieve the user data */
         self.database.child("users").child(user).observeSingleEvent(of: .value, with: { (snapshot) in
             
             let data = snapshot.value as? [String:Any]
             let user = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", singleWon: "", singleLost: "", scoreChallenge: "", scoreMultiplayer: "")
-            var userSelected = user.deserialize(data!)
+            let userSelected = user.deserialize(data!)
             
             DispatchQueue.main.async {
                 

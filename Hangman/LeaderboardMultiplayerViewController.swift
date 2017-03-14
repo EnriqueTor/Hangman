@@ -84,7 +84,7 @@ class LeaderboardMultiplayerViewController: UIViewController, UITableViewDelegat
                 
                 if let position = self.store.leaderboardMultiplayer.index(where: {$0 == self.store.user.id}) {
                     
-                    self.userSimplePosition = "\(Int(position) + 1)" ?? "?"
+                    self.userSimplePosition = "\(Int(position) + 1)" 
                     self.retrieveUserInfo(url: self.store.user.profilePic, image: self.userPic, position: self.userSimplePosition, name: self.store.user.username, points: self.store.user.scoreMultiplayer)
                     self.tableView.reloadData()
                     
@@ -107,13 +107,13 @@ class LeaderboardMultiplayerViewController: UIViewController, UITableViewDelegat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "multiplayerCell", for: indexPath) as! MultiplayerLeaderboardTableViewCell
-        var user = self.store.leaderboardMultiplayer[indexPath.row]
+        let user = self.store.leaderboardMultiplayer[indexPath.row]
         
         self.database.child("users").child(user).observeSingleEvent(of: .value, with: { (snapshot) in
             
             let data = snapshot.value as? [String:Any]
             let user = User(id: "", username: "", email: "", profilePic: "", scoreSingle: "", singleWon: "", singleLost: "", scoreChallenge: "", scoreMultiplayer: "")
-            var userSelected = user.deserialize(data!)
+            let userSelected = user.deserialize(data!)
             
             DispatchQueue.main.async {
                 

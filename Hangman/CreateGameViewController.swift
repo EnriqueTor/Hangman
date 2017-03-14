@@ -207,11 +207,8 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
     /* This checks that the user put a Group Game name, assigned at least 1 other player and that it selected the amount of words they are going to compete */
     @IBAction func createGamePushed(_ sender: UIButton) {
         
-        if gameNameTextField.text != "" && player2Pic.image != nil || player3Pic.image != nil || player4Pic.image != nil && store.multiplayerAmountOfWords != "0" {
+        if gameNameTextField.text != "" && player2Pic.image != nil && store.multiplayerAmountOfWords != "0" || gameNameTextField.text != "" && player3Pic.image != nil && store.multiplayerAmountOfWords != "0" || gameNameTextField.text != "" && player4Pic.image != nil && store.multiplayerAmountOfWords != "0" {
             createGame()
         }
     }
-    
-    
-    
 }

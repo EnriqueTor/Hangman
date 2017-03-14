@@ -58,31 +58,44 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         errorLabel.textColor = Constants.Colors.chalkRed
     }
     
-   /* This method grab the information in the textfields and create a user in Firebase. */
+    /* This method grab the information in the textfields and create a user in Firebase. */
     func register() {
         
         /* Grab data. */
-        guard let email = emailTextField.text, let password = passwordTextField.text, let username = usernameTextField.text else { return }
+        guard let email = emailTextField.text, let password = passwordTextField.text, let username = usernameTextField.text?.uppercased() else { return }
         
-        /* Create User. */
-        FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
+        database.child("username").observeSingleEvent(of: .value, with: { (snapshot) in
             
-            if error != nil {
+            if snapshot.hasChild(username) {
                 
-                let alert = UIAlertController(title: nil, message: error?.localizedDescription, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
-                
-                self.present(alert, animated: true, completion: nil)
+                self.errorLabel.text = "THIS USERNAME ALREADY EXISTS"
                 
             } else {
                 
-                /* Save into UserDefaults and myKeychainWrapper */
-                self.addDataToKeychain(id: (user?.uid)!, name: username, email: email)
+                /* Create User. */
                 
-                /* Run the signIn method */
-                self.signIn()
+                FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
+                    
+                    if error != nil {
+                        
+                        let alert = UIAlertController(title: nil, message: error?.localizedDescription, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
+                        
+                        self.present(alert, animated: true, completion: nil)
+                        
+                    } else {
+                        
+                        /* Save into UserDefaults and myKeychainWrapper */
+                        self.addDataToKeychain(id: (user?.uid)!, name: username, email: email)
+                        
+                        /* Run the signIn method */
+                        self.signIn()
+                    }
+                }
+                
             }
-        }
+            
+        })
     }
     
     /* Same method than in LoginViewController, the big difference is the method saveProfileImage. */
@@ -103,7 +116,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
                 changeRequest?.displayName = username
                 changeRequest?.commitChanges { error in
                     
-                    if let error = error {
+                    if error != nil {
                         
                     } else {
                         
@@ -141,7 +154,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         
         myKeychainWrapper.mySetObject(passwordTextField.text, forKey:kSecValueData)
         myKeychainWrapper.writeToKeychain()
-        UserDefaults.standard.synchronize() 
+        UserDefaults.standard.synchronize()
     }
     
     // MARK: Methods Picker
@@ -193,7 +206,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     func saveProfileImage() {
         
         DispatchQueue.main.async {
-        
+            
             /* Link with Firebase Storage */
             let storageRef = FIRStorage.storage().reference(forURL: "gs://face-ba4e6.appspot.com")
             let imageId = self.store.user.id
@@ -210,7 +223,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
                     self.errorLabel.text = error.debugDescription
                     return
                 }
-
+                
                 /* Get the URL String */
                 guard let profileImageUrl = metadata?.downloadURL()?.absoluteString else { return }
                 
@@ -226,9 +239,9 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBAction func registerPushed(_ sender: UIButton) {
         
         if usernameTextField.text != "" {
-        
-            if profilePic.image != UIImage(named: "Camera") {
             
+            if profilePic.image != UIImage(named: "Camera") {
+                
                 register()
                 
             } else {
