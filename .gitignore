@@ -28,6 +28,11 @@ xcuserdata/
 *.dSYM
 
 GoogleService-Info.plist
+BiteChalk.ttf
+BiteChalkBold.ttf
+BiteChalkNormal.ttf
+BiteChalkSlim.ttf
+Secrets.swift
 
 ## Playgrounds
 timeline.xctimeline
