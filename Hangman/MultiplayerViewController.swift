@@ -162,8 +162,6 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
     /* This method retrieves data from Firebase depending on what player we picked. */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        gameSelected = activeGames[indexPath.row]
-        
         if store.gamesActiveOrFinished == "active" {
             gameSelected = activeGames[indexPath.row]
         }
