@@ -49,7 +49,8 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
             mail.setSubject("Feedback")
             mail.setMessageBody("", isHTML: true)
             
-            mail.navigationBar.tintColor = UIColor.white
+            mail.navigationBar.tintColor = UIColor.lightGray
+            mail.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.black]
             
             present(mail, animated: true)
             

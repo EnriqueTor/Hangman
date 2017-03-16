@@ -115,7 +115,7 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
         
         else {
             
-            return activeGames.count
+            return 0
         }
     }
     
@@ -127,7 +127,7 @@ class MultiplayerViewController: UIViewController, UITableViewDelegate, UITableV
         cell.backgroundColor = UIColor.clear
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         
-        var gameID = activeGames[indexPath.row]
+        var gameID = String()
         
         if store.gamesActiveOrFinished == "active" {
             gameID = activeGames[indexPath.row]
