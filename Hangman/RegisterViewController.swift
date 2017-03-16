@@ -174,7 +174,6 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         imagePicker.sourceType = source
         imagePicker.navigationBar.barStyle = .blackTranslucent
         imagePicker.navigationBar.isTranslucent = true
-        imagePicker.navigationBar.tintColor = .white
         
         present(imagePicker, animated: true, completion: nil)
     }
@@ -263,5 +262,17 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBAction func profilePicPushed(_ sender: UITapGestureRecognizer) {
         
         pickPhotoFromAlbum()
+    }
+}
+
+extension UIImagePickerController {
+    open override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        let customFont = UIFont(name: "BiteChalkSlim-regular", size: 20)
+        
+        self.navigationBar.topItem?.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName: customFont!, NSForegroundColorAttributeName: UIColor.white], for: UIControlState.normal)
+        self.navigationBar.topItem?.rightBarButtonItem?.isEnabled = true
+        
     }
 }

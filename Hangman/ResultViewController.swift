@@ -16,7 +16,9 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var secretWordLabel: UILabel!
     @IBOutlet weak var background: UIImageView!
-    @IBOutlet weak var scoreLabel: UILabel!    
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var defineButton: UIButton!
+    
     
     // MARK: - Variables
     
@@ -32,8 +34,10 @@ class ResultViewController: UIViewController {
         
         backgroundMessage.image = store.smallChalkboard
         background.addBlurEffect()
-
+        defineButton.isHidden = true
         showResult()
+//        wordInDictionary()
+        
     }
     
     // MARK: - Methods
@@ -59,6 +63,19 @@ class ResultViewController: UIViewController {
         }
     }
     
+//    func wordInDictionary() {
+//        
+//        if UIReferenceLibraryViewController.dictionaryHasDefinition(forTerm: secretWord) == true {
+//            
+//            defineButton.isHidden = false
+//            
+//        } else {
+//            
+//            defineButton.isHidden = true
+//        }
+//    }
+    
+    
     /* This methos grabs the secret word and looks for the definition into the Apple's built-in dictionary. */
     
     func defineWord() {
@@ -66,6 +83,9 @@ class ResultViewController: UIViewController {
         if UIReferenceLibraryViewController.dictionaryHasDefinition(forTerm: secretWord) == true {
             
             let ref: UIReferenceLibraryViewController = UIReferenceLibraryViewController(term: secretWord)
+        
+            
+            
             
             present(ref, animated: true, completion: nil)
         }
@@ -83,3 +103,22 @@ class ResultViewController: UIViewController {
         defineWord()
     }
 }
+
+extension UIReferenceLibraryViewController {
+    open override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        let customFont = UIFont(name: "BiteChalkSlim-regular", size: 20)
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.lightGray
+        
+        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName: customFont!, NSForegroundColorAttributeName: UIColor.lightGray], for: UIControlState.normal)
+        
+        
+        
+//        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName: customFont!, NSForegroundColorAttributeName: UIColor.lightGray], for: UIControlState.normal)
+//        self.navigationItem.rightBarButtonItem?.isEnabled = true
+        
+    }
+}
+
